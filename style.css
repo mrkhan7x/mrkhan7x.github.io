@@ -1260,6 +1260,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         grid-template-columns: 1fr;
         padding: 40px;
     }
+    
+    .advantage-wrapper {
+        grid-template-columns: 1fr;
+    }
 
     .nav-links { display: none; }
     .nav-toggle { display: flex; }
@@ -1306,6 +1310,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
     .contact-wrapper {
         padding: 28px;
+    }
+
+    .workflow-demo {
+        overflow-x: auto;
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    .workflow-canvas {
+        min-width: 600px;
+        min-height: 400px;
     }
 
     .portfolio-filters {
