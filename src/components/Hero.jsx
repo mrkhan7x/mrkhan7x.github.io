@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import {
   OrbitControls,
   Float,
-  Environment,
   Sphere,
   MeshDistortMaterial,
 } from "@react-three/drei";
@@ -262,7 +261,6 @@ export default function Hero() {
                 }}
               >
                 <Suspense fallback={null}>
-                  <Environment preset="city" />
                   <ambientLight intensity={0.5} />
                   <directionalLight position={[5, 5, 5]} intensity={1} />
                   <directionalLight
