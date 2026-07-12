@@ -10,25 +10,28 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  color: #ffffff;
-  background: #0A0A0A;
+  color: var(--text-color);
+  background: var(--bg-color);
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .app {
   min-height: 100vh;
-  background: #0A0A0A;
+  background: var(--bg-color);
   position: relative;
   overflow: hidden;
   cursor: default;
+  transition: background-color 0.4s ease;
 }
 
 .app-background {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: #0A0A0A;
+  background: var(--bg-color);
   pointer-events: none;
+  transition: background-color 0.4s ease;
 }
 
 .grid-pattern-global {
@@ -83,8 +86,8 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: #0A0A0A;
-  transition: background 0.1s ease;
+  background: var(--bg-color);
+  transition: background 0.4s ease;
 }
 
 .global-spotlight {
@@ -181,19 +184,9 @@ body {
 }
 
 .footer {
-  background: rgba(6, 6, 14, 0.6) !important;
-}
-
-.hero .spotlight {
-  display: none;
-}
-
-.hero .grid-pattern {
-  display: none;
-}
-
-.hero .orb {
-  display: none;
+  background: var(--bg-color) !important;
+  border-top: 1px solid var(--border-color);
+  transition: background-color 0.4s ease, border-top-color 0.4s ease;
 }
 
 ::-webkit-scrollbar {
@@ -201,7 +194,8 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: var(--bg-color);
+  transition: background-color 0.4s ease;
 }
 
 ::-webkit-scrollbar-thumb {
