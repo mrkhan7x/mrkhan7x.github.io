@@ -4,8 +4,8 @@ export const PortfolioContent = {
     title: "We design and build",
     titleHighlight: "intelligent systems",
     paragraphs: [
-      "I am an AI & Workflow Automation Expert specializing in creating custom solutions that streamline business operations. Using advanced tools like n8n, Make.com, and Python, I build reliable automation systems that run 24/7.",
-      "My mission is to eliminate manual chores, optimize lead generation, deploy intelligent AI agents, and save businesses 10 to 20+ hours every week. Every integration is built with robust error handling, detailed logging, and custom API connections."
+      "I am an AI & Workflow Automation Expert specializing in creating custom solutions that automate business operations. By building custom system architectures, I create reliable automation systems that run 24/7.",
+      "My mission is to eliminate manual chores, optimize lead generation, deploy intelligent AI agents, and save businesses 10 to 20+ hours every week. Every integration is built with detailed error handling, active logs, and custom system connections."
     ],
     stats: [
       { number: "100+", label: "Tools Integrated" },
@@ -13,19 +13,19 @@ export const PortfolioContent = {
       { number: "100+", label: "Custom Built" }
     ],
     skills: [
-      { name: "n8n Automation", level: 98 },
-      { name: "Make.com (Integromat)", level: 96 },
-      { name: "AI & LLM Integration (OpenAI/Claude)", level: 95 },
-      { name: "Python Scripting", level: 90 },
-      { name: "Custom API Integrations", level: 94 },
-      { name: "Zapier", level: 85 }
+      { name: "Custom Workflow Automation", level: 98 },
+      { name: "Cloud System Integration", level: 96 },
+      { name: "AI Agent Deployments", level: 95 },
+      { name: "Data Parsing & Scraping", level: 90 },
+      { name: "API & Webhook Architecture", level: 94 },
+      { name: "Standardized Connectors", level: 85 }
     ]
   },
 
   hero: {
     badge: "Available for Projects",
     greeting: "Hey, I'm",
-    name: "MrKhanServices",
+    name: "M R KHAN",
     title: "AI & Workflow Automation Expert",
     description:
       "Stop wasting time on manual tasks. I design custom automation workflows and AI agents that capture leads, manage customer support, and scale operations on autopilot.",
@@ -40,14 +40,14 @@ export const PortfolioContent = {
       { number: "100%", label: "Client Satisfaction" }
     ],
     technologies: [
-      "n8n",
-      "Make.com",
-      "OpenAI",
-      "Claude",
-      "Zapier",
-      "Python",
-      "APIs",
-      "LangChain",
+      "AI Assistants",
+      "CRM Systems",
+      "Custom API Flows",
+      "Data Scraping",
+      "Messaging Concierges",
+      "Lead Systems",
+      "Cloud Databases",
+      "Payment Connectors",
       "HubSpot",
       "Slack",
       "WhatsApp API",
@@ -70,68 +70,68 @@ export const PortfolioContent = {
     skills: {
       automation: [
         {
-          name: "n8n Workflows",
+          name: "Custom Workflows",
           icon: "./icons/n8n.svg",
           level: 98,
-          description: "Advanced node setups, sub-workflows, custom JavaScript nodes"
+          description: "Advanced background logic flows, automated routing, data formatting"
         },
         {
-          name: "Make.com (Integromat)",
+          name: "Cloud Integration",
           icon: "./icons/make.svg",
           level: 96,
-          description: "Complex routers, custom JSON modules, error handling"
+          description: "Complex service routing, error handling filters, JSON data parsing"
         },
         {
-          name: "Zapier",
+          name: "Standard Connectors",
           icon: "https://www.vectorlogo.zone/logos/zapier/zapier-icon.svg",
           level: 88,
-          description: "Multi-step Zaps, webhooks, formatter tools"
+          description: "Multi-step system connections, data formatting triggers"
         },
         {
-          name: "Custom API Integration",
+          name: "Custom API Services",
           icon: "./icons/javascript.svg",
           level: 94,
-          description: "REST APIs, Webhooks, OAuth2 authentication, webhooks listeners"
+          description: "REST connections, Webhook listeners, OAuth2 secure authentication setups"
         }
       ],
       ai: [
         {
-          name: "AI Agents (OpenAI/Claude)",
+          name: "AI Agent Deployments",
           icon: "./icons/openai.svg",
           level: 95,
-          description: "Assistant APIs, prompt engineering, structured outputs"
+          description: "Autonomous reasoning agents, prompt engineering, structured JSON outputs"
         },
         {
-          name: "RAG & Vector Databases",
+          name: "Knowledge Orchestration",
           icon: "./icons/pinecone.svg",
           level: 90,
-          description: "Knowledge bases, Pinecone, Supabase PGVector"
+          description: "Internal business knowledge bases, vector indexing, semantic search"
         },
         {
-          name: "Chatbot Deployment",
+          name: "Messaging Concierges",
           icon: "https://www.vectorlogo.zone/logos/whatsapp/whatsapp-icon.svg",
           level: 92,
-          description: "WhatsApp Cloud API, Telegram Bot API, website widgets"
+          description: "Automated business outreach concierges on WhatsApp, Telegram, and websites"
         }
       ],
       data: [
         {
-          name: "Python Scripting",
+          name: "Data Engines",
           icon: "https://www.vectorlogo.zone/logos/python/python-icon.svg",
           level: 90,
-          description: "Data parsing, automation scripts, BeautifulSoup/Scrapy"
+          description: "Custom data parsing engines, web crawlers, background scrapers"
         },
         {
-          name: "Database Systems",
+          name: "Structured Storage",
           icon: "https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg",
           level: 86,
-          description: "Airtable, Supabase, PostgreSQL, MongoDB, Google Sheets"
+          description: "Normalized relational databases, cloud storage, document stores"
         },
         {
-          name: "Web Scraping & Enrichment",
+          name: "Intelligence Scraping",
           icon: "./icons/chrome.svg",
           level: 92,
-          description: "Google Maps scraping, data extraction, email finder automation"
+          description: "Lead databases crawling, email discovery, contact data enrichment"
         }
       ]
     },
@@ -147,7 +147,7 @@ export const PortfolioContent = {
     title: "Custom Built",
     titleHighlight: "Workflows",
     description:
-      "A showcase of custom, production-ready automation workflows and AI applications designed to streamline businesses.",
+      "A showcase of custom, production-ready automation workflows and AI applications designed to optimize businesses.",
     categories: [
       { id: "all", label: "All Workflows" },
       { id: "ai", label: "AI & Chatbots" },
@@ -164,9 +164,9 @@ export const PortfolioContent = {
         description: "Intelligent chatbot with retrieval-augmented generation (RAG) that answers questions using a private knowledge base, deployed on WhatsApp & Telegram.",
         emoji: "🤖",
         category: "ai",
-        tags: ["n8n", "OpenAI", "Pinecone", "WhatsApp API", "Telegram API"],
+        tags: ["AI Assistant", "CRM Integration", "Messaging Automation"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 2,
@@ -174,9 +174,9 @@ export const PortfolioContent = {
         description: "Collaboration network where specialized AI agents collaborate on research, content creation, and lead generation tasks automatically.",
         emoji: "🧠",
         category: "ai",
-        tags: ["n8n", "GPT-4", "LangChain", "Supabase"],
+        tags: ["Multi-Agent System", "AI Orchestration", "Database Cloud"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 3,
@@ -184,9 +184,9 @@ export const PortfolioContent = {
         description: "Drafts highly contextual, brand-aligned email replies using GPT-4, matches your communication style, and routes drafts to your inbox.",
         emoji: "✉️",
         category: "ai",
-        tags: ["Make.com", "OpenAI", "Gmail API", "Outlook", "Slack"],
+        tags: ["Email Agent", "Inbox Automation", "Team Notifications"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 4,
@@ -194,9 +194,9 @@ export const PortfolioContent = {
         description: "Scrapes business listings from Google Maps by category & location, enriches details using AI, and syncs qualified leads to your CRM.",
         emoji: "🗺️",
         category: "lead",
-        tags: ["n8n", "Google Maps API", "Apify", "HubSpot", "Google Sheets"],
+        tags: ["Lead Acquisition", "Data Scraping", "CRM Sync"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 5,
@@ -204,9 +204,9 @@ export const PortfolioContent = {
         description: "Automated prospecting campaign that sends personalized LinkedIn messages, schedules follow-ups, and logs interest inside CRM.",
         emoji: "💼",
         category: "lead",
-        tags: ["n8n", "LinkedIn API", "GPT-4", "Pipedrive CRM"],
+        tags: ["Social Outreach", "Prospecting Engine", "CRM Automations"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 6,
@@ -214,9 +214,9 @@ export const PortfolioContent = {
         description: "Scores incoming leads based on custom criteria, routes high-intent leads to Slack for instant callback, and enters others into nurture flows.",
         emoji: "🎯",
         category: "lead",
-        tags: ["Make.com", "OpenAI API", "Slack Webhooks", "Mailchimp"],
+        tags: ["Lead Scoring", "Instant Notification", "Email Nurture"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 7,
@@ -224,9 +224,9 @@ export const PortfolioContent = {
         description: "AI workflow that drafts platform-specific social captions, creates matching visual assets, and auto-publishes to multiple networks.",
         emoji: "📱",
         category: "social",
-        tags: ["n8n", "GPT-4", "DALL-E 3", "Buffer API", "LinkedIn", "Instagram"],
+        tags: ["Content Generation", "Visual Assets", "Multi-Channel Publish"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 8,
@@ -234,9 +234,9 @@ export const PortfolioContent = {
         description: "Generates vertical video scripts from blog URLs, overlays ElevenLabs voiceovers, compiles stock assets, and schedules uploads.",
         emoji: "🎬",
         category: "social",
-        tags: ["n8n", "ElevenLabs API", "FFmpeg Script", "YouTube Data API", "TikTok API"],
+        tags: ["Video Automation", "Voice Synthesis", "Social Scheduling"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 9,
@@ -244,9 +244,9 @@ export const PortfolioContent = {
         description: "Automatically creates invoices, formats shipping labels, adjusts supplier inventories, and updates clients via SMS & Email on new orders.",
         emoji: "🛍️",
         category: "ecommerce",
-        tags: ["n8n", "Shopify API", "Stripe API", "Twilio SMS", "SendGrid"],
+        tags: ["Order Fulfillment", "Payment Processing", "Customer Alerts"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 10,
@@ -254,9 +254,9 @@ export const PortfolioContent = {
         description: "Keeps e-commerce inventories, warehouse stocks, and supplier feeds perfectly aligned in real-time, with low stock notifications.",
         emoji: "🔄",
         category: "ecommerce",
-        tags: ["Make.com", "WooCommerce API", "Google Sheets API", "Slack Alerts"],
+        tags: ["Inventory Sync", "Stock Management", "Internal Alerts"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 11,
@@ -264,9 +264,9 @@ export const PortfolioContent = {
         description: "Scrapes target competitor websites daily, logs price differences, and alerts your team of significant price updates or stock changes.",
         emoji: "📊",
         category: "data",
-        tags: ["n8n", "Puppeteer", "Google Sheets", "Email Notifications"],
+        tags: ["Price Monitoring", "Market Intel", "Change Alerts"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 12,
@@ -274,9 +274,9 @@ export const PortfolioContent = {
         description: "Takes list of raw domains, scrapes websites, matches company data via enrichment APIs, and outputs highly qualified B2B contacts.",
         emoji: "💾",
         category: "data",
-        tags: ["n8n", "OpenAI", "Clearbit API", "Airtable API"],
+        tags: ["Profile Scraping", "Data Enrichment", "Contact Database"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 13,
@@ -284,9 +284,9 @@ export const PortfolioContent = {
         description: "Curates relevant industry articles via RSS, summarizes contents using GPT-4, layouts a beautiful newsletter, and schedules via Mailchimp.",
         emoji: "📰",
         category: "email",
-        tags: ["Make.com", "GPT-4 API", "Mailchimp API", "RSS Reader"],
+        tags: ["Newsletter Curation", "AI Summary", "Campaign Schedule"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       },
       {
         id: 14,
@@ -294,9 +294,9 @@ export const PortfolioContent = {
         description: "Custom email marketing sequences with advanced behavior-based logic, click tracking, and lead-status updates in your database.",
         emoji: "✉️",
         category: "email",
-        tags: ["n8n", "SendGrid API", "Airtable DB", "Webhooks"],
+        tags: ["Drip Campaigns", "Behavior Logic", "Click Tracking"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhanservices"
+        githubUrl: "https://github.com/mrkhan7x"
       }
     ]
   },
@@ -310,7 +310,7 @@ export const PortfolioContent = {
     },
     {
       stars: "★★★★★",
-      text: "The AI chatbot handles 80% of our support tickets now. Response time went from hours to instant. Game changer.",
+      text: "The AI chatbot handles 80% of our support tickets now. Response time went from hours to instant. Massive time-saver.",
       author: "SaaS Company",
       title: "AI Chatbot Client"
     },
@@ -359,7 +359,7 @@ export const PortfolioContent = {
       {
         name: "GitHub",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-        url: "https://github.com/mrkhanservices"
+        url: "https://github.com/mrkhan7x"
       }
     ],
     form: {
@@ -371,7 +371,7 @@ export const PortfolioContent = {
   },
 
   footer: {
-    brand: "MrKhanServices",
+    brand: "M R KHAN",
     text: "Building reliable, scalable, and intelligent workflow automation systems.",
     links: [
       { label: "Home", href: "#home" },
@@ -380,11 +380,11 @@ export const PortfolioContent = {
       { label: "Contact", href: "#contact" }
     ],
     copyright: "All rights reserved.",
-    heart: "Made with ❤️ By MrKhanServices"
+    heart: "Built by M R KHAN"
   },
 
   navbar: {
-    brand: "MrKhanServices",
+    brand: "M R KHAN",
     links: [
       { label: "About", href: "#about" },
       { label: "Skills", href: "#skills" },
