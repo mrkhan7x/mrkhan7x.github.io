@@ -1,108 +1,9 @@
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import {
-  OrbitControls,
-  Float,
-  Sphere,
-  MeshDistortMaterial,
-} from "@react-three/drei";
-import { Suspense, useRef, useState, useEffect } from "react";
 import PortfolioContent from "../data/PortfolioContent";
 import "../styles/Hero.css";
 
-function Avatar3D() {
-  const meshRef = useRef();
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-      <group
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-      >
-        <Sphere
-          ref={meshRef}
-          args={[1, 64, 64]}
-          position={[0, 0, 0]}
-          scale={hovered ? 1.1 : 1}
-        >
-          <MeshDistortMaterial
-            color="#B000FF"
-            roughness={0.2}
-            metalness={0.8}
-            distort={hovered ? 0.4 : 0.2}
-            speed={hovered ? 2 : 1}
-            envMapIntensity={1.5}
-          />
-        </Sphere>
-
-        <mesh position={[-0.4, 0.2, 0.9]}>
-          <sphereGeometry args={[0.12, 16, 16]} />
-          <meshStandardMaterial color="white" roughness={0.1} metalness={0.1} />
-        </mesh>
-        <mesh position={[0.4, 0.2, 0.9]}>
-          <sphereGeometry args={[0.12, 16, 16]} />
-          <meshStandardMaterial color="white" roughness={0.1} metalness={0.1} />
-        </mesh>
-
-        <mesh position={[-0.4, 0.2, 1.02]}>
-          <sphereGeometry args={[0.06, 16, 16]} />
-          <meshStandardMaterial color="#1d1d1f" roughness={0} metalness={0} />
-        </mesh>
-        <mesh position={[0.4, 0.2, 1.02]}>
-          <sphereGeometry args={[0.06, 16, 16]} />
-          <meshStandardMaterial color="#1d1d1f" roughness={0} metalness={0} />
-        </mesh>
-
-        <mesh position={[0, -0.8, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[1.2, 1.4, 64]} />
-          <meshStandardMaterial
-            color="#B000FF"
-            transparent
-            opacity={0.3}
-            side={2}
-            emissive="#B000FF"
-            emissiveIntensity={0.5}
-          />
-        </mesh>
-
-        {[...Array(20)].map((_, i) => (
-          <mesh
-            key={i}
-            position={[
-              Math.sin(i * 0.5) * 1.6,
-              Math.cos(i * 0.7) * 1.6,
-              Math.sin(i * 0.3) * 1.6,
-            ]}
-            scale={0.03}
-          >
-            <sphereGeometry args={[1, 8, 8]} />
-            <meshStandardMaterial
-              color="#B000FF"
-              emissive="#B000FF"
-              emissiveIntensity={0.5}
-              transparent
-              opacity={0.6}
-            />
-          </mesh>
-        ))}
-      </group>
-    </Float>
-  );
-}
-
 export default function Hero() {
-  const [isMobile, setIsMobile] = useState(false);
   const { hero } = PortfolioContent;
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   const handlePrimaryAction = () => {
     const projectsSection = document.getElementById("projects");
@@ -114,7 +15,7 @@ export default function Hero() {
     }
   };
 
-  const scrollToProjects = () => {
+  const handleSecondaryAction = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({
@@ -188,7 +89,7 @@ export default function Hero() {
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </button>
-              <button className="btn-main-secondary" onClick={scrollToProjects}>
+              <button className="btn-main-secondary" onClick={handleSecondaryAction}>
                 <span>{hero.buttons.secondary}</span>
               </button>
             </motion.div>
@@ -237,55 +138,31 @@ export default function Hero() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.95, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="hero-right"
         >
-          <div className="avatar-container">
-            {!isMobile ? (
-              <Canvas
-                camera={{ position: [0, 0, 4], fov: 45 }}
-                gl={{
-                  antialias: true,
-                  powerPreference: "high-performance",
-                }}
-              >
-                <Suspense fallback={null}>
-                  <ambientLight intensity={0.5} />
-                  <directionalLight position={[5, 5, 5]} intensity={1} />
-                  <directionalLight
-                    position={[-5, -5, 5]}
-                    intensity={0.5}
-                    color="#B000FF"
-                  />
-                  <OrbitControls
-                    enableZoom={false}
-                    enablePan={false}
-                    autoRotate
-                    autoRotateSpeed={2}
-                    maxPolarAngle={Math.PI / 2}
-                    minPolarAngle={Math.PI / 2}
-                  />
-                  <Avatar3D />
-                </Suspense>
-              </Canvas>
-            ) : (
-              <div className="avatar-placeholder">
-                <div className="placeholder-icon">👨‍💻</div>
+          <div className="browser-mockup">
+            <div className="browser-header">
+              <div className="browser-dots">
+                <span className="dot dot-red" />
+                <span className="dot dot-yellow" />
+                <span className="dot dot-green" />
               </div>
-            )}
-
-            <div className="ring-dots" />
-            <div className="ring-dots-outer" />
-
-            <div className="particle-ring">
-              {[...Array(12)].map((_, i) => (
-                <div key={i} className="dot" />
-              ))}
+              <div className="browser-address">mrkhanservices.github.io/workflows</div>
             </div>
-
-            <div className="avatar-glow" />
+            <div className="browser-body">
+              <video
+                src={process.env.PUBLIC_URL + "/media/website_video.mp4"}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="browser-video"
+              />
+              <div className="browser-video-overlay" />
+            </div>
           </div>
         </motion.div>
       </div>
