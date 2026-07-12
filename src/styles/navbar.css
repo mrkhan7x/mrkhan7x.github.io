@@ -154,12 +154,12 @@
 
 .nav-links li a {
   position: relative;
-  padding: 8px 16px;
+  padding: 8px 18px;
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 14px;
-  font-weight: 400;
-  border-radius: 10px;
+  font-weight: 500;
+  border-radius: 9999px;
   transition: all 0.3s ease;
   cursor: pointer;
   white-space: nowrap;
@@ -168,6 +168,12 @@
 .nav-links li a:hover {
   color: var(--text-primary);
   background: rgba(176, 0, 255, 0.08);
+}
+
+.nav-links li a.active {
+  background: #B000FF !important;
+  color: #ffffff !important;
+  font-weight: 600;
 }
 
 .link-underline {

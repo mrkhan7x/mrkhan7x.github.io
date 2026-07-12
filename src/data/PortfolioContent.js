@@ -30,8 +30,8 @@ export const PortfolioContent = {
     description:
       "Stop wasting time on manual tasks. I design custom automation workflows and AI agents that capture leads, manage customer support, and scale operations on autopilot.",
     buttons: {
-      primary: "Schedule a Consultation",
-      secondary: "View My Work"
+      primary: "View Portfolio",
+      secondary: "Let's Talk"
     },
     stats: [
       { number: "100+", label: "Tools Integrated" },

@@ -105,9 +105,9 @@ export default function Hero() {
   }, []);
 
   const handlePrimaryAction = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({
+    const projectsSection = document.getElementById("projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
@@ -115,9 +115,9 @@ export default function Hero() {
   };
 
   const scrollToProjects = () => {
-    const projectsSection = document.getElementById("projects");
-    if (projectsSection) {
-      projectsSection.scrollIntoView({
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });

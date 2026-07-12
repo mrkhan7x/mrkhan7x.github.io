@@ -8,18 +8,45 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const [activeSection, setActiveSection] = useState("home");
+
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const sections = ["home", "about", "skills", "projects", "contact"];
+    const observers = sections.map((sectionId) => {
+      const el = document.getElementById(sectionId);
+      if (!el) return null;
+      
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(sectionId);
+          }
+        },
+        { rootMargin: "-20% 0px -60% 0px" }
+      );
+      observer.observe(el);
+      return { observer, el };
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observers.forEach((obs) => {
+        if (obs) obs.observer.unobserve(obs.el);
+      });
+    };
   }, []);
 
   const scrollToSection = (id) => {
-    const element = document.getElementById(id.replace('#', ''));
+    const sectionId = id.replace('#', '');
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(sectionId);
       setOpen(false);
     }
   };
@@ -39,19 +66,26 @@ export default function Navbar() {
         </div>
 
         <ul className={`nav-links ${open ? "open" : ""}`}>
-          {navbar.links.map((link, i) => (
-            <motion.li 
-              key={link.label}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <a href={link.href} onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}>
-                {link.label}
-                <span className="link-underline" />
-              </a>
-            </motion.li>
-          ))}
+          {navbar.links.map((link, i) => {
+            const isActive = activeSection === link.href.replace('#', '');
+            return (
+              <motion.li 
+                key={link.label}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <a 
+                  href={link.href} 
+                  className={isActive ? "active" : ""}
+                  onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
+                >
+                  {link.label}
+                  {!isActive && <span className="link-underline" />}
+                </a>
+              </motion.li>
+            );
+          })}
           <li className="mobile-cta">
             <button className="btn-glow" onClick={() => scrollToSection("#contact")}>
               <span className="btn-text">{navbar.cta}</span>

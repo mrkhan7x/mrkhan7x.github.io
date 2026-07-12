@@ -981,10 +981,10 @@
 }
 
 .hero-title-ref .highlight-text {
-  background: linear-gradient(90deg, #B000FF 0%, #D89BF5 50%, #B000FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #B000FF;
+  background: none;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
 }
 
 .hero-subtitle-ref {
