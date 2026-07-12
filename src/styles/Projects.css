@@ -43,14 +43,16 @@
 }
 
 .filter-btn:hover {
-  background: rgba(176, 0, 255, 0.05);
-  color: var(--text-primary);
+  background: rgba(176, 0, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(176, 0, 255, 0.3);
 }
 
 .filter-btn.active {
-  background: rgba(176, 0, 255, 0.1);
-  border-color: var(--accent);
-  color: var(--accent);
+  background: #B000FF;
+  border-color: #B000FF;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(176, 0, 255, 0.3);
 }
 
 .projects-grid {
@@ -62,22 +64,23 @@
 .project-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   backdrop-filter: blur(10px);
 }
 
 .project-card:hover {
-  border-color: rgba(176, 0, 255, 0.2);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border-color: rgba(176, 0, 255, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(176, 0, 255, 0.15);
 }
 
 .project-image {
   font-size: 64px;
   padding: 40px 24px 20px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(176, 0, 255, 0.05), transparent);
+  background: linear-gradient(135deg, rgba(176, 0, 255, 0.08), transparent);
 }
 
 .project-content {

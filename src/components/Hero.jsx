@@ -139,28 +139,27 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="hero-badge"
+              className="hero-badge-ref"
             >
-              <span className="badge-dot" />
-              <span className="badge-text">{hero.badge}</span>
-              <span className="badge-glow" />
+              <span className="badge-dot-ref" />
+              <span className="badge-text-ref">SYSTEMS & AUTOMATION SPECIALIST</span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="hero-title"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="hero-title-ref"
             >
-              {hero.greeting} <span className="highlight">{hero.name}</span>
-              <span className="title-cursor">|</span>
+              <span className="block-title">SYSTEMS DON'T</span>
+              <span className="block-title highlight-text">RUN ON MANUAL.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="hero-subtitle"
+              className="hero-subtitle-ref"
             >
               {hero.description}
             </motion.p>
@@ -169,61 +168,47 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="hero-actions"
+              className="hero-actions-ref"
             >
               <button
-                className="btn-primary"
+                className="btn-main-primary"
                 onClick={handlePrimaryAction}
               >
-                <span className="btn-content">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                    <line x1="16" y1="2" x2="16" y2="6" />
-                    <line x1="8" y1="2" x2="8" y2="6" />
-                    <line x1="3" y1="10" x2="21" y2="10" />
-                  </svg>
-                  {hero.buttons.primary}
-                </span>
-                <span className="btn-glow-effect" />
-              </button>
-              <button className="btn-secondary" onClick={scrollToProjects}>
-                {hero.buttons.secondary}
+                <span>{hero.buttons.primary}</span>
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="2.5"
+                  className="arrow-icon"
                 >
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </button>
+              <button className="btn-main-secondary" onClick={scrollToProjects}>
+                <span>{hero.buttons.secondary}</span>
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="hero-reviews-ref"
+            >
+              <div className="stars-row">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="star-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
+                ))}
+              </div>
+              <span className="reviews-text">5.0 / 5.0 — 100% Client Satisfaction · 4+ Years Experience</span>
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="hero-stats"
-          >
-            {hero.stats.map((stat, index) => (
-              <div key={index} className="stat-item">
-                <div className="stat-glow" />
-                <span className="stat-number">{stat.number}</span>
-                <span className="stat-label">{stat.label}</span>
-              </div>
-            ))}
-          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
