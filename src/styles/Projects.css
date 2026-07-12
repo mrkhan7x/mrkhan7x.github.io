@@ -32,9 +32,9 @@
 
 .filter-btn {
   padding: 8px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
   border-radius: 50px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--card-bg);
   color: var(--text-secondary);
   font-size: 14px;
   font-weight: 400;
@@ -44,7 +44,7 @@
 
 .filter-btn:hover {
   background: rgba(176, 0, 255, 0.1);
-  color: #ffffff;
+  color: var(--text-color);
   border-color: rgba(176, 0, 255, 0.3);
 }
 
@@ -62,8 +62,8 @@
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 24px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -201,6 +201,21 @@
   background: rgba(6, 6, 14, 0.8);
 }
 
+.status-indicator {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  z-index: 2;
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -215,14 +230,13 @@
 }
 
 .modal-content {
-  background: rgba(20, 20, 35, 0.95);
+  background: var(--bg-color);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    0 30px 80px rgba(0, 0, 0, 0.4);
   max-width: 560px;
   width: 100%;
   max-height: 90vh;
@@ -249,8 +263,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
   color: var(--text-secondary);
   cursor: pointer;
   display: flex;
@@ -261,7 +275,7 @@
 }
 
 .modal-close:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(176, 0, 255, 0.1);
   color: var(--text-primary);
   transform: rotate(90deg);
 }
@@ -370,13 +384,13 @@
 }
 
 .modal-btn.secondary {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-bg);
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
 }
 
 .modal-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(176, 0, 255, 0.08);
   transform: translateY(-2px);
   border-color: rgba(176, 0, 255, 0.2);
 }

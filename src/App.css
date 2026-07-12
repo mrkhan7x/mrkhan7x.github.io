@@ -40,8 +40,8 @@ body {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(176, 0, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(176, 0, 255, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(176, 0, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 0, 255, 0.04) 1px, transparent 1px);
   background-size: 60px 30px;
   animation: gridPulse 4s ease-in-out infinite;
 }
@@ -51,8 +51,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(176, 0, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(176, 0, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(176, 0, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 0, 255, 0.03) 1px, transparent 1px);
   background-size: 60px 30px;
   background-position: 30px 15px;
   pointer-events: none;
@@ -64,8 +64,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(45deg, rgba(176, 0, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(176, 0, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(45deg, rgba(176, 0, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(176, 0, 255, 0.02) 1px, transparent 1px);
   background-size: 30px 30px;
   pointer-events: none;
   animation: gridPulse 6s ease-in-out infinite 1s;

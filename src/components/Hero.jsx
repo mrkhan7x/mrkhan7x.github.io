@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="video-overlay" />
       </div>
       <div className="hero-container">
-        <div className="hero-left">
+        <div className="hero-content-wrapper">
           <div className="hero-content">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -136,35 +136,6 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 30 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="hero-right"
-        >
-          <div className="browser-mockup">
-            <div className="browser-header">
-              <div className="browser-dots">
-                <span className="dot dot-red" />
-                <span className="dot dot-yellow" />
-                <span className="dot dot-green" />
-              </div>
-              <div className="browser-address">mrkhanservices.github.io/workflows</div>
-            </div>
-            <div className="browser-body">
-              <video
-                src={process.env.PUBLIC_URL + "/media/website_video.mp4"}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="browser-video"
-              />
-              <div className="browser-video-overlay" />
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
