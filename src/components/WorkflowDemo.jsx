@@ -40,9 +40,9 @@ export default function WorkflowDemo() {
             transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(255, 109, 90, 0.25)" }}
           >
-            <div className="node-side-stripe" style={{ backgroundColor: "#ff6d5a" }} />
+            <div className="node-side-stripe" style={{ backgroundColor: "#B000FF" }} />
             <div className="workflow-node-port port-input" style={{ left: "-4px", top: "50%", transform: "translateY(-50%)" }} />
-            <div className="workflow-node-icon" style={{ "--node-color": "#ff6d5a" }}>
+            <div className="workflow-node-icon" style={{ "--node-color": "#B000FF" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />
@@ -140,9 +140,9 @@ export default function WorkflowDemo() {
             transition={{ duration: 0.5, delay: 0.6 }}
             whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(255, 109, 90, 0.25)" }}
           >
-            <div className="node-side-stripe" style={{ backgroundColor: "#ff6d5a" }} />
+            <div className="node-side-stripe" style={{ backgroundColor: "#B000FF" }} />
             <div className="workflow-node-port port-input" style={{ left: "-4px", top: "50%", transform: "translateY(-50%)" }} />
-            <div className="workflow-node-icon" style={{ "--node-color": "#ff6d5a" }}>
+            <div className="workflow-node-icon" style={{ "--node-color": "#B000FF" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <ellipse cx="12" cy="5" rx="9" ry="3" />
                 <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
@@ -175,7 +175,7 @@ export default function WorkflowDemo() {
               className="workflow-conn-line"
               d="M 210 160 C 210 220, 240 280, 280 280"
               fill="none"
-              stroke="#ff6d5a"
+              stroke="#B000FF"
               strokeWidth="2.5"
               strokeLinecap="round"
               initial={{ pathLength: 0 }}

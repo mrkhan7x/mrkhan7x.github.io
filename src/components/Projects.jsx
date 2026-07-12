@@ -125,7 +125,12 @@ export default function Projects() {
               </button>
 
               <div className="modal-image">
-                {selectedProject.imageUrl ? (
+                {selectedProject.videoUrl ? (
+                  <video controls autoPlay playsInline loop className="modal-video-player" style={{ width: "100%", maxHeight: "350px", objectFit: "contain", borderRadius: "12px", background: "#000" }}>
+                    <source src={selectedProject.videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : selectedProject.imageUrl ? (
                   <img 
                     src={selectedProject.imageUrl} 
                     alt={selectedProject.title}

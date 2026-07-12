@@ -1,6 +1,6 @@
 :root {
-  --accent: #ff6d5a;
-  --accent-glow: rgba(255, 109, 90, 0.4);
+  --accent: #B000FF;
+  --accent-glow: rgba(176, 0, 255, 0.4);
   --bg-primary: rgba(8, 8, 16, 0.75);
   --bg-secondary: rgba(20, 20, 35, 0.6);
   --text-primary: #ffffff;
@@ -38,9 +38,9 @@
   padding: 1px;
   background: linear-gradient(
     135deg,
-    rgba(255, 109, 90, 0.2),
+    rgba(176, 0, 255, 0.2),
     transparent 50%,
-    rgba(255, 109, 90, 0.1)
+    rgba(176, 0, 255, 0.1)
   );
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -52,10 +52,10 @@
 
 .navbar.scrolled {
   background: rgba(8, 8, 16, 0.9);
-  border-color: rgba(255, 109, 90, 0.15);
+  border-color: rgba(176, 0, 255, 0.2);
   box-shadow:
     var(--shadow-glass),
-    0 0 40px rgba(255, 109, 90, 0.05);
+    0 0 40px rgba(176, 0, 255, 0.1);
   top: 12px;
 }
 
@@ -83,7 +83,7 @@
   inset: -20px;
   background: radial-gradient(
     circle at center,
-    rgba(255, 109, 90, 0.15),
+    rgba(176, 0, 255, 0.15),
     transparent 70%
   );
   filter: blur(20px);
@@ -171,7 +171,7 @@
 
 .nav-links li a:hover {
   color: var(--text-primary);
-  background: rgba(255, 109, 90, 0.08);
+  background: rgba(176, 0, 255, 0.08);
 }
 
 .link-underline {
@@ -196,7 +196,7 @@
   padding: 8px 24px;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent), #ff4a36);
+  background: linear-gradient(135deg, var(--accent), var(--primary-dark));
   color: white;
   font-size: 14px;
   font-weight: 500;
@@ -209,7 +209,7 @@
 
 .nav-cta:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 30px rgba(255, 109, 90, 0.3);
+  box-shadow: 0 8px 30px rgba(176, 0, 255, 0.3);
 }
 
 .btn-shimmer {
@@ -325,7 +325,7 @@
     padding: 12px;
     border: none;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--accent), #ff4a36);
+    background: linear-gradient(135deg, var(--accent), var(--primary-dark));
     color: white;
     font-size: 15px;
     font-weight: 500;

@@ -43,12 +43,12 @@
 }
 
 .filter-btn:hover {
-  background: rgba(255, 109, 90, 0.05);
+  background: rgba(176, 0, 255, 0.05);
   color: var(--text-primary);
 }
 
 .filter-btn.active {
-  background: rgba(255, 109, 90, 0.1);
+  background: rgba(176, 0, 255, 0.1);
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -69,7 +69,7 @@
 }
 
 .project-card:hover {
-  border-color: rgba(255, 109, 90, 0.2);
+  border-color: rgba(176, 0, 255, 0.2);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
@@ -77,7 +77,7 @@
   font-size: 64px;
   padding: 40px 24px 20px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(255, 109, 90, 0.05), transparent);
+  background: linear-gradient(135deg, rgba(176, 0, 255, 0.05), transparent);
 }
 
 .project-content {
@@ -108,10 +108,10 @@
 .project-tag {
   padding: 4px 12px;
   border-radius: 50px;
-  background: rgba(255, 109, 90, 0.06);
+  background: rgba(176, 0, 255, 0.06);
   color: var(--text-secondary);
   font-size: 12px;
-  border: 1px solid rgba(255, 109, 90, 0.05);
+  border: 1px solid rgba(176, 0, 255, 0.05);
 }
 
 .project-link {
@@ -127,7 +127,7 @@
 
 .project-link:hover {
   transform: translateX(4px);
-  color: #ff4a36;
+  color: #3B004F;
 }
 
 @media (max-width: 768px) {
@@ -162,7 +162,7 @@
   width: 100%;
   height: 220px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(255, 109, 90, 0.05), transparent);
+  background: linear-gradient(135deg, rgba(176, 0, 255, 0.05), transparent);
   position: relative;
 }
 
@@ -184,7 +184,7 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, rgba(255, 109, 90, 0.05), transparent);
+  background: linear-gradient(135deg, rgba(176, 0, 255, 0.05), transparent);
 }
 
 .project-img::after {
@@ -268,7 +268,7 @@
   height: 220px;
   overflow: hidden;
   border-radius: 24px 24px 0 0;
-  background: linear-gradient(135deg, rgba(255, 109, 90, 0.05), transparent);
+  background: linear-gradient(135deg, rgba(176, 0, 255, 0.05), transparent);
 }
 
 .modal-image img {
@@ -314,10 +314,10 @@
 .modal-tag {
   padding: 4px 14px;
   border-radius: 50px;
-  background: rgba(255, 109, 90, 0.08);
+  background: rgba(176, 0, 255, 0.08);
   color: var(--text-secondary);
   font-size: 12px;
-  border: 1px solid rgba(255, 109, 90, 0.05);
+  border: 1px solid rgba(176, 0, 255, 0.05);
 }
 
 .modal-actions {
@@ -344,14 +344,14 @@
 }
 
 .modal-btn.primary {
-  background: linear-gradient(135deg, var(--accent), #ff4a36);
+  background: linear-gradient(135deg, var(--accent), #3B004F);
   color: white;
-  box-shadow: 0 4px 20px rgba(255, 109, 90, 0.2);
+  box-shadow: 0 4px 20px rgba(176, 0, 255, 0.2);
 }
 
 .modal-btn.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(255, 109, 90, 0.3);
+  box-shadow: 0 8px 30px rgba(176, 0, 255, 0.3);
 }
 
 .modal-btn.primary.disabled {
@@ -375,15 +375,15 @@
 .modal-btn.secondary:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
-  border-color: rgba(255, 109, 90, 0.2);
+  border-color: rgba(176, 0, 255, 0.2);
 }
 
 .modal-note {
   margin-top: 16px;
   padding: 12px 16px;
   border-radius: 10px;
-  background: rgba(255, 109, 90, 0.05);
-  border: 1px solid rgba(255, 109, 90, 0.08);
+  background: rgba(176, 0, 255, 0.05);
+  border: 1px solid rgba(176, 0, 255, 0.08);
   color: var(--text-secondary);
   font-size: 13px;
   text-align: center;

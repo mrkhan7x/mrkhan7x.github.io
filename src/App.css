@@ -39,8 +39,8 @@ body {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 109, 90, 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 109, 90, 0.3) 1px, transparent 1px);
+    linear-gradient(rgba(176, 0, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 0, 255, 0.12) 1px, transparent 1px);
   background-size: 60px 30px;
   animation: gridPulse 4s ease-in-out infinite;
 }
@@ -50,8 +50,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 109, 90, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 109, 90, 0.2) 1px, transparent 1px);
+    linear-gradient(rgba(176, 0, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 0, 255, 0.08) 1px, transparent 1px);
   background-size: 60px 30px;
   background-position: 30px 15px;
   pointer-events: none;
@@ -63,8 +63,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(45deg, rgba(255, 109, 90, 0.1) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(255, 109, 90, 0.1) 1px, transparent 1px);
+    linear-gradient(45deg, rgba(176, 0, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(176, 0, 255, 0.04) 1px, transparent 1px);
   background-size: 30px 30px;
   pointer-events: none;
   animation: gridPulse 6s ease-in-out infinite 1s;
@@ -121,7 +121,7 @@ body {
 .orb-global-1 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, var(--accent), transparent 70%);
+  background: radial-gradient(circle, var(--primary-color), transparent 70%);
   top: -150px;
   right: -150px;
   animation: floatOrbGlobal 8s ease-in-out infinite;
@@ -130,7 +130,7 @@ body {
 .orb-global-2 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, #ff4a36, transparent 70%);
+  background: radial-gradient(circle, var(--primary-dark), transparent 70%);
   bottom: -100px;
   left: -100px;
   animation: floatOrbGlobal 10s ease-in-out infinite reverse;
@@ -139,7 +139,7 @@ body {
 .orb-global-3 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, #d03525, transparent 70%);
+  background: radial-gradient(circle, var(--primary-glow), transparent 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -207,16 +207,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: var(--primary-color);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff4a36;
+  background: var(--primary-glow);
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--primary-color);
   color: white;
 }
 

@@ -19,8 +19,8 @@
   display: inline-block;
   padding: 6px 16px;
   border-radius: 50px;
-  background: rgba(255, 109, 90, 0.08);
-  border: 1px solid rgba(255, 109, 90, 0.1);
+  background: rgba(176, 0, 255, 0.08);
+  border: 1px solid rgba(176, 0, 255, 0.1);
   color: var(--accent);
   font-size: 13px;
   font-weight: 500;
@@ -35,7 +35,7 @@
 }
 
 .section-title .highlight {
-  background: linear-gradient(135deg, var(--accent), #ff4a36);
+  background: linear-gradient(135deg, var(--accent), #3B004F);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -121,7 +121,7 @@
 .skill-progress {
   height: 100%;
   border-radius: 10px;
-  background: linear-gradient(90deg, var(--accent), #ff4a36);
+  background: linear-gradient(90deg, var(--accent), #3B004F);
   transition: width 1s ease;
 }
 

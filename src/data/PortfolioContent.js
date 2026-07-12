@@ -166,7 +166,8 @@ export const PortfolioContent = {
         category: "ai",
         tags: ["AI Assistant", "CRM Integration", "Messaging Automation"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhan7x"
+        githubUrl: "https://github.com/mrkhan7x",
+        videoUrl: "/assets/hero_bg.mp4"
       },
       {
         id: 2,
@@ -196,7 +197,8 @@ export const PortfolioContent = {
         category: "lead",
         tags: ["Lead Acquisition", "Data Scraping", "CRM Sync"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhan7x"
+        githubUrl: "https://github.com/mrkhan7x",
+        videoUrl: "/assets/hero_bg.mp4"
       },
       {
         id: 5,
@@ -206,7 +208,8 @@ export const PortfolioContent = {
         category: "lead",
         tags: ["Social Outreach", "Prospecting Engine", "CRM Automations"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhan7x"
+        githubUrl: "https://github.com/mrkhan7x",
+        videoUrl: "/assets/hero_bg.mp4"
       },
       {
         id: 6,

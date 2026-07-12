@@ -93,28 +93,6 @@ export default function Contact() {
     setIsSubmitting(true);
     setStatus({ type: "", message: "" });
 
-    if (checkCooldown()) {
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      const emailTo = "mrkhan.officialsite@gmail.com";
-      const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-      const body = encodeURIComponent(
-        `${formData.message}\n\n---\nSender Contact Email: ${formData.email}`
-      );
-      window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
-      
-      setStatus({
-        type: "success",
-        message: "Email client opened! Please send the drafted message.",
-      });
-      setIsSubmitting(false);
-      setFormData({ name: "", email: "", message: "" });
-      return;
-    }
-
     if (
       !formData.name.trim() ||
       !formData.email.trim() ||
@@ -138,81 +116,102 @@ export default function Contact() {
       return;
     }
 
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
-      subject: `Portfolio Contact from ${formData.name}`,
-      time: new Date().toLocaleString("en-US", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-      year: new Date().getFullYear(),
-      reply_to: formData.email,
-    };
+    if (checkCooldown()) {
+      setIsSubmitting(false);
+      return;
+    }
 
+    // Attempt sending directly to n8n webhook
+    const n8nWebhookUrl = process.env.REACT_APP_N8N_WEBHOOK_URL || "https://primary-production-4c8d.up.railway.app/webhook/portfolio-contact";
     try {
-      const response = await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        templateParams,
-      );
+      const response = await fetch(n8nWebhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          timestamp: new Date().toISOString(),
+        }),
+      });
 
-      if (response.status === 200) {
+      if (response.ok) {
         localStorage.setItem("lastEmailSent", Date.now().toString());
         setCooldownRemaining(24 * 60 * 60 * 1000);
-
         setStatus({
           type: "success",
-          message: "Message sent successfully! I'll get back to you soon.",
+          message: "Message received! Our triage system has flagged your message and I'll get back to you shortly.",
         });
         setFormData({ name: "", email: "", message: "" });
-
         startCountdown(24 * 60 * 60 * 1000);
+        setIsSubmitting(false);
+        return;
       } else {
-        throw new Error(`Unexpected status: ${response.status}`);
+        throw new Error("Webhook rejected post request");
       }
-    } catch (error) {
-      let errorMessage = "Failed to send message. Please try again later.";
-
-      if (error.text) {
-        try {
-          const parsed = JSON.parse(error.text);
-          if (parsed.message) {
-            errorMessage = parsed.message;
-          } else if (parsed.error) {
-            errorMessage = parsed.error;
-          }
-        } catch (e) {
-          if (typeof error.text === "string" && error.text.includes("412")) {
-            errorMessage = "Gmail authentication error. Please reconnect your Gmail service in EmailJS dashboard.";
-          } else {
-            errorMessage = error.text;
-          }
-        }
-      } else if (error.message) {
-        if (error.message.includes("401") || error.message.includes("403")) {
-          errorMessage = "Invalid EmailJS credentials. Please check your API keys.";
-        } else if (error.message.includes("404")) {
-          errorMessage = "Service or Template not found. Please check your IDs.";
-        } else if (error.message.includes("412")) {
-          errorMessage = "Gmail authentication error. Please reconnect your Gmail service in EmailJS dashboard.";
-        } else {
-          errorMessage = error.message;
-        }
-      }
-
-      setStatus({
-        type: "error",
-        message: errorMessage,
-      });
-    } finally {
-      setIsSubmitting(false);
+    } catch (webhookError) {
+      console.warn("n8n Webhook failed, trying EmailJS...", webhookError);
     }
+
+    // Try EmailJS
+    if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY) {
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        subject: `Portfolio Contact from ${formData.name}`,
+        time: new Date().toLocaleString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        year: new Date().getFullYear(),
+        reply_to: formData.email,
+      };
+
+      try {
+        const response = await emailjs.send(
+          SERVICE_ID,
+          TEMPLATE_ID,
+          templateParams,
+        );
+
+        if (response.status === 200) {
+          localStorage.setItem("lastEmailSent", Date.now().toString());
+          setCooldownRemaining(24 * 60 * 60 * 1000);
+          setStatus({
+            type: "success",
+            message: "Message sent successfully! I'll get back to you soon.",
+          });
+          setFormData({ name: "", email: "", message: "" });
+          startCountdown(24 * 60 * 60 * 1000);
+          setIsSubmitting(false);
+          return;
+        }
+      } catch (emailJsError) {
+        console.warn("EmailJS failed, falling back to local mail client...", emailJsError);
+      }
+    }
+
+    // Fallback to local Mail Client (always works)
+    const emailTo = "mrkhan.officialsite@gmail.com";
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `${formData.message}\n\n---\nSender Contact Email: ${formData.email}`
+    );
+    window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+
+    setStatus({
+      type: "success",
+      message: "Opening email client... please send the drafted message.",
+    });
+    setIsSubmitting(false);
+    setFormData({ name: "", email: "", message: "" });
   };
 
   const handleChange = (e) => {

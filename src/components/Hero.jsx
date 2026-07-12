@@ -27,7 +27,7 @@ function Avatar3D() {
           scale={hovered ? 1.1 : 1}
         >
           <MeshDistortMaterial
-            color="#ff6d5a"
+            color="#B000FF"
             roughness={0.2}
             metalness={0.8}
             distort={hovered ? 0.4 : 0.2}
@@ -57,11 +57,11 @@ function Avatar3D() {
         <mesh position={[0, -0.8, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <ringGeometry args={[1.2, 1.4, 64]} />
           <meshStandardMaterial
-            color="#ff6d5a"
+            color="#B000FF"
             transparent
             opacity={0.3}
             side={2}
-            emissive="#ff6d5a"
+            emissive="#B000FF"
             emissiveIntensity={0.5}
           />
         </mesh>
@@ -78,8 +78,8 @@ function Avatar3D() {
           >
             <sphereGeometry args={[1, 8, 8]} />
             <meshStandardMaterial
-              color="#ff6d5a"
-              emissive="#ff6d5a"
+              color="#B000FF"
+              emissive="#B000FF"
               emissiveIntensity={0.5}
               transparent
               opacity={0.6}
@@ -126,6 +126,12 @@ export default function Hero() {
 
   return (
     <section className="hero" id="home">
+      <div className="hero-video-bg">
+        <video autoPlay muted loop playsInline preload="auto">
+          <source src={process.env.PUBLIC_URL + "/assets/hero_bg.mp4"} type="video/mp4" />
+        </video>
+        <div className="video-overlay" />
+      </div>
       <div className="hero-container">
         <div className="hero-left">
           <div className="hero-content">
@@ -266,7 +272,7 @@ export default function Hero() {
                   <directionalLight
                     position={[-5, -5, 5]}
                     intensity={0.5}
-                    color="#ff6d5a"
+                    color="#B000FF"
                   />
                   <OrbitControls
                     enableZoom={false}
