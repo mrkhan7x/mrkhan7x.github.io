@@ -1,104 +1,223 @@
-:root {
-  --accent: #B000FF;
-  --accent-glow: rgba(176, 0, 255, 0.4);
-  --bg-primary: rgba(8, 8, 16, 0.75);
-  --bg-secondary: rgba(20, 20, 35, 0.6);
-  --border-glass: rgba(255, 255, 255, 0.08);
-  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.6);
-}
-
-.navbar {
+.header-floating-wrapper {
   position: fixed;
   top: 24px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  padding: 4px 8px;
-  background: rgba(10, 10, 10, 0.4);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: auto;
-  min-width: 480px;
-  max-width: 90%;
+  max-width: 95%;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navbar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(176, 0, 255, 0.2),
-    transparent 50%,
-    rgba(176, 0, 255, 0.1)
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-.navbar.scrolled {
-  background: rgba(10, 10, 10, 0.85);
-  border-color: rgba(176, 0, 255, 0.2);
-  box-shadow: 0 10px 40px rgba(176, 0, 255, 0.1);
+.header-floating-wrapper.scrolled {
   top: 16px;
 }
 
-.nav-container {
-  padding: 0 16px;
+/* Desktop Pill Styling */
+.navbar-pill {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 48px;
-  width: 100%;
-  box-sizing: border-box;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.nav-brand {
+.nav-item-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--nav-text);
+  cursor: pointer;
+  border-radius: 9999px;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.nav-item-btn:hover {
+  color: var(--nav-text-hover);
+}
+
+.nav-item-btn.active {
+  color: #ffffff !important;
+}
+
+/* Active Pill Sliding Background */
+.active-pill-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand-purple) 100%);
+  box-shadow: 0 4px 12px rgba(176, 0, 255, 0.3);
+  z-index: -1;
+}
+
+.nav-item-text {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-divider-line {
+  width: 1px;
+  height: 20px;
+  background: var(--border-color);
+  margin: 0 10px;
+}
+
+.navbar-theme-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nav-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-theme-btn:hover {
+  color: var(--primary-color);
+  background: var(--badge-bg);
+}
+
+/* Mobile Layout styles */
+.mobile-navbar-bar {
+  display: none; /* Hidden on desktop */
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 340px;
+}
+
+.mobile-brand-logo {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.mobile-actions {
   display: flex;
   align-items: center;
   gap: 12px;
-  cursor: pointer;
-  position: relative;
-  flex-shrink: 0;
 }
 
-.brand-glow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(
-    circle at center,
-    rgba(176, 0, 255, 0.15),
-    transparent 70%
-  );
-  filter: blur(20px);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.nav-brand:hover .brand-glow {
-  opacity: 1;
-}
-
-.brand-dot {
-  width: 10px;
-  height: 10px;
+.mobile-theme-btn {
+  background: transparent;
+  border: none;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 20px var(--accent-glow);
-  position: relative;
-  animation: pulseDot 2s ease-in-out infinite;
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  cursor: pointer;
 }
+
+/* Burger Button */
+.burger-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.burger-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-color);
+  border-radius: 99px;
+  transition: all 0.3s ease;
+}
+
+.burger-btn.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.burger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-btn.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Mobile Dropdown Panel */
+.mobile-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  right: 0;
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.mobile-dropdown-link {
+  background: transparent;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--nav-text);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.mobile-dropdown-link:hover {
+  background: var(--badge-bg);
+  color: var(--primary-color);
+  padding-left: 20px;
+}
+
+.mobile-dropdown-link.active {
+  background: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand-purple) 100%);
+  color: #ffffff;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .navbar-pill {
+    display: none;
+  }
+  
+  .mobile-navbar-bar {
+    display: flex;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-navbar-bar {
+    width: 290px;
+  }
+}
+
 
 .title-dot {
   width: 10px;

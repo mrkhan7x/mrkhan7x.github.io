@@ -22,6 +22,58 @@ export const PortfolioContent = {
     ]
   },
 
+  experience: {
+    tag: "Experience",
+    title: "THE",
+    titleHighlight: "JOURNEY",
+    description: "4+ years of turning complex problems into high-impact, reliable automated solutions. Specializing in n8n pipelines, autonomous AI agents, and scaling systems.",
+    items: [
+      {
+        id: "01",
+        role: "Lead AI & Automation Architect",
+        company: "Freelance / Independent Consultant",
+        period: "2023 — Present",
+        location: "Worldwide Remote",
+        description: "Designing and building visual automation growth engines for B2B SaaS startups, agencies, and e-commerce brands.",
+        bullets: [
+          "Delivered 100+ production-grade integrations across n8n, Make.com, and Zapier.",
+          "Deployed autonomous AI agents with structured JSON outputs and RAG search frameworks.",
+          "Saved clients an average of 10 to 20+ hours per week by optimizing operations.",
+          "Specialist in building API connections, webhook systems, and secure OAuth2 authentication flow."
+        ],
+        tags: ["n8n.io", "AI Orchestration", "API Design", "CRM Systems"]
+      },
+      {
+        id: "02",
+        role: "Workflow Integration Specialist",
+        company: "Enterprise Automation Client Network",
+        period: "2022 — 2023",
+        location: "Worldwide Remote",
+        description: "Focused on architectural system connections, custom data parsing, and building robust multi-step CRM synchronizations.",
+        bullets: [
+          "Developed HubSpot, Salesforce, and Airtable custom integrations with advanced logic filters.",
+          "Built reliable messaging notification systems on Slack and WhatsApp API.",
+          "Designed central data brokers using JavaScript and Python to format payload data."
+        ],
+        tags: ["Make.com", "JavaScript", "CRM Integrations", "Slack API"]
+      },
+      {
+        id: "03",
+        role: "Systems & Data Scraping Engineer",
+        company: "Lead Generation & Analytics Studio",
+        period: "2020 — 2022",
+        location: "Remote",
+        description: "Created scalable web scraping and automated lead discovery pipelines to feed B2B outreach databases.",
+        bullets: [
+          "Scraped Google Maps business directory data, parsing categories, domains, and contact info.",
+          "Built data crawlers with headless browsers, bypass mechanisms, and proxy rotation.",
+          "Automated target profiles enrichment pipelines using OpenAI API and contact discovery services."
+        ],
+        tags: ["Python", "Web Scraping", "Data Enrichment", "Lead Gen"]
+      }
+    ]
+  },
+
   hero: {
     badge: "Available for Projects",
     greeting: "Hey, I'm",
@@ -379,7 +431,10 @@ export const PortfolioContent = {
     links: [
       { label: "Home", href: "#home" },
       { label: "About", href: "#about" },
-      { label: "Workflows", href: "#projects" },
+      { label: "Experience", href: "#experience" },
+      { label: "Work", href: "#projects" },
+      { label: "Skills", href: "#skills" },
+      { label: "Reviews", href: "#reviews" },
       { label: "Contact", href: "#contact" }
     ],
     copyright: "All rights reserved.",
@@ -389,9 +444,12 @@ export const PortfolioContent = {
   navbar: {
     brand: "M R KHAN",
     links: [
+      { label: "Home", href: "#home" },
       { label: "About", href: "#about" },
+      { label: "Experience", href: "#experience" },
+      { label: "Work", href: "#projects" },
       { label: "Skills", href: "#skills" },
-      { label: "Workflows", href: "#projects" },
+      { label: "Reviews", href: "#reviews" },
       { label: "Contact", href: "#contact" }
     ],
     cta: "Contact Me"

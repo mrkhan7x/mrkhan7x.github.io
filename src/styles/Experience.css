@@ -1,0 +1,289 @@
+.experience-section {
+  position: relative;
+  padding: 100px 24px 180px;
+  background: var(--bg-color);
+  overflow: visible;
+}
+
+.experience-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.experience-header-ref {
+  margin-bottom: 60px;
+}
+
+.section-header-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.section-title-ref {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.section-desc-ref {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+/* Timeline Cards Stacking */
+.experience-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 120px; /* Force spacing between scrolls so they stack dynamically */
+  margin-top: 40px;
+}
+
+.experience-sticky-card-wrapper {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 60vh;
+  box-sizing: border-box;
+}
+
+.experience-card-ref {
+  width: 100%;
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Interior decorative orbs */
+.card-orb {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background: var(--primary-color);
+  filter: blur(80px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-top-right {
+  top: -80px;
+  right: -80px;
+  opacity: 0.08;
+}
+
+[data-theme="light"] .orb-top-right {
+  opacity: 0.03;
+}
+
+.orb-bottom-left {
+  bottom: -80px;
+  left: -80px;
+  opacity: 0.06;
+}
+
+[data-theme="light"] .orb-bottom-left {
+  opacity: 0.02;
+}
+
+/* Grid Layout inside cards */
+.experience-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-col-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-index-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+}
+
+.card-index {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.sparkle-icon {
+  opacity: 0.8;
+}
+
+.card-role {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-color);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.card-company {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+}
+
+.card-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.meta-item svg {
+  color: var(--primary-color);
+  opacity: 0.8;
+}
+
+/* Right Column details */
+.card-col-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.card-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.bullet-li {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+}
+
+.bullet-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.bullet-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.card-tag {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  background: var(--muted);
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.card-tag:hover {
+  border-color: var(--primary-color);
+  background: rgba(176, 0, 255, 0.05);
+}
+
+/* Responsive Experience */
+@media (max-width: 992px) {
+  .experience-card-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .card-meta-list {
+    margin-top: 20px;
+  }
+  
+  .experience-timeline {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 80px 16px 120px;
+  }
+  
+  .section-title-ref {
+    font-size: 36px;
+  }
+  
+  .experience-card-ref {
+    padding: 32px;
+  }
+  
+  .card-index {
+    font-size: 40px;
+  }
+  
+  .card-role {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-card-ref {
+    padding: 24px;
+  }
+  
+  .card-role {
+    font-size: 20px;
+  }
+  
+  .card-bullets {
+    gap: 10px;
+  }
+  
+  .bullet-text {
+    font-size: 13px;
+  }
+}

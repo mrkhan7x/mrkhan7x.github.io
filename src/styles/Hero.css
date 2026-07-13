@@ -829,9 +829,10 @@
 }
 
 .btn-main-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: var(--secondary);
+  border-color: var(--primary-color);
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(176, 0, 255, 0.1);
 }
 
 .hero-reviews-ref {

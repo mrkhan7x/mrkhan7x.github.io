@@ -1,12 +1,53 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import "../styles/WorkflowDemo.css";
 
 export default function WorkflowDemo() {
+  const containerRef = useRef(null);
+  const [scale, setScale] = useState(1);
+  const canvasWidth = 720;
+  const canvasHeight = 360;
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const handleResize = () => {
+      const parentWidth = containerRef.current.offsetWidth;
+      if (parentWidth < canvasWidth) {
+        setScale(parentWidth / canvasWidth);
+      } else {
+        setScale(1);
+      }
+    };
+
+    // Run initially
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="workflow-demo-wrapper">
-      <div className="workflow-demo">
-        <div className="workflow-canvas">
+    <div className="workflow-demo-wrapper" ref={containerRef}>
+      <div 
+        className="workflow-demo-scaler" 
+        style={{ 
+          height: `${canvasHeight * scale}px`,
+          width: "100%",
+          position: "relative",
+          overflow: "hidden"
+        }}
+      >
+        <div 
+          className="workflow-canvas glass"
+          style={{ 
+            transform: `scale(${scale})`, 
+            transformOrigin: "top left",
+            width: `${canvasWidth}px`,
+            height: `${canvasHeight}px`,
+            position: "absolute"
+          }}
+        >
           <div className="workflow-grid-bg"></div>
 
           {/* Webhook Node (Top-Left Lobe) */}
@@ -16,7 +57,7 @@ export default function WorkflowDemo() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(255, 93, 143, 0.25)" }}
+            whileHover={{ y: -2 }}
           >
             <div className="node-side-stripe" style={{ backgroundColor: "#FF5D8F" }} />
             <div className="workflow-node-icon" style={{ "--node-color": "#FF5D8F" }}>
@@ -38,7 +79,7 @@ export default function WorkflowDemo() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(255, 109, 90, 0.25)" }}
+            whileHover={{ y: -2 }}
           >
             <div className="node-side-stripe" style={{ backgroundColor: "#B000FF" }} />
             <div className="workflow-node-port port-input" style={{ left: "-4px", top: "50%", transform: "translateY(-50%)" }} />
@@ -62,7 +103,7 @@ export default function WorkflowDemo() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(139, 92, 246, 0.25)" }}
+            whileHover={{ y: -2 }}
           >
             <div className="node-side-stripe" style={{ backgroundColor: "#8b5cf6" }} />
             <div className="workflow-node-port port-input" style={{ left: "-4px", top: "50%", transform: "translateY(-50%)" }} />
@@ -88,7 +129,7 @@ export default function WorkflowDemo() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(16, 185, 129, 0.25)" }}
+            whileHover={{ y: -2 }}
           >
             <div className="node-side-stripe" style={{ backgroundColor: "#10b981" }} />
             <div className="workflow-node-port port-input" style={{ left: "-4px", top: "50%", transform: "translateY(-50%)" }} />
@@ -115,7 +156,7 @@ export default function WorkflowDemo() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(224, 30, 90, 0.25)" }}
+            whileHover={{ y: -2 }}
           >
             <div className="node-side-stripe" style={{ backgroundColor: "#e01e5a" }} />
             <div className="workflow-node-port port-input" style={{ left: "-4px", top: "50%", transform: "translateY(-50%)" }} />
@@ -138,7 +179,7 @@ export default function WorkflowDemo() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(255, 109, 90, 0.25)" }}
+            whileHover={{ y: -2 }}
           >
             <div className="node-side-stripe" style={{ backgroundColor: "#B000FF" }} />
             <div className="workflow-node-port port-input" style={{ left: "-4px", top: "50%", transform: "translateY(-50%)" }} />
@@ -209,7 +250,7 @@ export default function WorkflowDemo() {
               transition={{ duration: 0.8, delay: 0.5 }}
             />
 
-            {/* 5. AI Agent Output (550, 70) -> Slack Input (510, 160) - Outer Right Lobe (Sweeps behind Slack) */}
+            {/* 5. AI Agent Output (550, 70) -> Slack Input (510, 160) - Outer Right Lobe */}
             <motion.path
               className="workflow-conn-line"
               d="M 550 70 C 600 20, 700 100, 510 160"

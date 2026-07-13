@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import PortfolioContent from "../data/PortfolioContent";
+import WorkflowDemo from "./WorkflowDemo";
 import "../styles/Projects.css";
 
 export default function Projects() {
@@ -9,9 +10,12 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const filteredProjects = filter === "all" 
-    ? projects.items 
-    : projects.items.filter(p => p.category === filter);
+  const getFilteredProjects = () => {
+    if (filter === "all") return projects.items;
+    return projects.items.filter((item) => item.category === filter);
+  };
+
+  const filteredProjects = getFilteredProjects();
 
   const openModal = (project) => {
     setSelectedProject(project);
@@ -43,6 +47,11 @@ export default function Projects() {
             {projects.description}
           </p>
         </motion.div>
+
+        {/* Interactive n8n-style Workflow Demonstration */}
+        <div className="workflow-canvas-showcase" style={{ marginBottom: "60px" }}>
+          <WorkflowDemo />
+        </div>
 
         <div className="projects-filters">
           {projects.categories.map((cat) => (

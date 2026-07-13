@@ -1,56 +1,140 @@
-:root {
-  --primary-color: #B000FF;      /* Electric Neon Purple */
-  --primary-dark: #3B004F;       /* Deep Plum */
-  --primary-glow: #D89BF5;       /* Light Lavender */
-  --accent: #B000FF;
-  --accent-dark: #3B004F;
-  --accent-glow: rgba(176, 0, 255, 0.3);
-  --bg-color: #0A0A0A;           /* Rich Jet Black */
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --border-color: rgba(255, 255, 255, 0.08);
-  --text-color: #FFFFFF;
-  --text-muted: rgba(255, 255, 255, 0.5);
-  --text-primary: #FFFFFF;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --nav-bg: rgba(10, 10, 10, 0.4);
-  --nav-text: rgba(255, 255, 255, 0.7);
-  --nav-text-hover: #ffffff;
-  --video-overlay: linear-gradient(to bottom, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.8) 100%);
-  --badge-bg: rgba(255, 255, 255, 0.05);
-  --badge-border: rgba(255, 255, 255, 0.15);
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-:root[data-theme="light"] {
-  --bg-color: #FAFAFA;           /* Pure Soft White */
-  --accent: #B000FF;
-  --accent-dark: #3B004F;
-  --accent-glow: rgba(176, 0, 255, 0.15);
-  --card-bg: #FFFFFF;            /* Solid White Cards */
-  --border-color: rgba(0, 0, 0, 0.08);
-  --text-color: #0A0A0A;
-  --text-muted: rgba(10, 10, 10, 0.6);
-  --text-primary: #0A0A0A;
-  --text-secondary: rgba(10, 10, 10, 0.7);
-  --nav-bg: rgba(255, 255, 255, 0.65);
-  --nav-text: rgba(10, 10, 10, 0.7);
-  --nav-text-hover: #0A0A0A;
-  --video-overlay: linear-gradient(to bottom, rgba(250, 250, 250, 0.4) 0%, rgba(250, 250, 250, 0.9) 100%);
+:root {
+  --radius: 0.625rem;
+  
+  /* Brand colors */
+  --brand-purple: #b000ff;
+  --brand-deep: #3b004f;
+  --brand-black: #0a0a0a;
+  --brand-white: #ffffff;
+  
+  /* Theme variables - Light mode (default) */
+  --bg-color: #ffffff;
+  --background: #ffffff;
+  --text-color: #0a0a0a;
+  --foreground: #0a0a0a;
+  --card-bg: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary-color: #b000ff;
+  --primary: #b000ff;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f0f7;
+  --secondary-foreground: #3b004f;
+  --muted: #f5f0f7;
+  --muted-foreground: #6b5b73;
+  --accent: #3b004f;
+  --accent-foreground: #ffffff;
+  --destructive: #e40014;
+  --border-color: #e8e0ec;
+  --border: #e8e0ec;
+  --input: #e8e0ec;
+  --ring: #b000ff;
   --badge-bg: rgba(0, 0, 0, 0.03);
   --badge-border: rgba(0, 0, 0, 0.08);
+  
+  /* Layout overlays */
+  --video-overlay: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.9) 100%);
+  --nav-bg: rgba(255, 255, 255, 0.7);
+  --nav-text: rgba(10, 10, 10, 0.7);
+  --nav-text-hover: #0a0a0a;
+}
+
+:root[data-theme="dark"] {
+  /* Theme variables - Dark mode */
+  --bg-color: #0a0a0a;
+  --background: #0a0a0a;
+  --text-color: #ffffff;
+  --foreground: #ffffff;
+  --card-bg: #141019; /* Rich Deep Plum */
+  --card: #141019;
+  --card-foreground: #ffffff;
+  --popover: #141019;
+  --popover-foreground: #ffffff;
+  --primary-color: #b000ff;
+  --primary: #b000ff;
+  --primary-foreground: #ffffff;
+  --secondary: #1f1426;
+  --secondary-foreground: #ffffff;
+  --muted: #1f1426;
+  --muted-foreground: #9b8aa3;
+  --accent: #b000ff;
+  --accent-foreground: #ffffff;
+  --destructive: #ff6568;
+  --border-color: rgba(176, 0, 255, 0.18);
+  --border: rgba(176, 0, 255, 0.18);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #b000ff;
+  --badge-bg: rgba(255, 255, 255, 0.05);
+  --badge-border: rgba(255, 255, 255, 0.15);
+  
+  /* Layout overlays */
+  --video-overlay: linear-gradient(to bottom, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.8) 100%);
+  --nav-bg: rgba(10, 10, 10, 0.7);
+  --nav-text: rgba(255, 255, 255, 0.7);
+  --nav-text-hover: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
   background: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+/* === Custom Style Utilities === */
+.text-gradient-purple {
+  background: linear-gradient(135deg, #b000ff 0%, #3b004f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-grain {
+  background-image: radial-gradient(circle at 1px 1px, rgba(176, 0, 255, 0.1) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .glass {
+  background: rgba(20, 16, 25, 0.7);
+  border: 1px solid rgba(176, 0, 255, 0.2);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-element {
+  animation: float 6s ease-in-out infinite;
+}
+
