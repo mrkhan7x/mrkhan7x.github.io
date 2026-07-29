@@ -1,0 +1,555 @@
+{
+  "name": "AI Client Intake & Lead Qualification Engine",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Hybrid AI Lead Qualification System (Cloud Compatible)\n\n**Path 1: Lead Intake & AI Personalization**\n1. Webhook receives lead info from website contact form\n2. n8n HTTP Request node fetches target website via Jina Reader (blazing fast, bypasses blocks)\n3. Code node (JS) cleans data and handles timeouts gracefully\n4. Google Gemini generates a custom, highly-personalized pitch based on real site analysis & prospect's custom message\n5. Gmail node sends the email using your connected account\n6. Google Sheets node logs the lead, bottleneck, and status\n\n**Path 2: Meeting Booked Confirmation**\n1. Calendly Webhook receives meeting booking confirmation\n2. Google Sheets node updates lead status to \"Meeting Booked\"\n3. Telegram node sends instant notification to your phone\n\n**Built by M R Khan - AI Automation Systems**",
+        "height": 380,
+        "width": 500
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        0
+      ],
+      "id": "sticky-note-1",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "client-intake",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -200,
+        420
+      ],
+      "id": "webhook-trigger-id",
+      "name": "On Form Submission",
+      "webhookId": "client-intake-webhook"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "field-firstname",
+              "name": "firstName",
+              "value": "={{ $json.body.firstName }}",
+              "type": "string"
+            },
+            {
+              "id": "field-lastname",
+              "name": "lastName",
+              "value": "={{ $json.body.lastName }}",
+              "type": "string"
+            },
+            {
+              "id": "field-email",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "field-company",
+              "name": "company",
+              "value": "={{ $json.body.company }}",
+              "type": "string"
+            },
+            {
+              "id": "field-website",
+              "name": "website",
+              "value": "={{ $json.body.website }}",
+              "type": "string"
+            },
+            {
+              "id": "field-message",
+              "name": "message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        20,
+        420
+      ],
+      "id": "set-fields-id",
+      "name": "Extract Lead Fields"
+    },
+    {
+      "parameters": {
+        "url": "=https://r.jina.ai/{{ $json.website }}",
+        "options": {
+          "redirect": {
+            "redirect": true
+          },
+          "timeout": 5000
+        },
+        "onError": "continueRegularOutput"
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        420
+      ],
+      "id": "http-scrape-id",
+      "name": "Scrape Website HTML"
+    },
+    {
+      "parameters": {
+        "jsCode": "const scrapeResult = $input.first().json;\nconst lead = $('Extract Lead Fields').first().json;\n\n// Get data from Jina response (usually in data or response or row)\nlet rawText = '';\nif (typeof scrapeResult.data === 'string') {\n  rawText = scrapeResult.data;\n} else if (typeof scrapeResult.response === 'string') {\n  rawText = scrapeResult.response;\n} else if (scrapeResult.row) {\n  rawText = JSON.stringify(scrapeResult.row);\n} else if (scrapeResult.error) {\n  rawText = 'Failed to scrape: ' + scrapeResult.error;\n} else {\n  rawText = JSON.stringify(scrapeResult);\n}\n\nconst html = rawText.toLowerCase();\nconst hasForm = html.includes('<form') || html.includes('form') || html.includes('input');\nconst hasCalendly = html.includes('calendly.com');\nconst hasHubspot = html.includes('hubspot.com');\n\nreturn {\n  ...lead,\n  analysis: {\n    status: rawText.startsWith('Failed') ? 'down' : 'live',\n    has_form: hasForm,\n    has_scheduling: hasCalendly || hasHubspot,\n    scheduling_tool: hasCalendly ? 'Calendly' : (hasHubspot ? 'HubSpot' : ''),\n    website_text: rawText.substring(0, 2500)\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        420
+      ],
+      "id": "parse-scrape-id",
+      "name": "Clean Scrape Data"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are the lead qualification brain for M R Khan's AI Automation Systems (mrkhan7x.github.io).\n\nHere is the lead information:\nName: {{ $json.firstName }} {{ $json.lastName }}\nCompany: {{ $json.company }}\nWebsite: {{ $json.website }}\nProspect's Message about their bottleneck: \"{{ $json.message }}\"\n\nHere is the website analysis:\n- Website status: {{ $json.analysis.status }}\n- Has form: {{ $json.analysis.has_form }}\n- Has scheduling: {{ $json.analysis.has_scheduling }}\n- Scheduling tool: {{ $json.analysis.scheduling_tool }}\n- Raw website text snippet:\n\"\"\"\n{{ $json.analysis.website_text }}\n\"\"\"\n\nBased on this analysis and their message, generate a highly personalized pitch.\n\nCRITICAL EMAIL GUIDELINES:\n1. Refer to their message about: \"{{ $json.message }}\" naturally in the email. E.g. \"Since you mentioned you're dealing with [bottleneck]...\"\n2. Never mention n8n, APIs, Groq, or python. Sell the outcome, not the tool.\n3. Keep the tone human, casual, and direct. No buzzwords.\n4. Subject line must be short, lowercase, and curious.\n5. Address their site status:\n   - If the site is down/failed to scrape: Let them know as a value-add, then bridge to automation.\n   - If they have no form and no scheduling: Explain that they're forcing prospects to call/email manually and losing leads.\n   - If they have a form but no scheduling: Explain that their submissions sit in an inbox and they waste hours playing email tag to book calls.\n   - If they have scheduling: Suggest adding an AI qualification gate to protect their calendar from unqualified bookings.\n\nReturn a JSON object with the following fields:\n- email_subject: The subject line\n- email_body: The email body\n- linkedin_draft: A short connection request message\n- primary_pain_point: The main bottleneck identified\n- is_qualified: true if they are a service business/agency/consultancy, false if not a fit",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        420
+      ],
+      "id": "ai-qualification-id",
+      "name": "AI Personalization Brain"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        580,
+        640
+      ],
+      "id": "gemini-model-id",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "5hJZhY4J9nBGxqCu",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        780,
+        640
+      ],
+      "id": "memory-id",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "jsCode": "const aiResponse = JSON.parse(input.item.json.output);\nreturn {\n  ...input.item.json,\n  pitch: aiResponse\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        420
+      ],
+      "id": "parse-ai-output-id",
+      "name": "Parse AI Output"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cond-qualified",
+              "leftValue": "={{ $json.pitch.is_qualified }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        420
+      ],
+      "id": "if-qualified-id",
+      "name": "Is Qualified?"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "={{ $json.pitch.email_subject }}",
+        "message": "={{ $json.pitch.email_body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1320,
+        340
+      ],
+      "id": "gmail-send-id",
+      "name": "Send Outreach Email",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WAL4Uxbuk6vyxDi8",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1KlX7nePvy_Co7Or6j7QW9gDaZ9XEx_jtpTstj-WZXCA",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "firstName": "={{ $json.firstName }}",
+            "lastName": "={{ $json.lastName }}",
+            "title": "={{ $json.title }}",
+            "email": "={{ $json.email }}",
+            "company": "={{ $json.company }}",
+            "website": "={{ $json.website }}",
+            "linkedin_draft": "={{ $json.pitch.linkedin_draft }}",
+            "email_subject": "={{ $json.pitch.email_subject }}",
+            "email_body": "={{ $json.pitch.email_body }}",
+            "bottleneck_identified": "={{ $json.pitch.primary_pain_point }}",
+            "proposed_system_name": "=Automated Client Intake & Lead Qualification System",
+            "estimated_hour_saved": "22",
+            "status": "Qualified - Email Sent"
+          },
+          "schema": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1540,
+        340
+      ],
+      "id": "sheets-log-qualified-id",
+      "name": "Log to Sheets (Qualified)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gBeI23KYfgd85KTI",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1KlX7nePvy_Co7Or6j7QW9gDaZ9XEx_jtpTstj-WZXCA",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "firstName": "={{ $json.firstName }}",
+            "lastName": "={{ $json.lastName }}",
+            "title": "={{ $json.title }}",
+            "email": "={{ $json.email }}",
+            "company": "={{ $json.company }}",
+            "website": "={{ $json.website }}",
+            "bottleneck_identified": "={{ $json.pitch.primary_pain_point }}",
+            "status": "Not Qualified"
+          },
+          "schema": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1320,
+        500
+      ],
+      "id": "sheets-log-unqualified-id",
+      "name": "Log to Sheets (Unqualified)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gBeI23KYfgd85KTI",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "calendly-booking",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -200,
+        800
+      ],
+      "id": "calendly-trigger-id",
+      "name": "On Meeting Booked",
+      "webhookId": "calendly-webhook-id"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1KlX7nePvy_Co7Or6j7QW9gDaZ9XEx_jtpTstj-WZXCA",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "Meeting Booked"
+          },
+          "matchingColumns": [
+            "email"
+          ],
+          "schema": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        20,
+        800
+      ],
+      "id": "sheets-update-booked-id",
+      "name": "Update Status in Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gBeI23KYfgd85KTI",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "YOUR_CHAT_ID",
+        "text": "=\ud83d\udd25 *Hot Booking!* \n*Name:* {{ $json.body.payload.invitee.name }}\n*Email:* {{ $json.body.payload.invitee.email }}\n*Event:* {{ $json.body.payload.event_type.name }}\n*Time:* {{ $json.body.payload.event.start_time_pretty }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        800
+      ],
+      "id": "telegram-notify-id",
+      "name": "Alert via Telegram",
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-creds-id",
+          "name": "Telegram Bot account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On Form Submission": {
+      "main": [
+        [
+          {
+            "node": "Extract Lead Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Lead Fields": {
+      "main": [
+        [
+          {
+            "node": "Scrape Website HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scrape Website HTML": {
+      "main": [
+        [
+          {
+            "node": "Clean Scrape Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Scrape Data": {
+      "main": [
+        [
+          {
+            "node": "AI Personalization Brain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Personalization Brain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Personalization Brain",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Personalization Brain": {
+      "main": [
+        [
+          {
+            "node": "Parse AI Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Output": {
+      "main": [
+        [
+          {
+            "node": "Is Qualified?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Qualified?": {
+      "main": [
+        [
+          {
+            "node": "Send Outreach Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log to Sheets (Unqualified)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Outreach Email": {
+      "main": [
+        [
+          {
+            "node": "Log to Sheets (Qualified)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On Meeting Booked": {
+      "main": [
+        [
+          {
+            "node": "Update Status in Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Status in Sheets": {
+      "main": [
+        [
+          {
+            "node": "Alert via Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9f6af53a70443079fab2923576d91937ea50efc54c99df235e9c4d4b959bbe0c"
+  },
+  "tags": []
+}
