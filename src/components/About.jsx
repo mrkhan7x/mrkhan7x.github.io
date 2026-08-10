@@ -26,7 +26,7 @@ export default function About() {
             viewport={{ once: true }}
             className="about-left-ref"
           >
-            <div className="mockup-container-ref">
+            <div className="about-image-wrap-ref">
               <div className="abstract-glow-circle" />
               <img
                 src={profilePhoto}

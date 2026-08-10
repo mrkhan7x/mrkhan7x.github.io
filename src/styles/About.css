@@ -62,48 +62,58 @@
   position: relative;
 }
 
-.mockup-container-ref {
+.about-image-wrap-ref {
   position: relative;
-  aspect-ratio: 4/5;
   width: 100%;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
 }
 
 .abstract-glow-circle {
   position: absolute;
-  width: 180px;
-  height: 180px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
   background: #B000FF;
   opacity: 0.15;
-  filter: blur(60px);
-  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
 }
 
 .about-profile-photo {
   width: 100%;
-  height: 100%;
+  max-width: 420px;
+  border-radius: 20px;
   object-fit: cover;
   object-position: center top;
+  aspect-ratio: 3 / 4;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.4s ease, transform 0.5s ease;
+  display: block;
   z-index: 2;
   position: relative;
 }
 
+.about-profile-photo:hover {
+  transform: scale(1.02);
+  border-color: #B000FF;
+}
+
 .floating-glass-card {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
+  bottom: -20px;
+  left: -20px;
+  right: 30px;
+  padding: 18px 20px 14px;
   background: var(--glass-bg);
   border: 1px solid var(--border-glass);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-radius: 16px;
-  padding: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  transition: background 0.4s ease, border-color 0.4s ease;
   z-index: 3;
 }
 
@@ -256,5 +266,14 @@
   .about-stats-row-ref {
     grid-template-columns: 1fr;
     padding: 20px;
+  }
+  .floating-glass-card {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: -30px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
