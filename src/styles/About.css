@@ -85,24 +85,13 @@
   border-radius: 50%;
 }
 
-.agency-brand-avatar {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #B000FF, #3B004F);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 40px rgba(176, 0, 255, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+.about-profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   z-index: 2;
-}
-
-.avatar-initials {
-  font-size: 38px;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -1px;
+  position: relative;
 }
 
 .floating-glass-card {

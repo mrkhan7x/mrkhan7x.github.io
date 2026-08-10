@@ -315,23 +315,23 @@ export const PortfolioContent = {
       },
       {
         id: 11,
-        title: "Competitor Price Monitor",
-        description: "Scrapes target competitor websites daily, logs price differences, and alerts your team of significant price updates or stock changes.",
-        emoji: "📊",
+        title: "Clinic Ingestion ETL Pipeline",
+        description: "Automated daily clinic transaction ingestion pipeline calculating wait times, predicting cancellation risk, and upserting data to Supabase (PostgreSQL) with a live Power BI dashboard.",
+        emoji: "🏥",
         category: "data",
-        tags: ["Price Monitoring", "Market Intel", "Change Alerts"],
+        tags: ["Python ETL", "Supabase API", "PostgreSQL Views", "Power BI"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhan7x"
+        githubUrl: "https://github.com/mrkhan7x/clinic-ingestion-pipeline"
       },
       {
         id: 12,
-        title: "AI Data Enrichment Pipeline",
-        description: "Takes list of raw domains, scrapes websites, matches company data via enrichment APIs, and outputs highly qualified B2B contacts.",
-        emoji: "💾",
+        title: "Clinical SQL & BI Analytics",
+        description: "Advanced SQL analytical queries (CTEs, Window Functions, Pivots) on 100,000+ patient records tracking hospital occupancy, readmission rates, and high-risk age cohorts in Power BI.",
+        emoji: "📊",
         category: "data",
-        tags: ["Profile Scraping", "Data Enrichment", "Contact Database"],
+        tags: ["T-SQL", "Relational Database", "Data Modeling", "Power BI"],
         liveUrl: "",
-        githubUrl: "https://github.com/mrkhan7x"
+        githubUrl: "https://github.com/mrkhan7x/clinical-sql-analytics"
       },
       {
         id: 13,
@@ -352,6 +352,16 @@ export const PortfolioContent = {
         tags: ["Drip Campaigns", "Behavior Logic", "Click Tracking"],
         liveUrl: "",
         githubUrl: "https://github.com/mrkhan7x"
+      },
+      {
+        id: 15,
+        title: "Real-Time Market Sentinel",
+        description: "Event-driven Python streaming data pipeline listening to live WebSocket ticker feeds, running rolling standard deviation analysis, and triggering instant Telegram alerts.",
+        emoji: "⚡",
+        category: "data",
+        tags: ["WebSockets", "Python Streams", "Telegram Bot API", "Supabase"],
+        liveUrl: "",
+        githubUrl: "https://github.com/mrkhan7x/market-sentinel-pipeline"
       }
     ]
   },

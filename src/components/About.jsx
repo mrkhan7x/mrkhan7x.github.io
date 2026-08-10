@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PortfolioContent from "../data/PortfolioContent";
+import profilePhoto from "../assets/images/mrk-profile.jpg";
 import "../styles/About.css";
 
 export default function About() {
@@ -27,9 +28,11 @@ export default function About() {
           >
             <div className="mockup-container-ref">
               <div className="abstract-glow-circle" />
-              <div className="agency-brand-avatar">
-                <span className="avatar-initials">MRK</span>
-              </div>
+              <img
+                src={profilePhoto}
+                alt="M R KHAN"
+                className="about-profile-photo"
+              />
               <div className="floating-glass-card">
                 <div className="glass-card-header">
                   <span className="sparkle-icon-ref">✨</span>
