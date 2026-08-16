@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment & IDE
+.venv/
+venv/
+ENV/
+.vscode/
+.idea/
+
+# Large Datasets & Pickle Binaries (Over 50MB)
+*.csv
+*.pkl
+*.joblib
+*.png
+*.jpg
