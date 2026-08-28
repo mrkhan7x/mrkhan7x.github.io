@@ -30,6 +30,16 @@ function App() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  useEffect(() => {
+    if (currentRoute === "services") {
+      document.title = "Services — MRKHANSERVICES";
+    } else if (currentRoute === "about") {
+      document.title = "About Us — MRKHANSERVICES";
+    } else {
+      document.title = "MRKHANSERVICES — AI Automation & Growth Systems";
+    }
+  }, [currentRoute]);
+
   const openBooking = () => setIsBookingOpen(true);
 
   return (
