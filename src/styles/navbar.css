@@ -1,103 +1,120 @@
 .header-floating-wrapper {
   position: fixed;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  width: auto;
-  max-width: 95%;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  padding: 20px 40px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.35s ease;
 }
 
 .header-floating-wrapper.scrolled {
-  top: 16px;
+  padding: 14px 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Desktop Pill Styling */
-.navbar-pill {
+.header-nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.nav-item-btn {
-  position: relative;
-  background: transparent;
-  border: none;
-  padding: 8px 18px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--nav-text);
-  cursor: pointer;
-  border-radius: 9999px;
-  transition: color 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-}
-
-.nav-item-btn:hover {
-  color: var(--nav-text-hover);
-}
-
-.nav-item-btn.active {
-  color: #ffffff !important;
-}
-
-/* Active Pill Sliding Background */
-.active-pill-bg {
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand-purple) 100%);
-  box-shadow: 0 4px 12px rgba(176, 0, 255, 0.3);
-  z-index: -1;
-}
-
-.nav-item-text {
-  position: relative;
-  z-index: 2;
-}
-
-.nav-divider-line {
-  width: 1px;
-  height: 20px;
-  background: var(--border-color);
-  margin: 0 10px;
-}
-
-.navbar-theme-btn {
-  background: transparent;
-  border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--nav-text);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.navbar-theme-btn:hover {
-  color: var(--primary-color);
-  background: var(--badge-bg);
-}
-
-/* Mobile Layout styles */
-.mobile-navbar-bar {
-  display: none; /* Hidden on desktop */
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
+  width: 100%;
+}
+
+/* Brand Identity */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.brand-icon-badge {
+  background: #F4F4F4;
+  color: #0C0C0C;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  letter-spacing: -0.02em;
+}
+
+.brand-name-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #F4F4F4;
+}
+
+/* Center Links */
+.nav-links-center {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link-btn {
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #D7E2EA;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.nav-link-btn:hover,
+.nav-link-btn.active {
+  color: #F4F4F4;
+}
+
+/* Talk Button (AsimServices Signature Button) */
+.talk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
   border-radius: 9999px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  width: 340px;
+  background: #F4F4F4;
+  color: #0C0C0C;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(244, 244, 244, 0.1);
+}
+
+.talk-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(244, 244, 244, 0.2);
+  background: #ffffff;
+}
+
+.talk-btn__arrow {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0C0C0C;
+  color: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.mobile-navbar-bar {
+  display: none;
 }
 
 .mobile-brand-logo {
@@ -390,6 +407,18 @@
 }
 
 @media (max-width: 768px) {
+  .header-floating-wrapper {
+    padding: 12px 20px;
+  }
+  .header-nav-container {
+    display: none;
+  }
+  .mobile-navbar-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
   .nav-links {
     flex: none;
     position: absolute;

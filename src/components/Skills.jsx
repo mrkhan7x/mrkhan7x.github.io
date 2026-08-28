@@ -1,109 +1,68 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import PortfolioContent from "../data/PortfolioContent";
 import "../styles/Skills.css";
 
 export default function Skills() {
-  const { skills } = PortfolioContent;
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const getFilteredSkills = () => {
-    if (activeCategory === "all") {
-      return Object.values(skills.skills).flat();
-    }
-    return skills.skills[activeCategory] || [];
-  };
-
-  const filteredSkills = getFilteredSkills();
-
   return (
-    <section className="skills-page" id="skills">
-      <div className="skills-page-container">
-        <motion.div
+    <section className="why-us" id="services">
+      <div className="why-us__inner">
+        <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="skills-page-header"
+          className="services__header"
         >
-          <span className="section-tag">{skills.tag}</span>
-          <h2 className="section-title">
-            {skills.title} <span className="highlight">{skills.titleHighlight}</span>
-          </h2>
-          <p className="section-subtitle">
-            {skills.description}
+          <h2 className="why-us__heading">Services & Automation Systems</h2>
+          <p className="services__subtitle">
+            We design, build, and deploy custom AI agents and workflow automations engineered to save hours, capture demand, and scale business operations.
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="skills-categories"
-        >
-          {skills.categories.map((category) => (
-            <button
-              key={category.id}
-              className={`category-btn ${activeCategory === category.id ? "active" : ""}`}
-              onClick={() => setActiveCategory(category.id)}
-            >
-              {category.label}
-            </button>
-          ))}
-        </motion.div>
+        <div className="why-us__grid">
+          <motion.article 
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="why-us__card"
+          >
+            <h3>Autonomous AI Assistants</h3>
+            <p>Deploy intelligent 24/7 conversational agents powered by custom OpenAI & Voiceflow models that qualify prospects and book meetings automatically.</p>
+          </motion.article>
 
-        <motion.div layout className="skills-grid-page">
-          {filteredSkills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="skill-card-page"
-            >
-              <div className="skill-card-header">
-                <img 
-                  src={skill.icon} 
-                  alt={skill.name} 
-                  className="skill-card-icon"
-                  width="32"
-                  height="32"
-                />
-                <div className="skill-card-info">
-                  <h3 className="skill-card-name">{skill.name}</h3>
-                  <span className="skill-card-level">{skill.level}%</span>
-                </div>
-              </div>
-              <div className="skill-bar-container">
-                <motion.div
-                  className="skill-bar-progress"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                  viewport={{ once: true }}
-                />
-              </div>
-              <p className="skill-card-description">{skill.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+          <motion.article 
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.08 }}
+            viewport={{ once: true }}
+            className="why-us__card"
+          >
+            <h3>Lead Acquisition Machines</h3>
+            <p>Instant multi-channel lead response systems that scrape, enrich, score, and push inbound prospects to sales teams within seconds.</p>
+          </motion.article>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="skills-summary"
-        >
-          {skills.summary.map((item, index) => (
-            <div key={index} className="summary-item">
-              <span className="summary-number">{item.number}</span>
-              <span className="summary-label">{item.label}</span>
-            </div>
-          ))}
-        </motion.div>
+          <motion.article 
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.16 }}
+            viewport={{ once: true }}
+            className="why-us__card"
+          >
+            <h3>Custom CRM & API Architecture</h3>
+            <p>Seamless 2-way sync between HubSpot, Airtable, Supabase, and custom backend tools with standardized logging and error handling.</p>
+          </motion.article>
+
+          <motion.article 
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.24 }}
+            viewport={{ once: true }}
+            className="why-us__card"
+          >
+            <h3>Support & Data Triage Pipelines</h3>
+            <p>Automated Slack & Email triage flows that inspect customer requests, draft contextual AI responses, and route priority tickets automatically.</p>
+          </motion.article>
+        </div>
       </div>
     </section>
   );

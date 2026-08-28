@@ -1,53 +1,83 @@
-.skills-page {
-  padding: 100px 24px;
-
+.why-us {
+  padding: 140px 24px;
+  background: #0C0C0C;
+  border-top: 1px solid var(--border-color);
   position: relative;
-  min-height: 100vh;
+  z-index: 5;
 }
 
-.skills-page-container {
-  max-width: 1200px;
+.why-us__inner {
+  max-width: 1240px;
   margin: 0 auto;
 }
 
-.skills-page-header {
+.services__header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 64px;
 }
 
-.section-tag {
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 50px;
-  background: rgba(176, 0, 255, 0.08);
-  border: 1px solid rgba(176, 0, 255, 0.1);
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 500;
+.why-us__heading {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #F4F4F4;
   margin-bottom: 16px;
 }
 
-.section-title {
-  font-size: 44px;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
-
-.section-title .highlight {
-  background: linear-gradient(135deg, var(--accent), #3B004F);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.section-subtitle {
-  color: var(--text-secondary);
-  font-size: 16px;
-  max-width: 600px;
+.services__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #D7E2EA;
+  max-width: 680px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+.why-us__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.why-us__card {
+  background: #141416;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 40px 36px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.why-us__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(215, 226, 234, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.why-us__card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #F4F4F4;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.why-us__card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #D7E2EA;
+}
+
+@media (max-width: 768px) {
+  .why-us__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 .skills-categories {

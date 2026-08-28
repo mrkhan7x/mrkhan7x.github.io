@@ -1,15 +1,37 @@
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Skills from "./components/Skills";
+import WeBuild from "./components/WeBuild";
 import Projects from "./components/Projects";
-import Reviews from "./components/Reviews";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import ServicesPage from "./components/ServicesPage";
+import AboutPage from "./components/AboutPage";
+import BookingModal from "./components/BookingModal";
 import "./App.css";
 
 function App() {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [currentRoute, setCurrentRoute] = useState(() => {
+    const hash = window.location.hash;
+    if (hash === "#services" || hash === "#/services") return "services";
+    if (hash === "#about" || hash === "#/about") return "about";
+    return "home";
+  });
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === "#services" || hash === "#/services") setCurrentRoute("services");
+      else if (hash === "#about" || hash === "#/about") setCurrentRoute("about");
+      else if (hash === "#home" || hash === "#/") setCurrentRoute("home");
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const openBooking = () => setIsBookingOpen(true);
+
   return (
     <div className="app">
       <div className="app-background" />
@@ -19,15 +41,27 @@ function App() {
       <div className="orb-global orb-global-2" />
       <div className="orb-global orb-global-3" />
 
-      <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Reviews />
-      <Contact />
-      <Footer />
+      <Navbar 
+        currentRoute={currentRoute} 
+        setCurrentRoute={setCurrentRoute} 
+        onOpenBooking={openBooking}
+      />
+
+      {currentRoute === "services" ? (
+        <ServicesPage onOpenBooking={openBooking} />
+      ) : currentRoute === "about" ? (
+        <AboutPage onOpenBooking={openBooking} />
+      ) : (
+        <>
+          <Hero onOpenBooking={openBooking} />
+          <Projects onOpenBooking={openBooking} />
+          <WeBuild onOpenBooking={openBooking} />
+          <Contact onOpenBooking={openBooking} />
+        </>
+      )}
+
+      <Footer onOpenBooking={openBooking} />
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   );
 }

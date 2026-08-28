@@ -1,107 +1,65 @@
 import { motion } from "framer-motion";
-import PortfolioContent from "../data/PortfolioContent";
 import profilePhoto from "../assets/images/mrk-profile.jpg";
 import "../styles/About.css";
 
-export default function About() {
-  const { about } = PortfolioContent;
-
+export default function About({ onOpenBooking }) {
   return (
-    <section className="about-ref" id="about">
-      <div className="about-container-ref">
-        <div className="about-header-ref">
-          <span className="section-tag-ref">01 / About</span>
-          <div className="header-line-ref" />
-        </div>
-        
-        <h2 className="about-title-ref">
-          About <span className="highlight-text-ref">M R KHAN</span>
-        </h2>
-
-        <div className="about-grid-ref">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="about-left-ref"
+    <section className="social-proof" id="about">
+      <div className="social-proof__inner">
+        {/* LEFT: Heading, Narrative & CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="social-proof__left"
+        >
+          <h2 className="social-proof__heading">
+            Automations that save 20+ hours every week for businesses.
+          </h2>
+          <p className="social-proof__body">
+            I am a Systems & Automation Specialist dedicated to designing custom AI agents, lead acquisition machines, and CRM synchronizations that eliminate manual work.
+          </p>
+          <p className="social-proof__body">
+            Every pipeline is engineered with standardized error catches, active logs, and bulletproof fail-safes—giving your team complete operational freedom.
+          </p>
+          <button 
+            className="talk-btn"
+            onClick={() => {
+              if (onOpenBooking) onOpenBooking();
+              else {
+                const el = document.getElementById("contact");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
-            <div className="about-image-wrap-ref">
-              <div className="abstract-glow-circle" />
-              <img
-                src={profilePhoto}
-                alt="M R KHAN"
-                className="about-profile-photo"
-              />
-              <div className="floating-glass-card">
-                <div className="glass-card-header">
-                  <span className="sparkle-icon-ref">✨</span>
-                  <span className="glass-card-text">Building automated systems that refuse to let leads slip.</span>
-                </div>
-                <span className="glass-card-author">— M R KHAN</span>
-              </div>
-            </div>
-          </motion.div>
+            <span className="talk-btn__label">
+              <span className="talk-btn__label-current">Let&apos;s talk</span>
+            </span>
+            <span className="talk-btn__arrow">
+              <svg viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M6 16h20M19 9l7 7-7 7" />
+              </svg>
+            </span>
+          </button>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="about-right-ref"
-          >
-            <p className="narrative-bold">
-              Hi, I'm a Systems & Automation Specialist dedicated to turning manual work into automated processes.
-            </p>
-            {about.paragraphs.map((paragraph, index) => (
-              <p key={index} className="narrative-text">
-                {paragraph}
-              </p>
-            ))}
-            
-            <p className="narrative-cta">
-              Let's connect. It's time to make your systems RUN on autopilot.
-            </p>
-
-            <div className="about-subcards-ref">
-              <div className="subcard-ref">
-                <div className="subcard-icon">🧠</div>
-                <div>
-                  <h4 className="subcard-title">What I Do</h4>
-                  <p className="subcard-desc">Specializing in lead acquisition systems, custom CRM synchronizations, autonomous AI assistants, and customer support triage pipelines.</p>
-                </div>
-              </div>
-              
-              <div className="subcard-ref">
-                <div className="subcard-icon">🎯</div>
-                <div>
-                  <h4 className="subcard-title">Why Choose Me</h4>
-                  <p className="subcard-desc">Every pipeline is designed with active logging, detailed error catches, and bulletproof fallback options to protect your business data 24/7.</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Stats Row */}
-        <div className="about-stats-row-ref">
-          <div className="stat-card-ref">
-            <span className="stat-value-ref">100+</span>
-            <span className="stat-title-ref">Tools Integrated</span>
+        {/* RIGHT: Profile Photo */}
+        <motion.div 
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="social-proof__right"
+        >
+          <div className="social-proof__img-wrap">
+            <img
+              src={profilePhoto}
+              alt="M R KHAN — Systems Specialist"
+              className="social-proof__img"
+            />
           </div>
-          <div className="stat-card-ref">
-            <span className="stat-value-ref">20+</span>
-            <span className="stat-title-ref">Hours Saved / Week</span>
-          </div>
-          <div className="stat-card-ref">
-            <span className="stat-value-ref">100%</span>
-            <span className="stat-title-ref">Delivery Rate</span>
-          </div>
-          <div className="stat-card-ref">
-            <span className="stat-value-ref">100%</span>
-            <span className="stat-title-ref">Client Satisfaction</span>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

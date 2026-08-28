@@ -3,13 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import PortfolioContent from "../data/PortfolioContent";
 import "../styles/navbar.css";
 
-export default function Navbar() {
+export default function Navbar({ currentRoute = "home", setCurrentRoute, onOpenBooking }) {
   const { navbar } = PortfolioContent;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const [theme, setTheme] = useState(() => {
-    // Initial check from localStorage or document theme
+  const [theme] = useState(() => {
     return localStorage.getItem("theme") || "dark";
   });
 
@@ -18,115 +16,99 @@ export default function Navbar() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(t => t === "dark" ? "light" : "dark");
-  };
-
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", onScroll);
-
-    const sections = ["home", "about", "experience", "projects", "skills", "reviews", "contact"];
-    const observers = sections.map((sectionId) => {
-      const el = document.getElementById(sectionId);
-      if (!el) return null;
-      
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(sectionId);
-          }
-        },
-        { rootMargin: "-25% 0px -55% 0px" }
-      );
-      observer.observe(el);
-      return { observer, el };
-    });
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      observers.forEach((obs) => {
-        if (obs) obs.observer.unobserve(obs.el);
-      });
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToSection = (id) => {
-    const sectionId = id.replace('#', '');
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveSection(sectionId);
-      setOpen(false);
+  const handleNavClick = (href) => {
+    setOpen(false);
+    if (href === "#services" || href === "/services") {
+      window.location.hash = "#services";
+      if (setCurrentRoute) setCurrentRoute("services");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (href === "#about" || href === "/about") {
+      window.location.hash = "#about";
+      if (setCurrentRoute) setCurrentRoute("about");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (href === "#home" || href === "/") {
+      window.location.hash = "#home";
+      if (setCurrentRoute) setCurrentRoute("home");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      if (setCurrentRoute && currentRoute !== "home") {
+        setCurrentRoute("home");
+        window.location.hash = "#home";
+        setTimeout(() => {
+          const el = document.getElementById(href.replace('#', ''));
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+      } else {
+        const el = document.getElementById(href.replace('#', ''));
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   return (
     <header className={`header-floating-wrapper ${scrolled ? "scrolled" : ""}`}>
-      {/* Desktop Navigation Pill */}
-      <nav className="navbar-pill glass">
-        {navbar.links.map((link) => {
-          const sectionId = link.href.replace('#', '');
-          const isActive = activeSection === sectionId;
-          return (
-            <button
-              key={link.label}
-              className={`nav-item-btn ${isActive ? "active" : ""}`}
-              onClick={() => scrollToSection(link.href)}
-            >
-              {isActive && (
-                <motion.span
-                  layoutId="activePill"
-                  className="active-pill-bg"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-              <span className="nav-item-text">{link.label}</span>
-            </button>
-          );
-        })}
+      <nav className="header-nav-container">
+        {/* Brand Identity */}
+        <div className="nav-brand" onClick={() => handleNavClick("#home")}>
+          <span className="brand-icon-badge">{navbar.logo}</span>
+          <span className="brand-name-text">{navbar.brand}</span>
+        </div>
 
-        <div className="nav-divider-line"></div>
+        {/* Links */}
+        <div className="nav-links-center">
+          {navbar.links.map((link) => {
+            const linkRoute = link.href.replace('#', '').replace('/', '');
+            const isActive = currentRoute === linkRoute || (currentRoute === "home" && linkRoute === "home");
+            return (
+              <button
+                key={link.label}
+                className={`nav-link-btn ${isActive ? "active" : ""}`}
+                onClick={() => handleNavClick(link.href)}
+              >
+                {link.label}
+              </button>
+            );
+          })}
+        </div>
 
-        {/* Theme Toggle inside Pill */}
-        <button className="navbar-theme-btn" onClick={toggleTheme} aria-label="Toggle Theme">
-          {theme === "dark" ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2"></path>
-              <path d="M12 20v2"></path>
-              <path d="m4.93 4.93 1.41 1.41"></path>
-              <path d="m17.66 17.66 1.41 1.41"></path>
-              <path d="M2 12h2"></path>
-              <path d="M20 12h2"></path>
-              <path d="m6.34 17.66-1.41 1.41"></path>
-              <path d="m19.07 4.93-1.41 1.41"></path>
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-            </svg>
-          )}
-        </button>
+        {/* CTA Button */}
+        <div className="nav-cta-wrapper">
+          <button 
+            className="talk-btn"
+            onClick={() => {
+              if (onOpenBooking) onOpenBooking();
+              else handleNavClick("#contact");
+            }}
+          >
+            <span className="talk-btn__label">
+              <span className="talk-btn__label-current">{navbar.cta}</span>
+            </span>
+            <span className="talk-btn__arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Navbar Header */}
-      <div className="mobile-navbar-bar glass">
-        <span className="mobile-brand-logo" onClick={() => scrollToSection("#home")}>
-          {navbar.brand}
-        </span>
+      <div className="mobile-navbar-bar">
+        <div className="nav-brand" onClick={() => handleNavClick("#home")}>
+          <span className="brand-icon-badge">{navbar.logo}</span>
+          <span className="brand-name-text">{navbar.brand}</span>
+        </div>
 
         <div className="mobile-actions">
-          <button className="mobile-theme-btn" onClick={toggleTheme} aria-label="Toggle Theme">
-            {theme === "dark" ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-            )}
-          </button>
-
           <button 
             className={`burger-btn ${open ? "open" : ""}`}
             onClick={() => setOpen(!open)}
@@ -147,21 +129,28 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="mobile-dropdown-menu glass"
+            className="mobile-dropdown-menu"
           >
             {navbar.links.map((link) => {
-              const sectionId = link.href.replace('#', '');
-              const isActive = activeSection === sectionId;
+              const linkRoute = link.href.replace('#', '').replace('/', '');
+              const isActive = currentRoute === linkRoute;
               return (
                 <button
                   key={link.label}
                   className={`mobile-dropdown-link ${isActive ? "active" : ""}`}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => handleNavClick(link.href)}
                 >
                   {link.label}
                 </button>
               );
             })}
+            <button 
+              className="talk-btn mobile-talk-btn"
+              onClick={() => handleNavClick("#contact")}
+            >
+              <span>{navbar.cta}</span>
+              <span className="talk-btn__arrow">→</span>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,10 +1,8 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import PortfolioContent from "../data/PortfolioContent";
 import "../styles/Hero.css";
 
-export default function Hero() {
-  const { hero } = PortfolioContent;
+export default function Hero({ onOpenBooking }) {
   const lottieContainerRef = useRef(null);
 
   useEffect(() => {
@@ -23,138 +21,151 @@ export default function Hero() {
     };
   }, []);
 
-  const handlePrimaryAction = () => {
-    const projectsSection = document.getElementById("projects");
-    if (projectsSection) {
-      projectsSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+  const handleSecondaryAction = () => {
+    if (onOpenBooking) {
+      onOpenBooking();
+    } else {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
     }
   };
 
-  const handleSecondaryAction = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+  const viewportRef = useRef(null);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+
+  const handleMouseDown = (e) => {
+    isDraggingRef.current = true;
+    if (viewportRef.current) {
+      startXRef.current = e.pageX - viewportRef.current.offsetLeft;
+      scrollLeftRef.current = viewportRef.current.scrollLeft;
     }
+  };
+
+  const handleMouseLeaveOrUp = () => {
+    isDraggingRef.current = false;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDraggingRef.current || !viewportRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - viewportRef.current.offsetLeft;
+    const walk = (x - startXRef.current) * 2;
+    viewportRef.current.scrollLeft = scrollLeftRef.current - walk;
   };
 
   return (
-    <section className="hero" id="home">
-      {/* Background Video/Animation Layer */}
+    <section className="hero hero--home" id="home">
+      {/* Background Video Layer */}
       <div className="hero-bg">
         <div ref={lottieContainerRef} className="hero-bg-anim" />
         <video autoPlay muted loop playsInline preload="auto" className="hero-bg-video">
-          <source src={process.env.PUBLIC_URL + "/assets/n8n_hero.mov"} type="video/mp4" />
-          <source src={process.env.PUBLIC_URL + "/assets/n8n_hero.mov"} type="video/quicktime" />
           <source src={process.env.PUBLIC_URL + "/assets/hero_bg.mp4"} type="video/mp4" />
+          <source src={process.env.PUBLIC_URL + "/assets/n8n_hero.mov"} type="video/quicktime" />
         </video>
         <div className="hero-overlay" />
-        <div className="hero-grain" />
       </div>
 
       {/* Hero Content */}
-      <div className="hero-container">
-        <div className="hero-content">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="hero-badge-ref"
-          >
-            <span className="badge-dot-ref" />
-            <span className="badge-text-ref">SYSTEMS & AUTOMATION SPECIALIST</span>
-          </motion.div>
+      <div className="hero__content">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="hero__intro"
+        >
+          <h1 className="hero__headline">
+            SYSTEMS DON&apos;T<br />RUN ON MANUAL.
+          </h1>
+          <p className="hero__supporting">
+            Stop wasting time on manual tasks. I design custom automation workflows and AI agents that capture leads, manage customer support, and scale operations on autopilot.
+          </p>
+        </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="hero-title-ref"
-          >
-            <span className="block-title">SYSTEMS DON'T</span>
-            <span className="block-title highlight-text">RUN ON MANUAL.</span>
-          </motion.h1>
+        {/* Hero Stats */}
+        <motion.div 
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="hero__results"
+        >
+          <div className="hero__stats">
+            <div className="hero__stat">
+              <strong>100+</strong>
+              <span>workflows built</span>
+            </div>
+            <div className="hero__stat">
+              <strong>100%</strong>
+              <span>client satisfaction</span>
+            </div>
+            <div className="hero__stat">
+              <strong>2+ yrs</strong>
+              <span>building AI systems</span>
+            </div>
+            <div className="hero__stat">
+              <strong>20+ hrs</strong>
+              <span>saved per week</span>
+            </div>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="hero-subtitle-ref"
-          >
-            {hero.description}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="hero-actions-ref"
-          >
-            <button className="btn-main-primary" onClick={handlePrimaryAction}>
-              <span>{hero.buttons.primary}</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                className="arrow-icon"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </button>
-            <button className="btn-main-secondary" onClick={handleSecondaryAction}>
-              <span>{hero.buttons.secondary}</span>
-            </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="hero-reviews-ref"
-          >
-            <div className="stars-row">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} className="star-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          <div className="hero__results-cta">
+            <button className="talk-btn" onClick={handleSecondaryAction}>
+              <span className="talk-btn__label">
+                <span className="talk-btn__label-current">Let&apos;s talk</span>
+              </span>
+              <span className="talk-btn__arrow">
+                <svg viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M6 16h20M19 9l7 7-7 7" />
                 </svg>
-              ))}
-            </div>
-            <span className="reviews-text">5.0 / 5.0 — 100% Client Satisfaction · 4+ Years Experience</span>
-          </motion.div>
+              </span>
+            </button>
+          </div>
+        </motion.div>
+      </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="tech-stack"
-          >
-            <p className="tech-label">
-              <span className="tech-dot" />
-              Tech Stack
-            </p>
-            <div className="tech-grid">
-              {hero.technologies.map((tech, index) => (
-                <motion.span
-                  key={index}
-                  className="tech-tag"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  {tech}
-                  <span className="tech-glow" />
-                </motion.span>
-              ))}
+      {/* Company / Tech Marquee */}
+      <div className="company-marquee">
+        <p className="company-marquee__label">MRKHANSERVICES WORKS WITH</p>
+        <div 
+          ref={viewportRef}
+          className="company-marquee__viewport"
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeaveOrUp}
+          onMouseUp={handleMouseLeaveOrUp}
+          onMouseMove={handleMouseMove}
+        >
+          <div className="company-marquee__track">
+            <div className="company-marquee__group">
+              <span>n8n Workflows</span>
+              <span>OpenAI Agents</span>
+              <span>Voiceflow</span>
+              <span>Make.com</span>
+              <span>Supabase</span>
+              <span>HubSpot CRM</span>
+              <span>Airtable</span>
+              <span>Slack API</span>
+              <span>WhatsApp API</span>
+              <span>Python Automation</span>
             </div>
-          </motion.div>
+            <div className="company-marquee__group" aria-hidden="true">
+              <span>n8n Workflows</span>
+              <span>OpenAI Agents</span>
+              <span>Voiceflow</span>
+              <span>Make.com</span>
+              <span>Supabase</span>
+              <span>HubSpot CRM</span>
+              <span>Airtable</span>
+              <span>Slack API</span>
+              <span>WhatsApp API</span>
+              <span>Python Automation</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

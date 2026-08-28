@@ -1,410 +1,215 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
-import emailjs from "@emailjs/browser";
-import PortfolioContent from "../data/PortfolioContent";
 import "../styles/Contact.css";
 
-export default function Contact() {
-  const { contact } = PortfolioContent;
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState({ type: "", message: "" });
-  const [cooldownRemaining, setCooldownRemaining] = useState(0);
-
-  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-  const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-
-  const formatTime = useCallback((milliseconds) => {
-    const seconds = Math.floor(milliseconds / 1000);
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-
-    if (hours > 0) {
-      return `${hours}h ${minutes}m ${secs}s`;
-    } else if (minutes > 0) {
-      return `${minutes}m ${secs}s`;
-    } else {
-      return `${secs}s`;
+export default function Contact({ onOpenBooking }) {
+  const processSteps = [
+    {
+      step: "01",
+      title: "Discovery and audit",
+      text: "We start with a focused conversation to understand your goals, current systems, bottlenecks, and where AI can create the highest value."
+    },
+    {
+      step: "02",
+      title: "Scope and proposal",
+      text: "You receive a clear plan, timeline, and scope tailored to your needs. Choose a fixed-price project or flexible hourly support based on your needs."
+    },
+    {
+      step: "03",
+      title: "Build and launch",
+      text: "We design, build, test, and deploy your custom solution with regular progress updates—making sure your solution operates cleanly and confidently."
+    },
+    {
+      step: "04",
+      title: "Ongoing support",
+      text: "After launch, we stay close by, monitoring performance, updating workflows, and expanding your system through flexible retainer units or ongoing support management."
     }
-  }, []);
+  ];
 
-  const startCountdown = useCallback((remaining) => {
-    const interval = setInterval(() => {
-      setCooldownRemaining((prev) => {
-        const newTime = prev - 1000;
-        if (newTime <= 0) {
-          clearInterval(interval);
-          localStorage.removeItem("lastEmailSent");
-          setStatus({ type: "", message: "" });
-          return 0;
-        }
-        setStatus({
-          type: "info",
-          message: `Please wait ${formatTime(newTime)} before sending another message.`,
-        });
-        return newTime;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [formatTime]);
-
-  const checkCooldown = useCallback(() => {
-    const lastSent = localStorage.getItem("lastEmailSent");
-    if (lastSent) {
-      const lastSentTime = parseInt(lastSent, 10);
-      const currentTime = Date.now();
-      const timeDiff = currentTime - lastSentTime;
-      const cooldownPeriod = 24 * 60 * 60 * 1000;
-
-      if (timeDiff < cooldownPeriod) {
-        const remaining = cooldownPeriod - timeDiff;
-        setCooldownRemaining(remaining);
-        startCountdown(remaining);
-        setStatus({
-          type: "info",
-          message: `Please wait ${formatTime(remaining)} before sending another message.`,
-        });
-        return true;
-      } else {
-        localStorage.removeItem("lastEmailSent");
-        setCooldownRemaining(0);
-        return false;
-      }
+  const socialChannels = [
+    {
+      name: "LinkedIn",
+      handle: "Muhammad Roman Khan",
+      label: "Professional Profile & Case Studies",
+      url: "https://www.linkedin.com/in/muhammad-roman-khan-8245a0328",
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+          <rect x="2" y="9" width="4" height="12" />
+          <circle cx="4" cy="4" r="2" />
+        </svg>
+      )
+    },
+    {
+      name: "GitHub",
+      handle: "@mrkhan7x",
+      label: "Open Source, Repos & Scripts",
+      url: "https://github.com/mrkhan7x",
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+        </svg>
+      )
+    },
+    {
+      name: "Instagram",
+      handle: "@mrkhan7x",
+      label: "Direct Message & Behind The Scenes",
+      url: "https://www.instagram.com/mrkhan7x",
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+      )
+    },
+    {
+      name: "WhatsApp",
+      handle: "+92 328 5792098",
+      label: "Direct Chat & Quick Inquiries",
+      url: "https://wa.me/923285792098",
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        </svg>
+      )
+    },
+    {
+      name: "Direct Email",
+      handle: "mrkhan.officialsite@gmail.com",
+      label: "Detailed Scopes & Inquiries",
+      url: "mailto:mrkhan.officialsite@gmail.com",
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
+      )
     }
-    return false;
-  }, [startCountdown, formatTime]);
+  ];
 
-  useEffect(() => {
-    if (PUBLIC_KEY) {
-      emailjs.init(PUBLIC_KEY);
+  const handleBooking = () => {
+    if (onOpenBooking) {
+      onOpenBooking();
     }
-    checkCooldown();
-  }, [PUBLIC_KEY, checkCooldown]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus({ type: "", message: "" });
-
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.message.trim()
-    ) {
-      setStatus({
-        type: "error",
-        message: "Please fill in all fields.",
-      });
-      setIsSubmitting(false);
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setStatus({
-        type: "error",
-        message: "Please enter a valid email address.",
-      });
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (checkCooldown()) {
-      setIsSubmitting(false);
-      return;
-    }
-
-    // Attempt sending directly to n8n webhook
-    const n8nWebhookUrl = process.env.REACT_APP_N8N_WEBHOOK_URL || "https://primary-production-4c8d.up.railway.app/webhook/portfolio-contact";
-    try {
-      const response = await fetch(n8nWebhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          timestamp: new Date().toISOString(),
-        }),
-      });
-
-      if (response.ok) {
-        localStorage.setItem("lastEmailSent", Date.now().toString());
-        setCooldownRemaining(24 * 60 * 60 * 1000);
-        setStatus({
-          type: "success",
-          message: "Message received! Our triage system has flagged your message and I'll get back to you shortly.",
-        });
-        setFormData({ name: "", email: "", message: "" });
-        startCountdown(24 * 60 * 60 * 1000);
-        setIsSubmitting(false);
-        return;
-      } else {
-        throw new Error("Webhook rejected post request");
-      }
-    } catch (webhookError) {
-      console.warn("n8n Webhook failed, trying EmailJS...", webhookError);
-    }
-
-    // Try EmailJS
-    if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY) {
-      const templateParams = {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-        subject: `Portfolio Contact from ${formData.name}`,
-        time: new Date().toLocaleString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-        year: new Date().getFullYear(),
-        reply_to: formData.email,
-      };
-
-      try {
-        const response = await emailjs.send(
-          SERVICE_ID,
-          TEMPLATE_ID,
-          templateParams,
-        );
-
-        if (response.status === 200) {
-          localStorage.setItem("lastEmailSent", Date.now().toString());
-          setCooldownRemaining(24 * 60 * 60 * 1000);
-          setStatus({
-            type: "success",
-            message: "Message sent successfully! I'll get back to you soon.",
-          });
-          setFormData({ name: "", email: "", message: "" });
-          startCountdown(24 * 60 * 60 * 1000);
-          setIsSubmitting(false);
-          return;
-        }
-      } catch (emailJsError) {
-        console.warn("EmailJS failed, falling back to local mail client...", emailJsError);
-      }
-    }
-
-    // Fallback to local Mail Client (always works)
-    const emailTo = "mrkhan.officialsite@gmail.com";
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `${formData.message}\n\n---\nSender Contact Email: ${formData.email}`
-    );
-    window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
-
-    setStatus({
-      type: "success",
-      message: "Opening email client... please send the drafted message.",
-    });
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", message: "" });
   };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-    if (status.message) setStatus({ type: "", message: "" });
-  };
-
-  const EmailIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-      <polyline points="22,6 12,13 2,6"/>
-    </svg>
-  );
-
-  const LocationIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-      <circle cx="12" cy="10" r="3"/>
-    </svg>
-  );
-
-  const AvailabilityIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10"/>
-      <polyline points="12 6 12 12 16 14"/>
-    </svg>
-  );
-
-  const SendIcon = () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="22" y1="2" x2="11" y2="13"/>
-      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-    </svg>
-  );
-
-  const SpinnerIcon = () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="spinner">
-      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-    </svg>
-  );
 
   return (
     <section className="contact" id="contact">
       <div className="contact-container">
+        {/* ========================================================= */}
+        {/* Page 7: From first call to launch. (Process section)     */}
+        {/* ========================================================= */}
+        <div className="process-section">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="process-header"
+          >
+            <h2 className="process-heading">From first call to launch.</h2>
+          </motion.div>
+
+          <div className="process-grid">
+            {processSteps.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08, duration: 0.5 }}
+                className="process-card"
+              >
+                <span className="process-card__step">STEP {item.step}</span>
+                <h3 className="process-card__title">{item.title}</h3>
+                <p className="process-card__text">{item.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* Page 8: Ready to put AI to work? (CTA Banner)            */}
+        {/* ========================================================= */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="contact-header"
+          transition={{ duration: 0.7 }}
+          className="cta-banner"
         >
-          <span className="section-tag">{contact.tag}</span>
-          <h2 className="section-title">
-            {contact.title}{" "}
-            <span className="highlight">{contact.titleHighlight}</span>
-          </h2>
-          <p className="section-subtitle">{contact.description}</p>
+          <div className="cta-banner__glow" />
+          <h2 className="cta-banner__title">Ready to put AI to work?</h2>
+          <p className="cta-banner__text">
+            Book a free 30-minute AI growth call. We&apos;ll examine your
+            funnel, pinpoint what&apos;s slowing growth, and show you where
+            intelligent automation can create the biggest lift.
+          </p>
+
+          <button className="talk-btn cta-banner__btn" onClick={handleBooking}>
+            <span className="talk-btn__label">
+              <span className="talk-btn__label-current">Book a free strategy call</span>
+            </span>
+            <span className="talk-btn__arrow">
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </button>
         </motion.div>
 
-        <div className="contact-grid">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+        {/* ========================================================= */}
+        {/* Direct Channels & Socials Connection Grid                 */}
+        {/* ========================================================= */}
+        <div className="contact-channels">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="contact-info"
+            className="contact-channels__title"
           >
-            {contact.info.map((item, index) => (
-              <div key={index} className="info-item">
-                <span className="info-icon">
-                  {item.icon === "email" ? (
-                    <EmailIcon />
-                  ) : item.icon === "location" ? (
-                    <LocationIcon />
-                  ) : (
-                    <AvailabilityIcon />
-                  )}
-                </span>
-                <div>
-                  <h4>{item.title}</h4>
-                  <p>{item.value}</p>
+            Or reach out directly across channels
+          </motion.h3>
+
+          <div className="contact-channels__grid">
+            {socialChannels.map((chan, idx) => (
+              <motion.a
+                key={idx}
+                href={chan.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.06 }}
+                className="contact-channel-card"
+              >
+                <div className="contact-channel-card__icon">{chan.icon}</div>
+                <div className="contact-channel-card__info">
+                  <span className="contact-channel-card__name">{chan.name}</span>
+                  <strong className="contact-channel-card__handle">{chan.handle}</strong>
+                  <span className="contact-channel-card__label">{chan.label}</span>
                 </div>
-              </div>
+                <span className="contact-channel-card__arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </motion.a>
             ))}
-
-            <div className="social-links">
-              <h4>Connect with me</h4>
-              <div className="social-grid">
-                {contact.social.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <img
-                      src={social.icon}
-                      alt={social.name}
-                      className="social-icon"
-                      width="24"
-                      height="24"
-                    />
-                    <span className="social-name">{social.name}</span>
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.form
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="contact-form"
-            onSubmit={handleSubmit}
-            noValidate
-          >
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder={contact.form.namePlaceholder}
-                required
-                disabled={isSubmitting || cooldownRemaining > 0}
-                autoComplete="name"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder={contact.form.emailPlaceholder}
-                required
-                disabled={isSubmitting || cooldownRemaining > 0}
-                autoComplete="email"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder={contact.form.messagePlaceholder}
-                rows="5"
-                required
-                disabled={isSubmitting || cooldownRemaining > 0}
-              />
-            </div>
-
-            {status.message && (
-              <div className={`status-message ${status.type}`}>
-                {status.message}
-              </div>
-            )}
-
-            <button
-              type="submit"
-              className="submit-btn"
-              disabled={isSubmitting || cooldownRemaining > 0}
-            >
-              {isSubmitting ? (
-                <>
-                  <SpinnerIcon />
-                  Sending...
-                </>
-              ) : cooldownRemaining > 0 ? (
-                ` Wait ${formatTime(cooldownRemaining)}`
-              ) : (
-                <>
-                  <SendIcon />
-                  {contact.form.submitText}
-                </>
-              )}
-              <span className="btn-glow-effect" />
-            </button>
-          </motion.form>
+          </div>
         </div>
       </div>
     </section>

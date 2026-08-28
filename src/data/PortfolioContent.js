@@ -436,33 +436,29 @@ export const PortfolioContent = {
   },
 
   footer: {
-    brand: "M R KHAN",
+    brand: "MRKHANSERVICES",
     text: "Building reliable, scalable, and intelligent workflow automation systems.",
     links: [
       { label: "Home", href: "#home" },
+      { label: "Services", href: "#services" },
       { label: "About", href: "#about" },
-      { label: "Experience", href: "#experience" },
       { label: "Work", href: "#projects" },
-      { label: "Skills", href: "#skills" },
-      { label: "Reviews", href: "#reviews" },
       { label: "Contact", href: "#contact" }
     ],
     copyright: "All rights reserved.",
-    heart: "Built by M R KHAN"
+    heart: "MRKHANSERVICES — AI Automation & Growth Systems"
   },
 
   navbar: {
-    brand: "M R KHAN",
+    logo: "MRK",
+    brand: "MRKHANSERVICES",
     links: [
-      { label: "Home", href: "#home" },
+      { label: "Services", href: "#services" },
       { label: "About", href: "#about" },
-      { label: "Experience", href: "#experience" },
       { label: "Work", href: "#projects" },
-      { label: "Skills", href: "#skills" },
-      { label: "Reviews", href: "#reviews" },
       { label: "Contact", href: "#contact" }
     ],
-    cta: "Contact Me"
+    cta: "Let's talk"
   }
 };
 

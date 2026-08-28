@@ -1,0 +1,221 @@
+/* ========================================================= */
+/* About Page — AsimServices Style (PDF & Reference)         */
+/* ========================================================= */
+
+.about-page {
+  background: #0C0C0C;
+  color: #F4F4F4;
+  min-height: 100vh;
+  position: relative;
+  z-index: 5;
+}
+
+/* --------------------------------------------------------- */
+/* Hero Section                                              */
+/* --------------------------------------------------------- */
+.about-page__hero {
+  padding: 160px 24px 60px 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-page__headline {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(38px, 5.5vw, 68px);
+  font-weight: 800;
+  color: #F4F4F4;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  margin-bottom: 24px;
+}
+
+.about-page__supporting {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 400;
+  color: #9BA3AF;
+  max-width: 720px;
+  margin: 0 auto 36px auto;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------- */
+/* Story Section: Building with AI since 2023                */
+/* --------------------------------------------------------- */
+.about-story {
+  padding: 100px 24px;
+}
+
+.about-story__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.about-story__title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(34px, 4.5vw, 56px);
+  font-weight: 800;
+  color: #F4F4F4;
+  margin-bottom: 64px;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
+.about-story__layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-story__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-story__copy p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #9BA3AF;
+  line-height: 1.75;
+}
+
+.about-story__media {
+  position: relative;
+  border-radius: 24px;
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.about-story__media:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.about-story__media-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #08080A;
+}
+
+.about-story__media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --------------------------------------------------------- */
+/* Pillars Section: Building, automating, & scaling          */
+/* --------------------------------------------------------- */
+.about-pillars {
+  padding: 100px 24px;
+}
+
+.about-pillars__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.about-pillars__title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(34px, 4.5vw, 56px);
+  font-weight: 800;
+  color: #F4F4F4;
+  text-align: center;
+  margin-bottom: 64px;
+  letter-spacing: -0.025em;
+}
+
+.about-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.about-pillar {
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-pillar:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.about-pillar__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #F4F4F4;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.about-pillar__copy {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #9BA3AF;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------- */
+/* Bottom CTA Section                                        */
+/* --------------------------------------------------------- */
+.about-cta-section {
+  padding: 40px 24px 100px 24px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .about-story__layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-story__media {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .about-pillars__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-page__hero {
+    padding: 120px 20px 40px 20px;
+  }
+
+  .about-story {
+    padding: 60px 20px;
+  }
+
+  .about-pillars {
+    padding: 60px 20px 40px 20px;
+  }
+
+  .about-pillar {
+    padding: 28px 22px;
+  }
+}
