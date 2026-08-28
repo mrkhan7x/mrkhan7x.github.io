@@ -34,6 +34,10 @@ export default function Navbar({ currentRoute = "home", setCurrentRoute, onOpenB
       window.location.hash = "#about";
       if (setCurrentRoute) setCurrentRoute("about");
       window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (href === "#contact" || href === "/contact") {
+      window.location.hash = "#contact";
+      if (setCurrentRoute) setCurrentRoute("contact");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (href === "#home" || href === "/") {
       window.location.hash = "#home";
       if (setCurrentRoute) setCurrentRoute("home");

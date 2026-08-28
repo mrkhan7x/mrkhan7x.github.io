@@ -1,0 +1,187 @@
+/* ========================================================= */
+/* Contact Page — Matching AsimServices /contact/            */
+/* ========================================================= */
+
+.contact-page {
+  background: #0C0C0C;
+  color: #F4F4F4;
+  min-height: 100vh;
+  position: relative;
+  z-index: 5;
+}
+
+.contact-hero {
+  padding: 160px 24px 60px 24px;
+}
+
+.contact-hero__inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.contact-hero__heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.contact-hero__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8E96A0;
+  margin-bottom: 16px;
+}
+
+.contact-hero__title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(42px, 7vw, 84px);
+  font-weight: 800;
+  color: #F4F4F4;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  margin-bottom: 20px;
+}
+
+.contact-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 400;
+  color: #9BA3AF;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Details Box matching AsimServices */
+.contact-details-box {
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: clamp(32px, 5vw, 48px);
+  margin-bottom: 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.contact-details__intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #D7E2EA;
+  opacity: 0.9;
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-details__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-details__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-details__row:last-child {
+  border-bottom: none;
+}
+
+.contact-details__row dt {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #717886;
+}
+
+.contact-details__row dd {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #F4F4F4;
+}
+
+.contact-details__row dd a {
+  color: #F4F4F4;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-details__row dd a:hover {
+  color: #FFFFFF;
+  text-decoration-color: #FFFFFF;
+}
+
+.contact-details__booking-link {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  transition: opacity 0.2s ease;
+}
+
+.contact-details__booking-link:hover {
+  opacity: 0.8;
+}
+
+/* Channels Section */
+.contact-page__channels {
+  margin-top: 40px;
+}
+
+.contact-page__channels-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #F4F4F4;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.contact-page__channels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* CTA Section */
+.contact-cta-section {
+  padding: 40px 24px 100px 24px;
+}
+
+@media (max-width: 640px) {
+  .contact-hero {
+    padding: 120px 20px 40px 20px;
+  }
+
+  .contact-details__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .contact-page__channels-grid {
+    grid-template-columns: 1fr;
+  }
+}

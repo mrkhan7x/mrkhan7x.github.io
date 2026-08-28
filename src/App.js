@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ServicesPage from "./components/ServicesPage";
 import AboutPage from "./components/AboutPage";
+import ContactPage from "./components/ContactPage";
 import BookingModal from "./components/BookingModal";
 import "./App.css";
 
@@ -16,6 +17,7 @@ function App() {
     const hash = window.location.hash;
     if (hash === "#services" || hash === "#/services") return "services";
     if (hash === "#about" || hash === "#/about") return "about";
+    if (hash === "#contact" || hash === "#/contact") return "contact";
     return "home";
   });
 
@@ -24,6 +26,7 @@ function App() {
       const hash = window.location.hash;
       if (hash === "#services" || hash === "#/services") setCurrentRoute("services");
       else if (hash === "#about" || hash === "#/about") setCurrentRoute("about");
+      else if (hash === "#contact" || hash === "#/contact") setCurrentRoute("contact");
       else if (hash === "#home" || hash === "#/") setCurrentRoute("home");
     };
     window.addEventListener("hashchange", handleHashChange);
@@ -35,6 +38,8 @@ function App() {
       document.title = "Services — MRKHANSERVICES";
     } else if (currentRoute === "about") {
       document.title = "About Us — MRKHANSERVICES";
+    } else if (currentRoute === "contact") {
+      document.title = "Contact — MRKHANSERVICES";
     } else {
       document.title = "MRKHANSERVICES — AI Automation & Growth Systems";
     }
@@ -61,6 +66,8 @@ function App() {
         <ServicesPage onOpenBooking={openBooking} />
       ) : currentRoute === "about" ? (
         <AboutPage onOpenBooking={openBooking} />
+      ) : currentRoute === "contact" ? (
+        <ContactPage onOpenBooking={openBooking} />
       ) : (
         <>
           <Hero onOpenBooking={openBooking} />
