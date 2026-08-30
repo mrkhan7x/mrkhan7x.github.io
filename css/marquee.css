@@ -1,0 +1,85 @@
+/* ========================================================= */
+/* Company Marquee Styles                                    */
+/* ========================================================= */
+
+.company-marquee {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px 0;
+  background: #090909;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.company-marquee__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #9BA3AF;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.company-marquee__viewport {
+  overflow-x: hidden;
+  width: 100%;
+  display: flex;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.company-marquee__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.company-marquee__viewport:active {
+  cursor: grabbing;
+}
+
+.company-marquee__track {
+  display: flex;
+  gap: 48px;
+  animation: marqueeScroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+.company-marquee:hover .company-marquee__track {
+  animation-play-state: paused;
+}
+
+.company-marquee__group {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+
+.company-marquee__group span {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #D7E2EA;
+  letter-spacing: 0.02em;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+}
+
+.company-marquee__group span:hover {
+  opacity: 1;
+  color: #F4F4F4;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
