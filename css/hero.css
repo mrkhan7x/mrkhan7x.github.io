@@ -1,0 +1,111 @@
+/* ========================================================= */
+/* Hero Section Styles                                       */
+/* ========================================================= */
+
+.hero--home {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 160px 24px 80px;
+  background: #0C0C0C;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Background Layer */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(12, 12, 12, 0.4) 0%, rgba(12, 12, 12, 0.95) 80%);
+  z-index: 2;
+}
+
+/* Hero Content */
+.hero__content {
+  position: relative;
+  z-index: 5;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero__headline {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(38px, 5.5vw, 76px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #F4F4F4;
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+
+.hero__supporting {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #9BA3AF;
+  max-width: 680px;
+  margin: 0 auto 36px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-secondary-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #F4F4F4;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.hero-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .hero--home {
+    padding: 130px 20px 60px;
+    min-height: 80vh;
+  }
+}

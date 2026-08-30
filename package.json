@@ -20,12 +20,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "python -m http.server 3000 --directory build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b main",
-    "build": "react-scripts build",
-    "postbuild": "python scripts/prerender.py",
-    "test": "react-scripts test",
+    "build": "python scripts/build_static.py",
+    "test": "echo 'No tests needed for static HTML'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

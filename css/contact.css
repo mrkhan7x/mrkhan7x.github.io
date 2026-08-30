@@ -1,0 +1,219 @@
+/* ========================================================= */
+/* Contact Page Styles (AsimServices /contact/ Layout)       */
+/* ========================================================= */
+
+.contact-page {
+  background: #0C0C0C;
+  color: #F4F4F4;
+  min-height: 100vh;
+  position: relative;
+  z-index: 5;
+}
+
+.contact-hero {
+  padding: 160px 24px 60px 24px;
+}
+
+.contact-hero__inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.contact-hero__heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.contact-hero__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9BA3AF;
+  margin-bottom: 16px;
+}
+
+.contact-hero__title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(42px, 7vw, 84px);
+  font-weight: 800;
+  color: #F4F4F4;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  margin-bottom: 20px;
+}
+
+.contact-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 400;
+  color: #9BA3AF;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Details Box */
+.contact-details-box {
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: clamp(32px, 5vw, 48px);
+  margin-bottom: 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.contact-details__intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #D7E2EA;
+  opacity: 0.9;
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-details__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-details__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-details__row:last-child {
+  border-bottom: none;
+}
+
+.contact-details__row dt {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9BA3AF;
+}
+
+.contact-details__row dd {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #F4F4F4;
+  margin: 0;
+}
+
+.contact-details__booking-link {
+  color: #FFFFFF;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.contact-details__booking-link:hover {
+  opacity: 0.8;
+}
+
+/* Direct Channels Grid */
+.contact-page__channels {
+  margin-top: 60px;
+}
+
+.contact-page__channels-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #F4F4F4;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.contact-page__channels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.contact-channel-card {
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.contact-channel-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.16);
+  background: #19191C;
+}
+
+.contact-channel-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-channel-card__name {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9BA3AF;
+}
+
+.contact-channel-card__handle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.contact-channel-card__label {
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.contact-channel-card__arrow {
+  color: #9BA3AF;
+  font-size: 18px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.contact-channel-card:hover .contact-channel-card__arrow {
+  transform: translateX(3px);
+  color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+  .contact-hero {
+    padding: 120px 20px 40px;
+  }
+
+  .contact-page__channels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-details__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

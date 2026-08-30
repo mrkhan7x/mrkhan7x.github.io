@@ -1,0 +1,137 @@
+# MRKHANSERVICES — AI Automation & Growth Systems
+> Autonomous AI agents, custom workflow engineering, and B2B systems that scale operations and save 20+ hours per week.
+> Website: https://portfolio.mrkhan.qzz.io
+> Founder: Muhammad Roman Khan (M R KHAN)
+> Email: mrkhan.officialsite@gmail.com
+> Contact / Booking: https://portfolio.mrkhan.qzz.io/contact/
+
+## About Muhammad Roman Khan (M R KHAN)
+Muhammad Roman Khan is an AI automation builder, software systems architect, and Artificial Intelligence (BS AI) scholar. He specializes in designing practical, resilient AI workflows that replace manual bottlenecks with reliable autonomous operations.
+- Academic Foundation: BS in Artificial Intelligence, rigorous background in machine learning, statistics, neural networks, and algorithmic design.
+- Machine Learning & Deep Learning: Hands-on implementation of neural networks, decision tree ensembles (XGBoost, Random Forests), and custom PyTorch architectures.
+- Data Analytics & Data Engineering: Extraction pipelines, custom Python ETL flows, and normalized SQL/Supabase databases.
+- Commercial Track Record: Over 100+ production workflows deployed across n8n, OpenAI API, Supabase, and HubSpot. Generative systems for ArtPoliceJoe generated over $30K in revenue.
+
+---
+
+## Core Services Across 18 Business Verticals
+
+### 1. Dental & Healthcare
+- AI-led outreach engines, patient acquisition journeys, and paid-media optimization for dental practices and healthcare organizations.
+- Helped scale a dental PPC agency to $2M in annual revenue.
+- Key Capabilities: Patient Acquisition, PPC Performance, Automated CRM.
+
+### 2. E-Commerce
+- Personalized product discovery, hands-off email journeys, inventory demand forecasting, and AI customer care assistants.
+- Delivered systems managing thousands of SKUs and six figures in monthly sales.
+- Key Capabilities: Lifecycle Email, AI Merchandising, Support Assistants.
+
+### 3. Investment & Finance
+- Portfolio intelligence dashboards, self-running reporting workflows, and investor engagement tools.
+- Engineered data foundations for fund managers overseeing millions in assets under management.
+- Key Capabilities: Data Infrastructure, Reporting Automation, Investor Relations CRM.
+
+### 4. Local Services
+- Automated prospecting and appointment flows for home-service operators, cleaning businesses, landscaping teams, and contractors.
+- Outbound engines that keep calendars booked with zero manual cold calls.
+- Key Capabilities: Google Maps Lead Research, Automated Scheduling, Reputation Workflows.
+
+### 5. Digital Marketing Agencies
+- Proposal generators, client onboarding automations, and white-label reporting pipelines.
+- Gives agencies 20+ hours back each week per account manager.
+- Key Capabilities: Multi-Channel Dashboards, Onboarding Automation, Deliverable Triage.
+
+### 6. Photography & Visual Studios
+- Automated intake, portfolio matching, proofing reminders, and client follow-ups.
+- Eliminates administrative chaos for busy commercial studios.
+- Key Capabilities: Automated Intake, Gallery Follow-Ups, Invoicing Workflows.
+
+### 7. AI Media & Creative Studios
+- Script-to-storyboard pipelines, dynamic subtitle automation, asset generation, and rendering queues.
+- Powers high-output production engines with minimal manual friction.
+- Key Capabilities: Script Automation, Asset Generation, Media Pipelines.
+
+### 8. AI Agencies & Technical Consultancies
+- Multi-agent orchestration, custom tool-use architectures, vector database retrieval (RAG), and evaluation benches.
+- Built for agencies building on the frontier of AI capabilities.
+- Key Capabilities: Multi-Agent Systems, RAG Pipelines, Tool Integrations.
+
+### 9. Pay-Per-Click (PPC) Specialists
+- Creative testing pipelines, automated ad performance alerts, and dynamic negative-keyword monitors across Meta and Google Ads.
+- Keeps campaigns dialed in 24/7 without manual spreadsheet tracking.
+- Key Capabilities: Creative Audit Bots, Spend Alerts, Performance Analytics.
+
+### 10. Creative & Design Studios
+- Client brief analyzers, revision tracking, project status notifications, and feedback consolidation.
+- Frees designers to focus on high-impact creative direction.
+- Key Capabilities: Creative Brief Parsing, Revision Workflows, Feedback Tracking.
+
+### 11. Social Media Agencies
+- Multi-platform post scheduling, trend-monitoring listeners, engagement auto-responses, and monthly analytics reporting.
+- Helps teams scale account rosters without burning out account managers.
+- Key Capabilities: Content Scheduling, Engagement Triage, Performance Reports.
+
+### 12. Managed Service Providers (MSPs)
+- Ticket triage classification, SLA breach warnings, client onboarding checklists, and automated status communication.
+- Reduces response times and improves customer satisfaction.
+- Key Capabilities: Ticket Classification, SLA Monitoring, Client Intake.
+
+### 13. Commercial & Residential Real Estate
+- Property inquiry routing, listing alert distribution, tenant screening intake, and automated contract workflows.
+- Accelerates deal velocity across competitive markets.
+- Key Capabilities: Inbound Lead Triage, Showing Coordination, Document Pipelines.
+
+### 14. Brokers & Advisory Firms
+- NDA distribution, buyer qualification funnels, deal-room notification triggers, and investor matchmaking.
+- Protects confidential transactions while maximizing deal flow.
+- Key Capabilities: Buyer Qualification, Deal-Room Alerts, Due Diligence Automation.
+
+### 15. B2B Software & SaaS
+- Free-to-paid product-led growth (PLG) triggers, churn risk signals, in-app event triage, and sales notifications.
+- Connects product analytics directly to CRM revenue workflows.
+- Key Capabilities: PLG Automation, Churn Warning Bots, Sales Handoffs.
+
+### 16. Enterprise & Corporate Teams
+- Departmental request routing, cross-tool synchronization, internal knowledge retrieval, and compliance documentation.
+- Designed for security, scale, and clean auditing.
+- Key Capabilities: Cross-Platform Sync, Knowledge Assistants, Approval Workflows.
+
+### 17. Recruiting & Human Resources
+- Candidate screening scorecards, interview scheduling automation, candidate status updates, and reference gathering.
+- Delivers a top-tier candidate experience while halving time-to-hire.
+- Key Capabilities: Candidate Screening, Interview Automation, Onboarding Checklists.
+
+### 18. Executive Coaching & Consulting
+- Intake diagnostics, session preparation workflows, accountability check-ins, and resource delivery.
+- Keeps clients engaged between sessions with zero admin friction.
+- Key Capabilities: Diagnostic Scoring, Session Scheduling, Accountability Workflows.
+
+---
+
+## Technical Stack & Tooling
+- Workflow Engines: n8n, Make.com, Zapier
+- AI & LLMs: OpenAI API, Claude API, Voiceflow, custom RAG
+- Frameworks & Languages: Python, PyTorch, scikit-learn, React, FastAPI
+- Databases: PostgreSQL, Supabase, Airtable
+- CRMs & Comms: HubSpot, Slack API, WhatsApp Business API, Google Workspace
+
+---
+
+## Process (From First Call to Launch)
+1. Discovery and audit: Focused conversation to understand operations, bottlenecks, and ROI opportunities.
+2. Scope and proposal: Clear deliverables, timeline, and fixed-price or flexible hourly arrangement.
+3. Build and launch: Designing, testing under operational volume, and deploying custom systems.
+4. Ongoing support: Performance monitoring, workflow maintenance, and system expansion.
+
+---
+
+## Contact Information
+- Website: https://portfolio.mrkhan.qzz.io
+- Services: https://portfolio.mrkhan.qzz.io/services/
+- About: https://portfolio.mrkhan.qzz.io/about/
+- Contact & Booking: https://portfolio.mrkhan.qzz.io/contact/
+- Email: mrkhan.officialsite@gmail.com
+- WhatsApp: +92 328 5792098
+- LinkedIn: https://www.linkedin.com/in/muhammad-roman-khan-8245a0328
+- GitHub: https://github.com/mrkhan7x
+- Instagram: https://www.instagram.com/mrkhan7x
