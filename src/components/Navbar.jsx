@@ -24,34 +24,36 @@ export default function Navbar({ currentRoute = "home", setCurrentRoute, onOpenB
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (target) => {
     setOpen(false);
-    if (href === "#services" || href === "/services") {
-      window.location.hash = "#services";
+    const clean = (target || "").replace(/^#\/?/, "").replace(/^\//, "").replace(/\/$/, "");
+
+    if (clean === "services") {
+      window.history.pushState({}, "", "/services/");
       if (setCurrentRoute) setCurrentRoute("services");
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (href === "#about" || href === "/about") {
-      window.location.hash = "#about";
+    } else if (clean === "about") {
+      window.history.pushState({}, "", "/about/");
       if (setCurrentRoute) setCurrentRoute("about");
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (href === "#contact" || href === "/contact") {
-      window.location.hash = "#contact";
+    } else if (clean === "contact") {
+      window.history.pushState({}, "", "/contact/");
       if (setCurrentRoute) setCurrentRoute("contact");
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (href === "#home" || href === "/") {
-      window.location.hash = "#home";
+    } else if (clean === "" || clean === "home") {
+      window.history.pushState({}, "", "/");
       if (setCurrentRoute) setCurrentRoute("home");
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      if (setCurrentRoute && currentRoute !== "home") {
-        setCurrentRoute("home");
-        window.location.hash = "#home";
+    } else if (clean === "projects") {
+      if (currentRoute !== "home") {
+        window.history.pushState({}, "", "/#projects");
+        if (setCurrentRoute) setCurrentRoute("home");
         setTimeout(() => {
-          const el = document.getElementById(href.replace('#', ''));
+          const el = document.getElementById("projects");
           if (el) el.scrollIntoView({ behavior: "smooth" });
         }, 150);
       } else {
-        const el = document.getElementById(href.replace('#', ''));
+        const el = document.getElementById("projects");
         if (el) el.scrollIntoView({ behavior: "smooth" });
       }
     }

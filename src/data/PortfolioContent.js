@@ -453,10 +453,10 @@ export const PortfolioContent = {
     logo: "MRK",
     brand: "MRKHANSERVICES",
     links: [
-      { label: "Services", href: "#services" },
-      { label: "About", href: "#about" },
+      { label: "Services", href: "/services/" },
+      { label: "About", href: "/about/" },
       { label: "Work", href: "#projects" },
-      { label: "Contact", href: "#contact" }
+      { label: "Contact", href: "/contact/" }
     ],
     cta: "Let's talk"
   }

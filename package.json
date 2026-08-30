@@ -24,6 +24,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b main",
     "build": "react-scripts build",
+    "postbuild": "python scripts/prerender.py",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

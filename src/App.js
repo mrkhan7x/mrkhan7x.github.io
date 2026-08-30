@@ -13,24 +13,28 @@ import "./App.css";
 
 function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [currentRoute, setCurrentRoute] = useState(() => {
-    const hash = window.location.hash;
-    if (hash === "#services" || hash === "#/services") return "services";
-    if (hash === "#about" || hash === "#/about") return "about";
-    if (hash === "#contact" || hash === "#/contact") return "contact";
+  const getRouteFromUrl = () => {
+    const path = window.location.pathname.replace(/\/$/, "").replace(/^\//, "");
+    const hash = window.location.hash.replace(/^#\/?/, "");
+
+    if (path === "services" || hash === "services") return "services";
+    if (path === "about" || hash === "about") return "about";
+    if (path === "contact" || hash === "contact") return "contact";
     return "home";
-  });
+  };
+
+  const [currentRoute, setCurrentRoute] = useState(getRouteFromUrl);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash === "#services" || hash === "#/services") setCurrentRoute("services");
-      else if (hash === "#about" || hash === "#/about") setCurrentRoute("about");
-      else if (hash === "#contact" || hash === "#/contact") setCurrentRoute("contact");
-      else if (hash === "#home" || hash === "#/") setCurrentRoute("home");
+    const handleLocationChange = () => {
+      setCurrentRoute(getRouteFromUrl());
     };
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    window.addEventListener("popstate", handleLocationChange);
+    window.addEventListener("hashchange", handleLocationChange);
+    return () => {
+      window.removeEventListener("popstate", handleLocationChange);
+      window.removeEventListener("hashchange", handleLocationChange);
+    };
   }, []);
 
   useEffect(() => {

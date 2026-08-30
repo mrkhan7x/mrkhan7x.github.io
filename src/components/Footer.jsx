@@ -51,11 +51,11 @@ export default function Footer({ onOpenBooking }) {
           <div className="footer-col">
             <h5 className="footer-col__title">SERVICES</h5>
             <ul className="footer-col__list">
-              <li><a href="#services">AI Lead Generation</a></li>
-              <li><a href="#services">Custom AI Agents</a></li>
-              <li><a href="#services">Workflow Automation</a></li>
-              <li><a href="#services">CRM &amp; Sales Automation</a></li>
-              <li><a href="#services">All Services</a></li>
+              <li><a href="/services/">AI Lead Generation</a></li>
+              <li><a href="/services/">Custom AI Agents</a></li>
+              <li><a href="/services/">Workflow Automation</a></li>
+              <li><a href="/services/">CRM &amp; Sales Automation</a></li>
+              <li><a href="/services/">All Services</a></li>
             </ul>
           </div>
 
@@ -63,10 +63,10 @@ export default function Footer({ onOpenBooking }) {
           <div className="footer-col">
             <h5 className="footer-col__title">COMPANY</h5>
             <ul className="footer-col__list">
-              <li><a href="#about">About</a></li>
-              <li><a href="#about">What is MRKHANSERVICES?</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#services">Industries</a></li>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/about/">What is MRKHANSERVICES?</a></li>
+              <li><a href="/#projects">Projects</a></li>
+              <li><a href="/services/">Industries</a></li>
               <li>
                 <a href="https://portfolio.mrkhan.qzz.io" target="_blank" rel="noreferrer">
                   portfolio.mrkhan.qzz.io
@@ -79,10 +79,10 @@ export default function Footer({ onOpenBooking }) {
           <div className="footer-col">
             <h5 className="footer-col__title">RESOURCES</h5>
             <ul className="footer-col__list">
-              <li><a href="#services">Technical Expertise</a></li>
-              <li><a href="#about">Results &amp; Impact</a></li>
-              <li><a href="#projects">Case Studies</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="/services/">Technical Expertise</a></li>
+              <li><a href="/about/">Results &amp; Impact</a></li>
+              <li><a href="/#projects">Case Studies</a></li>
+              <li><a href="/contact/">Contact</a></li>
             </ul>
           </div>
 
