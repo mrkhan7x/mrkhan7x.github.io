@@ -32,7 +32,6 @@
   <link rel="stylesheet" href="/css/navbar.css" />
   <link rel="stylesheet" href="/css/hero.css" />
   <link rel="stylesheet" href="/css/marquee.css" />
-  <link rel="stylesheet" href="/css/projects.css" />
   <link rel="stylesheet" href="/css/we-build.css" />
   <link rel="stylesheet" href="/css/process.css" />
   <link rel="stylesheet" href="/css/contact.css" />
@@ -54,7 +53,6 @@
         <div class="nav-links-center">
           <a href="/services/" class="nav-link-btn">Services</a>
           <a href="/about/" class="nav-link-btn">About</a>
-          <a href="/#projects" class="nav-link-btn">Work</a>
           <a href="/contact/" class="nav-link-btn">Contact</a>
         </div>
         <div class="nav-cta-wrapper">
@@ -80,7 +78,6 @@
       <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
         <a href="/services/" class="mobile-dropdown-link">Services</a>
         <a href="/about/" class="mobile-dropdown-link">About</a>
-        <a href="/#projects" class="mobile-dropdown-link">Work</a>
         <a href="/contact/" class="mobile-dropdown-link">Contact</a>
         <a href="/contact/" class="talk-btn" data-action="open-booking" style="margin-top: 10px; width: 100%; justify-content: center;">
           <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
@@ -149,50 +146,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Work / Projects Section -->
-      <section class="work-showcase" id="projects">
-        <div class="work-showcase__inner">
-          <div class="work-showcase__intro">
-            <h2>Some of our work.</h2>
-            <p>
-              A selection of production automations, agent frameworks, and AI data systems engineered for client businesses.
-            </p>
-          </div>
-
-          <div class="work-showcase__grid">
-            <!-- Project 1 -->
-            <article class="work-showcase__item" data-project-id="dental-crm">
-              <div class="work-showcase__image-link">
-                <img src="/assets/images/projects/project1.png" alt="Lead Qualification & Onboarding Engine" onerror="this.src='/assets/mylogo.png'" />
-                <span class="work-showcase__arrow">→</span>
-              </div>
-              <h3>Lead Qualification &amp; Onboarding Engine</h3>
-              <p>Multi-step intake pipeline verifying insurance and scheduling appointments into CRM workflows.</p>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="work-showcase__item" data-project-id="b2b-outreach">
-              <div class="work-showcase__image-link">
-                <img src="/assets/images/projects/project2.png" alt="Autonomous Multi-Channel Outreach Machine" onerror="this.src='/assets/mylogo.png'" />
-                <span class="work-showcase__arrow">→</span>
-              </div>
-              <h3>Autonomous Multi-Channel Outreach Machine</h3>
-              <p>Targeted prospecting pipeline delivering bespoke value propositions across LinkedIn and Email.</p>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="work-showcase__item" data-project-id="generative-pipeline">
-              <div class="work-showcase__image-link">
-                <img src="/assets/images/projects/project3.png" alt="High-Volume Generative Media Pipeline" onerror="this.src='/assets/mylogo.png'" />
-                <span class="work-showcase__arrow">→</span>
-              </div>
-              <h3>High-Volume Generative Media Pipeline</h3>
-              <p>Commercial vision and asset generation workflows for ArtPoliceJoe, driving $30K+ in revenue.</p>
-            </article>
-          </div>
-        </div>
-      </section>
 
       <!-- We Don't Just Advise. We Build. Section -->
       <section class="we-build-section" id="about-preview">
@@ -291,8 +244,8 @@
             <ul class="footer-col__list">
               <li><a href="/about/">About</a></li>
               <li><a href="/about/#about-story">What is MRKHANSERVICES?</a></li>
-              <li><a href="/#projects">Projects</a></li>
               <li><a href="/services/">Industries</a></li>
+              <li><a href="/contact/" data-action="open-booking">Growth Call</a></li>
               <li><a href="https://portfolio.mrkhan.qzz.io">portfolio.mrkhan.qzz.io</a></li>
             </ul>
           </div>
@@ -301,7 +254,7 @@
             <ul class="footer-col__list">
               <li><a href="/services/">Technical Expertise</a></li>
               <li><a href="/about/">Results &amp; Impact</a></li>
-              <li><a href="/#projects">Case Studies</a></li>
+              <li><a href="/services/">AI Systems Built</a></li>
               <li><a href="/contact/">Contact</a></li>
             </ul>
           </div>
@@ -328,20 +281,6 @@
         </div>
       </div>
     </footer>
-  </div>
-
-  <!-- Global Project Detail Modal -->
-  <div class="project-modal-backdrop" id="project-modal">
-    <div class="project-modal-content">
-      <button class="project-modal-close-btn" id="project-modal-close" aria-label="Close project modal">&times;</button>
-      <h3 class="project-modal-title" id="project-modal-title">Project Title</h3>
-      <p class="project-modal-desc" id="project-modal-desc">Project details and architecture overview.</p>
-      <div class="project-modal-stats" id="project-modal-stats"></div>
-      <button class="talk-btn" data-action="open-booking" style="width: 100%; justify-content: center;">
-        <span class="talk-btn__label"><span class="talk-btn__label-current">Book a Strategy Call on this Workflow</span></span>
-        <span class="talk-btn__arrow">→</span>
-      </button>
-    </div>
   </div>
 
   <!-- Global 30-Minute Growth Call Booking Modal -->
