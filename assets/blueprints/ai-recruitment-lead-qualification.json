@@ -1,0 +1,427 @@
+{
+  "name": "AI Recruitment Lead Intake & Qualification",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "recruitment-lead",
+        "options": {}
+      },
+      "id": "f68b0ee9-03bf-4be7-8d9e-65ec0b7eb8c2",
+      "name": "Webhook - Inbound Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        240
+      ],
+      "webhookId": "a8d74f98-2762-4449-a167-4d9338738287"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "lead-text-wh",
+              "name": "lead_text",
+              "value": "={{ $json.body?.message || $json.body?.text || $json.body?.lead || JSON.stringify($json.body || $json) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c4a7f3b4-973b-4038-8ba8-ab5170cdd4d7",
+      "name": "Format Webhook Input",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.lead_text }}",
+        "schemaType": "fromJson",
+        "jsonSchemaExample": "{\"candidate_name\":\"Alex Rivera\",\"email\":\"alex.rivera@example.com\",\"phone\":\"+1-555-0199\",\"current_role\":\"Senior Full Stack / Automation Engineer\",\"years_of_experience\":6,\"key_skills\":[\"n8n\",\"TypeScript\",\"Python\",\"AI Agents\"],\"qualified\":true,\"score\":92,\"qualification_reason\":\"Exceeds senior requirements with strong automation and full-stack background\"}",
+        "options": {}
+      },
+      "id": "6dd1f91e-8cc0-44dc-b407-b38c01c56ddc",
+      "name": "AI Lead Extractor & Qualifier",
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        768,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "id": "a330df46-ed8f-42c3-88b9-a84495ee8f13",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        768,
+        560
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "h0D4KmKsAl2Nze7h",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "skills-formatted",
+              "name": "skills",
+              "value": "={{ Array.isArray($json.key_skills) ? $json.key_skills.join(\", \") : $json.key_skills }}",
+              "type": "string"
+            },
+            {
+              "id": "processed-ts",
+              "name": "processed_at",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "b9c46153-9008-4322-acad-c7fe6da3397f",
+      "name": "Format Candidate Record",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1040,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1WLBDkv6mizdAeAZ4nPQjVH0nleFP9QXmOHyz-_-_cx4"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Sheet1"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {
+          "handlingExtraData": "insertInNewColumn"
+        }
+      },
+      "id": "4de3d421-e1cc-44ca-ae93-8371e59ad74d",
+      "name": "Google Sheets - Log Lead",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1312,
+        352
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "u2cXkFaa7SNl7Dnr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.qualified }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              },
+              "rightValue": true
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f06c3af9-905f-4f39-b16f-a653fadff0d5",
+      "name": "Is Qualified Lead?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1568,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "#recruitment-leads"
+        },
+        "text": "=🎯 *New Qualified Candidate Alert!*\n*Name:* {{ $json.candidate_name }}\n*Role:* {{ $json.current_role }}\n*Experience:* {{ $json.years_of_experience }} years\n*Score:* {{ $json.score }}/100\n*Key Skills:* {{ $json.skills }}\n*Analysis:* {{ $json.qualification_reason }}\n*Contact:* {{ $json.email }} | {{ $json.phone }}",
+        "otherOptions": {}
+      },
+      "id": "a5739985-7178-43f4-ba66-5d60c6eef513",
+      "name": "Send Slack Notification",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.6,
+      "position": [
+        1840,
+        240
+      ],
+      "webhookId": "e1f55620-d9c8-4bb0-a871-669c5a5f3ec6",
+      "credentials": {
+        "slackApi": {
+          "id": "QqM1NtJ56KwOmNmu",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "recruitment@company.com",
+        "subject": "=🎯 Qualified Candidate: {{ $json.candidate_name }} - {{ $json.current_role }} (Score: {{ $json.score }})",
+        "message": "=<h2>🎯 New Qualified Candidate Alert</h2><p><strong>Candidate Name:</strong> {{ $json.candidate_name }}</p><p><strong>Target Role:</strong> {{ $json.current_role }}</p><p><strong>Experience:</strong> {{ $json.years_of_experience }} years</p><p><strong>Match Score:</strong> {{ $json.score }}/100</p><p><strong>Key Skills:</strong> {{ $json.skills }}</p><p><strong>AI Qualification Analysis:</strong> {{ $json.qualification_reason }}</p><hr/><p><strong>Email:</strong> <a href=\"mailto:{{ $json.email }}\">{{ $json.email }}</a></p><p><strong>Phone:</strong> {{ $json.phone }}</p>",
+        "options": {}
+      },
+      "id": "1fc3b7ea-696e-4c12-93fe-d8e5e8da8379",
+      "name": "Send Email Notification",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        2112,
+        240
+      ],
+      "webhookId": "43ce0386-1e8a-4727-ba83-03544fac55eb",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ipzFbKgCOsnIo5DM",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "archive-note",
+              "name": "status_note",
+              "value": "Candidate did not meet qualification threshold. Recorded to database without dispatching alerts.",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "e4e96002-f102-48ed-a83a-dadddcf07595",
+      "name": "Archive Unqualified Lead",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1840,
+        448
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b7029ad5-e0bc-41bd-85f6-ccd69b757c3b",
+      "name": "Manual Test Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        448
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "sample-lead-text",
+              "name": "lead_text",
+              "value": "Candidate Application:\nName: Alex Rivera\nEmail: alex.rivera@example.com\nPhone: +1-555-0199\nRole: Senior Full Stack / Automation Engineer\nExperience: 6 years\nSkills: n8n, TypeScript, Node.js, Python, PostgreSQL, REST APIs, AI Agents\nBio: 6 years building end-to-end automations, voice receptionists, and scalable backend workflows.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dd906b6a-94f2-48bb-8073-6d207f921038",
+      "name": "Sample Inbound Lead",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        448
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook - Inbound Lead": {
+      "main": [
+        [
+          {
+            "node": "Format Webhook Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Webhook Input": {
+      "main": [
+        [
+          {
+            "node": "AI Lead Extractor & Qualifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Lead Extractor & Qualifier": {
+      "main": [
+        [
+          {
+            "node": "Format Candidate Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Lead Extractor & Qualifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Candidate Record": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets - Log Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Log Lead": {
+      "main": [
+        [
+          {
+            "node": "Is Qualified Lead?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Qualified Lead?": {
+      "main": [
+        [
+          {
+            "node": "Send Slack Notification",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Archive Unqualified Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Slack Notification": {
+      "main": [
+        [
+          {
+            "node": "Send Email Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Test Trigger": {
+      "main": [
+        [
+          {
+            "node": "Sample Inbound Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sample Inbound Lead": {
+      "main": [
+        [
+          {
+            "node": "AI Lead Extractor & Qualifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "versionId": "7666b7ce-d512-46fa-ac2f-05026d9c0247",
+  "meta": {
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp",
+    "instanceId": "9f6af53a70443079fab2923576d91937ea50efc54c99df235e9c4d4b959bbe0c"
+  },
+  "nodeGroups": [],
+  "id": "aapE9M6tGaJKTEJG",
+  "tags": []
+}

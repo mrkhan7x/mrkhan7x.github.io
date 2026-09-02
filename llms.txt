@@ -116,6 +116,14 @@ Muhammad Roman Khan is an AI automation builder, software systems architect, and
 
 ---
 
+## Featured Architecture: Autonomous Candidate Intake & AI Qualification Pipeline
+- Case Study Page: https://portfolio.mrkhan.qzz.io/recruitment/
+- Architecture: Production n8n recruitment workflow connecting inbound application webhooks, LangChain information extraction with OpenAI, automated candidate scoring against criteria, Google Sheets database synchronization, conditional IF routing, high-priority Slack alerts to hiring teams, and automated personalized Gmail confirmations.
+- Key Outcomes: Under 5-second intake-to-alert latency, 100% automated resume screening, 15+ hours reclaimed weekly per recruiter.
+- Blueprint: Available for direct download at https://portfolio.mrkhan.qzz.io/assets/blueprints/ai-recruitment-lead-qualification.json
+
+---
+
 ## Technical Stack & Tooling
 - Workflow Engines: n8n, Make.com, Zapier
 - AI & LLMs: OpenAI API, Google Gemini, Claude API, Voiceflow, custom RAG
@@ -138,6 +146,7 @@ Muhammad Roman Khan is an AI automation builder, software systems architect, and
 - Website: https://portfolio.mrkhan.qzz.io
 - Services: https://portfolio.mrkhan.qzz.io/services/
 - RAG System Walkthrough: https://portfolio.mrkhan.qzz.io/rag/
+- Recruitment Pipeline Walkthrough: https://portfolio.mrkhan.qzz.io/recruitment/
 - About: https://portfolio.mrkhan.qzz.io/about/
 - Contact & Booking: https://portfolio.mrkhan.qzz.io/contact/
 - Email: mrkhan.officialsite@gmail.com

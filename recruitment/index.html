@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autonomous Candidate Intake &amp; AI Qualification Pipeline — MRKHANSERVICES</title>
+  <meta name="description" content="Production-grade AI recruitment workflow engineered in n8n. Ingests candidate applications, extracts skills using OpenAI, logs to Google Sheets, and triggers instant Slack and Gmail routing." />
+  <link rel="canonical" href="https://portfolio.mrkhan.qzz.io/recruitment/" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MRKHANSERVICES" />
+  <meta property="og:url" content="https://portfolio.mrkhan.qzz.io/recruitment/" />
+  <meta property="og:title" content="Autonomous Candidate Intake &amp; AI Qualification Pipeline — MRKHANSERVICES" />
+  <meta property="og:description" content="Production-grade AI recruitment workflow engineered in n8n. Ingests candidate applications, extracts skills using OpenAI, logs to Google Sheets, and triggers instant Slack and Gmail routing." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="theme-color" content="#0C0C0C" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/recruitment.css" />
+  <link rel="stylesheet" href="/css/modal.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+</head>
+<body>
+  <div class="app-background"></div>
+  <div class="grid-pattern-global"></div>
+
+  <div class="page-wrapper">
+    <!-- Floating Header -->
+    <header class="header-floating-wrapper">
+      <nav class="header-nav-container">
+        <a href="/" class="nav-brand" aria-label="MRKHANSERVICES Home">
+          <span class="brand-icon-badge">MRK</span>
+          <span class="brand-name-text">MRKHANSERVICES</span>
+        </a>
+        <div class="nav-links-center">
+          <a href="/services/" class="nav-link-btn">Services</a>
+          <a href="/about/" class="nav-link-btn">About</a>
+          <a href="/contact/" class="nav-link-btn">Contact</a>
+        </div>
+        <div class="nav-cta-wrapper">
+          <a href="/contact/" class="talk-btn" data-action="open-booking">
+            <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
+            <span class="talk-btn__arrow">→</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Mobile Header -->
+      <div class="mobile-navbar-bar">
+        <a href="/" class="nav-brand">
+          <span class="brand-icon-badge">MRK</span>
+          <span class="brand-name-text">MRKHAN</span>
+        </a>
+        <button class="burger-btn" id="mobile-burger-btn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
+        <a href="/services/" class="mobile-dropdown-link">Services</a>
+        <a href="/about/" class="mobile-dropdown-link">About</a>
+        <a href="/contact/" class="mobile-dropdown-link">Contact</a>
+        <a href="/contact/" class="talk-btn" data-action="open-booking" style="margin-top: 10px; width: 100%; justify-content: center;">
+          <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
+          <span class="talk-btn__arrow">→</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="recruitment-page">
+      <!-- Hero Section -->
+      <section class="recruitment-hero" id="top">
+        <div class="recruitment-hero__badge">
+          <span class="recruitment-hero__badge-dot"></span>
+          Production n8n Architecture Case Study
+        </div>
+        <h1 class="recruitment-hero__title">Autonomous Candidate Intake &amp; AI Qualification Pipeline.</h1>
+        <p class="recruitment-hero__subtitle">
+          A high-throughput recruitment workflow engineered in n8n. Ingests raw applicant submissions, extracts structured competencies with OpenAI, automatically logs full records to Google Sheets, and triggers instant Slack and Gmail notifications in under 5 seconds.
+        </p>
+
+        <!-- High-Impact Outcome Metrics -->
+        <div class="recruitment-metrics">
+          <div class="recruitment-metric-chip">
+            <span>⚡</span>
+            <span><strong>&lt; 5s</strong> Intake to Team Alert</span>
+          </div>
+          <div class="recruitment-metric-chip">
+            <span>🎯</span>
+            <span><strong>100% Automated</strong> Resume Screening</span>
+          </div>
+          <div class="recruitment-metric-chip">
+            <span>⏱</span>
+            <span><strong>15+ Hours</strong> Saved Weekly</span>
+          </div>
+          <div class="recruitment-metric-chip">
+            <span>📊</span>
+            <span><strong>Sheets + Slack + Gmail</strong> Synchronized</span>
+          </div>
+        </div>
+
+        <div>
+          <a href="/contact/" class="talk-btn" data-action="open-booking">
+            <span class="talk-btn__label"><span class="talk-btn__label-current">Book a Strategy Call on this Workflow</span></span>
+            <span class="talk-btn__arrow">→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive n8n Canvas Showcase -->
+      <section class="canvas-section">
+        <div class="canvas-toolbar">
+          <div class="canvas-tabs">
+            <button class="canvas-tab-btn active" id="tab-interactive" onclick="switchView('interactive')">
+              ⚡ Interactive Node Canvas
+            </button>
+            <button class="canvas-tab-btn" id="tab-screenshot" onclick="switchView('screenshot')">
+              🖼 Studio Canvas Screenshot
+            </button>
+          </div>
+          <a href="/assets/blueprints/ai-recruitment-lead-qualification.json" download class="canvas-blueprint-link">
+            <span>📥 Download Blueprint (.json)</span>
+          </a>
+        </div>
+
+        <div class="canvas-viewport">
+          <!-- View 1: Interactive SVG Canvas -->
+          <div class="canvas-svg-container" id="canvas-interactive-view">
+            <svg class="n8n-svg-canvas" viewBox="160 180 2060 480" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Dot Grid Pattern -->
+                <pattern id="n8n-dot-grid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+                  <circle cx="2" cy="2" r="1.1" fill="rgba(255, 255, 255, 0.12)" />
+                </pattern>
+
+                <!-- Wire Filter -->
+                <filter id="glow-wire" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Canvas Background -->
+              <rect x="0" y="0" width="2400" height="800" fill="#131417" />
+              <rect x="0" y="0" width="2400" height="800" fill="url(#n8n-dot-grid)" />
+
+              <!-- ============================================== -->
+              <!-- CONNECTOR WIRES (Cubic Bezier Curves)          -->
+              <!-- ============================================== -->
+              <!-- 1. Webhook -> Format Webhook Input -->
+              <path id="wire-1" d="M 330 260 C 400 260, 410 260, 480 260" fill="none" stroke="#6B7280" stroke-width="2.5" />
+              <circle r="3.5" fill="#38BDF8">
+                <animateMotion dur="2.4s" repeatCount="indefinite" path="M 330 260 C 400 260, 410 260, 480 260" />
+              </circle>
+
+              <!-- 2. Manual Test -> Sample Inbound -->
+              <path id="wire-2" d="M 330 468 C 400 468, 410 468, 480 468" fill="none" stroke="#6B7280" stroke-width="2.5" />
+
+              <!-- 3. Format Webhook -> AI Extractor -->
+              <path id="wire-3" d="M 570 260 C 660 260, 680 372, 768 372" fill="none" stroke="#6B7280" stroke-width="2.5" />
+              <circle r="3.5" fill="#38BDF8">
+                <animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" path="M 570 260 C 660 260, 680 372, 768 372" />
+              </circle>
+
+              <!-- 4. Sample Inbound -> AI Extractor -->
+              <path id="wire-4" d="M 570 468 C 660 468, 680 372, 768 372" fill="none" stroke="#4B5563" stroke-width="2" stroke-dasharray="4" />
+
+              <!-- 5. OpenAI Chat Model -> AI Extractor (Model Input) -->
+              <path id="wire-ai" d="M 814 560 C 814 510, 814 470, 814 416" fill="none" stroke="#9333EA" stroke-width="2.5" stroke-dasharray="5 3" />
+              <circle r="3.5" fill="#C084FC">
+                <animateMotion dur="2s" repeatCount="indefinite" path="M 814 560 C 814 510, 814 470, 814 416" />
+              </circle>
+
+              <!-- 6. AI Extractor -> Format Candidate -->
+              <path id="wire-5" d="M 948 372 C 990 372, 1000 372, 1040 372" fill="none" stroke="#6B7280" stroke-width="2.5" />
+              <circle r="3.5" fill="#38BDF8">
+                <animateMotion dur="2s" begin="1.2s" repeatCount="indefinite" path="M 948 372 C 990 372, 1000 372, 1040 372" />
+              </circle>
+
+              <!-- 7. Format Candidate -> Google Sheets -->
+              <path id="wire-6" d="M 1130 372 C 1210 372, 1230 372, 1312 372" fill="none" stroke="#6B7280" stroke-width="2.5" />
+              <circle r="3.5" fill="#22C55E">
+                <animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M 1130 372 C 1210 372, 1230 372, 1312 372" />
+              </circle>
+
+              <!-- 8. Google Sheets -> Is Qualified? (IF) -->
+              <path id="wire-7" d="M 1402 372 C 1470 372, 1500 372, 1568 372" fill="none" stroke="#6B7280" stroke-width="2.5" />
+              <circle r="3.5" fill="#38BDF8">
+                <animateMotion dur="2s" begin="1.8s" repeatCount="indefinite" path="M 1402 372 C 1470 372, 1500 372, 1568 372" />
+              </circle>
+
+              <!-- 9. IF -> Slack (True Branch) -->
+              <path id="wire-true" d="M 1658 352 C 1730 352, 1760 260, 1840 260" fill="none" stroke="#22C55E" stroke-width="2.5" />
+              <circle r="3.5" fill="#22C55E">
+                <animateMotion dur="1.8s" begin="2s" repeatCount="indefinite" path="M 1658 352 C 1730 352, 1760 260, 1840 260" />
+              </circle>
+
+              <!-- 10. Slack -> Gmail -->
+              <path id="wire-gmail" d="M 1930 260 C 2010 260, 2030 260, 2112 260" fill="none" stroke="#22C55E" stroke-width="2.5" />
+              <circle r="3.5" fill="#22C55E">
+                <animateMotion dur="1.8s" begin="2.4s" repeatCount="indefinite" path="M 1930 260 C 2010 260, 2030 260, 2112 260" />
+              </circle>
+
+              <!-- 11. IF -> Archive (False Branch) -->
+              <path id="wire-false" d="M 1658 392 C 1730 392, 1760 468, 1840 468" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="4" />
+
+              <!-- Branch Labels on IF -->
+              <text x="1695" y="318" fill="#4ADE80" font-family="Inter, sans-serif" font-size="11" font-weight="700">true</text>
+              <text x="1695" y="440" fill="#F87171" font-family="Inter, sans-serif" font-size="11" font-weight="700">false</text>
+
+              <!-- ============================================== -->
+              <!-- NODES                                          -->
+              <!-- ============================================== -->
+
+              <!-- Node 1: Webhook - Inbound Lead (240, 220) -->
+              <g class="n8n-node-group" onclick="inspectNode('webhook')">
+                <rect class="n8n-node-box" x="240" y="220" width="90" height="80" rx="14" fill="#1C1D22" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+                <rect x="250" y="230" width="30" height="30" rx="8" fill="rgba(239, 68, 68, 0.12)" />
+                <path d="M 265 238 L 265 252 M 258 245 L 272 245" stroke="#F87171" stroke-width="2.5" stroke-linecap="round" />
+                <text x="240" y="322" fill="#E5E7EB" font-family="Inter, sans-serif" font-size="12" font-weight="600">Webhook - Inbound Lead</text>
+                <text x="240" y="338" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="10">POST</text>
+                <circle cx="330" cy="260" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 2: Format Webhook Input (480, 220) -->
+              <g class="n8n-node-group" onclick="inspectNode('format-input')">
+                <rect class="n8n-node-box" x="480" y="220" width="90" height="80" rx="14" fill="#1C1D22" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+                <rect x="490" y="230" width="30" height="30" rx="8" fill="rgba(59, 130, 246, 0.12)" />
+                <text x="498" y="250" fill="#60A5FA" font-family="Inter, sans-serif" font-size="14" font-weight="bold">✎</text>
+                <text x="480" y="322" fill="#E5E7EB" font-family="Inter, sans-serif" font-size="12" font-weight="600">Format Webhook Input</text>
+                <text x="480" y="338" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="10">manual</text>
+                <circle cx="480" cy="260" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+                <circle cx="570" cy="260" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 3: Manual Test Trigger (240, 428) -->
+              <g class="n8n-node-group" onclick="inspectNode('manual-trigger')">
+                <rect class="n8n-node-box" x="240" y="428" width="90" height="80" rx="14" fill="#1C1D22" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" opacity="0.8" />
+                <text x="275" y="468" fill="#F59E0B" font-family="Inter, sans-serif" font-size="18">⚡</text>
+                <text x="240" y="530" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="12">Manual Test Trigger</text>
+                <circle cx="330" cy="468" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 4: Sample Inbound Lead (480, 428) -->
+              <g class="n8n-node-group" onclick="inspectNode('sample-lead')">
+                <rect class="n8n-node-box" x="480" y="428" width="90" height="80" rx="14" fill="#1C1D22" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" opacity="0.8" />
+                <text x="498" y="468" fill="#60A5FA" font-family="Inter, sans-serif" font-size="14">✎</text>
+                <text x="480" y="530" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="12">Sample Inbound Lead</text>
+                <text x="480" y="546" fill="#6B7280" font-family="Inter, sans-serif" font-size="10">manual</text>
+                <circle cx="480" cy="468" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+                <circle cx="570" cy="468" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 5: AI Lead Extractor & Qualifier (768, 332) (Wide Card) -->
+              <g class="n8n-node-group" onclick="inspectNode('ai-extractor')">
+                <rect class="n8n-node-box" x="768" y="332" width="180" height="84" rx="14" fill="#1E2028" stroke="#8B5CF6" stroke-width="1.8" />
+                <rect x="782" y="348" width="34" height="34" rx="8" fill="rgba(139, 92, 246, 0.18)" />
+                <text x="792" y="370" fill="#C084FC" font-family="Inter, sans-serif" font-size="16">📄</text>
+                <text x="826" y="362" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="12.5" font-weight="700">AI Lead Extractor &amp;...</text>
+                <text x="826" y="378" fill="#C084FC" font-family="Inter, sans-serif" font-size="10.5" font-weight="600">Information Extractor</text>
+                <circle cx="768" cy="372" r="4.5" fill="#1C1D22" stroke="#8B5CF6" stroke-width="1.5" />
+                <circle cx="948" cy="372" r="4.5" fill="#1C1D22" stroke="#8B5CF6" stroke-width="1.5" />
+                <!-- Model input pin below -->
+                <circle cx="814" cy="416" r="4" fill="#1C1D22" stroke="#9333EA" stroke-width="1.5" />
+                <text x="800" y="432" fill="#A855F7" font-family="Inter, sans-serif" font-size="9" font-weight="600">Model*</text>
+              </g>
+
+              <!-- Node 6: OpenAI Chat Model (768, 520) -->
+              <g class="n8n-node-group" onclick="inspectNode('openai')">
+                <circle class="n8n-node-box" cx="814" cy="560" r="38" fill="#1C1D22" stroke="#A855F7" stroke-width="1.5" />
+                <text x="804" y="567" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="18">🤖</text>
+                <text x="768" y="618" fill="#E5E7EB" font-family="Inter, sans-serif" font-size="12" font-weight="600">OpenAI Chat Model</text>
+                <circle cx="814" cy="522" r="4" fill="#1C1D22" stroke="#A855F7" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 7: Format Candidate Record (1040, 332) -->
+              <g class="n8n-node-group" onclick="inspectNode('format-candidate')">
+                <rect class="n8n-node-box" x="1040" y="332" width="90" height="80" rx="14" fill="#1C1D22" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+                <rect x="1050" y="342" width="30" height="30" rx="8" fill="rgba(59, 130, 246, 0.12)" />
+                <text x="1058" y="362" fill="#60A5FA" font-family="Inter, sans-serif" font-size="14">✎</text>
+                <text x="1040" y="434" fill="#E5E7EB" font-family="Inter, sans-serif" font-size="12" font-weight="600">Format Candidate Record</text>
+                <text x="1040" y="450" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="10">manual</text>
+                <circle cx="1040" cy="372" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+                <circle cx="1130" cy="372" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 8: Google Sheets - Log Lead (1312, 332) -->
+              <g class="n8n-node-group" onclick="inspectNode('google-sheets')">
+                <rect class="n8n-node-box" x="1312" y="332" width="90" height="80" rx="14" fill="#1C1D22" stroke="#22C55E" stroke-width="1.6" />
+                <rect x="1322" y="342" width="30" height="30" rx="8" fill="rgba(34, 197, 94, 0.15)" />
+                <text x="1329" y="363" fill="#22C55E" font-family="Inter, sans-serif" font-size="15">▦</text>
+                <text x="1312" y="434" fill="#E5E7EB" font-family="Inter, sans-serif" font-size="12" font-weight="600">Google Sheets - Log Lead</text>
+                <text x="1312" y="450" fill="#86EFAC" font-family="Inter, sans-serif" font-size="10">append: sheet</text>
+                <circle cx="1312" cy="372" r="4.5" fill="#1C1D22" stroke="#22C55E" stroke-width="1.5" />
+                <circle cx="1402" cy="372" r="4.5" fill="#1C1D22" stroke="#22C55E" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 9: Is Qualified Lead? (IF) (1568, 332) -->
+              <g class="n8n-node-group" onclick="inspectNode('if-qualified')">
+                <rect class="n8n-node-box" x="1568" y="332" width="90" height="80" rx="14" fill="#1C1D22" stroke="#38BDF8" stroke-width="1.5" />
+                <rect x="1578" y="342" width="30" height="30" rx="8" fill="rgba(56, 189, 248, 0.15)" />
+                <path d="M 1588 362 L 1598 352 M 1588 362 L 1598 372" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+                <text x="1568" y="434" fill="#E5E7EB" font-family="Inter, sans-serif" font-size="12" font-weight="600">Is Qualified Lead?</text>
+                <circle cx="1568" cy="372" r="4.5" fill="#1C1D22" stroke="#38BDF8" stroke-width="1.5" />
+                <!-- True & False outputs -->
+                <circle cx="1658" cy="352" r="4.5" fill="#1C1D22" stroke="#4ADE80" stroke-width="1.5" />
+                <circle cx="1658" cy="392" r="4.5" fill="#1C1D22" stroke="#F87171" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 10: Send Slack Notification (1840, 220) -->
+              <g class="n8n-node-group" onclick="inspectNode('slack')">
+                <rect class="n8n-node-box" x="1840" y="220" width="90" height="80" rx="14" fill="#1C1D22" stroke="#E11D48" stroke-width="1.5" />
+                <rect x="1850" y="230" width="30" height="30" rx="8" fill="rgba(225, 29, 72, 0.15)" />
+                <text x="1858" y="250" fill="#FB7185" font-family="Inter, sans-serif" font-size="14">#</text>
+                <text x="1840" y="322" fill="#E5E7EB" font-family="Inter, sans-serif" font-size="12" font-weight="600">Send Slack Notification</text>
+                <text x="1840" y="338" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="10">post: message</text>
+                <circle cx="1840" cy="260" r="4.5" fill="#1C1D22" stroke="#E11D48" stroke-width="1.5" />
+                <circle cx="1930" cy="260" r="4.5" fill="#1C1D22" stroke="#E11D48" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 11: Send Email Notification (2112, 220) -->
+              <g class="n8n-node-group" onclick="inspectNode('gmail')">
+                <rect class="n8n-node-box" x="2112" y="220" width="90" height="80" rx="14" fill="#1C1D22" stroke="#EA4335" stroke-width="1.5" />
+                <rect x="2122" y="230" width="30" height="30" rx="8" fill="rgba(234, 67, 53, 0.15)" />
+                <text x="2129" y="251" fill="#F87171" font-family="Inter, sans-serif" font-size="14">✉</text>
+                <text x="2112" y="322" fill="#E5E7EB" font-family="Inter, sans-serif" font-size="12" font-weight="600">Send Email Notification</text>
+                <text x="2112" y="338" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="10">send: message</text>
+                <circle cx="2112" cy="260" r="4.5" fill="#1C1D22" stroke="#EA4335" stroke-width="1.5" />
+              </g>
+
+              <!-- Node 12: Archive Unqualified Lead (1840, 428) -->
+              <g class="n8n-node-group" onclick="inspectNode('archive')">
+                <rect class="n8n-node-box" x="1840" y="428" width="90" height="80" rx="14" fill="#1C1D22" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" opacity="0.8" />
+                <rect x="1850" y="438" width="30" height="30" rx="8" fill="rgba(107, 114, 128, 0.15)" />
+                <text x="1858" y="458" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="14">📁</text>
+                <text x="1840" y="530" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="12">Archive Unqualified Lead</text>
+                <text x="1840" y="546" fill="#6B7280" font-family="Inter, sans-serif" font-size="10">manual</text>
+                <circle cx="1840" cy="468" r="4.5" fill="#1C1D22" stroke="#6B7280" stroke-width="1.5" />
+              </g>
+            </svg>
+          </div>
+
+          <!-- View 2: High-Resolution Screenshot -->
+          <div class="canvas-screenshot-view" id="canvas-screenshot-view">
+            <img src="/assets/images/n8n-recruitment-canvas.png" alt="Full n8n Workflow Studio Canvas Screenshot" />
+          </div>
+        </div>
+
+        <!-- Interactive Node Inspector Drawer -->
+        <div class="node-inspector" id="node-inspector">
+          <div class="node-inspector__left">
+            <p class="node-inspector__label" id="inspect-label">CLICK ANY NODE TO INSPECT LOGIC</p>
+            <h3 class="node-inspector__title" id="inspect-title">AI Lead Extractor &amp; Qualifier (LangChain Node)</h3>
+            <p class="node-inspector__desc" id="inspect-desc">
+              Parses the candidate's raw submission text through OpenAI, mapping it to a strict JSON schema: extracting years of experience, technical competency tags, leadership history, and computing an automated <code>qualified</code> boolean score.
+            </p>
+          </div>
+          <div class="node-inspector__right">
+            <a href="/contact/" class="talk-btn" data-action="open-booking">
+              <span class="talk-btn__label"><span class="talk-btn__label-current">Build this for your team</span></span>
+              <span class="talk-btn__arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- The 4-Step Operational Process -->
+      <section class="recruitment-process">
+        <div class="rag-section-header">
+          <p class="rag-section-header__eyebrow">WORKFLOW BREAKDOWN</p>
+          <h2 class="rag-section-header__title">From Resume Intake to Interview Alert</h2>
+          <p class="rag-section-header__desc">
+            How manual screening hours are converted into a sub-5-second autonomous pipeline.
+          </p>
+        </div>
+
+        <div class="recruitment-process__grid">
+          <!-- Step 1 -->
+          <article class="recruitment-process-card">
+            <div class="recruitment-process-card__step">01</div>
+            <h3 class="recruitment-process-card__title">Instant Webhook Ingestion</h3>
+            <p class="recruitment-process-card__desc">
+              Applications from LinkedIn, website career forms, or job portals post payload data directly to the secure n8n webhook listener in real time.
+            </p>
+            <span class="recruitment-process-card__badge">✓ Zero Manual Data Entry</span>
+          </article>
+
+          <!-- Step 2 -->
+          <article class="recruitment-process-card">
+            <div class="recruitment-process-card__step">02</div>
+            <h3 class="recruitment-process-card__title">AI Skill &amp; Fit Extraction</h3>
+            <p class="recruitment-process-card__desc">
+              LangChain information extractor powered by OpenAI evaluates applicant background against required job criteria, outputting a structured scorecard.
+            </p>
+            <span class="recruitment-process-card__badge">✓ Strict Scoring Rubric</span>
+          </article>
+
+          <!-- Step 3 -->
+          <article class="recruitment-process-card">
+            <div class="recruitment-process-card__step">03</div>
+            <h3 class="recruitment-process-card__title">Centralized Database Sync</h3>
+            <p class="recruitment-process-card__desc">
+              Candidate profile, parsed skill list, fit score, and timestamp append automatically into your hiring Google Sheets or ATS database.
+            </p>
+            <span class="recruitment-process-card__badge">✓ Complete Audit Trail</span>
+          </article>
+
+          <!-- Step 4 -->
+          <article class="recruitment-process-card">
+            <div class="recruitment-process-card__step">04</div>
+            <h3 class="recruitment-process-card__title">High-Priority Team Alert</h3>
+            <p class="recruitment-process-card__desc">
+              Qualified candidates trigger an immediate Slack alert with action buttons for recruiters, while an automated confirmation sends via Gmail.
+            </p>
+            <span class="recruitment-process-card__badge">✓ &lt; 5s Recruiter Notification</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- CTA Banner -->
+      <section class="cta-banner">
+        <div class="cta-banner__glow"></div>
+        <h2 class="cta-banner__title">Ready to automate your recruiting pipeline?</h2>
+        <p class="cta-banner__text">
+          Book a free 30-minute AI growth call. We'll audit your current hiring intake, evaluate operational bottlenecks, and show you how autonomous workflows can save 15+ recruiter hours every week.
+        </p>
+        <a href="/contact/" class="talk-btn cta-banner__btn" data-action="open-booking">
+          <span class="talk-btn__label"><span class="talk-btn__label-current">Book a free strategy call</span></span>
+          <span class="talk-btn__arrow">→</span>
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-columns">
+          <div class="footer-col footer-col--brand">
+            <span class="footer-col__eyebrow">Work with us</span>
+            <h4 class="footer-col__heading">Start with a free, thirty-minute AI growth call.</h4>
+            <div class="footer-col__cta">
+              <a href="/contact/" class="talk-btn" data-action="open-booking">
+                <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
+                <span class="talk-btn__arrow">→</span>
+              </a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col__title">SERVICES</h5>
+            <ul class="footer-col__list">
+              <li><a href="/services/#service-dental">AI Lead Generation</a></li>
+              <li><a href="/services/#service-ai-agencies">Custom AI Agents</a></li>
+              <li><a href="/rag/">RAG Knowledge Systems</a></li>
+              <li><a href="/recruitment/">AI Recruitment Intake</a></li>
+              <li><a href="/services/">All Services</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col__title">COMPANY</h5>
+            <ul class="footer-col__list">
+              <li><a href="/about/">About</a></li>
+              <li><a href="/about/#about-story">What is MRKHANSERVICES?</a></li>
+              <li><a href="/services/">Industries</a></li>
+              <li><a href="/contact/" data-action="open-booking">Growth Call</a></li>
+              <li><a href="https://portfolio.mrkhan.qzz.io">portfolio.mrkhan.qzz.io</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col__title">RESOURCES</h5>
+            <ul class="footer-col__list">
+              <li><a href="/services/">Technical Expertise</a></li>
+              <li><a href="/rag/">Live RAG Walkthrough</a></li>
+              <li><a href="/recruitment/">Recruitment Blueprint</a></li>
+              <li><a href="/contact/">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col__title">CONNECT</h5>
+            <ul class="footer-col__list">
+              <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noreferrer">Instagram</a></li>
+              <li><a href="https://wa.me/923285792098" target="_blank" rel="noreferrer">WhatsApp</a></li>
+              <li><a href="mailto:mrkhan.officialsite@gmail.com">Direct Email</a></li>
+              <li><a href="/contact/" data-action="open-booking">Book a Call</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span class="footer-bottom__monogram">MRK</span>
+          <div class="footer-bottom__legal">
+            <a href="/">Privacy Policy</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <span class="footer-bottom__copyright">© 2026 MRKHANSERVICES Media LLC. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Global 30-Minute Growth Call Booking Modal -->
+  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog">
+    <div class="cal-modal-card">
+      <div class="cal-modal__header">
+        <div class="cal-modal__brand">
+          <span class="cal-modal__badge">MRK</span>
+          <span class="cal-modal__brand-name">MRKHANSERVICES</span>
+        </div>
+        <div class="cal-modal__title">AI Growth Call</div>
+        <button class="cal-modal__close" id="booking-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="cal-modal__body">
+        <div class="cal-modal__left">
+          <div class="cal-modal__meta">
+            <span class="meta-item">⏱ 30 min</span>
+            <span class="meta-item">📍 Google Meet</span>
+            <span class="meta-item">⚡ High-Impact Strategy</span>
+          </div>
+          <p class="cal-modal__desc">
+            We’ll review your current funnel, pinpoint operational bottlenecks, and identify exactly where AI or autonomous agents will create the clearest revenue lift.
+          </p>
+          <div class="cal-modal__date-picker">
+            <label for="booking-date-select">Select a Date</label>
+            <select id="booking-date-select" class="cal-select"></select>
+          </div>
+        </div>
+
+        <div class="cal-modal__right">
+          <!-- Step 1: Time Slots -->
+          <div id="booking-slots-column">
+            <div class="column-title">Available Times</div>
+            <div class="time-slots-grid">
+              <button class="time-slot-btn" data-time="09:00 AM">09:00 AM</button>
+              <button class="time-slot-btn" data-time="10:00 AM">10:00 AM</button>
+              <button class="time-slot-btn" data-time="11:00 AM">11:00 AM</button>
+              <button class="time-slot-btn" data-time="01:00 PM">01:00 PM</button>
+              <button class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
+              <button class="time-slot-btn" data-time="03:00 PM">03:00 PM</button>
+              <button class="time-slot-btn" data-time="04:00 PM">04:00 PM</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Confirmation Form -->
+          <div id="booking-form-step" class="cal-booking-form">
+            <button id="booking-back-btn" class="back-btn">← Back to times</button>
+            <div id="booking-selected-summary" class="selected-summary">Upcoming Date at Time</div>
+            <form id="booking-form-element">
+              <div class="form-group">
+                <label for="client-name">Your Name</label>
+                <input type="text" id="client-name" required placeholder="e.g. Alex Morgan" />
+              </div>
+              <div class="form-group">
+                <label for="client-email">Work Email</label>
+                <input type="email" id="client-email" required placeholder="alex@company.com" />
+              </div>
+              <div class="form-group">
+                <label for="client-notes">What are you looking to automate?</label>
+                <textarea id="client-notes" rows="3" placeholder="Candidate screening, resume parsing, ATS sync..."></textarea>
+              </div>
+              <button type="submit" class="talk-btn submit-booking-btn">
+                <span class="talk-btn__label"><span class="talk-btn__label-current">Confirm reservation</span></span>
+                <span class="talk-btn__arrow">→</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success View -->
+      <div id="booking-success-view" class="cal-modal__success">
+        <div class="success-icon">✓</div>
+        <h3 class="cal-modal__title">Strategy Call Confirmed!</h3>
+        <p id="booking-success-details" class="cal-modal__desc"></p>
+        <button class="talk-btn" onclick="window.closeBookingModal()">
+          <span class="talk-btn__label"><span class="talk-btn__label-current">Done</span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Node Inspector & View Switcher Script -->
+  <script>
+    const nodeDetails = {
+      'webhook': {
+        label: 'STEP 01 • INTAKE TRIGGER',
+        title: 'Webhook - Inbound Lead (POST Trigger)',
+        desc: 'Receives JSON or form-data payloads directly from candidate application forms, job board webhooks, or ATS portals in real time with zero manual intervention.'
+      },
+      'format-input': {
+        label: 'DATA NORMALIZATION',
+        title: 'Format Webhook Input (Set Node)',
+        desc: 'Standardizes disparate application parameters—mapping resume text, email addresses, phone numbers, and applicant notes into a clean, normalized string for the AI engine.'
+      },
+      'ai-extractor': {
+        label: 'CORE INTELLIGENCE',
+        title: 'AI Lead Extractor & Qualifier (LangChain Information Extractor)',
+        desc: 'Uses OpenAI with a rigid JSON schema to extract candidate name, years of experience, primary technical skills, and computes an automated boolean qualified score based on hiring standards.'
+      },
+      'openai': {
+        label: 'LLM REASONING MODEL',
+        title: 'OpenAI Chat Model (GPT-4o Engine)',
+        desc: 'Connected to the LangChain Extractor to perform deep semantic evaluation of unstructured candidate resumes and project descriptions.'
+      },
+      'format-candidate': {
+        label: 'PAYLOAD STRUCTURING',
+        title: 'Format Candidate Record (Set Node)',
+        desc: 'Prepares the extracted fields into formatted spreadsheet columns: Candidate Name, Email, Phone, Fit Score, Qualified (True/False), and Decision Timestamp.'
+      },
+      'google-sheets': {
+        label: 'DATABASE LOGGING',
+        title: 'Google Sheets - Log Lead (Append Operation)',
+        desc: 'Instantly appends the candidate record into the centralized hiring spreadsheet or database, maintaining a synchronized real-time applicant tracker.'
+      },
+      'if-qualified': {
+        label: 'CONDITIONAL ROUTING',
+        title: 'Is Qualified Lead? (IF Branch)',
+        desc: 'Examines the boolean output: if the applicant meets all qualifications, routes to high-priority Slack & Email dispatch; otherwise routes to archive.'
+      },
+      'slack': {
+        label: 'TEAM ALERTING',
+        title: 'Send Slack Notification (Recruiter Channel)',
+        desc: 'Posts a rich Slack block message with candidate scorecard, experience summary, and instant interview booking links directly into the hiring team channel.'
+      },
+      'gmail': {
+        label: 'CANDIDATE CONFIRMATION',
+        title: 'Send Email Notification (Gmail API)',
+        desc: 'Dispatches a personalized, automated email confirmation to the candidate thanking them and outlining immediate next steps.'
+      },
+      'archive': {
+        label: 'ARCHIVE ROUTING',
+        title: 'Archive Unqualified Lead (Set Node)',
+        desc: 'Gracefully tags and archives unqualified applications in the background without polluting the recruiting team Slack channel.'
+      },
+      'manual-trigger': {
+        label: 'DEVELOPMENT & QA',
+        title: 'Manual Test Trigger',
+        desc: 'Allows the engineering team to trigger simulated applicant submissions with pre-loaded mock resumes for QA testing.'
+      },
+      'sample-lead': {
+        label: 'TEST DATASET',
+        title: 'Sample Inbound Lead (Set Node)',
+        desc: 'Supplies test payload data containing sample candidate resumes to benchmark extractor accuracy before deploying live.'
+      }
+    };
+
+    function inspectNode(nodeKey) {
+      const data = nodeDetails[nodeKey];
+      if (!data) return;
+      document.getElementById('inspect-label').textContent = data.label;
+      document.getElementById('inspect-title').textContent = data.title;
+      document.getElementById('inspect-desc').innerHTML = data.desc;
+      
+      // Smooth scroll slightly into view if needed
+      document.getElementById('node-inspector').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function switchView(view) {
+      const interactiveTab = document.getElementById('tab-interactive');
+      const screenshotTab = document.getElementById('tab-screenshot');
+      const interactiveView = document.getElementById('canvas-interactive-view');
+      const screenshotView = document.getElementById('canvas-screenshot-view');
+
+      if (view === 'screenshot') {
+        screenshotTab.classList.add('active');
+        interactiveTab.classList.remove('active');
+        screenshotView.classList.add('active');
+        interactiveView.style.display = 'none';
+      } else {
+        interactiveTab.classList.add('active');
+        screenshotTab.classList.remove('active');
+        interactiveView.style.display = 'block';
+        screenshotView.classList.remove('active');
+      }
+    }
+  </script>
+
+  <!-- Global Scripts -->
+  <script src="/js/booking.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
