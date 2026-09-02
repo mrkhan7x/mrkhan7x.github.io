@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MRKHANSERVICES — AI Automation & Growth Systems</title>
-  <meta name="description" content="MRKHANSERVICES — AI Automation & Growth Systems. Autonomous AI agents, custom workflow engineering, and B2B systems that scale operations and save 20+ hours per week." />
-  <link rel="canonical" href="https://portfolio.mrkhan.qzz.io/" />
+  <title>Autonomous Enterprise Knowledge Agent &amp; Semantic RAG System — MRKHANSERVICES</title>
+  <meta name="description" content="Turn your website, e-commerce catalog, and company documentation into an autonomous, zero-hallucination AI knowledge agent using n8n and Pinecone vector storage." />
+  <link rel="canonical" href="https://portfolio.mrkhan.qzz.io/rag/" />
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="MRKHANSERVICES" />
-  <meta property="og:url" content="https://portfolio.mrkhan.qzz.io/" />
-  <meta property="og:title" content="MRKHANSERVICES — AI Automation & Growth Systems" />
-  <meta property="og:description" content="Autonomous AI agents, custom workflow engineering, and B2B systems that scale operations and save 20+ hours per week." />
+  <meta property="og:url" content="https://portfolio.mrkhan.qzz.io/rag/" />
+  <meta property="og:title" content="Autonomous Enterprise Knowledge Agent &amp; Semantic RAG System — MRKHANSERVICES" />
+  <meta property="og:description" content="Turn your website, e-commerce catalog, and company documentation into an autonomous, zero-hallucination AI knowledge agent using n8n and Pinecone vector storage." />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicons -->
@@ -24,17 +24,14 @@
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/global.css" />
   <link rel="stylesheet" href="/css/navbar.css" />
-  <link rel="stylesheet" href="/css/hero.css" />
   <link rel="stylesheet" href="/css/marquee.css" />
-  <link rel="stylesheet" href="/css/we-build.css" />
-  <link rel="stylesheet" href="/css/process.css" />
-  <link rel="stylesheet" href="/css/contact.css" />
+  <link rel="stylesheet" href="/css/rag.css" />
   <link rel="stylesheet" href="/css/modal.css" />
   <link rel="stylesheet" href="/css/footer.css" />
 </head>
@@ -86,127 +83,211 @@
       </div>
     </header>
 
-    <main>
+    <main class="rag-page">
       <!-- Hero Section -->
-      <section class="hero hero--home" id="top">
-        <div class="hero-bg">
-          <video class="hero-bg-video" autoplay loop muted playsinline>
-            <source src="/assets/hero_bg.mp4" type="video/mp4" />
-            <source src="/assets/n8n_hero.mov" type="video/quicktime" />
-          </video>
-          <div class="hero-overlay"></div>
+      <section class="rag-hero" id="top">
+        <div class="rag-hero__badge">
+          <span class="rag-hero__badge-dot"></span>
+          Production Architecture Case Study
+        </div>
+        <h1 class="rag-hero__title">Turn Your Company Data into an Autonomous Knowledge Engine.</h1>
+        <p class="rag-hero__subtitle">
+          A custom semantic Retrieval-Augmented Generation (RAG) system engineered to ingest your websites, product catalogs, and operational documents into Pinecone vector storage—delivering instant, zero-hallucination answers to customer inquiries and team requests 24/7.
+        </p>
+
+        <!-- High-Impact Outcome Metrics -->
+        <div class="rag-metrics">
+          <div class="rag-metric-chip">
+            <span>⚡</span>
+            <span><strong>&lt; 1.8s</strong> Latency</span>
+          </div>
+          <div class="rag-metric-chip">
+            <span>🎯</span>
+            <span><strong>100% Grounded</strong> in Company Truth</span>
+          </div>
+          <div class="rag-metric-chip">
+            <span>⏱</span>
+            <span><strong>25+ Hours</strong> Saved Weekly</span>
+          </div>
+          <div class="rag-metric-chip">
+            <span>🛡</span>
+            <span><strong>Zero Hallucinations</strong> Guaranteed</span>
+          </div>
         </div>
 
-        <div class="hero__content">
-          <h1 class="hero__headline">Autonomous AI Systems Built For Real Business Outcomes.</h1>
-          <p class="hero__supporting">
-            We design and deploy custom AI agents, automated funnels, and enterprise workflow pipelines that eliminate manual bottlenecks and save businesses 20+ hours every week.
+        <div class="rag-hero__actions">
+          <a href="/contact/" class="talk-btn" data-action="open-booking">
+            <span class="talk-btn__label"><span class="talk-btn__label-current">Book a Strategy Call on this Workflow</span></span>
+            <span class="talk-btn__arrow">→</span>
+          </a>
+          <a href="#pipeline" class="nav-link-btn" style="border: 1px solid rgba(255, 255, 255, 0.12); padding: 10px 22px; border-radius: 9999px;">
+            Explore Architecture ↓
+          </a>
+        </div>
+      </section>
+
+      <!-- Video Showcase Container -->
+      <section class="rag-video-section">
+        <div class="rag-video-wrapper">
+          <iframe 
+            class="rag-video-iframe"
+            src="https://drive.google.com/file/d/1BEslHLQ0lOXehPZiFNlZ2FxsJ34bjWsZ/preview" 
+            title="RAG Workflow and Autonomous Chatbot Demonstration by Muhammad Roman Khan"
+            allow="autoplay; encrypted-media; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="rag-video-meta">
+          <span>📹 Live n8n &amp; Pinecone Walkthrough by Muhammad Roman Khan (M R KHAN)</span>
+          <a href="https://drive.google.com/drive/folders/1Sz3Z_751QdJmD7vW2OrIMtgAy_rOzUZI?usp=sharing" target="_blank" rel="noopener noreferrer">
+            Access Workflow Source &amp; Blueprint (Google Drive) ↗
+          </a>
+        </div>
+      </section>
+
+      <!-- 3-Stage Engineering Pipeline (Bento Grid) -->
+      <section class="rag-pipeline" id="pipeline">
+        <div class="rag-section-header">
+          <p class="rag-section-header__eyebrow">HOW THE ENGINE OPERATES</p>
+          <h2 class="rag-section-header__title">The 3-Stage Zero-Hallucination Pipeline</h2>
+          <p class="rag-section-header__desc">
+            Standard chatbots guess when they don't know the answer. Our RAG architecture separates ingestion, semantic indexing, and grounded inference to guarantee precision on every query.
           </p>
-          <div class="hero-actions">
-            <a href="/contact/" class="talk-btn" data-action="open-booking">
-              <span class="talk-btn__label"><span class="talk-btn__label-current">Book a free strategy call</span></span>
-              <span class="talk-btn__arrow">→</span>
-            </a>
-            <a href="/services/" class="hero-secondary-btn">
-              Explore Industry Solutions →
-            </a>
+        </div>
+
+        <div class="rag-pipeline__grid">
+          <!-- Stage 1 -->
+          <article class="rag-pipeline-card">
+            <div class="rag-pipeline-card__step">01</div>
+            <h3 class="rag-pipeline-card__title">Automated Ingestion &amp; Cleansing</h3>
+            <p class="rag-pipeline-card__text">
+              The workflow systematically scrapes your public website, product catalogs, service pages, and internal documents. Raw HTML boilerplate, navigation menus, and noise are stripped down to high-signal structured business text.
+            </p>
+            <ul class="rag-pipeline-card__bullets">
+              <li>Multi-page web crawler with HTTP request triggers</li>
+              <li>HTML parsing and semantic DOM extraction</li>
+              <li>Data normalization across disparate sources</li>
+            </ul>
+          </article>
+
+          <!-- Stage 2 -->
+          <article class="rag-pipeline-card">
+            <div class="rag-pipeline-card__step">02</div>
+            <h3 class="rag-pipeline-card__title">Semantic Chunking &amp; Pinecone Indexing</h3>
+            <p class="rag-pipeline-card__text">
+              Content is split into coherent text chunks with overlapping sliding windows to preserve sentence context. Each chunk is vectorized through high-dimensional embedding models and indexed into a dedicated Pinecone vector database.
+            </p>
+            <ul class="rag-pipeline-card__bullets">
+              <li>Context-preserving recursive chunking</li>
+              <li>High-dimensional vector embeddings</li>
+              <li>Scalable Pinecone vector store storage</li>
+            </ul>
+          </article>
+
+          <!-- Stage 3 -->
+          <article class="rag-pipeline-card">
+            <div class="rag-pipeline-card__step">03</div>
+            <h3 class="rag-pipeline-card__title">Grounded Agent &amp; Real-Time Webhook</h3>
+            <p class="rag-pipeline-card__text">
+              When a user submits a query via website chat or webhook, the agent vectorizes the question, pulls the top matching context blocks from Pinecone, and synthesizes an exact answer strictly constrained to your verified data.
+            </p>
+            <ul class="rag-pipeline-card__bullets">
+              <li>Instant top-k semantic similarity retrieval</li>
+              <li>Strict prompt guardrails preventing hallucinations</li>
+              <li>Real-time webhook and multi-channel delivery</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Multi-Industry Business Applications -->
+      <section class="rag-industries">
+        <div class="rag-section-header">
+          <p class="rag-section-header__eyebrow">COMMERCIAL APPLICATIONS</p>
+          <h2 class="rag-section-header__title">Engineered for Cross-Industry Impact</h2>
+          <p class="rag-section-header__desc">
+            Wherever repetitive questions drain employee hours or delay prospective buyers, this autonomous system delivers immediate ROI.
+          </p>
+        </div>
+
+        <div class="rag-industries__grid">
+          <!-- Industry 1 -->
+          <div class="rag-industry-card">
+            <span class="rag-industry-card__tag">E-Commerce &amp; Retail</span>
+            <h3 class="rag-industry-card__title">24/7 AI Shopping Assistant &amp; Catalog Guide</h3>
+            <p class="rag-industry-card__text">
+              Ingest your entire inventory, product sizing guides, shipping thresholds, and return policies. The agent guides shoppers directly to product links, clarifies specifications, and converts high-intent visitors before they bounce.
+            </p>
+            <div class="rag-industry-card__outcome">
+              <span>📈</span>
+              <span>+34% Checkout Conversion • Zero Support Backlog</span>
+            </div>
+          </div>
+
+          <!-- Industry 2 -->
+          <div class="rag-industry-card">
+            <span class="rag-industry-card__tag">B2B SaaS &amp; Tech Consultancies</span>
+            <h3 class="rag-industry-card__title">Technical Knowledge Base &amp; Onboarding Bot</h3>
+            <p class="rag-industry-card__text">
+              Turn dense API documentation, integration guides, and pricing tiers into an interactive assistant. Prospective buyers and active users receive instant technical guidance without filing manual support tickets.
+            </p>
+            <div class="rag-industry-card__outcome">
+              <span>⏱</span>
+              <span>Sub-2-Second First Response Time • 70% Ticket Deflection</span>
+            </div>
+          </div>
+
+          <!-- Industry 3 -->
+          <div class="rag-industry-card">
+            <span class="rag-industry-card__tag">Professional &amp; Local Services</span>
+            <h3 class="rag-industry-card__title">Pre-Qualification &amp; Appointment Intake Agent</h3>
+            <p class="rag-industry-card__text">
+              For dental clinics, law practices, and real estate brokerages. The agent answers treatment questions, explains pricing ranges, pre-qualifies incoming client requests, and routes booked slots directly into your CRM.
+            </p>
+            <div class="rag-industry-card__outcome">
+              <span>🎯</span>
+              <span>Pre-Screened Leads • 20+ Hours Reclaimed Weekly</span>
+            </div>
+          </div>
+
+          <!-- Industry 4 -->
+          <div class="rag-industry-card">
+            <span class="rag-industry-card__tag">Enterprise &amp; Corporate Teams</span>
+            <h3 class="rag-industry-card__title">Internal SOP &amp; Employee Handbook Engine</h3>
+            <p class="rag-industry-card__text">
+              Eliminate endless Slack interruptions. Ingest internal operating manuals, HR benefits, compliance policies, and training materials. Team members query the agent in natural language and receive verified answers with source citations.
+            </p>
+            <div class="rag-industry-card__outcome">
+              <span>🛡</span>
+              <span>Single Source of Truth • Instant Cross-Team Alignment</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Company Marquee -->
-      <div class="company-marquee">
-        <p class="company-marquee__label">MRKHANSERVICES WORKS WITH</p>
-        <div class="company-marquee__viewport">
-          <div class="company-marquee__track">
-            <div class="company-marquee__group">
-              <span>n8n Workflows</span>
-              <span>OpenAI Agents</span>
-              <span>Voiceflow</span>
-              <span>Make.com</span>
-              <span>Supabase</span>
-              <span>HubSpot CRM</span>
-              <span>Airtable</span>
-              <span>Slack API</span>
-              <span>WhatsApp API</span>
-              <span>Python Automation</span>
-            </div>
-            <div class="company-marquee__group" aria-hidden="true">
-              <span>n8n Workflows</span>
-              <span>OpenAI Agents</span>
-              <span>Voiceflow</span>
-              <span>Make.com</span>
-              <span>Supabase</span>
-              <span>HubSpot CRM</span>
-              <span>Airtable</span>
-              <span>Slack API</span>
-              <span>WhatsApp API</span>
-              <span>Python Automation</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- We Don't Just Advise. We Build. Section -->
-      <section class="we-build-section" id="about-preview">
-        <div class="we-build__inner">
-          <h2 class="we-build__heading">We don't just advise. We build.</h2>
-          <div class="we-build__grid">
-            <div class="we-build__card">
-              <h3 class="we-build__card-title">Built for real business outcomes</h3>
-              <p class="we-build__card-text">We create AI agents, chatbots, and automations designed to save time, capture demand, and move your business forward.</p>
-            </div>
-            <div class="we-build__card">
-              <h3 class="we-build__card-title">Fixed scope or hourly support</h3>
-              <p class="we-build__card-text">Choose a clearly scoped, fixed-price project or flexible hourly support for ongoing improvements, strategy, and technical help.</p>
-            </div>
-            <div class="we-build__card">
-              <h3 class="we-build__card-title">Proven in the field</h3>
-              <p class="we-build__card-text">Our work is shaped by real client needs across industries, with systems built to perform reliably beyond the demo.</p>
-            </div>
-            <div class="we-build__card">
-              <h3 class="we-build__card-title">Systems we stand behind</h3>
-              <p class="we-build__card-text">We build practical tools you can own, understand, and improve—so your team can keep getting value long after launch.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4-Step Process Section -->
-      <section class="process-section">
-        <div class="process-header">
-          <h2 class="process-heading">From first call to launch.</h2>
-        </div>
-        <div class="process-grid">
-          <div class="process-card">
-            <span class="process-card__step">STEP 01</span>
-            <h3 class="process-card__title">Discovery and audit</h3>
-            <p class="process-card__text">We start with a focused conversation to understand your goals, current systems, bottlenecks, and where AI can create the highest value.</p>
-          </div>
-          <div class="process-card">
-            <span class="process-card__step">STEP 02</span>
-            <h3 class="process-card__title">Scope and proposal</h3>
-            <p class="process-card__text">You receive a clear plan, timeline, and scope tailored to your needs. Choose a fixed-price project or flexible hourly support.</p>
-          </div>
-          <div class="process-card">
-            <span class="process-card__step">STEP 03</span>
-            <h3 class="process-card__title">Build and launch</h3>
-            <p class="process-card__text">We design, build, test, and deploy your custom solution with regular progress updates—making sure your solution operates cleanly.</p>
-          </div>
-          <div class="process-card">
-            <span class="process-card__step">STEP 04</span>
-            <h3 class="process-card__title">Ongoing support</h3>
-            <p class="process-card__text">After launch, we stay close by, monitoring performance, updating workflows, and expanding your system through flexible support.</p>
-          </div>
+      <!-- Technical Specifications -->
+      <section class="rag-specs">
+        <p class="rag-specs__label">DEPLOYMENT SPECIFICATIONS &amp; STACK</p>
+        <div class="rag-specs__tags">
+          <span class="rag-spec-pill">n8n Workflow Orchestration</span>
+          <span class="rag-spec-pill">Pinecone Vector Database</span>
+          <span class="rag-spec-pill">Google Gemini Embeddings</span>
+          <span class="rag-spec-pill">Google Gemini Reasoning LLM</span>
+          <span class="rag-spec-pill">LangChain Agent Tools</span>
+          <span class="rag-spec-pill">Recursive Text Chunking</span>
+          <span class="rag-spec-pill">Semantic Similarity Search</span>
+          <span class="rag-spec-pill">REST Webhook Triggers</span>
+          <span class="rag-spec-pill">HTML DOM Parsing</span>
+          <span class="rag-spec-pill">Production Error Handlers</span>
         </div>
       </section>
 
       <!-- CTA Banner -->
       <section class="cta-banner">
         <div class="cta-banner__glow"></div>
-        <h2 class="cta-banner__title">Ready to put AI to work?</h2>
+        <h2 class="cta-banner__title">Ready to build your custom AI knowledge agent?</h2>
         <p class="cta-banner__text">
-          Book a free 30-minute AI growth call. We'll examine your funnel, pinpoint what's slowing growth, and show you where intelligent automation can create the biggest lift.
+          Book a free 30-minute AI strategy call. We'll examine your current documentation, data sources, and customer touchpoints—showing you exactly how a custom RAG pipeline can eliminate manual bottlenecks.
         </p>
         <a href="/contact/" class="talk-btn cta-banner__btn" data-action="open-booking">
           <span class="talk-btn__label"><span class="talk-btn__label-current">Book a free strategy call</span></span>

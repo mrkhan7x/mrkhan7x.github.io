@@ -108,9 +108,18 @@ Muhammad Roman Khan is an AI automation builder, software systems architect, and
 
 ---
 
+## Featured Architecture: Autonomous Enterprise Knowledge Agent & Semantic RAG System
+- Case Study Page: https://portfolio.mrkhan.qzz.io/rag/
+- Architecture: 3-stage pipeline combining multi-page web scraping (HTTP request triggers), text normalization, recursive semantic chunking, high-dimensional Gemini vector embeddings, Pinecone vector database indexing, and LangChain autonomous reasoning agents with strict anti-hallucination prompt guardrails.
+- Key Outcomes: Sub-1.8-second response latency, 100% grounded in verified company truth, 25+ hours saved weekly on repetitive customer and team inquiries.
+- Applications: E-Commerce Product Advisory, B2B SaaS Technical Support & Onboarding, Professional Services (Dental/Legal/Real Estate) Lead Intake, and Enterprise Internal SOP/Handbook Retrieval.
+
+---
+
 ## Technical Stack & Tooling
 - Workflow Engines: n8n, Make.com, Zapier
-- AI & LLMs: OpenAI API, Claude API, Voiceflow, custom RAG
+- AI & LLMs: OpenAI API, Google Gemini, Claude API, Voiceflow, custom RAG
+- Vector Stores: Pinecone, Supabase pgvector
 - Frameworks & Languages: Python, PyTorch, scikit-learn, React, FastAPI
 - Databases: PostgreSQL, Supabase, Airtable
 - CRMs & Comms: HubSpot, Slack API, WhatsApp Business API, Google Workspace
@@ -128,6 +137,7 @@ Muhammad Roman Khan is an AI automation builder, software systems architect, and
 ## Contact Information
 - Website: https://portfolio.mrkhan.qzz.io
 - Services: https://portfolio.mrkhan.qzz.io/services/
+- RAG System Walkthrough: https://portfolio.mrkhan.qzz.io/rag/
 - About: https://portfolio.mrkhan.qzz.io/about/
 - Contact & Booking: https://portfolio.mrkhan.qzz.io/contact/
 - Email: mrkhan.officialsite@gmail.com
@@ -135,3 +145,4 @@ Muhammad Roman Khan is an AI automation builder, software systems architect, and
 - LinkedIn: https://www.linkedin.com/in/muhammad-roman-khan-8245a0328
 - GitHub: https://github.com/mrkhan7x
 - Instagram: https://www.instagram.com/mrkhan7x
+
