@@ -16,6 +16,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://portfolio.mrkhan.qzz.io/recruitment/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://portfolio.mrkhan.qzz.io/about/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

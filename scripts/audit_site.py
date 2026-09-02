@@ -6,6 +6,7 @@ html_files = [
     os.path.join(base, "index.html"),
     os.path.join(base, "services", "index.html"),
     os.path.join(base, "rag", "index.html"),
+    os.path.join(base, "recruitment", "index.html"),
     os.path.join(base, "about", "index.html"),
     os.path.join(base, "contact", "index.html")
 ]
@@ -48,10 +49,16 @@ for hf in html_files:
         if l.startswith("http") or l.startswith("mailto:") or l.startswith("https:"):
             continue
         clean_path = l.split("#")[0]
-        if clean_path and clean_path not in ["/", "/services/", "/rag/", "/about/", "/contact/"]:
+        if clean_path.startswith("/assets/"):
+            asset_local = os.path.join(base, clean_path.lstrip("/").replace("/", os.sep))
+            if not os.path.exists(asset_local):
+                print(f"  FLAGGED DEAD ASSET LINK in {rel_hf}: {l}")
+                all_links_ok = False
+            continue
+        if clean_path and clean_path not in ["/", "/services/", "/rag/", "/recruitment/", "/about/", "/contact/"]:
             print(f"  FLAGGED LINK in {rel_hf}: {l}")
             all_links_ok = False
 
 if all_links_ok:
-    print("PASS: All internal navigation links point to valid clean routes (/, /services/, /rag/, /about/, /contact/)!")
+    print("PASS: All internal navigation links point to valid clean routes (/, /services/, /rag/, /recruitment/, /about/, /contact/)!")
 

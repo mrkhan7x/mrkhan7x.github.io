@@ -13,6 +13,7 @@ files_to_copy = [
     ("index.html", "index.html"),
     ("services/index.html", "services/index.html"),
     ("rag/index.html", "rag/index.html"),
+    ("recruitment/index.html", "recruitment/index.html"),
     ("about/index.html", "about/index.html"),
     ("contact/index.html", "contact/index.html"),
     ("favicon.svg", "favicon.svg"),
