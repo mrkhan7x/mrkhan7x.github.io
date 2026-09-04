@@ -65,7 +65,7 @@ FOOTER_HTML = """
           <li><a href="/about/">What is MRKHANSERVICES?</a></li>
           <li><a href="/#projects">Projects</a></li>
           <li><a href="/services/">Industries</a></li>
-          <li><a href="https://portfolio.mrkhan.qzz.io">portfolio.mrkhan.qzz.io</a></li>
+          <li><a href="https://mrkhanservices.site">mrkhanservices.site</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -505,7 +505,7 @@ CONTACT_CONTENT = f"""
             </div>
             <div class="contact-details__row">
               <dt>Website</dt>
-              <dd><a href="https://portfolio.mrkhan.qzz.io">portfolio.mrkhan.qzz.io</a></dd>
+              <dd><a href="https://mrkhanservices.site">mrkhanservices.site</a></dd>
             </div>
             <div class="contact-details__row">
               <dt>Serving</dt>
@@ -704,28 +704,28 @@ pages = [
         "path": "",
         "title": "MRKHANSERVICES — AI Automation & Growth Systems",
         "description": "MRKHANSERVICES — AI Automation & Growth Systems. Autonomous AI agents, custom workflow engineering, and B2B systems that scale operations and save 20+ hours per week.",
-        "canonical": "https://portfolio.mrkhan.qzz.io/",
+        "canonical": "https://mrkhanservices.site/",
         "content": HOME_CONTENT
     },
     {
         "path": "services",
         "title": "AI Automation Services — MRKHANSERVICES",
         "description": "Custom AI agents, chatbots, lead-generation systems, and workflow automation built across 18 business verticals.",
-        "canonical": "https://portfolio.mrkhan.qzz.io/services/",
+        "canonical": "https://mrkhanservices.site/services/",
         "content": SERVICES_CONTENT
     },
     {
         "path": "about",
         "title": "About Us — MRKHANSERVICES",
         "description": "Learn about Muhammad Roman Khan (M R KHAN), BS in Artificial Intelligence, PyTorch & Deep Learning architectures, and commercial automation track record.",
-        "canonical": "https://portfolio.mrkhan.qzz.io/about/",
+        "canonical": "https://mrkhanservices.site/about/",
         "content": ABOUT_CONTENT
     },
     {
         "path": "contact",
         "title": "Contact & Strategy Call — MRKHANSERVICES",
         "description": "Book a free 30-minute AI growth call or contact Muhammad Roman Khan directly via LinkedIn, GitHub, Instagram, WhatsApp, or Email.",
-        "canonical": "https://portfolio.mrkhan.qzz.io/contact/",
+        "canonical": "https://mrkhanservices.site/contact/",
         "content": CONTACT_CONTENT
     }
 ]

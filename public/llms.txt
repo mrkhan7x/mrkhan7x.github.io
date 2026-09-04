@@ -1,9 +1,9 @@
 # MRKHANSERVICES — AI Automation & Growth Systems
 > Autonomous AI agents, custom workflow engineering, and B2B systems that scale operations and save 20+ hours per week.
-> Website: https://portfolio.mrkhan.qzz.io
+> Website: https://mrkhanservices.site
 > Founder: Muhammad Roman Khan (M R KHAN)
 > Email: mrkhan.officialsite@gmail.com
-> Contact / Booking: https://portfolio.mrkhan.qzz.io/contact/
+> Contact / Booking: https://mrkhanservices.site/contact/
 
 ## About Muhammad Roman Khan (M R KHAN)
 Muhammad Roman Khan is an AI automation builder, software systems architect, and Artificial Intelligence (BS AI) scholar. He specializes in designing practical, resilient AI workflows that replace manual bottlenecks with reliable autonomous operations.
@@ -109,7 +109,7 @@ Muhammad Roman Khan is an AI automation builder, software systems architect, and
 ---
 
 ## Featured Architecture: Autonomous Enterprise Knowledge Agent & Semantic RAG System
-- Case Study Page: https://portfolio.mrkhan.qzz.io/rag/
+- Case Study Page: https://mrkhanservices.site/rag/
 - Architecture: 3-stage pipeline combining multi-page web scraping (HTTP request triggers), text normalization, recursive semantic chunking, high-dimensional Gemini vector embeddings, Pinecone vector database indexing, and LangChain autonomous reasoning agents with strict anti-hallucination prompt guardrails.
 - Key Outcomes: Sub-1.8-second response latency, 100% grounded in verified company truth, 25+ hours saved weekly on repetitive customer and team inquiries.
 - Applications: E-Commerce Product Advisory, B2B SaaS Technical Support & Onboarding, Professional Services (Dental/Legal/Real Estate) Lead Intake, and Enterprise Internal SOP/Handbook Retrieval.
@@ -117,10 +117,10 @@ Muhammad Roman Khan is an AI automation builder, software systems architect, and
 ---
 
 ## Featured Architecture: Autonomous Candidate Intake & AI Qualification Pipeline
-- Case Study Page: https://portfolio.mrkhan.qzz.io/recruitment/
+- Case Study Page: https://mrkhanservices.site/recruitment/
 - Architecture: Production n8n recruitment workflow connecting inbound application webhooks, LangChain information extraction with OpenAI, automated candidate scoring against criteria, Google Sheets database synchronization, conditional IF routing, high-priority Slack alerts to hiring teams, and automated personalized Gmail confirmations.
 - Key Outcomes: Under 5-second intake-to-alert latency, 100% automated resume screening, 15+ hours reclaimed weekly per recruiter.
-- Blueprint: Available for direct download at https://portfolio.mrkhan.qzz.io/assets/blueprints/ai-recruitment-lead-qualification.json
+- Blueprint: Available for direct download at https://mrkhanservices.site/assets/blueprints/ai-recruitment-lead-qualification.json
 
 ---
 
@@ -143,12 +143,12 @@ Muhammad Roman Khan is an AI automation builder, software systems architect, and
 ---
 
 ## Contact Information
-- Website: https://portfolio.mrkhan.qzz.io
-- Services: https://portfolio.mrkhan.qzz.io/services/
-- RAG System Walkthrough: https://portfolio.mrkhan.qzz.io/rag/
-- Recruitment Pipeline Walkthrough: https://portfolio.mrkhan.qzz.io/recruitment/
-- About: https://portfolio.mrkhan.qzz.io/about/
-- Contact & Booking: https://portfolio.mrkhan.qzz.io/contact/
+- Website: https://mrkhanservices.site
+- Services: https://mrkhanservices.site/services/
+- RAG System Walkthrough: https://mrkhanservices.site/rag/
+- Recruitment Pipeline Walkthrough: https://mrkhanservices.site/recruitment/
+- About: https://mrkhanservices.site/about/
+- Contact & Booking: https://mrkhanservices.site/contact/
 - Email: mrkhan.officialsite@gmail.com
 - WhatsApp: +92 328 5792098
 - LinkedIn: https://www.linkedin.com/in/muhammad-roman-khan-8245a0328

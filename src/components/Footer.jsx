@@ -68,8 +68,8 @@ export default function Footer({ onOpenBooking }) {
               <li><a href="/#projects">Projects</a></li>
               <li><a href="/services/">Industries</a></li>
               <li>
-                <a href="https://portfolio.mrkhan.qzz.io" target="_blank" rel="noreferrer">
-                  portfolio.mrkhan.qzz.io
+                <a href="https://mrkhanservices.site" target="_blank" rel="noreferrer">
+                  mrkhanservices.site
                 </a>
               </li>
             </ul>

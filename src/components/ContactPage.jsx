@@ -133,8 +133,8 @@ export default function ContactPage({ onOpenBooking }) {
               <div className="contact-details__row">
                 <dt>Website</dt>
                 <dd>
-                  <a href="https://portfolio.mrkhan.qzz.io">
-                    portfolio.mrkhan.qzz.io
+                  <a href="https://mrkhanservices.site">
+                    mrkhanservices.site
                   </a>
                 </dd>
               </div>
