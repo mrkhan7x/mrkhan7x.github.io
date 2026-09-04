@@ -147,7 +147,7 @@
           const body = encodeURIComponent(
             `Name: ${name}\nEmail: ${email}\nPreferred Date: ${selectedDate}\nPreferred Time: ${selectedTime}\nNotes: ${notes}`
           );
-          window.location.href = `mailto:mrkhan.officialsite@gmail.com?subject=${subject}&body=${body}`;
+          window.location.href = `mailto:info@mrkhanservices.site?subject=${subject}&body=${body}`;
           showSuccess(name, email);
         } finally {
           if (submitBtn) {

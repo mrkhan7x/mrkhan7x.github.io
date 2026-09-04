@@ -397,7 +397,7 @@ export const PortfolioContent = {
       {
         icon: "email",
         title: "Email Me",
-        value: "mrkhan.officialsite@gmail.com"
+        value: "info@mrkhanservices.site"
       },
       {
         icon: "location",

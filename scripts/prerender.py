@@ -84,7 +84,7 @@ FOOTER_HTML = """
           <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noreferrer">GitHub</a></li>
           <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noreferrer">Instagram</a></li>
           <li><a href="https://wa.me/923285792098" target="_blank" rel="noreferrer">WhatsApp</a></li>
-          <li><a href="mailto:mrkhan.officialsite@gmail.com">Direct Email</a></li>
+          <li><a href="mailto:info@mrkhanservices.site">Direct Email</a></li>
           <li><a href="/contact/">Book a Call</a></li>
         </ul>
       </div>
@@ -501,7 +501,7 @@ CONTACT_CONTENT = f"""
             </div>
             <div class="contact-details__row">
               <dt>Email</dt>
-              <dd><a href="mailto:mrkhan.officialsite@gmail.com">mrkhan.officialsite@gmail.com</a></dd>
+              <dd><a href="mailto:info@mrkhanservices.site">info@mrkhanservices.site</a></dd>
             </div>
             <div class="contact-details__row">
               <dt>Website</dt>
@@ -545,10 +545,10 @@ CONTACT_CONTENT = f"""
                 <span class="contact-channel-card__label">Instant Inquiries &amp; Voice</span>
               </div>
             </a>
-            <a href="mailto:mrkhan.officialsite@gmail.com" class="contact-channel-card">
+            <a href="mailto:info@mrkhanservices.site" class="contact-channel-card">
               <div class="contact-channel-card__info">
                 <span class="contact-channel-card__name">Direct Email</span>
-                <strong class="contact-channel-card__handle">mrkhan.officialsite@gmail.com</strong>
+                <strong class="contact-channel-card__handle">info@mrkhanservices.site</strong>
                 <span class="contact-channel-card__label">Detailed Scopes &amp; Inquiries</span>
               </div>
             </a>

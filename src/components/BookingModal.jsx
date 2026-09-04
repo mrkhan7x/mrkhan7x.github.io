@@ -86,7 +86,7 @@ export default function BookingModal({ isOpen, onClose }) {
       const body = encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\nDate: ${selectedDate}\nTime: ${selectedTime}\n\nProject Notes:\n${formData.notes}`
       );
-      window.open(`mailto:mrkhan.officialsite@gmail.com?subject=${subject}&body=${body}`, "_blank");
+      window.open(`mailto:info@mrkhanservices.site?subject=${subject}&body=${body}`, "_blank");
     }
 
     setIsSubmitting(false);

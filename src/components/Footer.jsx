@@ -111,7 +111,7 @@ export default function Footer({ onOpenBooking }) {
                 </a>
               </li>
               <li>
-                <a href="mailto:mrkhan.officialsite@gmail.com">
+                <a href="mailto:info@mrkhanservices.site">
                   Direct Email
                 </a>
               </li>
