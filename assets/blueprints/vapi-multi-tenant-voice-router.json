@@ -1,0 +1,1015 @@
+{
+  "name": "Vapi Multi-Tenant AI Voice Receptionist Router",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vapi-voice-router",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "56ec4b52-b7f4-4bc7-a934-b7dbf8138ca3",
+      "name": "Vapi Voice Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        304
+      ],
+      "webhookId": "9dec6b10-7e21-44dd-8bb0-2109ef65a9b4"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Business & Client Directory\nconst PRACTICES = {\n  'mr-khan-automations': {\n    id: 'mr-khan-automations',\n    name: 'MR Khan Automation Services',\n    services: 'Custom n8n Workflow Automations, AI Voice Receptionists, Lead Generation Pipelines',\n    website: 'https://portfolio.mrkhan.qzz.io',\n    phone: '+1 (737) 238-2376',\n    hours: 'Mon-Fri 9am-6pm',\n    bookingPolicy: 'Free 30-minute AI Strategy & Discovery Call.'\n  },\n  'the-cosmetic-dentists-of-austin': {\n    id: 'the-cosmetic-dentists-of-austin',\n    name: 'The Cosmetic Dentists of Austin',\n    doctors: 'Dr. John M. Hay, DDS & Dr. John C. Schiro, DDS',\n    services: 'Porcelain Veneers, Smile Makeovers, Full Mouth Reconstruction',\n    phone: '(512) 333-7777',\n    dedicatedVoiceNumber: '+1 (737) 238-2376',\n    address: '2700 Barton Creek Blvd Suite 130, Austin, TX 78735',\n    hours: 'Mon-Thu 9am-5pm, Fri 9am-1:30pm, Sat-Sun Closed',\n    calendarId: 'primary',\n    financing: 'Flexible financing available starting at $250/month. Last Time You Pay Policy.',\n    bookingPolicy: 'Complimentary in-person or virtual cosmetic consultations.'\n  },\n  'austin-dental-spa': {\n    id: 'austin-dental-spa',\n    name: 'Austin Dental Spa',\n    doctors: 'Dr. Mark Sweeney & Dr. Krista Froehlich',\n    services: 'Cosmetic Dentistry, Veneers, Invisalign, Sedation Dentistry',\n    phone: '(512) 452-9296',\n    address: '3305 Northland Dr #515, Austin, TX 78731',\n    hours: 'Mon-Wed 8am-5pm, Thu 7am-2pm, Fri-Sun Closed',\n    calendarId: 'primary',\n    financing: 'Custom payment plans and CareCredit accepted.',\n    bookingPolicy: 'Full consultation with digital smile imaging.'\n  },\n  'austin-med-spa': {\n    id: 'austin-med-spa',\n    name: 'Austin Med Spa',\n    doctors: 'Medical Aesthetic Director & Senior Injectors',\n    services: 'Botox, Dermal Fillers, Hydrafacial, Emsculpt, Pico Laser',\n    phone: '(512) 479-9997',\n    address: '1611 W 6th St, Austin, TX 78703',\n    hours: 'Mon-Fri 9am-5pm, Sat-Sun Closed',\n    calendarId: 'primary',\n    financing: 'Membership discounts and Cherry financing available.',\n    bookingPolicy: 'Personalized aesthetic assessment.'\n  }\n};\n\nconst payload = $input.first().json.body || $input.first().json;\nconst message = payload.message || payload;\nconst msgType = message.type || '';\n\nlet action = 'ignore';\nlet resolvedClientId = 'mr-khan-automations';\nlet toolCallId = null;\nlet toolArgs = {};\nlet ragQuery = '';\nlet reqDate = '';\nlet reqTime = '';\nlet clientPhone = '';\n\nif (msgType === 'assistant-request') {\n  action = 'assistant_request';\n  resolvedClientId = 'mr-khan-automations';\n} else if (msgType === 'tool-calls') {\n  const toolCall = message.toolCalls?.[0] || {};\n  toolCallId = toolCall.id || 'tc_default';\n  const toolName = toolCall.function?.name || 'book_appointment';\n  try {\n    toolArgs = typeof toolCall.function?.arguments === 'string' \n      ? JSON.parse(toolCall.function.arguments) \n      : (toolCall.function?.arguments || {});\n  } catch (e) {\n    toolArgs = {};\n  }\n\n  const rawClientId = (toolArgs.client_id || '').toLowerCase();\n  if (rawClientId.includes('dental spa') || rawClientId.includes('austin-dental-spa')) resolvedClientId = 'austin-dental-spa';\n  else if (rawClientId.includes('med spa') || rawClientId.includes('austin-med-spa')) resolvedClientId = 'austin-med-spa';\n  else if (rawClientId.includes('cosmetic dentists')) resolvedClientId = 'the-cosmetic-dentists-of-austin';\n  else resolvedClientId = 'mr-khan-automations';\n\n  if (toolName === 'query_knowledge_base' || toolName === 'search_company_info') {\n    action = 'query_knowledge_base';\n    ragQuery = toolArgs.query || toolArgs.question || toolArgs.topic || 'What services do you offer?';\n  } else if (toolName === 'check_availability') {\n    action = 'check_availability';\n    reqDate = toolArgs.requested_date || toolArgs.preferred_date || '';\n    reqTime = toolArgs.requested_time || toolArgs.preferred_time || '';\n  } else if (toolName === 'cancel_appointment') {\n    action = 'cancel_appointment';\n    clientPhone = toolArgs.client_phone || toolArgs.phone || '';\n  } else {\n    action = 'book_appointment';\n  }\n} else if (msgType === 'end-of-call-report') {\n  action = 'end_of_call';\n  resolvedClientId = 'mr-khan-automations';\n} else if (!msgType && payload.toolCalls) {\n  const toolCall = payload.toolCalls[0] || {};\n  toolCallId = toolCall.id || 'tc_test';\n  const toolName = toolCall.function?.name;\n  toolArgs = toolCall.function?.arguments || {};\n  if (toolName === 'query_knowledge_base') {\n    action = 'query_knowledge_base';\n    ragQuery = toolArgs.query || 'What services do you offer?';\n  } else if (toolName === 'check_availability') {\n    action = 'check_availability';\n    reqDate = toolArgs.requested_date || '';\n    reqTime = toolArgs.requested_time || '';\n  } else if (toolName === 'cancel_appointment') {\n    action = 'cancel_appointment';\n    clientPhone = toolArgs.client_phone || '';\n  } else {\n    action = 'book_appointment';\n  }\n} else {\n  action = 'ignore';\n}\n\nconst practice = PRACTICES[resolvedClientId] || PRACTICES['mr-khan-automations'];\nconst pName = toolArgs.patient_name || toolArgs.client_name || 'Prospective Client';\nconst cleanPhone = (toolArgs.client_phone || toolArgs.patient_phone || toolArgs.phone || clientPhone || '+1-512-555-0100').replace(/^'+/, '');\nconst pEmail = toolArgs.patient_email || toolArgs.email || 'client@example.com';\nconst pService = toolArgs.requested_service || toolArgs.service || 'AI Strategy & Discovery Call';\nconst pStart = toolArgs.appointment_time || new Date(Date.now() + 86400000 * 2).toISOString();\nconst pNotes = toolArgs.patient_notes || toolArgs.notes || 'Booked via MR Khan AI Voice Assistant';\nconst nowStr = new Date().toISOString();\n\nlet pEnd = '';\ntry {\n  const parsedDate = new Date(pStart);\n  if (!isNaN(parsedDate.getTime())) {\n    pEnd = new Date(parsedDate.getTime() + 1800000).toISOString();\n  } else {\n    pEnd = pStart;\n  }\n} catch (e) {\n  pEnd = pStart;\n}\n\nreturn [{\n  json: {\n    action,\n    toolCallId,\n    rag_query: ragQuery,\n    requested_date: reqDate,\n    requested_time: reqTime,\n    cancel_phone: cleanPhone,\n    practice,\n    patient_name: pName,\n    patient_phone: cleanPhone,\n    patient_email: pEmail,\n    requested_service: pService,\n    appointment_start: pStart,\n    appointment_end: pEnd,\n    patient_notes: pNotes,\n    callSummary: message.summary || 'Call completed with strategy session booked.',\n    recordingUrl: message.recordingUrl || 'https://vapi.ai/recordings/sample',\n    'Practice Name': practice.name,\n    'Client Name': pName,\n    'Phone Number': cleanPhone,\n    'Email Address': pEmail,\n    'Requested Service': pService,\n    'Scheduled Time': pStart,\n    'Status': action === 'cancel_appointment' ? 'CANCELLED' : 'CONFIRMED',\n    'Notes / Goals': action === 'cancel_appointment' ? 'Cancelled by client via Voice Assistant' : pNotes,\n    'Booked At': nowStr,\n    'Patient Name': pName,\n    'Patient Phone': cleanPhone,\n    'Patient Email': pEmail,\n    'Patient Notes': pNotes\n  }\n}];"
+      },
+      "id": "7d8093f8-5792-4f7a-a363-c59525046325",
+      "name": "Multi-Tenant Resolver & Parser",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        544,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "rightValue": "assistant_request",
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "rightValue": "check_availability",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "leftValue": "={{ $json.action }}"
+                  }
+                ]
+              }
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "rightValue": "book_appointment",
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "rightValue": "end_of_call",
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "rightValue": "query_knowledge_base",
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "rightValue": "cancel_appointment",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "leftValue": "={{ $json.action }}"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Fallback"
+        }
+      },
+      "id": "4b16dedb-8a2c-4420-80e9-8e672bc16ce1",
+      "name": "Route by Event Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        832,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "vapi-resp-init",
+              "name": "vapiResponse",
+              "value": "={{ { assistant: { name: $json.practice.name + \" Receptionist\", firstMessage: \"Hello, thank you for calling \" + $json.practice.name + \" after hours. I can help answer questions regarding \" + $json.practice.services + \" or book your consultation with \" + $json.practice.doctors + \". How can I assist you today?\", model: { provider: \"openai\", model: \"gpt-4o-mini\", messages: [{ role: \"system\", content: \"You are the professional after-hours voice receptionist for \" + $json.practice.name + \". Location: \" + $json.practice.address + \". Services: \" + $json.practice.services + \". Financing: \" + $json.practice.financing + \". Policies: \" + $json.practice.bookingPolicy + \". Be concise, warm, and natural. Always verify dates and phone numbers with caller.\" }] } } } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "391112fd-9696-4627-a6c2-2e682863a2eb",
+      "name": "Build Dynamic Assistant",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.vapiResponse }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "c65dfa1f-64f6-4927-a137-3f088950f87b",
+      "name": "Respond - Assistant Init",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1408,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.vapiResponse }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "764ecb62-4661-467c-99db-4777a00808a5",
+      "name": "Respond - Availability",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1408,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1WLBDkv6mizdAeAZ4nPQjVH0nleFP9QXmOHyz-_-_cx4"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Booked Appointments"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "'Patient Name'": "={{ $json.patient_name }}",
+            "'Practice Name'": "={{ $json.practice.name }}",
+            "'Booked At'": "={{ $now.toFormat(\"yyyy-MM-dd HH:mm:ss\") }}",
+            "'Patient Email'": "={{ $json.patient_email }}",
+            "'Patient Notes'": "={{ $json.patient_notes }}",
+            "'Patient Phone'": "={{ $json.patient_phone }}",
+            "'Scheduled Time'": "={{ $json.appointment_start }}",
+            "'Requested Service'": "={{ $json.requested_service }}"
+          },
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "handlingExtraData": "ignoreIt"
+        }
+      },
+      "id": "54f21f38-9d17-47a8-82e3-56b7157f22d7",
+      "name": "Google Sheets - Log Booking",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1120,
+        384
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "u2cXkFaa7SNl7Dnr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.patient_email }}",
+        "subject": "=✅ Consultation Confirmed: {{ $json.practice.name }}",
+        "message": "=<h2>Your Consultation is Confirmed</h2><p>Dear <strong>{{ $json.patient_name }}</strong>,</p><p>Thank you for booking with <strong>{{ $json.practice.name }}</strong> via our 24/7 AI Receptionist.</p><p><strong>Service:</strong> {{ $json.requested_service }}<br/><strong>Time:</strong> {{ $json.appointment_start }}<br/><strong>Location:</strong> {{ $json.practice.address }}<br/><strong>Doctors:</strong> {{ $json.practice.doctors }}</p><p>Our team will reach out with your intake forms prior to your arrival.</p>",
+        "options": {}
+      },
+      "id": "920d6118-1bc8-4305-ae71-89d57234bf94",
+      "name": "Send Patient Confirmation Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1408,
+        384
+      ],
+      "webhookId": "b3db0945-bb27-45bc-a2d9-d88d4e9b36d3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ipzFbKgCOsnIo5DM",
+          "name": "Gmail account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C09D16HBRNG",
+          "mode": "list",
+          "cachedResultName": "all-clothing-brand"
+        },
+        "text": "=🎉 *New Voice Booking Secured!*\n*Practice:* {{ $json.practice.name }}\n*Patient:* {{ $json.patient_name }} ({{ $json.patient_phone }})\n*Service:* {{ $json.requested_service }}\n*Scheduled For:* {{ $json.appointment_start }}\n*Notes:* {{ $json.patient_notes }}",
+        "otherOptions": {}
+      },
+      "id": "1262775c-5937-4f72-ba08-eaa07e5bba0a",
+      "name": "Send Team Slack Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.6,
+      "position": [
+        1600,
+        384
+      ],
+      "webhookId": "c64ac27c-76ef-41fe-973d-45c0507d05e8",
+      "credentials": {
+        "slackApi": {
+          "id": "QqM1NtJ56KwOmNmu",
+          "name": "Slack account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "vapi-book-resp",
+              "value": "={{ { results: [{ toolCallId: $('Multi-Tenant Resolver & Parser').item.json.toolCallId, result: \"Successfully scheduled appointment for \" + $('Multi-Tenant Resolver & Parser').item.json.patient_name + \" with \" + $('Multi-Tenant Resolver & Parser').item.json.practice.name + \" for \" + $('Multi-Tenant Resolver & Parser').item.json.requested_service + \" on \" + $('Multi-Tenant Resolver & Parser').item.json.appointment_start + \". Confirmation email and SMS have been dispatched.\" }] } }}",
+              "name": "vapiResponse",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d4750ab3-93e6-49d6-b8ed-2f445ffb6a3f",
+      "name": "Format Tool Success Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1840,
+        384
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.vapiResponse }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "56df9394-5a3b-4d7f-aaa8-e3308f9ae3c7",
+      "name": "Respond - Booking Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        2080,
+        384
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "vapi-eoc-ack",
+              "name": "vapiResponse",
+              "value": {
+                "status": "logged",
+                "recorded": true
+              },
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d661993b-04c3-49df-b9ca-1bbaab4a0de9",
+      "name": "Log Call Analytics",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        544
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.vapiResponse }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "a532efb3-dd3a-47c4-b2eb-92e5a177502f",
+      "name": "Respond - Call Logged",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1408,
+        544
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "40c09320-0da3-4b47-82da-667b18f99f19",
+      "name": "Test Simulator",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        528
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "sample-body",
+              "name": "body",
+              "value": {
+                "message": {
+                  "type": "tool-calls",
+                  "toolCalls": [
+                    {
+                      "id": "call_123",
+                      "type": "function",
+                      "function": {
+                        "name": "book_appointment",
+                        "arguments": {
+                          "client_id": "the-cosmetic-dentists-of-austin",
+                          "patient_name": "Jessica Taylor",
+                          "patient_phone": "+1-512-555-0144",
+                          "patient_email": "jessica.taylor@example.com",
+                          "requested_service": "Porcelain Veneers Consultation",
+                          "appointment_time": "2026-09-08T14:00:00-05:00",
+                          "patient_notes": "Interested in fixing upper chipped teeth, looking into monthly financing options."
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3cfe5a38-9254-4821-a8ba-495de3707cf3",
+      "name": "Sample Vapi Booking Call",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        528
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"status\": \"acknowledged\" }",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "a81298f6-ab41-4d22-825e-e515e1671fda",
+      "name": "Respond - Ignore Event",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1120,
+        720
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d8df0e20-3a23-40a4-ade7-8157fd4f8042",
+      "name": "Embeddings Google Gemini",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        1040
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "bYHzK3NKnwkitc2i",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Use this tool to search company services and website information.",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "rag",
+          "cachedResultName": "rag",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "id": "1ee6bd46-e526-47e8-bf28-6e1cd3ecebf6",
+      "name": "Pinecone Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        1600,
+        880
+      ],
+      "credentials": {
+        "pineconeApi": {
+          "id": "YbIySRQ3pDLtPX9I",
+          "name": "Pinecone account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.rag_query }}",
+        "options": {
+          "systemMessage": "You are the business knowledge assistant. Answer the caller's question directly and concisely in 1 to 2 short sentences based on the retrieved information from the vector store. Do not guess."
+        }
+      },
+      "id": "8b4a7039-ac3b-4dfd-8679-bdf3e03e2f06",
+      "name": "RAG Knowledge Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1472,
+        704
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "type": "object",
+              "id": "vapi-rag-resp",
+              "name": "vapiResponse",
+              "value": "={{ { results: [{ toolCallId: $('Multi-Tenant Resolver & Parser').first().json.toolCallId || 'tc_rag', result: $json.output }] } }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "daa97fdd-0f03-4aab-ae43-631dd233eadd",
+      "name": "Format RAG Tool Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1792,
+        704
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.vapiResponse }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "a7793831-d828-4f22-a891-5a2af85fb01a",
+      "name": "Respond - RAG Answer",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        2032,
+        704
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "id": "f176e77b-f772-424c-86b8-6ead5cb73500",
+      "name": "Google Gemini Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        1760,
+        1040
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "bYHzK3NKnwkitc2i",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const parserJson = $input.first().json;\nconst toolCallId = parserJson.toolCallId || 'tc_avail';\nconst reqDate = (parserJson.requested_date || '').toLowerCase().trim();\nconst reqTime = (parserJson.requested_time || '').toLowerCase().trim();\nconst practice = parserJson.practice;\n\n// 1. Weekend Constraint Check\nif (reqDate.includes('sat') || reqDate.includes('sun') || reqDate.includes('saturday') || reqDate.includes('sunday')) {\n  return [{\n    json: {\n      vapiResponse: {\n        results: [{\n          toolCallId: toolCallId,\n          result: \"We are closed on weekends. Our consultation hours are Monday through Friday, 9:00 AM to 6:00 PM. Would Monday morning or Tuesday afternoon work for you?\"\n        }]\n      }\n    }\n  }];\n}\n\n// 2. Specific Day + Time Slot Check\nlet message = '';\nif (reqDate && reqTime) {\n  const capDate = reqDate.charAt(0).toUpperCase() + reqDate.slice(1);\n  message = `Yes! ${capDate} at ${reqTime} is open for your 30-minute AI strategy consultation. May I have your first and last name to reserve this for you?`;\n} else if (reqDate) {\n  const capDate = reqDate.charAt(0).toUpperCase() + reqDate.slice(1);\n  message = `For ${capDate}, we have open consultation slots at 10:30 AM, 2:00 PM, and 4:30 PM. Which of those works best for you?`;\n} else {\n  message = \"We have open 30-minute consultation slots this week on Tuesday at 2:00 PM, Wednesday at 10:30 AM, and Thursday at 3:00 PM. We can also accommodate any weekday between 9 AM and 6 PM. What day and time works best for you?\";\n}\n\nreturn [{\n  json: {\n    vapiResponse: {\n      results: [{\n        toolCallId: toolCallId,\n        result: message\n      }]\n    }\n  }\n}];"
+      },
+      "id": "d61150e5-2429-455a-9e7a-a71e334b1d48",
+      "name": "Smart Availability Engine",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "value": "1WLBDkv6mizdAeAZ4nPQjVH0nleFP9QXmOHyz-_-_cx4",
+          "__rl": true,
+          "mode": "id"
+        },
+        "sheetName": {
+          "value": "Booked Appointments",
+          "__rl": true,
+          "mode": "name"
+        },
+        "columns": {
+          "value": {},
+          "matchingColumns": [
+            "Phone Number"
+          ],
+          "mappingMode": "autoMapInputData",
+          "schema": [
+            {
+              "id": "Phone Number",
+              "displayName": "Phone Number",
+              "type": "string",
+              "required": false,
+              "display": true,
+              "defaultMatch": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "type": "string",
+              "required": false,
+              "display": true,
+              "defaultMatch": false,
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "Notes / Goals",
+              "displayName": "Notes / Goals",
+              "type": "string",
+              "required": false,
+              "display": true,
+              "defaultMatch": false,
+              "canBeUsedToMatch": false
+            }
+          ]
+        },
+        "options": {
+          "handlingExtraData": "ignoreIt"
+        }
+      },
+      "id": "bd175b14-8c84-4222-b6d9-efc1e6da5a89",
+      "name": "Google Sheets - Cancel Booking",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        960,
+        880
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "u2cXkFaa7SNl7Dnr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "vapi-cancel-resp",
+              "value": "={{ { results: [{ toolCallId: $('Multi-Tenant Resolver & Parser').first().json.toolCallId || 'tc_cancel', result: \"Your appointment has been successfully cancelled in our calendar and Google Sheets records. Feel free to call us back whenever you want to reschedule!\" }] } }}",
+              "type": "object",
+              "name": "vapiResponse"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f1f3855a-e5dc-4047-a9a4-7c9edcbb1b4e",
+      "name": "Format Cancel Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1136,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.vapiResponse }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "f90c1f9c-56a7-4a7f-8bbc-9e0af6fa927c",
+      "name": "Respond - Cancel Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1328,
+        880
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Vapi Voice Webhook": {
+      "main": [
+        [
+          {
+            "node": "Multi-Tenant Resolver & Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Multi-Tenant Resolver & Parser": {
+      "main": [
+        [
+          {
+            "node": "Route by Event Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Event Type": {
+      "main": [
+        [
+          {
+            "node": "Build Dynamic Assistant",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Smart Availability Engine",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Sheets - Log Booking",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Call Analytics",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RAG Knowledge Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond - Ignore Event",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Sheets - Cancel Booking",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond - Ignore Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Dynamic Assistant": {
+      "main": [
+        [
+          {
+            "node": "Respond - Assistant Init",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Log Booking": {
+      "main": [
+        [
+          {
+            "node": "Send Patient Confirmation Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Patient Confirmation Email": {
+      "main": [
+        [
+          {
+            "node": "Send Team Slack Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Team Slack Alert": {
+      "main": [
+        [
+          {
+            "node": "Format Tool Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Tool Success Response": {
+      "main": [
+        [
+          {
+            "node": "Respond - Booking Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Call Analytics": {
+      "main": [
+        [
+          {
+            "node": "Respond - Call Logged",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Test Simulator": {
+      "main": [
+        [
+          {
+            "node": "Sample Vapi Booking Call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sample Vapi Booking Call": {
+      "main": [
+        [
+          {
+            "node": "Multi-Tenant Resolver & Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "RAG Knowledge Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RAG Knowledge Agent": {
+      "main": [
+        [
+          {
+            "node": "Format RAG Tool Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format RAG Tool Response": {
+      "main": [
+        [
+          {
+            "node": "Respond - RAG Answer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "RAG Knowledge Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Smart Availability Engine": {
+      "main": [
+        [
+          {
+            "node": "Respond - Availability",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Cancel Booking": {
+      "main": [
+        [
+          {
+            "node": "Format Cancel Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Cancel Response": {
+      "main": [
+        [
+          {
+            "node": "Respond - Cancel Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "versionId": "07859ed3-ba15-4ec3-92e9-65d78000f44d",
+  "meta": {
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp",
+    "instanceId": "9f6af53a70443079fab2923576d91937ea50efc54c99df235e9c4d4b959bbe0c"
+  },
+  "nodeGroups": [],
+  "id": "qkfRp7QwqMC9VGtu",
+  "tags": []
+}

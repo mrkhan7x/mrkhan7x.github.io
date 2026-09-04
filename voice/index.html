@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autonomous AI Voice Receptionist &amp; Dual-Grounding RAG Engine — MRKHANSERVICES</title>
+  <meta name="description" content="Production-grade AI voice receptionist engineered with Vapi WebRTC, Pinecone Vector RAG, and n8n deterministic multi-tenant routing. 24/7 client booking, sub-800ms natural turn-taking, and zero hallucinations." />
+  <link rel="canonical" href="https://mrkhanservices.site/voice/" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MRKHANSERVICES" />
+  <meta property="og:url" content="https://mrkhanservices.site/voice/" />
+  <meta property="og:title" content="Autonomous AI Voice Receptionist &amp; Dual-Grounding RAG Engine — MRKHANSERVICES" />
+  <meta property="og:description" content="Capture 100% of after-hours client calls. Sub-800ms conversational turn-taking, Pinecone vector grounding, and live calendar scheduling." />
+  <meta property="og:image" content="https://mrkhanservices.site/assets/images/vapi-n8n-canvas.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="theme-color" content="#0C0C0C" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/marquee.css" />
+  <link rel="stylesheet" href="/css/voice.css" />
+  <link rel="stylesheet" href="/css/modal.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+
+  <!-- Vapi Web Voice Widget SDK -->
+  <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.vapiSDK) {
+        window.vapiSDK.run({
+          apiKey: "7adae33d-4975-462a-bcb0-ef90c937c684",
+          assistant: "9de09a23-7f03-473f-bcda-45f8435dd1f3",
+          position: "bottom-right",
+          buttonConfig: {
+            text: "Talk to My AI Receptionist",
+            color: "#0284c7"
+          }
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="app-background"></div>
+  <div class="grid-pattern-global"></div>
+
+  <div class="page-wrapper">
+    <!-- Floating Header -->
+    <header class="header-floating-wrapper">
+      <nav class="header-nav-container">
+        <a href="/" class="nav-brand" aria-label="MRKHANSERVICES Home">
+          <span class="brand-icon-badge">MRK</span>
+          <span class="brand-name-text">MRKHANSERVICES</span>
+        </a>
+        <div class="nav-links-center">
+          <a href="/services/" class="nav-link-btn">Services</a>
+          <a href="/about/" class="nav-link-btn">About</a>
+          <a href="/contact/" class="nav-link-btn">Contact</a>
+        </div>
+        <div class="nav-cta-wrapper">
+          <a href="/contact/" class="talk-btn" data-action="open-booking">
+            <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
+            <span class="talk-btn__arrow">→</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Mobile Header -->
+      <div class="mobile-navbar-bar">
+        <a href="/" class="nav-brand">
+          <span class="brand-icon-badge">MRK</span>
+          <span class="brand-name-text">MRKHAN</span>
+        </a>
+        <button class="burger-btn" id="mobile-burger-btn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
+        <a href="/services/" class="mobile-dropdown-link">Services</a>
+        <a href="/about/" class="mobile-dropdown-link">About</a>
+        <a href="/contact/" class="mobile-dropdown-link">Contact</a>
+        <a href="/contact/" class="talk-btn" data-action="open-booking" style="margin-top: 10px; width: 100%; justify-content: center;">
+          <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
+          <span class="talk-btn__arrow">→</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="voice-page">
+      <!-- Hero Section -->
+      <section class="voice-hero" id="top">
+        <div class="voice-hero__badge">
+          <span class="voice-hero__badge-dot"></span>
+          Flagship Production Architecture Case Study
+        </div>
+        <h1 class="voice-hero__title">Autonomous AI Voice Receptionist &amp; Dual-Grounding RAG Engine.</h1>
+        <p class="voice-hero__subtitle">
+          High-ticket service businesses lose over 70% of prospective clients who call after business hours or on weekends. This full-stack system pairs WebRTC voice turn-taking with Pinecone vector grounding and an n8n multi-tenant router to book appointments, answer pricing queries with 0% hallucinations, and sync live CRMs in under 3 seconds.
+        </p>
+
+        <!-- Outcome Metrics -->
+        <div class="voice-metrics">
+          <div class="voice-metric-chip">
+            <span>⚡</span>
+            <span>Latency: <strong>&lt;800ms Turn-Taking</strong></span>
+          </div>
+          <div class="voice-metric-chip">
+            <span>🛡️</span>
+            <span>Hallucinations: <strong>0% (Pinecone RAG)</strong></span>
+          </div>
+          <div class="voice-metric-chip">
+            <span>📈</span>
+            <span>Intake: <strong>100% After-Hours Calls</strong></span>
+          </div>
+          <div class="voice-metric-chip">
+            <span>🔄</span>
+            <span>Sync: <strong>&lt;3s CRM &amp; Slack Alerts</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Voice Sandbox (The Showpiece) -->
+      <section class="voice-sandbox-container">
+        <div class="voice-sandbox-header">
+          <div class="voice-sandbox-status">
+            <span class="v-status-dot" id="sandbox-status-dot"></span>
+            <span class="v-status-text" id="sandbox-status-text">AI Receptionist Online • Ready for Live Call</span>
+          </div>
+          <span class="v-tag-latency">⚡ sub-800ms WebRTC voice stream</span>
+        </div>
+
+        <!-- Animated Audio Waveform Visualizer -->
+        <div class="voice-waveform-area" id="sandbox-waveform">
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+          <span class="v-wave-bar"></span>
+        </div>
+
+        <!-- Primary Interactive Button -->
+        <button class="voice-call-trigger-btn" id="sandbox-call-btn" type="button">
+          <span class="btn-icon" id="sandbox-btn-icon">🎙️</span>
+          <span id="sandbox-btn-label">Talk to My AI Receptionist (Live Browser Call)</span>
+        </button>
+
+        <!-- Prompt Suggestions -->
+        <div class="voice-prompts-guide">
+          <span class="voice-prompts-title">Test Natural Conversation — Try Saying:</span>
+          <div class="voice-prompts-list">
+            <div class="voice-prompt-item">
+              <span class="voice-prompt-icon">💬</span>
+              <span>&ldquo;Can I book a consultation for Thursday at 2 PM?&rdquo;</span>
+            </div>
+            <div class="voice-prompt-item">
+              <span class="voice-prompt-icon">💬</span>
+              <span>&ldquo;What treatments or packages do you offer, and what is your pricing?&rdquo;</span>
+            </div>
+            <div class="voice-prompt-item">
+              <span class="voice-prompt-icon">💬</span>
+              <span>&ldquo;I need to check or reschedule an existing appointment.&rdquo;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Architecture Section Header -->
+      <section class="voice-section-header">
+        <div class="voice-section-header__eyebrow">Enterprise System Architecture</div>
+        <h2 class="voice-section-header__title">Deterministic Multi-Tenant Router &amp; Vector Pipeline</h2>
+        <p class="voice-section-header__desc">
+          Unlike brittle chatbots, this production engine enforces strict business hours, executes vector knowledge retrieval in sub-2 seconds, dynamically verifies slot availability, and writes completed bookings straight to Google Sheets and team Slack channels.
+        </p>
+      </section>
+
+      <!-- n8n Router Architecture Canvas Showcase -->
+      <section class="voice-canvas-section">
+        <div class="voice-canvas-wrapper" id="open-canvas-lightbox" title="Click to view full high-resolution architecture canvas">
+          <img 
+            src="/assets/images/vapi-n8n-canvas.png" 
+            alt="Vapi Multi-Tenant AI Voice Receptionist Router n8n Canvas" 
+            class="voice-canvas-img"
+            loading="lazy"
+          />
+          <div class="voice-canvas-overlay">
+            <span>🔍 Click to inspect full n8n canvas blueprint</span>
+          </div>
+        </div>
+
+        <div class="voice-canvas-meta">
+          <span>Engine: <strong>n8n Multi-Tenant Router</strong> • WebRTC Voice • Pinecone Vector DB • Google Sheets API • Slack API</span>
+          <a href="/assets/blueprints/vapi-multi-tenant-voice-router.json" download="vapi-multi-tenant-voice-router.json">
+            <span>📥 Download Workflow JSON Blueprint</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- 4 Architectural Pillars -->
+      <section class="voice-pillars-grid">
+        <div class="voice-pillar-card">
+          <div class="voice-pillar-num">01 / VOICE TURN-TAKING</div>
+          <h3 class="voice-pillar-title">Sub-800ms WebRTC Voice Stream</h3>
+          <p class="voice-pillar-desc">
+            Configured with custom voice-activity detection (VAD), 0.9s speech pauses, and 1.2s digit preservation. Eliminates robotic delays and lets callers speak uninterrupted in natural human cadence.
+          </p>
+        </div>
+
+        <div class="voice-pillar-card">
+          <div class="voice-pillar-num">02 / DUAL-GROUNDED RAG</div>
+          <h3 class="voice-pillar-title">Zero-Hallucination Vector Search</h3>
+          <p class="voice-pillar-desc">
+            Whenever a caller asks about pricing, packages, or clinical policies, the engine executes real-time semantic vector retrieval against Pinecone. The assistant only answers using verified business facts.
+          </p>
+        </div>
+
+        <div class="voice-pillar-card">
+          <div class="voice-pillar-num">03 / MULTI-TENANT ROUTER</div>
+          <h3 class="voice-pillar-title">Deterministic Event Router</h3>
+          <p class="voice-pillar-desc">
+            An n8n switch engine separates system heartbeats, knowledge queries, availability checks, and booking updates. Automatically enforces operational hours (Mon–Fri, 9 AM–6 PM) and flags conflicts.
+          </p>
+        </div>
+
+        <div class="voice-pillar-card">
+          <div class="voice-pillar-num">04 / CRM SYNCHRONIZATION</div>
+          <h3 class="voice-pillar-title">Bi-Directional Database Sync</h3>
+          <p class="voice-pillar-desc">
+            Checks slot capacity dynamically to avoid double-bookings. Supports complete lifecycle actions (Booked ➔ Cancelled ➔ Rescheduled) with instant HTML email confirmations and team Slack alerts.
+          </p>
+        </div>
+      </section>
+
+      <!-- Measurable Business Impact Grid -->
+      <section class="voice-section-header">
+        <div class="voice-section-header__eyebrow">Verified Business Outcomes</div>
+        <h2 class="voice-section-header__title">Numbers That Move Revenue</h2>
+      </section>
+
+      <section class="voice-roi-grid">
+        <div class="voice-roi-tile">
+          <div class="voice-roi-val">100%</div>
+          <div class="voice-roi-label">After-Hours Capture</div>
+          <div class="voice-roi-sub">Never lose another weekend or evening patient inquiry to a missed call.</div>
+        </div>
+
+        <div class="voice-roi-tile">
+          <div class="voice-roi-val">&lt;800ms</div>
+          <div class="voice-roi-label">Turn-Taking Speed</div>
+          <div class="voice-roi-sub">Conversational latency fast enough that callers forget it's an automated agent.</div>
+        </div>
+
+        <div class="voice-roi-tile">
+          <div class="voice-roi-val">0%</div>
+          <div class="voice-roi-label">Hallucination Rate</div>
+          <div class="voice-roi-sub">Every pricing and policy quote is strictly grounded in vector database chunks.</div>
+        </div>
+
+        <div class="voice-roi-tile">
+          <div class="voice-roi-val">&lt;3s</div>
+          <div class="voice-roi-label">CRM &amp; Team Alerts</div>
+          <div class="voice-roi-sub">Instant row population in Google Sheets plus real-time team dispatch in Slack.</div>
+        </div>
+      </section>
+
+      <!-- Bottom CTA Banner -->
+      <section class="cta-banner">
+        <div class="cta-banner__glow"></div>
+        <h2 class="cta-banner__title">Want this voice engine built for your clinic or agency?</h2>
+        <p class="cta-banner__subtitle">
+          We customize and deploy full-stack voice receptionists, calendar sync workflows, and vector knowledge bases within 7 to 14 days.
+        </p>
+        <div class="cta-banner__actions">
+          <a href="/contact/" class="talk-btn" data-action="open-booking">
+            <span class="talk-btn__label"><span class="talk-btn__label-current">Book a Strategy Call</span></span>
+            <span class="talk-btn__arrow">→</span>
+          </a>
+          <a href="mailto:info@mrkhanservices.site?subject=Voice%20Receptionist%20Architecture%20Inquiry" class="btn btn--secondary">
+            <span>Email info@mrkhanservices.site</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div class="footer__brand-col">
+            <a href="/" class="footer__brand">
+              <span class="brand-icon-badge">MRK</span>
+              <span class="brand-name-text">MRKHANSERVICES</span>
+            </a>
+            <p class="footer__tagline">
+              Autonomous AI agents, bespoke n8n orchestration, and enterprise workflow engineering.
+            </p>
+            <div class="footer__badge">
+              <span class="footer__badge-dot"></span>
+              Available for Q3/Q4 Deployments
+            </div>
+          </div>
+
+          <div class="footer__nav-col">
+            <h4 class="footer__nav-heading">Solutions</h4>
+            <ul class="footer__nav-list">
+              <li><a href="/voice/" class="footer__nav-link" style="color: #38bdf8;">AI Voice Receptionist (New)</a></li>
+              <li><a href="/rag/" class="footer__nav-link">Semantic RAG Agent</a></li>
+              <li><a href="/recruitment/" class="footer__nav-link">Candidate Qualification Pipeline</a></li>
+              <li><a href="/services/" class="footer__nav-link">Full Systems Library</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__nav-col">
+            <h4 class="footer__nav-heading">Company</h4>
+            <ul class="footer__nav-list">
+              <li><a href="/about/" class="footer__nav-link">About M R KHAN</a></li>
+              <li><a href="/contact/" class="footer__nav-link">Schedule Consultation</a></li>
+              <li><a href="mailto:info@mrkhanservices.site" class="footer__nav-link">Direct Email</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copyright">&copy; 2026 MRKHANSERVICES. All rights reserved.</p>
+          <div class="footer__meta-links">
+            <a href="/llms.txt" class="footer__meta-link">llms.txt</a>
+            <span class="footer__separator">•</span>
+            <a href="/sitemap.xml" class="footer__meta-link">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Lightbox Modal for Workflow Canvas -->
+  <div class="voice-lightbox" id="canvas-lightbox">
+    <div class="voice-lightbox__inner">
+      <button class="voice-lightbox__close" id="close-canvas-lightbox" aria-label="Close Lightbox">✕</button>
+      <img src="/assets/images/vapi-n8n-canvas.png" alt="Vapi Multi-Tenant AI Voice Receptionist Router n8n Canvas" class="voice-lightbox__img" />
+    </div>
+  </div>
+
+  <!-- Booking Modal -->
+  <div id="booking-calendar-modal" class="cal-modal-overlay">
+    <div class="cal-modal">
+      <button class="cal-modal__close" onclick="window.closeBookingModal()" aria-label="Close Modal">✕</button>
+      <div class="cal-modal__header">
+        <h3 class="cal-modal__title">Book an Automation Discovery Call</h3>
+        <p class="cal-modal__subtitle">Direct 1-on-1 strategy with M R KHAN. Let's engineer your autonomous operations.</p>
+      </div>
+      <div class="cal-modal__body">
+        <div class="cal-modal__left">
+          <div class="cal-modal__meta">
+            <span class="meta-item">⏱ 30 min</span>
+            <span class="meta-item">📍 Google Meet</span>
+            <span class="meta-item">⚡ High-Impact Strategy</span>
+          </div>
+          <p class="cal-modal__desc">
+            We’ll review your practice intake, pinpoint after-hours bottlenecks, and outline the exact voice and scheduling architecture to capture every lead.
+          </p>
+          <div class="cal-modal__date-picker">
+            <label for="booking-date-select">Select a Date</label>
+            <select id="booking-date-select" class="cal-select"></select>
+          </div>
+        </div>
+        <div class="cal-modal__right">
+          <div id="booking-slots-column">
+            <div class="column-title">Available Times</div>
+            <div class="time-slots-grid">
+              <button class="time-slot-btn" data-time="09:00 AM">09:00 AM</button>
+              <button class="time-slot-btn" data-time="10:00 AM">10:00 AM</button>
+              <button class="time-slot-btn" data-time="11:00 AM">11:00 AM</button>
+              <button class="time-slot-btn" data-time="01:00 PM">01:00 PM</button>
+              <button class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
+              <button class="time-slot-btn" data-time="03:00 PM">03:00 PM</button>
+            </div>
+          </div>
+          <div id="booking-form-step" class="cal-booking-form">
+            <button id="booking-back-btn" class="back-btn">← Back to times</button>
+            <div id="booking-selected-summary" class="selected-summary">Upcoming Date at Time</div>
+            <form id="booking-form-element">
+              <div class="form-group">
+                <label for="client-name">Your Name</label>
+                <input type="text" id="client-name" required placeholder="e.g. Alex Morgan" />
+              </div>
+              <div class="form-group">
+                <label for="client-email">Work Email</label>
+                <input type="email" id="client-email" required placeholder="alex@company.com" />
+              </div>
+              <div class="form-group">
+                <label for="client-notes">Tell us about your current call volume or practice</label>
+                <textarea id="client-notes" rows="3" placeholder="MedSpa, Dental clinic, high-ticket consultancy..."></textarea>
+              </div>
+              <button type="submit" class="talk-btn submit-booking-btn">
+                <span class="talk-btn__label"><span class="talk-btn__label-current">Confirm reservation</span></span>
+                <span class="talk-btn__arrow">→</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="booking-success-view" class="cal-modal__success">
+        <div class="success-icon">✓</div>
+        <h3 class="cal-modal__title">Discovery Call Confirmed!</h3>
+        <p id="booking-success-details" class="cal-modal__desc"></p>
+        <button class="talk-btn" onclick="window.closeBookingModal()">
+          <span class="talk-btn__label"><span class="talk-btn__label-current">Done</span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/booking.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    // Interactive Voice Sandbox Controller
+    (function() {
+      const callBtn = document.getElementById('sandbox-call-btn');
+      const btnLabel = document.getElementById('sandbox-btn-label');
+      const btnIcon = document.getElementById('sandbox-btn-icon');
+      const statusDot = document.getElementById('sandbox-status-dot');
+      const statusText = document.getElementById('sandbox-status-text');
+      const waveform = document.getElementById('sandbox-waveform');
+      let isCallActive = false;
+
+      function updateCallUI(active) {
+        isCallActive = active;
+        if (active) {
+          callBtn.classList.add('active');
+          waveform.classList.add('active');
+          statusDot.classList.add('active');
+          statusText.textContent = 'Active Call in Progress • Speak into your microphone';
+          btnLabel.textContent = 'End Voice Call';
+          btnIcon.textContent = '⏹';
+        } else {
+          callBtn.classList.remove('active');
+          waveform.classList.remove('active');
+          statusDot.classList.remove('active');
+          statusText.textContent = 'AI Receptionist Online • Ready for Live Call';
+          btnLabel.textContent = 'Talk to My AI Receptionist (Live Browser Call)';
+          btnIcon.textContent = '🎙️';
+        }
+      }
+
+      callBtn.addEventListener('click', function() {
+        const floatingVapiBtn = document.getElementById('vapi-support-btn');
+        if (floatingVapiBtn) {
+          floatingVapiBtn.click();
+          updateCallUI(!isCallActive);
+        } else if (window.vapiSDK && window.vapiSDK.vapi) {
+          if (isCallActive) {
+            window.vapiSDK.vapi.stop();
+            updateCallUI(false);
+          } else {
+            window.vapiSDK.vapi.start('9de09a23-7f03-473f-bcda-45f8435dd1f3');
+            updateCallUI(true);
+          }
+        } else {
+          alert('Voice assistant is initializing, please click again in a second.');
+        }
+      });
+
+      // Synchronize with Vapi events if available
+      setInterval(function() {
+        if (window.vapiSDK && window.vapiSDK.vapi && !window.__vapi_events_hooked) {
+          window.__vapi_events_hooked = true;
+          window.vapiSDK.vapi.on('call-start', () => updateCallUI(true));
+          window.vapiSDK.vapi.on('call-end', () => updateCallUI(false));
+        }
+      }, 800);
+
+      // Lightbox Logic
+      const lightboxTrigger = document.getElementById('open-canvas-lightbox');
+      const lightbox = document.getElementById('canvas-lightbox');
+      const closeBtn = document.getElementById('close-canvas-lightbox');
+
+      if (lightboxTrigger && lightbox && closeBtn) {
+        lightboxTrigger.addEventListener('click', () => lightbox.classList.add('open'));
+        closeBtn.addEventListener('click', () => lightbox.classList.remove('open'));
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) lightbox.classList.remove('open');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
