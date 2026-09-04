@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://portfolio.mrkhan.qzz.io/</loc>
+    <loc>https://mrkhanservices.site/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://portfolio.mrkhan.qzz.io/services/</loc>
+    <loc>https://mrkhanservices.site/services/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://portfolio.mrkhan.qzz.io/rag/</loc>
+    <loc>https://mrkhanservices.site/rag/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://portfolio.mrkhan.qzz.io/recruitment/</loc>
+    <loc>https://mrkhanservices.site/recruitment/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://portfolio.mrkhan.qzz.io/about/</loc>
+    <loc>https://mrkhanservices.site/about/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://portfolio.mrkhan.qzz.io/contact/</loc>
+    <loc>https://mrkhanservices.site/contact/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
