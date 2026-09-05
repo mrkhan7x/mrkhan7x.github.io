@@ -44,6 +44,12 @@
         window.vapiSDK.run({
           apiKey: "7adae33d-4975-462a-bcb0-ef90c937c684",
           assistant: "9de09a23-7f03-473f-bcda-45f8435dd1f3",
+          assistantOverrides: {
+            serverUrl: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router",
+            server: {
+              url: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router"
+            }
+          },
           position: "bottom-right",
           buttonConfig: {
             text: "Talk to My AI Receptionist",
@@ -475,7 +481,12 @@
             window.vapiSDK.vapi.stop();
             updateCallUI(false);
           } else {
-            window.vapiSDK.vapi.start('9de09a23-7f03-473f-bcda-45f8435dd1f3');
+            window.vapiSDK.vapi.start('9de09a23-7f03-473f-bcda-45f8435dd1f3', {
+              serverUrl: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router",
+              server: {
+                url: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router"
+              }
+            });
             updateCallUI(true);
           }
         } else {
