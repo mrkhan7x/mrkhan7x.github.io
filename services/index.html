@@ -162,7 +162,7 @@
           <div class="services-verticals__grid">
             
             <!-- 0. Autonomous Voice Receptionist (Flagship) -->
-            <article class="vertical-card" id="service-voice" style="border-color: rgba(2, 132, 199, 0.35); background: linear-gradient(135deg, rgba(2, 132, 199, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);">
+            <article class="vertical-card" id="service-voice" onclick="window.location.href='/voice/'" style="cursor: pointer; border-color: rgba(2, 132, 199, 0.35); background: linear-gradient(135deg, rgba(2, 132, 199, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);">
               <div>
                 <div class="vertical-card__icon-badge" style="background: rgba(2, 132, 199, 0.15); color: #38bdf8;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -317,7 +317,7 @@
             </article>
 
             <!-- 7. AI Media & Creative Studios -->
-            <article class="vertical-card" id="service-ai-media" style="border-color: rgba(239, 68, 68, 0.35); background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);">
+            <article class="vertical-card" id="service-ai-media" onclick="window.location.href='/youtube/'" style="cursor: pointer; border-color: rgba(239, 68, 68, 0.35); background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);">
               <div>
                 <div class="vertical-card__icon-badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -342,25 +342,31 @@
               </div>
             </article>
 
-            <!-- 8. AI Agencies & Technical Consultancies -->
-            <article class="vertical-card" id="service-ai-agencies">
+            <!-- 8. Semantic RAG & Autonomous Knowledge Agents -->
+            <article class="vertical-card" id="service-ai-agencies" onclick="window.location.href='/rag/'" style="cursor: pointer; border-color: rgba(168, 85, 247, 0.35); background: linear-gradient(135deg, rgba(168, 85, 247, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);">
               <div>
-                <div class="vertical-card__icon-badge">
+                <div class="vertical-card__icon-badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
                   </svg>
                 </div>
-                <h3 class="vertical-card__title">AI agencies &amp; technical consultancies</h3>
+                <h3 class="vertical-card__title">Semantic RAG &amp; Autonomous Knowledge Agents</h3>
                 <p class="vertical-card__desc">
-                  Multi-agent orchestration, custom tool-use architectures, vector database retrieval, and evaluation benches. Built for agencies operating on the frontier of AI capabilities.
+                  3-stage vector retrieval architecture built in n8n. Ingests websites, technical docs, and e-commerce stores into Pinecone vector storage—answering queries with sub-1.8s latency and 100% precision.
                 </p>
+                <div style="margin-top: 14px;">
+                  <a href="/rag/" style="color: #c084fc; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                    Inspect RAG Architecture &amp; Demo →
+                  </a>
+                </div>
               </div>
               <div class="vertical-card__tags">
-                <span class="vertical-tag">Multi-Agent Systems</span>
-                <span class="vertical-tag">RAG Pipelines</span>
-                <span class="vertical-tag">Tool Integrations</span>
+                <span class="vertical-tag" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.3);">Live Video Demo</span>
+                <span class="vertical-tag">Pinecone Vector DB</span>
+                <span class="vertical-tag">Zero Hallucinations</span>
+                <span class="vertical-tag">&lt; 1.8s Latency</span>
               </div>
             </article>
 
@@ -537,9 +543,9 @@
             </article>
 
             <!-- 17. Recruiting & Human Resources -->
-            <article class="vertical-card" id="service-hr">
+            <article class="vertical-card" id="service-hr" onclick="window.location.href='/recruitment/'" style="cursor: pointer; border-color: rgba(34, 197, 94, 0.35); background: linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);">
               <div>
-                <div class="vertical-card__icon-badge">
+                <div class="vertical-card__icon-badge" style="background: rgba(34, 197, 94, 0.15); color: #4ade80;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
@@ -547,15 +553,21 @@
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                   </svg>
                 </div>
-                <h3 class="vertical-card__title">Recruiting &amp; human resources</h3>
+                <h3 class="vertical-card__title">Autonomous Candidate Intake &amp; AI Qualification</h3>
                 <p class="vertical-card__desc">
-                  Candidate screening scorecards, interview scheduling automation, candidate status updates, and reference gathering. Deliver a top-tier candidate experience while halving time-to-hire.
+                  End-to-end recruitment screening pipeline in n8n. Ingests raw candidate resumes, evaluates experience and skills with OpenAI, logs records to Google Sheets, and triggers instant Slack and Gmail alerts.
                 </p>
+                <div style="margin-top: 14px;">
+                  <a href="/recruitment/" style="color: #4ade80; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                    Inspect Interactive n8n Canvas &amp; Blueprint →
+                  </a>
+                </div>
               </div>
               <div class="vertical-card__tags">
-                <span class="vertical-tag">Candidate Screening</span>
-                <span class="vertical-tag">Interview Automation</span>
-                <span class="vertical-tag">Onboarding Checklists</span>
+                <span class="vertical-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ade80; border-color: rgba(34, 197, 94, 0.3);">Interactive Canvas</span>
+                <span class="vertical-tag">OpenAI Scoring</span>
+                <span class="vertical-tag">Sheets + Slack Sync</span>
+                <span class="vertical-tag">15+ Hrs Saved</span>
               </div>
             </article>
 
@@ -597,7 +609,7 @@
       </section>
     </main>
 
-    <!-- Footer -->
+        <!-- Footer -->
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-columns">
@@ -612,19 +624,19 @@
             </div>
           </div>
           <div class="footer-col">
-            <h5 class="footer-col__title">SERVICES</h5>
+            <h5 class="footer-col__title">SOLUTIONS</h5>
             <ul class="footer-col__list">
-              <li><a href="/services/#service-dental">AI Lead Generation</a></li>
-              <li><a href="/services/#service-ai-agencies">Custom AI Agents</a></li>
-              <li><a href="/rag/">RAG Knowledge Systems</a></li>
-              <li><a href="/recruitment/">AI Recruitment Intake</a></li>
-              <li><a href="/services/">All Services</a></li>
+              <li><a href="/voice/" style="color: #38bdf8; font-weight: 600;">Autonomous Voice Receptionist</a></li>
+              <li><a href="/rag/">Semantic RAG Agent</a></li>
+              <li><a href="/recruitment/">Candidate Qualification Pipeline</a></li>
+              <li><a href="/youtube/">Autonomous YouTube Factory</a></li>
+              <li><a href="/services/">Full Systems Library</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h5 class="footer-col__title">COMPANY</h5>
             <ul class="footer-col__list">
-              <li><a href="/about/">About</a></li>
+              <li><a href="/about/">About M R KHAN</a></li>
               <li><a href="/about/#about-story">What is MRKHANSERVICES?</a></li>
               <li><a href="/services/">Industries</a></li>
               <li><a href="/contact/" data-action="open-booking">Growth Call</a></li>
@@ -634,10 +646,11 @@
           <div class="footer-col">
             <h5 class="footer-col__title">RESOURCES</h5>
             <ul class="footer-col__list">
-              <li><a href="/services/">Technical Expertise</a></li>
+              <li><a href="/voice/">Live Voice Agent Sandbox</a></li>
               <li><a href="/rag/">Live RAG Walkthrough</a></li>
               <li><a href="/recruitment/">Recruitment Blueprint</a></li>
-              <li><a href="/contact/">Contact</a></li>
+              <li><a href="/youtube/">YouTube 5-Agent Blueprint</a></li>
+              <li><a href="/contact/">Schedule Consultation</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -656,10 +669,13 @@
         <div class="footer-bottom">
           <span class="footer-bottom__monogram">MRK</span>
           <div class="footer-bottom__legal">
+            <a href="/llms.txt">llms.txt</a>
+            <span style="color: rgba(255,255,255,0.2);">•</span>
+            <a href="/sitemap.xml">Sitemap</a>
+            <span style="color: rgba(255,255,255,0.2);">•</span>
             <a href="/">Privacy Policy</a>
-            <a href="/">Terms of Service</a>
           </div>
-          <span class="footer-bottom__copyright">© 2026 MRKHANSERVICES Media LLC. All rights reserved.</span>
+          <span class="footer-bottom__copyright">© 2026 MRKHANSERVICES. All rights reserved.</span>
         </div>
       </div>
     </footer>

@@ -7,6 +7,8 @@ html_files = [
     os.path.join(base, "services", "index.html"),
     os.path.join(base, "rag", "index.html"),
     os.path.join(base, "recruitment", "index.html"),
+    os.path.join(base, "voice", "index.html"),
+    os.path.join(base, "youtube", "index.html"),
     os.path.join(base, "about", "index.html"),
     os.path.join(base, "contact", "index.html")
 ]
@@ -39,6 +41,7 @@ else:
 
 print("\n--- Auditing Internal Navigation Links ---")
 all_links_ok = True
+valid_routes = ["/", "/services/", "/rag/", "/recruitment/", "/voice/", "/youtube/", "/about/", "/contact/"]
 for hf in html_files:
     rel_hf = os.path.relpath(hf, base)
     with open(hf, "r", encoding="utf-8") as f:
@@ -49,16 +52,16 @@ for hf in html_files:
         if l.startswith("http") or l.startswith("mailto:") or l.startswith("https:"):
             continue
         clean_path = l.split("#")[0]
-        if clean_path.startswith("/assets/"):
-            asset_local = os.path.join(base, clean_path.lstrip("/").replace("/", os.sep))
-            if not os.path.exists(asset_local):
-                print(f"  FLAGGED DEAD ASSET LINK in {rel_hf}: {l}")
+        if clean_path.startswith("/assets/") or clean_path in ["/llms.txt", "/sitemap.xml", "/robots.txt"]:
+            file_local = os.path.join(base, clean_path.lstrip("/").replace("/", os.sep))
+            if not os.path.exists(file_local):
+                print(f"  FLAGGED DEAD ASSET/FILE LINK in {rel_hf}: {l}")
                 all_links_ok = False
             continue
-        if clean_path and clean_path not in ["/", "/services/", "/rag/", "/recruitment/", "/about/", "/contact/"]:
+        if clean_path and clean_path not in valid_routes:
             print(f"  FLAGGED LINK in {rel_hf}: {l}")
             all_links_ok = False
 
 if all_links_ok:
-    print("PASS: All internal navigation links point to valid clean routes (/, /services/, /rag/, /recruitment/, /about/, /contact/)!")
+    print(f"PASS: All internal navigation links point to valid clean routes ({', '.join(valid_routes)})!")
 
