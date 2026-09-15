@@ -18,6 +18,8 @@ files_to_copy = [
     ("youtube/index.html", "youtube/index.html"),
     ("about/index.html", "about/index.html"),
     ("contact/index.html", "contact/index.html"),
+    ("privacy/index.html", "privacy/index.html"),
+    ("terms/index.html", "terms/index.html"),
     ("favicon.svg", "favicon.svg"),
     ("favicon.png", "favicon.png"),
     ("favicon.ico", "favicon.ico"),

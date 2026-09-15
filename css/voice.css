@@ -31,7 +31,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #38bdf8;
+  color: #F4F4F4;
   margin-bottom: 24px;
 }
 
@@ -39,8 +39,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: #10b981;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+  background-color: rgba(255,255,255,0.08);
+  box-shadow: 0 0 10px rgba(255,255,255,0.12);
   animation: v-pulse 2s infinite;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .voice-metric-chip strong {
-  color: #34d399;
+  color: #F4F4F4;
   font-weight: 700;
 }
 
@@ -140,8 +140,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 10px #10b981;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 10px rgba(255,255,255,0.08);
 }
 
 .v-status-dot.active {
@@ -165,7 +165,7 @@
 .v-tag-latency {
   background: rgba(2, 132, 199, 0.15);
   border: 1px solid rgba(2, 132, 199, 0.3);
-  color: #38bdf8;
+  color: #F4F4F4;
   padding: 4px 12px;
   border-radius: 8px;
   font-size: 0.82rem;
@@ -189,7 +189,7 @@
 .v-wave-bar {
   width: 4px;
   height: 20%;
-  background: linear-gradient(180deg, #38bdf8 0%, #10b981 100%);
+  background: linear-gradient(180deg, #F4F4F4 0%, rgba(255,255,255,0.08) 100%);
   border-radius: 4px;
   transition: height 0.2s ease;
   animation: idle-wave 2.2s infinite ease-in-out;
@@ -301,7 +301,7 @@
 }
 
 .voice-prompt-icon {
-  color: #38bdf8;
+  color: #F4F4F4;
   font-size: 0.9rem;
 }
 
@@ -401,7 +401,7 @@
 }
 
 .voice-canvas-meta a {
-  color: #38bdf8;
+  color: #F4F4F4;
   text-decoration: none;
   font-weight: 600;
   display: inline-flex;
@@ -443,7 +443,7 @@
 .voice-pillar-num {
   font-size: 0.8rem;
   font-weight: 800;
-  color: #0284c7;
+  color: #F4F4F4;
   letter-spacing: 0.08em;
   margin-bottom: 10px;
 }
@@ -494,7 +494,7 @@
 .voice-roi-val {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #34d399;
+  color: #F4F4F4;
   line-height: 1;
   margin-bottom: 8px;
   font-feature-settings: "tnum";

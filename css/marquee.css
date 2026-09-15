@@ -1,12 +1,12 @@
 /* ========================================================= */
-/* Company Marquee Styles                                    */
+/* Integration App Icon Tiles Marquee (Inspired by n8n.io)    */
 /* ========================================================= */
 
 .company-marquee {
   width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 32px 0 36px;
   background: #090909;
   position: relative;
   z-index: 5;
@@ -17,69 +17,113 @@
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   color: #9BA3AF;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
 
+/* Edge Masking - creates the smooth fade at left and right */
 .company-marquee__viewport {
-  overflow-x: hidden;
+  overflow: hidden;
   width: 100%;
   display: flex;
-  cursor: grab;
+  flex-direction: column;
+  gap: 14px;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   user-select: none;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.company-marquee__viewport::-webkit-scrollbar {
-  display: none;
-}
-
-.company-marquee__viewport:active {
-  cursor: grabbing;
+.company-marquee__row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
 }
 
 .company-marquee__track {
   display: flex;
-  gap: 48px;
-  animation: marqueeScroll 30s linear infinite;
-  white-space: nowrap;
+  gap: 14px;
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+.company-marquee__track--row1 {
+  animation: scrollLeft 40s linear infinite;
+}
+
+.company-marquee__track--row2 {
+  animation: scrollRight 40s linear infinite;
 }
 
 .company-marquee:hover .company-marquee__track {
   animation-play-state: paused;
 }
 
-.company-marquee__group {
+/* App Icon Tiles */
+.marquee-tile {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
-  gap: 48px;
   align-items: center;
-}
-
-.company-marquee__group span {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #D7E2EA;
-  letter-spacing: 0.02em;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  justify-content: center;
   flex-shrink: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.company-marquee__group span:hover {
-  opacity: 1;
-  color: #F4F4F4;
+.marquee-tile svg {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
-@keyframes marqueeScroll {
+.marquee-tile:hover {
+  background: #1c1c20;
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes scrollLeft {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee-tile {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .marquee-tile svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .company-marquee__viewport {
+    gap: 10px;
+  }
+
+  .company-marquee__track {
+    gap: 10px;
   }
 }
