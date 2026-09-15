@@ -117,9 +117,7 @@
       <!-- Hero Section -->
       <section class="hero hero--home" id="top">
         <div class="hero-bg">
-          <video class="hero-bg-video" autoplay loop muted playsinline>
-            <source src="/assets/hero_bg.mp4" type="video/mp4" />
-          </video>
+          <div id="hero-lottie-bg" class="hero-bg-lottie"></div>
           <div class="hero-overlay"></div>
         </div>
 
@@ -136,56 +134,6 @@
             <a href="/services/" class="hero-secondary-btn">
               Explore Industry Solutions →
             </a>
-          </div>
-
-          <!-- System Architecture Showcase Window -->
-          <div class="hero-showcase">
-            <div class="hero-showcase__glow"></div>
-            <div class="hero-showcase__frame">
-              <!-- Window Chrome Header -->
-              <div class="hero-showcase__header">
-                <div class="hero-showcase__dots">
-                  <span class="dot dot--red"></span>
-                  <span class="dot dot--yellow"></span>
-                  <span class="dot dot--green"></span>
-                </div>
-                <div class="hero-showcase__title">
-                  <span class="status-pulse"></span>
-                  <span class="hero-showcase__title-text">Autonomous Operations Pipeline &bull; Production Active</span>
-                </div>
-                <div class="hero-showcase__tag">24/7 Execution</div>
-              </div>
-              
-              <!-- Interactive Canvas Wrap -->
-              <div class="hero-showcase__canvas-wrap">
-                <div id="hero-lottie-player" class="hero-showcase__canvas"></div>
-              </div>
-
-              <!-- Bento Metrics Bottom Bar -->
-              <div class="hero-showcase__metrics">
-                <div class="metric-chip">
-                  <span class="metric-chip__icon">⚡</span>
-                  <div class="metric-chip__content">
-                    <span class="metric-chip__val">Autonomous Trigger-to-Output</span>
-                    <span class="metric-chip__lbl">Sub-second execution routing</span>
-                  </div>
-                </div>
-                <div class="metric-chip">
-                  <span class="metric-chip__icon">⏱</span>
-                  <div class="metric-chip__content">
-                    <span class="metric-chip__val">20+ Hours Saved / Week</span>
-                    <span class="metric-chip__lbl">Zero manual data handoffs</span>
-                  </div>
-                </div>
-                <div class="metric-chip">
-                  <span class="metric-chip__icon">🛡</span>
-                  <div class="metric-chip__content">
-                    <span class="metric-chip__val">99.9% Reliability SLA</span>
-                    <span class="metric-chip__lbl">Automated failover &amp; logging</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -522,14 +470,17 @@
   <script src="/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const container = document.getElementById('hero-lottie-player');
+      const container = document.getElementById('hero-lottie-bg');
       if (window.lottie && container) {
         window.lottie.loadAnimation({
           container: container,
           renderer: 'svg',
           loop: true,
           autoplay: true,
-          path: '/assets/n8n_hero.json'
+          path: '/assets/n8n_hero.json',
+          rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+          }
         });
       }
     });
