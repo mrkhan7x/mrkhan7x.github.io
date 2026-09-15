@@ -228,7 +228,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #60A5FA;
+  color: #F4F4F4;
   margin-bottom: 6px;
 }
 
@@ -309,7 +309,7 @@
   gap: 6px;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #38BDF8;
+  color: #F4F4F4;
 }
 
 /* --- Responsive Adjustments --- */

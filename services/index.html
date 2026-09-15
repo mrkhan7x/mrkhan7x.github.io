@@ -28,10 +28,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/global.css?v=3" />
   <link rel="stylesheet" href="/css/navbar.css" />
   <link rel="stylesheet" href="/css/marquee.css" />
-  <link rel="stylesheet" href="/css/services.css" />
+  <link rel="stylesheet" href="/css/services.css?v=3" />
   <link rel="stylesheet" href="/css/modal.css" />
   <link rel="stylesheet" href="/css/footer.css" />
 
@@ -52,7 +52,7 @@
           position: "bottom-right",
           buttonConfig: {
             text: "Talk to My AI Receptionist",
-            color: "#0284c7"
+            color: "#141416"
           }
         });
       }
@@ -162,30 +162,114 @@
           <div class="services-verticals__grid">
             
             <!-- 0. Autonomous Voice Receptionist (Flagship) -->
-            <article class="vertical-card" id="service-voice" onclick="window.location.href='/voice/'" style="cursor: pointer; border-color: rgba(2, 132, 199, 0.35); background: linear-gradient(135deg, rgba(2, 132, 199, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);">
+            <article class="vertical-card" id="service-voice" onclick="window.location.href='/voice/'" style="cursor: pointer; border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02);">
               <div>
-                <div class="vertical-card__icon-badge" style="background: rgba(2, 132, 199, 0.15); color: #38bdf8;">
+                <div class="vertical-card__icon-badge" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
                     <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
                     <line x1="12" y1="19" x2="12" y2="22"></line>
                   </svg>
                 </div>
-                <h3 class="vertical-card__title">Autonomous Voice Receptionist &amp; RAG</h3>
+                <h3 class="vertical-card__title">Autonomous Voice Receptionist</h3>
                 <p class="vertical-card__desc">
                   24/7 inbound phone and browser voice agent with sub-800ms natural turn-taking. Grounded in Pinecone vector search for zero hallucinations, with real-time calendar booking and CRM synchronization.
                 </p>
                 <div style="margin-top: 14px;">
-                  <a href="/voice/" style="color: #38bdf8; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                  <a href="/voice/" style="color: #F4F4F4; font-size: 0.88rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
                     Inspect Case Study &amp; Live Demo →
                   </a>
                 </div>
               </div>
               <div class="vertical-card__tags">
-                <span class="vertical-tag" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">Live Interactive</span>
+                <span class="vertical-tag" style="background: rgba(255, 255, 255, 0.04); color: #F4F4F4; border-color: rgba(255, 255, 255, 0.1);">Live Interactive</span>
                 <span class="vertical-tag">WebRTC Voice</span>
                 <span class="vertical-tag">Pinecone RAG</span>
-                <span class="vertical-tag">n8n Router</span>
+                <span class="vertical-tag">Router Engine</span>
+              </div>
+            </article>
+
+            <!-- 0B. Candidate Qualification & Intake Pipeline (Flagship) -->
+            <article class="vertical-card" id="service-recruitment" onclick="window.location.href='/recruitment/'" style="cursor: pointer; border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02);">
+              <div>
+                <div class="vertical-card__icon-badge" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <h3 class="vertical-card__title">Candidate Qualification &amp; Intake Pipeline</h3>
+                <p class="vertical-card__desc">
+                  Autonomous recruitment funnel that ingests raw applicants, extracts structured competencies with AI, synchronizes Google Sheets, and triggers instant Slack and Gmail alerts in under 5 seconds.
+                </p>
+                <div style="margin-top: 14px;">
+                  <a href="/recruitment/" style="color: #F4F4F4; font-size: 0.88rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                    Inspect Architecture &amp; Interactive Canvas →
+                  </a>
+                </div>
+              </div>
+              <div class="vertical-card__tags">
+                <span class="vertical-tag" style="background: rgba(255, 255, 255, 0.04); color: #F4F4F4; border-color: rgba(255, 255, 255, 0.1);">Architecture Canvas</span>
+                <span class="vertical-tag">&lt; 5s Intake</span>
+                <span class="vertical-tag">Sheets + Slack</span>
+                <span class="vertical-tag">15+ Hrs Saved</span>
+              </div>
+            </article>
+
+            <!-- 0C. Semantic Knowledge Base RAG Agent (Flagship) -->
+            <article class="vertical-card" id="service-rag" onclick="window.location.href='/rag/'" style="cursor: pointer; border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02);">
+              <div>
+                <div class="vertical-card__icon-badge" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                  </svg>
+                </div>
+                <h3 class="vertical-card__title">Enterprise Semantic RAG Agent</h3>
+                <p class="vertical-card__desc">
+                  Multi-source document retrieval engine with hybrid vector search, reranking, and verified source citations. Completely removes hallucinations for internal SOPs and technical documentation.
+                </p>
+                <div style="margin-top: 14px;">
+                  <a href="/rag/" style="color: #F4F4F4; font-size: 0.88rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                    Inspect RAG Architecture &amp; Benchmark →
+                  </a>
+                </div>
+              </div>
+              <div class="vertical-card__tags">
+                <span class="vertical-tag" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4; border-color: rgba(255, 255, 255, 0.1);">Vector Search</span>
+                <span class="vertical-tag">Hybrid Search</span>
+                <span class="vertical-tag">Zero Hallucination</span>
+                <span class="vertical-tag">Live SOP Sync</span>
+              </div>
+            </article>
+
+            <!-- 0D. Autonomous YouTube Content Factory (Flagship) -->
+            <article class="vertical-card" id="service-youtube" onclick="window.location.href='/youtube/'" style="cursor: pointer; border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02);">
+              <div>
+                <div class="vertical-card__icon-badge" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+                    <polygon points="10 15 15 12 10 9 10 15"></polygon>
+                  </svg>
+                </div>
+                <h3 class="vertical-card__title">Autonomous YouTube Content Factory</h3>
+                <p class="vertical-card__desc">
+                  End-to-end viral content engine automating niche research, script generation via retention frameworks, voice cloning, thumbnail optimization, and multi-channel publishing.
+                </p>
+                <div style="margin-top: 14px;">
+                  <a href="/youtube/" style="color: #F4F4F4; font-size: 0.88rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                    Inspect Production Pipeline →
+                  </a>
+                </div>
+              </div>
+              <div class="vertical-card__tags">
+                <span class="vertical-tag" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4; border-color: rgba(255, 255, 255, 0.1);">Content Engine</span>
+                <span class="vertical-tag">Viral Scripting</span>
+                <span class="vertical-tag">Voice Cloning</span>
+                <span class="vertical-tag">Auto-Publishing</span>
               </div>
             </article>
 
@@ -317,9 +401,9 @@
             </article>
 
             <!-- 7. AI Media & Creative Studios -->
-            <article class="vertical-card" id="service-ai-media" onclick="window.location.href='/youtube/'" style="cursor: pointer; border-color: rgba(239, 68, 68, 0.35); background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);">
+            <article class="vertical-card" id="service-ai-media" onclick="window.location.href='/youtube/'" style="cursor: pointer; border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02);">
               <div>
-                <div class="vertical-card__icon-badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171;">
+                <div class="vertical-card__icon-badge" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="5 3 19 12 5 21 5 3"></polygon>
                   </svg>
@@ -329,13 +413,13 @@
                   End-to-end multi-agent production pipeline in n8n. Mines trending topics, writes retention-focused scripts, generates ElevenLabs studio voiceovers, sets scene assembly specs, and drafts SEO metadata.
                 </p>
                 <div style="margin-top: 14px;">
-                  <a href="/youtube/" style="color: #f87171; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                  <a href="/youtube/" style="color: #F4F4F4; font-size: 0.88rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
                     Inspect 5-Agent Architecture &amp; Blueprint →
                   </a>
                 </div>
               </div>
               <div class="vertical-card__tags">
-                <span class="vertical-tag" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border-color: rgba(239, 68, 68, 0.3);">Live Blueprint</span>
+                <span class="vertical-tag" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4; border-color: rgba(255, 255, 255, 0.1);">Live Blueprint</span>
                 <span class="vertical-tag">5-Agent n8n</span>
                 <span class="vertical-tag">ElevenLabs API</span>
                 <span class="vertical-tag">15+ Hrs Saved</span>
@@ -343,9 +427,9 @@
             </article>
 
             <!-- 8. Semantic RAG & Autonomous Knowledge Agents -->
-            <article class="vertical-card" id="service-ai-agencies" onclick="window.location.href='/rag/'" style="cursor: pointer; border-color: rgba(168, 85, 247, 0.35); background: linear-gradient(135deg, rgba(168, 85, 247, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);">
+            <article class="vertical-card" id="service-ai-agencies" onclick="window.location.href='/rag/'" style="cursor: pointer; border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02);">
               <div>
-                <div class="vertical-card__icon-badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc;">
+                <div class="vertical-card__icon-badge" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                     <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
@@ -357,13 +441,13 @@
                   3-stage vector retrieval architecture built in n8n. Ingests websites, technical docs, and e-commerce stores into Pinecone vector storage—answering queries with sub-1.8s latency and 100% precision.
                 </p>
                 <div style="margin-top: 14px;">
-                  <a href="/rag/" style="color: #c084fc; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                  <a href="/rag/" style="color: #F4F4F4; font-size: 0.88rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
                     Inspect RAG Architecture &amp; Demo →
                   </a>
                 </div>
               </div>
               <div class="vertical-card__tags">
-                <span class="vertical-tag" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.3);">Live Video Demo</span>
+                <span class="vertical-tag" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4; border-color: rgba(255, 255, 255, 0.1);">Live Video Demo</span>
                 <span class="vertical-tag">Pinecone Vector DB</span>
                 <span class="vertical-tag">Zero Hallucinations</span>
                 <span class="vertical-tag">&lt; 1.8s Latency</span>
@@ -543,9 +627,9 @@
             </article>
 
             <!-- 17. Recruiting & Human Resources -->
-            <article class="vertical-card" id="service-hr" onclick="window.location.href='/recruitment/'" style="cursor: pointer; border-color: rgba(34, 197, 94, 0.35); background: linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);">
+            <article class="vertical-card" id="service-hr" onclick="window.location.href='/recruitment/'" style="cursor: pointer; border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02);">
               <div>
-                <div class="vertical-card__icon-badge" style="background: rgba(34, 197, 94, 0.15); color: #4ade80;">
+                <div class="vertical-card__icon-badge" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
@@ -558,13 +642,13 @@
                   End-to-end recruitment screening pipeline in n8n. Ingests raw candidate resumes, evaluates experience and skills with OpenAI, logs records to Google Sheets, and triggers instant Slack and Gmail alerts.
                 </p>
                 <div style="margin-top: 14px;">
-                  <a href="/recruitment/" style="color: #4ade80; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                  <a href="/recruitment/" style="color: #F4F4F4; font-size: 0.88rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
                     Inspect Interactive n8n Canvas &amp; Blueprint →
                   </a>
                 </div>
               </div>
               <div class="vertical-card__tags">
-                <span class="vertical-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ade80; border-color: rgba(34, 197, 94, 0.3);">Interactive Canvas</span>
+                <span class="vertical-tag" style="background: rgba(255, 255, 255, 0.05); color: #F4F4F4; border-color: rgba(255, 255, 255, 0.1);">Interactive Canvas</span>
                 <span class="vertical-tag">OpenAI Scoring</span>
                 <span class="vertical-tag">Sheets + Slack Sync</span>
                 <span class="vertical-tag">15+ Hrs Saved</span>
@@ -626,7 +710,7 @@
           <div class="footer-col">
             <h5 class="footer-col__title">SOLUTIONS</h5>
             <ul class="footer-col__list">
-              <li><a href="/voice/" style="color: #38bdf8; font-weight: 600;">Autonomous Voice Receptionist</a></li>
+              <li><a href="/voice/" >Autonomous Voice Receptionist</a></li>
               <li><a href="/rag/">Semantic RAG Agent</a></li>
               <li><a href="/recruitment/">Candidate Qualification Pipeline</a></li>
               <li><a href="/youtube/">Autonomous YouTube Factory</a></li>
@@ -668,12 +752,10 @@
 
         <div class="footer-bottom">
           <span class="footer-bottom__monogram">MRK</span>
-          <div class="footer-bottom__legal">
-            <a href="/llms.txt">llms.txt</a>
-            <span style="color: rgba(255,255,255,0.2);">•</span>
-            <a href="/sitemap.xml">Sitemap</a>
-            <span style="color: rgba(255,255,255,0.2);">•</span>
-            <a href="/">Privacy Policy</a>
+                    <div class="footer-bottom__legal">
+            <a href="/privacy/">Privacy Policy</a>
+            <span style="color: rgba(255,255,255,0.2);">&bull;</span>
+            <a href="/terms/">Terms of Service</a>
           </div>
           <span class="footer-bottom__copyright">© 2026 MRKHANSERVICES. All rights reserved.</span>
         </div>
