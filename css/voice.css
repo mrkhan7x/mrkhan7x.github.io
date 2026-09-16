@@ -1,6 +1,7 @@
 /* ==========================================================================
-   Voice Receptionist & RAG Architecture Deep-Dive Styles (css/voice.css)
-   Aesthetic: Dark Minimalist, Layered Surface Contrast, 1px Glass Borders
+   Autonomous Voice Receptionist Case Study Styles (css/voice.css)
+   Design: World-Class Dark Minimalist, Layered Surface Contrast, 1px Glass Borders
+   Palette: #0C0C0C background, #141416 card surfaces, #FFFFFF/#F4F4F4 text
    ========================================================================== */
 
 .voice-page {
@@ -25,8 +26,8 @@
   gap: 8px;
   padding: 6px 14px;
   border-radius: 9999px;
-  background: rgba(2, 132, 199, 0.1);
-  border: 1px solid rgba(2, 132, 199, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -39,8 +40,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: rgba(255,255,255,0.08);
-  box-shadow: 0 0 10px rgba(255,255,255,0.12);
+  background-color: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
   animation: v-pulse 2s infinite;
 }
 
@@ -62,7 +63,7 @@
 .voice-hero__subtitle {
   font-size: clamp(1.05rem, 2vw, 1.25rem);
   line-height: 1.6;
-  color: #A3A3A3;
+  color: #9BA3AF;
   max-width: 820px;
   margin: 0 auto 36px auto;
 }
@@ -98,11 +99,11 @@
 .voice-sandbox-container {
   max-width: 1060px;
   margin: 0 auto 96px auto;
-  background: linear-gradient(135deg, rgba(17, 21, 33, 0.85) 0%, rgba(10, 12, 18, 0.95) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
   padding: 36px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 50px rgba(2, 132, 199, 0.05);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
 }
@@ -112,10 +113,10 @@
   position: absolute;
   top: -100px;
   right: -100px;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.2) 0%, transparent 70%);
-  filter: blur(50px);
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+  filter: blur(60px);
   pointer-events: none;
 }
 
@@ -140,14 +141,27 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 0 10px rgba(255,255,255,0.08);
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+  transition: all 0.3s ease;
+}
+
+.v-status-dot.connecting {
+  background: #f59e0b;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
+  animation: pulse-amber 1s infinite;
 }
 
 .v-status-dot.active {
   background: #ef4444;
-  box-shadow: 0 0 12px #ef4444;
+  box-shadow: 0 0 14px #ef4444;
   animation: pulse-red 1.2s infinite;
+}
+
+@keyframes pulse-amber {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes pulse-red {
@@ -159,17 +173,18 @@
 .v-status-text {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #f8fafc;
+  color: #F4F4F4;
 }
 
 .v-tag-latency {
-  background: rgba(2, 132, 199, 0.15);
-  border: 1px solid rgba(2, 132, 199, 0.3);
-  color: #F4F4F4;
-  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #9BA3AF;
+  padding: 5px 12px;
   border-radius: 8px;
   font-size: 0.82rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 /* Waveform Visualizer */
@@ -177,22 +192,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 8px;
+  height: 84px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
   padding: 0 24px;
   margin-bottom: 28px;
+  overflow: hidden;
 }
 
 .v-wave-bar {
-  width: 4px;
-  height: 20%;
-  background: linear-gradient(180deg, #F4F4F4 0%, rgba(255,255,255,0.08) 100%);
+  width: 5px;
+  height: 18%;
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 4px;
-  transition: height 0.2s ease;
-  animation: idle-wave 2.2s infinite ease-in-out;
+  transition: height 0.1s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.25s ease, opacity 0.25s ease;
+  animation: idle-wave 2.4s infinite ease-in-out;
 }
 
 .v-wave-bar:nth-child(2) { animation-delay: 0.15s; }
@@ -208,68 +224,91 @@
 .v-wave-bar:nth-child(12) { animation-delay: 1.65s; }
 
 @keyframes idle-wave {
-  0%, 100% { height: 18%; opacity: 0.4; }
-  50% { height: 45%; opacity: 0.85; }
+  0%, 100% { height: 16%; opacity: 0.35; }
+  50% { height: 42%; opacity: 0.75; }
 }
 
 .voice-waveform-area.active .v-wave-bar {
-  background: linear-gradient(180deg, #ef4444 0%, #f97316 100%);
-  animation: active-wave 0.8s infinite ease-in-out;
+  background: #F4F4F4;
+  opacity: 0.85;
+  animation: none; /* Controlled dynamically via volume-level JS */
 }
 
-@keyframes active-wave {
-  0%, 100% { height: 25%; opacity: 0.7; }
-  50% { height: 95%; opacity: 1; }
+.voice-waveform-area.speaking .v-wave-bar {
+  background: #FFFFFF;
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* Call Trigger Button */
 .voice-call-trigger-btn {
   width: 100%;
   padding: 18px 24px;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #F4F4F4;
+  color: #0C0C0C;
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 14px;
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.4);
-  transition: all 0.2s ease;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   margin-bottom: 28px;
+  user-select: none;
 }
 
 .voice-call-trigger-btn:hover {
+  background: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(2, 132, 199, 0.55);
-  filter: brightness(1.08);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
 }
 
 .voice-call-trigger-btn:active {
   transform: scale(0.98);
 }
 
+.voice-call-trigger-btn.connecting {
+  background: #202022;
+  color: #F4F4F4;
+  border-color: rgba(255, 255, 255, 0.2);
+  cursor: wait;
+}
+
 .voice-call-trigger-btn.active {
-  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  background: #dc2626;
+  color: #FFFFFF;
+  border-color: #ef4444;
   box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+}
+
+.voice-call-trigger-btn.active:hover {
+  background: #b91c1c;
+}
+
+.voice-call-trigger-btn .btn-icon {
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Prompts Area */
 .voice-prompts-guide {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 18px 22px;
 }
 
 .voice-prompts-title {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #737373;
+  letter-spacing: 0.08em;
+  color: #888888;
   font-weight: 700;
   margin-bottom: 12px;
   display: block;
@@ -290,19 +329,31 @@
 .voice-prompt-item {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  padding: 10px 14px;
+  border-radius: 10px;
+  padding: 12px 14px;
   font-size: 0.85rem;
   color: #cbd5e1;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   line-height: 1.45;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.voice-prompt-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
 .voice-prompt-icon {
   color: #F4F4F4;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* --- Section Titles --- */
@@ -317,13 +368,13 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #737373;
+  color: #888888;
   margin-bottom: 12px;
 }
 
 .voice-section-header__title {
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.02em;
   color: #FFFFFF;
   margin-bottom: 14px;
@@ -331,7 +382,7 @@
 
 .voice-section-header__desc {
   font-size: 1rem;
-  color: #A3A3A3;
+  color: #9BA3AF;
   line-height: 1.6;
 }
 
@@ -346,9 +397,9 @@
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
-  background: #090a0f;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 255, 255, 0.02);
+  background: #0E0E10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
   cursor: pointer;
 }
 
@@ -366,7 +417,7 @@
 .voice-canvas-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -379,7 +430,7 @@
 }
 
 .voice-canvas-overlay span {
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(20, 20, 22, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
   padding: 12px 22px;
@@ -397,7 +448,11 @@
   flex-wrap: wrap;
   gap: 12px;
   font-size: 0.85rem;
-  color: #737373;
+  color: #888888;
+}
+
+.voice-canvas-meta strong {
+  color: #E5E5E5;
 }
 
 .voice-canvas-meta a {
@@ -407,9 +462,11 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  transition: color 0.2s ease;
 }
 
 .voice-canvas-meta a:hover {
+  color: #FFFFFF;
   text-decoration: underline;
 }
 
@@ -443,7 +500,7 @@
 .voice-pillar-num {
   font-size: 0.8rem;
   font-weight: 800;
-  color: #F4F4F4;
+  color: #9BA3AF;
   letter-spacing: 0.08em;
   margin-bottom: 10px;
 }
@@ -457,7 +514,7 @@
 
 .voice-pillar-desc {
   font-size: 0.92rem;
-  color: #A3A3A3;
+  color: #9BA3AF;
   line-height: 1.6;
 }
 
@@ -503,21 +560,65 @@
 .voice-roi-label {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #FFFFFF;
   margin-bottom: 4px;
 }
 
 .voice-roi-sub {
-  font-size: 0.8rem;
-  color: #737373;
+  font-size: 0.82rem;
+  color: #888888;
   line-height: 1.4;
+}
+
+/* --- CTA Banner Actions & Secondary Button --- */
+.cta-banner__subtitle {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(14px, 1.6vw, 16px);
+  font-weight: 400;
+  color: #9BA3AF;
+  line-height: 1.65;
+  max-width: 580px;
+  margin: 0 auto 36px;
+}
+
+.cta-banner__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn--secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #F4F4F4;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
 /* --- Lightbox Modal --- */
 .voice-lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.92);
   backdrop-filter: blur(12px);
   z-index: 100000;
   display: none;
@@ -531,7 +632,7 @@
 }
 
 .voice-lightbox__inner {
-  background: #0e111a;
+  background: #141416;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   max-width: 1200px;
@@ -540,6 +641,7 @@
   overflow: auto;
   position: relative;
   padding: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
 }
 
 .voice-lightbox__close {
@@ -554,6 +656,14 @@
   border-radius: 50%;
   font-size: 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.voice-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .voice-lightbox__img {
