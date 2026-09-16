@@ -16,6 +16,7 @@ files_to_copy = [
     ("recruitment/index.html", "recruitment/index.html"),
     ("voice/index.html", "voice/index.html"),
     ("youtube/index.html", "youtube/index.html"),
+    ("txrg/index.html", "txrg/index.html"),
     ("about/index.html", "about/index.html"),
     ("contact/index.html", "contact/index.html"),
     ("privacy/index.html", "privacy/index.html"),
