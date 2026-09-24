@@ -122,7 +122,7 @@ export default function AboutPage({ onOpenBooking }) {
       {/* Tech / Partner Marquee                                    */}
       {/* ========================================================= */}
       <div className="company-marquee">
-        <p className="company-marquee__label">CORE STACK &amp; SPECIALTIES</p>
+        <p className="company-marquee__label">MRKHANSERVICES WORKS WITH</p>
         <div
           ref={viewportRef}
           className="company-marquee__viewport"
@@ -133,28 +133,28 @@ export default function AboutPage({ onOpenBooking }) {
         >
           <div className="company-marquee__track">
             <div className="company-marquee__group">
-              <span>BS Artificial Intelligence</span>
-              <span>PyTorch &amp; Deep Learning</span>
-              <span>Machine Learning (scikit-learn)</span>
-              <span>Python &amp; Data Engineering</span>
               <span>n8n Workflows</span>
-              <span>OpenAI API &amp; LLM Orchestration</span>
-              <span>Supabase &amp; PostgreSQL</span>
-              <span>HubSpot &amp; CRM Sync</span>
-              <span>Data Analytics &amp; Statistics</span>
-              <span>FastAPI &amp; REST Microservices</span>
+              <span>OpenAI Agents</span>
+              <span>Voiceflow</span>
+              <span>Make.com</span>
+              <span>Supabase</span>
+              <span>HubSpot CRM</span>
+              <span>Airtable</span>
+              <span>Slack API</span>
+              <span>WhatsApp API</span>
+              <span>Python Automation</span>
             </div>
             <div className="company-marquee__group" aria-hidden="true">
-              <span>BS Artificial Intelligence</span>
-              <span>PyTorch &amp; Deep Learning</span>
-              <span>Machine Learning (scikit-learn)</span>
-              <span>Python &amp; Data Engineering</span>
               <span>n8n Workflows</span>
-              <span>OpenAI API &amp; LLM Orchestration</span>
-              <span>Supabase &amp; PostgreSQL</span>
-              <span>HubSpot &amp; CRM Sync</span>
-              <span>Data Analytics &amp; Statistics</span>
-              <span>FastAPI &amp; REST Microservices</span>
+              <span>OpenAI Agents</span>
+              <span>Voiceflow</span>
+              <span>Make.com</span>
+              <span>Supabase</span>
+              <span>HubSpot CRM</span>
+              <span>Airtable</span>
+              <span>Slack API</span>
+              <span>WhatsApp API</span>
+              <span>Python Automation</span>
             </div>
           </div>
         </div>
