@@ -68,8 +68,8 @@ export default function Footer({ onOpenBooking }) {
               <li><a href="/#projects">Projects</a></li>
               <li><a href="/services/">Industries</a></li>
               <li>
-                <a href="https://mrkhanservices.site" target="_blank" rel="noreferrer">
-                  mrkhanservices.site
+                <a href="https://mrkhanservices.com" target="_blank" rel="noreferrer">
+                  mrkhanservices.com
                 </a>
               </li>
             </ul>
@@ -111,7 +111,7 @@ export default function Footer({ onOpenBooking }) {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@mrkhanservices.site">
+                <a href="mailto:info@mrkhanservices.com">
                   Direct Email
                 </a>
               </li>

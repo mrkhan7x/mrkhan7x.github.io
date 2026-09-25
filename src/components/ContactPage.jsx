@@ -64,9 +64,9 @@ export default function ContactPage({ onOpenBooking }) {
     },
     {
       name: "Direct Email",
-      handle: "info@mrkhanservices.site",
+      handle: "info@mrkhanservices.com",
       label: "Detailed Scopes & Inquiries",
-      url: "mailto:info@mrkhanservices.site",
+      url: "mailto:info@mrkhanservices.com",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -125,16 +125,16 @@ export default function ContactPage({ onOpenBooking }) {
               <div className="contact-details__row">
                 <dt>Email</dt>
                 <dd>
-                  <a href="mailto:info@mrkhanservices.site">
-                    info@mrkhanservices.site
+                  <a href="mailto:info@mrkhanservices.com">
+                    info@mrkhanservices.com
                   </a>
                 </dd>
               </div>
               <div className="contact-details__row">
                 <dt>Website</dt>
                 <dd>
-                  <a href="https://mrkhanservices.site">
-                    mrkhanservices.site
+                  <a href="https://mrkhanservices.com">
+                    mrkhanservices.com
                   </a>
                 </dd>
               </div>
