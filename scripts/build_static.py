@@ -14,6 +14,8 @@ files_to_copy = [
     ("services/index.html", "services/index.html"),
     ("rag/index.html", "rag/index.html"),
     ("recruitment/index.html", "recruitment/index.html"),
+    ("recruitment/candidates_dataset.js", "recruitment/candidates_dataset.js"),
+    ("recruitment/app.js", "recruitment/app.js"),
     ("voice/index.html", "voice/index.html"),
     ("youtube/index.html", "youtube/index.html"),
     ("about/index.html", "about/index.html"),
