@@ -1,473 +1,500 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomous 5-Agent YouTube Content Factory | MRKHANSERVICES</title>
-  <meta name="description" content="Autonomous 5-agent faceless YouTube production pipeline engineered in n8n. Turns raw topics into researched scripts, ElevenLabs voiceover, video assembly specs, and SEO packaging." />
+  <title>Autonomous YouTube Content Factory | MRKHANSERVICES</title>
+  <meta name="description" content="Autonomous five-agent YouTube production pipeline engineered in n8n. Turns raw topics into researched scripts, ElevenLabs voiceover, programmatic video specs, and SEO packaging." />
   <link rel="canonical" href="https://mrkhanservices.site/youtube/" />
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="MRKHANSERVICES" />
   <meta property="og:url" content="https://mrkhanservices.site/youtube/" />
-  <meta property="og:title" content="Autonomous 5-Agent YouTube Content Factory | MRKHANSERVICES" />
-  <meta property="og:description" content="Autonomous 5-agent faceless YouTube production pipeline engineered in n8n. Turns raw topics into researched scripts, ElevenLabs voiceover, video assembly specs, and SEO packaging." />
+  <meta property="og:title" content="Autonomous YouTube Content Factory | MRKHANSERVICES" />
+  <meta property="og:description" content="Autonomous five-agent YouTube production pipeline engineered in n8n. Turns raw topics into researched scripts, ElevenLabs voiceover, programmatic video specs, and SEO packaging." />
   <meta property="og:image" content="https://mrkhanservices.site/assets/images/youtube-autonomous-content-factory.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicons -->
+  <!--SHELL:HEAD-->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="theme-color" content="#0C0C0C" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/global.css?v=3" />
-  <link rel="stylesheet" href="/css/navbar.css" />
-  <link rel="stylesheet" href="/css/youtube.css" />
-  <link rel="stylesheet" href="/css/modal.css" />
-  <link rel="stylesheet" href="/css/footer.css" />
-
-  <!-- Vapi Web Voice Widget SDK -->
-  <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.vapiSDK) {
-        window.vapiSDK.run({
-          apiKey: "7adae33d-4975-462a-bcb0-ef90c937c684",
-          assistant: "9de09a23-7f03-473f-bcda-45f8435dd1f3",
-          assistantOverrides: {
-            serverUrl: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router",
-            server: {
-              url: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router"
-            }
-          },
-          position: "bottom-right",
-          buttonConfig: {
-            text: "Talk to My AI Receptionist",
-            color: "#141416"
-          }
-        });
-      }
-    });
-  </script>
+  <meta name="theme-color" content="#F5F4F2" />
+  <link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.className='js';</script>
+  <link rel="stylesheet" href="/css/site.css" />
+  <!--/SHELL:HEAD-->
+  <link rel="stylesheet" href="/css/pages/youtube.css" />
 </head>
 <body>
-  <div class="app-background"></div>
-  <div class="grid-pattern-global"></div>
-
-  <div class="page-wrapper">
-    <!-- Floating Header -->
-    <header class="header-floating-wrapper">
-      <nav class="header-nav-container">
-        <a href="/" class="nav-brand" aria-label="MRKHANSERVICES Home">
-          <span class="brand-icon-badge">MRK</span>
-          <span class="brand-name-text">MRKHANSERVICES</span>
-        </a>
-        <div class="nav-links-center">
-          <a href="/services/" class="nav-link-btn">Services</a>
-          <a href="/about/" class="nav-link-btn">About</a>
-          <a href="/contact/" class="nav-link-btn">Contact</a>
-        </div>
-        <div class="nav-cta-wrapper">
-          <a href="/contact/" class="talk-btn" data-action="open-booking">
-            <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-            <span class="talk-btn__arrow">→</span>
-          </a>
-        </div>
-      </nav>
-
-      <!-- Mobile Header -->
-      <div class="mobile-navbar-bar">
-        <a href="/" class="nav-brand">
-          <span class="brand-icon-badge">MRK</span>
-          <span class="brand-name-text">MRKHAN</span>
-        </a>
-        <button class="burger-btn" id="mobile-burger-btn" aria-label="Toggle navigation menu">
+  <!--SHELL:TOP-->
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:40px;width:1px"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="paint" x="-5%" y="-30%" width="110%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" />
+    </filter>
+  </svg>
+  <!--/SHELL:TOP-->
+  <!--SHELL:NAV-->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/" class="brand" aria-label="MRKHANSERVICES home">
+        <span class="badge">MRK</span>
+        <span class="name">MRKHANSERVICES</span>
+      </a>
+      <ul>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <div class="right">
+        <a href="/contact/" class="btn ink sm" data-action="open-booking">Book an audit</a>
+        <button class="burger" id="mobile-burger-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
           <span></span><span></span><span></span>
         </button>
       </div>
+    </nav>
+    <div class="menu" id="mobile-dropdown-menu" aria-hidden="true">
+      <a href="/services/" style="--i:0">Services</a>
+      <a href="/about/" style="--i:1">About</a>
+      <a href="/contact/" style="--i:2">Contact</a>
+      <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit</a>
+    </div>
+  </header>
+  <!--/SHELL:NAV-->
 
-      <!-- Mobile Dropdown Menu -->
-      <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
-        <a href="/services/" class="mobile-dropdown-link">Services</a>
-        <a href="/about/" class="mobile-dropdown-link">About</a>
-        <a href="/contact/" class="mobile-dropdown-link">Contact</a>
-        <a href="/contact/" class="talk-btn" data-action="open-booking" style="margin-top: 10px; width: 100%; justify-content: center;">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-          <span class="talk-btn__arrow">→</span>
-        </a>
-      </div>
-    </header>
-
-    <main class="youtube-page">
-      <!-- Hero Section -->
-      <section class="youtube-hero" id="top">
-        <div class="youtube-hero__badge">
-          <span class="youtube-hero__badge-dot"></span>
-          Production n8n Multi-Agent Workflow
+  <main id="main">
+    <!-- HERO -->
+    <section class="yt-hero">
+      <div class="wrap">
+        <h1 class="rv">Autonomous five-agent <em>YouTube content factory</em>.</h1>
+        <p class="lead rv" style="--rd:1">An end-to-end multi-agent pipeline engineered in n8n. Convert raw niche topics or community trends into fully structured scripts, ElevenLabs studio voiceovers, programmatic render specifications, and SEO metadata.</p>
+        <div class="cta rv" style="--rd:2">
+          <a href="/contact/" class="btn ink" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a href="#pipeline" class="btn ghost">Inspect agents</a>
         </div>
-        <h1 class="youtube-hero__title">Autonomous 5-Agent YouTube Content Factory.</h1>
-        <p class="youtube-hero__subtitle">
-          An end-to-end multi-agent pipeline engineered in n8n. Turns raw niche topics or trending community discussions into fully structured scripts, ElevenLabs studio voiceovers, programmatic video assembly specs, and YouTube-ready SEO metadata.
-        </p>
-
-        <!-- Metric Chips -->
-        <div class="youtube-metrics">
-          <div class="youtube-metric-chip">
-            <span>⏱</span>
-            <span><strong>15-20 Hours</strong> Saved Weekly</span>
-          </div>
-          <div class="youtube-metric-chip">
-            <span>🤖</span>
-            <span><strong>5 Specialized Agents</strong> In 1 Pipeline</span>
-          </div>
-          <div class="youtube-metric-chip">
-            <span>🎙</span>
-            <span><strong>ElevenLabs</strong> Voice Synthesis</span>
-          </div>
-          <div class="youtube-metric-chip">
-            <span>📅</span>
-            <span><strong>Autopilot Schedule</strong> (Mon / Wed / Fri)</span>
-          </div>
-        </div>
-
-        <div class="youtube-hero__actions">
-          <a href="/assets/blueprints/youtube-autonomous-content-factory.json" download class="youtube-btn-download">
-            <span>📥</span> Download Production Blueprint (.json)
-          </a>
-          <a href="/contact/" class="talk-btn" data-action="open-booking">
-            <span class="talk-btn__label"><span class="talk-btn__label-current">Deploy for Your Channel</span></span>
-            <span class="talk-btn__arrow">→</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- Workflow Canvas Section -->
-      <section class="youtube-canvas-section">
-        <div class="youtube-canvas-header">
-          <span class="youtube-canvas-title">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Production Canvas Architecture (n8n Commercial Edition)
-          </span>
-          <a href="/assets/blueprints/youtube-autonomous-content-factory.json" download class="canvas-blueprint-link" style="padding: 6px 14px; font-size: 0.8rem;">
-            Download .json (31 KB)
-          </a>
-        </div>
-
-        <div class="youtube-canvas-container">
-          <img src="/assets/images/youtube-autonomous-content-factory.png" alt="YouTube Autonomous Content Factory n8n Workflow Canvas" class="youtube-canvas-img" />
-        </div>
-      </section>
-
-      <!-- Tech Specs Bar -->
-      <div class="youtube-specs-bar">
-        <div class="youtube-spec-item">
-          <span class="youtube-spec-item__label">Orchestration Engine</span>
-          <span class="youtube-spec-item__value">n8n Visual Workflow</span>
-        </div>
-        <div class="youtube-spec-item">
-          <span class="youtube-spec-item__label">Language Models</span>
-          <span class="youtube-spec-item__value">Google Gemini / OpenAI GPT-4o</span>
-        </div>
-        <div class="youtube-spec-item">
-          <span class="youtube-spec-item__label">Audio Synthesis</span>
-          <span class="youtube-spec-item__value">ElevenLabs Dynamic Voice API</span>
-        </div>
-        <div class="youtube-spec-item">
-          <span class="youtube-spec-item__label">Data &amp; Tracking</span>
-          <span class="youtube-spec-item__value">Reddit Public API + Google Sheets</span>
+        <div class="telemetry rv" style="--rd:3">
+          <span>orchestration <b>n8n Engine</b></span>
+          <span>agents <b>5 Specialized Workers</b></span>
+          <span>voice <b>ElevenLabs Dynamic API</b></span>
+          <span>schedule <b>Mon / Wed / Fri Autopilot</b></span>
         </div>
       </div>
+    </section>
 
-      <!-- 2-Column Bento Breakdown: What It Does & What Problem It Solves -->
-      <section class="youtube-breakdown-grid">
-        
-        <!-- Card 1: What It Does -->
-        <article class="youtube-card">
-          <span class="youtube-card__badge youtube-card__badge--cyan">System Functionality</span>
-          <h2 class="youtube-card__title">What It Does</h2>
-          <p class="youtube-card__lead">
-            A modular 5-agent pipeline that replaces an entire content team by orchestrating the video production lifecycle from trend discovery to final metadata.
-          </p>
-
-          <div class="youtube-list">
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--cyan">1</div>
-              <div class="youtube-list-content">
-                <h4>Agent 1: Trend &amp; Hook Strategist</h4>
-                <p>Scrapes top community discussions (via Reddit API or webhook topic triggers), identifies high-engagement questions, and formulates high-retention hook angles.</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--cyan">2</div>
-              <div class="youtube-list-content">
-                <h4>Agent 2: Script &amp; Scene Architect</h4>
-                <p>Converts the hook into a full retention-focused script, dividing narration into 8-second visual scene prompts and visual direction cues.</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--cyan">3</div>
-              <div class="youtube-list-content">
-                <h4>Agent 3: ElevenLabs Voiceover Engine</h4>
-                <p>Cleans script timing, sends formatted narration to ElevenLabs, and generates studio-quality voiceover audio automatically.</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--cyan">4</div>
-              <div class="youtube-list-content">
-                <h4>Agent 4: Video Assembly Specifier</h4>
-                <p>Calculates scene durations, audio timestamps, and programmatic cut points ready for automated rendering (Shotstack / Remotion / Creatomate).</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--cyan">5</div>
-              <div class="youtube-list-content">
-                <h4>Agent 5: Packaging &amp; SEO Specialist</h4>
-                <p>Analyzes the final script to produce 3 high-CTR title variations, search-optimized descriptions, tags, and chapter markers.</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--cyan">✓</div>
-              <div class="youtube-list-content">
-                <h4>Production Logging &amp; Delivery</h4>
-                <p>Logs all assets into a Google Sheets pipeline tracker and returns the complete production package via webhook response.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2: What Problem It Solves For You -->
-        <article class="youtube-card">
-          <span class="youtube-card__badge youtube-card__badge--amber">Business Impact</span>
-          <h2 class="youtube-card__title">What Problem It Solves For You</h2>
-          <p class="youtube-card__lead">
-            Faceless content channels usually die because manual production takes too long and creators burn out. This workflow completely automates the bottleneck.
-          </p>
-
-          <div class="youtube-list">
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--amber">⚡</div>
-              <div class="youtube-list-content">
-                <h4>Eliminates 15-20 Hours of Weekly Grunt Work</h4>
-                <p>Manually researching topics, writing 2,000-word scripts, generating voice files, and drafting SEO takes 4 to 6 hours per video. This pipeline does 90% of the heavy lifting in minutes.</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--amber">📅</div>
-              <div class="youtube-list-content">
-                <h4>Solves the Channel Consistency Crisis</h4>
-                <p>The YouTube algorithm rewards consistent uploads. By running on an automated Mon/Wed/Fri schedule, your channel stays active without requiring daily manual input.</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--amber">🎯</div>
-              <div class="youtube-list-content">
-                <h4>Zero Creative Block &amp; Proven Topics</h4>
-                <p>Instead of guessing what viewers want, Agent 1 mines real trending audience discussions, ensuring your videos target validated curiosity and high search volume.</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--amber">🔧</div>
-              <div class="youtube-list-content">
-                <h4>Visual &amp; Easy to Maintain</h4>
-                <p>Built completely in n8n. No complex custom codebases to debug. You can inspect live executions, tweak prompts, or swap LLMs (Gemini, Claude, GPT-4o) with simple clicks.</p>
-              </div>
-            </div>
-
-            <div class="youtube-list-item">
-              <div class="youtube-list-icon youtube-list-icon--amber">💰</div>
-              <div class="youtube-list-content">
-                <h4>Dramatically Lower Production Cost</h4>
-                <p>Replaces expensive freelancer teams (scriptwriters, voice actors, and SEO consultants) with deterministic multi-agent workflows running on your own API keys.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </section>
-
-      <!-- CTA Banner -->
-      <section class="cta-banner">
-        <div class="cta-banner__glow"></div>
-        <h2 class="cta-banner__title">Ready to automate your content production?</h2>
-        <p class="cta-banner__text">
-          Book a free 30-minute strategy call. We will review your niche, set up your multi-agent workflow, and connect your API keys to get your autonomous engine running.
-        </p>
-        <a href="/contact/" class="talk-btn cta-banner__btn" data-action="open-booking">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Book a free strategy call</span></span>
-          <span class="talk-btn__arrow">→</span>
-        </a>
-      </section>
-    </main>
-
-        <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-columns">
-          <div class="footer-col footer-col--brand">
-            <span class="footer-col__eyebrow">Work with us</span>
-            <h4 class="footer-col__heading">Start with a free, thirty-minute AI growth call.</h4>
-            <div class="footer-col__cta">
-              <a href="/contact/" class="talk-btn" data-action="open-booking">
-                <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-                <span class="talk-btn__arrow">→</span>
-              </a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">SOLUTIONS</h5>
-            <ul class="footer-col__list">
-              <li><a href="/voice/" >Autonomous Voice Receptionist</a></li>
-              <li><a href="/rag/">Semantic RAG Agent</a></li>
-              <li><a href="/recruitment/">Candidate Qualification Pipeline</a></li>
-              <li><a href="/youtube/">Autonomous YouTube Factory</a></li>
-              <li><a href="/services/">Full Systems Library</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">COMPANY</h5>
-            <ul class="footer-col__list">
-              <li><a href="/about/">About M R KHAN</a></li>
-              <li><a href="/about/#about-story">What is MRKHANSERVICES?</a></li>
-              <li><a href="/services/">Industries</a></li>
-              <li><a href="/contact/" data-action="open-booking">Growth Call</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">RESOURCES</h5>
-            <ul class="footer-col__list">
-              <li><a href="/voice/">Live Voice Agent Sandbox</a></li>
-              <li><a href="/rag/">Live RAG Walkthrough</a></li>
-              <li><a href="/recruitment/">Recruitment Blueprint</a></li>
-              <li><a href="/youtube/">YouTube 5-Agent Blueprint</a></li>
-              <li><a href="/contact/">Schedule Consultation</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">CONNECT</h5>
-            <ul class="footer-col__list">
-              <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noreferrer">LinkedIn</a></li>
-              <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noreferrer">Instagram</a></li>
-              <li><a href="https://wa.me/923285792098" target="_blank" rel="noreferrer">WhatsApp</a></li>
-              <li><a href="mailto:contact@mrkhanservices.site">Direct Email</a></li>
-              <li><a href="/contact/" data-action="open-booking">Book a Call</a></li>
-            </ul>
-          </div>
+    <!-- SIGNATURE INTERACTION: 5-AGENT HORIZONTAL CHAIN & INSPECTOR -->
+    <section class="s chain-sec" id="pipeline">
+      <div class="wrap">
+        <div class="rv">
+          <h2>Interactive <em>multi-agent chain</em>.</h2>
+          <p class="lead" style="margin-top:14px">Select any agent in the sequence to inspect tools, inputs, structured deliverables, and execution telemetry.</p>
         </div>
 
-        <div class="footer-bottom">
-          <span class="footer-bottom__monogram">MRK</span>
-                    <div class="footer-bottom__legal">
-            <a href="/privacy/">Privacy Policy</a>
-            <span style="color: rgba(255,255,255,0.2);">&bull;</span>
-            <a href="/terms/">Terms of Service</a>
+        <div class="chain-grid">
+          <!-- SVG Chain Diagram Card -->
+          <div class="chain-diagram-card rv" style="--rd:1">
+            <svg class="flow live" viewBox="0 0 720 220" role="img" aria-label="Five-agent horizontal chain: Trend Strategist, Script Architect, ElevenLabs Voiceover, Video Assembly Specifier, Packaging and SEO Specialist">
+              <!-- Connector Lines -->
+              <g fill="none" stroke-linecap="round">
+                <path class="ln" d="M80 90 H640" pathLength="100" />
+                <!-- Traveling dynamic packet -->
+                <path class="pk" id="live-packet" d="M60 90 H80" pathLength="100" />
+              </g>
+
+              <!-- Agent 1: Trend & Hook Strategist -->
+              <g class="agent-node-group active" data-agent="agent-1" tabindex="0" role="button" aria-label="Agent 1: Trend and Hook Strategist">
+                <circle class="nd hot" cx="80" cy="90" r="28" />
+                <path d="M72 90 H88 M80 82 V98" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" />
+                <text x="80" y="134" text-anchor="middle">agent 01</text>
+                <text class="dim" x="80" y="148" text-anchor="middle">trend &amp; hook</text>
+              </g>
+
+              <!-- Agent 2: Script & Scene Architect -->
+              <g class="agent-node-group" data-agent="agent-2" tabindex="0" role="button" aria-label="Agent 2: Script and Scene Architect">
+                <circle class="nd" cx="220" cy="90" r="26" />
+                <path d="M212 85 H228 M212 90 H228 M212 95 H223" stroke="#0A0A0A" stroke-width="1.6" stroke-linecap="round" />
+                <text x="220" y="134" text-anchor="middle">agent 02</text>
+                <text class="dim" x="220" y="148" text-anchor="middle">script architect</text>
+              </g>
+
+              <!-- Agent 3: ElevenLabs Voiceover Engine -->
+              <g class="agent-node-group" data-agent="agent-3" tabindex="0" role="button" aria-label="Agent 3: ElevenLabs Voiceover Engine">
+                <circle class="nd" cx="360" cy="90" r="26" />
+                <path d="M355 83 A 7 7 0 0 1 365 83 V97 A 7 7 0 0 1 355 97 Z" stroke="#0A0A0A" stroke-width="1.6" fill="none" />
+                <path d="M352 92 C 352 97, 368 97, 368 92" stroke="#0A0A0A" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                <text x="360" y="134" text-anchor="middle">agent 03</text>
+                <text class="dim" x="360" y="148" text-anchor="middle">voiceover engine</text>
+              </g>
+
+              <!-- Agent 4: Video Assembly Specifier -->
+              <g class="agent-node-group" data-agent="agent-4" tabindex="0" role="button" aria-label="Agent 4: Video Assembly Specifier">
+                <circle class="nd" cx="500" cy="90" r="26" />
+                <rect x="491" y="82" width="18" height="16" rx="2" fill="none" stroke="#0A0A0A" stroke-width="1.5" />
+                <text x="500" y="134" text-anchor="middle">agent 04</text>
+                <text class="dim" x="500" y="148" text-anchor="middle">assembly spec</text>
+              </g>
+
+              <!-- Agent 5: Packaging & SEO Specialist -->
+              <g class="agent-node-group" data-agent="agent-5" tabindex="0" role="button" aria-label="Agent 5: Packaging and SEO Specialist">
+                <circle class="nd dark" cx="640" cy="90" r="28" />
+                <path d="M633 85 H647 M633 90 H647 M633 95 H642" stroke="#F5F4F2" stroke-width="1.6" stroke-linecap="round" />
+                <circle cx="646" cy="95" r="1.8" fill="#FF6B00" stroke="none" />
+                <text x="640" y="134" text-anchor="middle">agent 05</text>
+                <text class="dim" x="640" y="148" text-anchor="middle">packaging &amp; seo</text>
+              </g>
+            </svg>
+
+            <!-- Active Stage Status Box -->
+            <div class="chain-telemetry-box">
+              <div class="chain-stage-info">
+                <span class="chain-stage-label">Current Agent Task:</span>
+                <span class="chain-stage-name" id="stage-name">Topic Discovery &amp; Angle Formulation</span>
+              </div>
+              <div class="chain-status-chip">
+                <span class="dot"></span>
+                <span>Active Agent Selected</span>
+              </div>
+            </div>
           </div>
-          <span class="footer-bottom__copyright">© 2026 MRKHANSERVICES. All rights reserved.</span>
+
+          <!-- Inspector Panel -->
+          <div class="inspector-card rv" style="--rd:2">
+            <div>
+              <span class="inspect-tag" id="inspect-tag">reddit-api-webhook-discovery</span>
+              <h3 id="inspect-title" style="margin-top:6px">Agent 1: Trend &amp; Hook Strategist</h3>
+            </div>
+            <p id="inspect-desc">Mines community discussions and trending subreddit threads, identifies high-engagement audience questions, and formulates high-retention hook angles.</p>
+            <div class="inspector-meta">
+              <span>input: <b id="inspect-input">Subreddit API payload / webhook topic keywords</b></span>
+              <span>output: <b id="inspect-output">Validated concept &amp; 3 retention hook angles</b></span>
+              <span>engine: <b id="inspect-tool">Reddit API / Google Gemini 1.5 Pro</b></span>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <!-- Global 30-Minute Growth Call Booking Modal -->
-  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog">
+    <!-- N8N PRODUCTION CANVAS SCREENSHOT & LIGHTBOX -->
+    <section class="s canvas-sec" id="canvas-blueprint">
+      <div class="wrap">
+        <div class="rv">
+          <h2>Production workflow <em>canvas</em>.</h2>
+          <p class="lead" style="margin-top:14px">Inspect the actual n8n multi-agent pipeline orchestrating topic extraction, script writing, voiceover generation, and SEO delivery.</p>
+        </div>
+
+        <div class="canvas-box rv" style="--rd:1;margin-top:36px" id="open-canvas-lightbox" role="button" tabindex="0" aria-label="Click to enlarge n8n YouTube content factory canvas blueprint">
+          <img src="/assets/images/youtube-autonomous-content-factory.png" alt="Production n8n 5-Agent YouTube Content Factory Studio Canvas" loading="lazy" />
+          <svg class="flow live trace canvas-trace" viewBox="0 0 1000 560" aria-hidden="true">
+            <path class="ln glow" d="M60 480 C 240 480, 360 180, 560 180 S 760 120, 940 120" pathLength="100" />
+            <path class="pk" d="M60 480 C 240 480, 360 180, 560 180 S 760 120, 940 120" pathLength="100" />
+          </svg>
+          <span class="tag glass top-left"><span class="beacon" aria-hidden="true"><i></i></span>POST /webhook/youtube-factory</span>
+          <span class="tag glass bottom-right">click to inspect full blueprint</span>
+        </div>
+
+        <div class="canvas-meta-bar rv" style="--rd:2">
+          <span>stack <b>n8n / Gemini / OpenAI GPT-4o / ElevenLabs / Reddit API / Google Sheets</b></span>
+          <a href="/assets/blueprints/youtube-autonomous-content-factory.json" download="youtube-autonomous-content-factory.json" class="btn ink sm">Download JSON Blueprint <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESSIBLE LIGHTBOX DIALOG -->
+    <dialog class="canvas-dialog" id="canvas-dialog" aria-label="Full-resolution YouTube n8n canvas blueprint">
+      <div class="dialog-content">
+        <button class="dialog-close" id="close-canvas-dialog" type="button" aria-label="Close dialog">&times;</button>
+        <img src="/assets/images/youtube-autonomous-content-factory.png" alt="Full resolution YouTube n8n canvas blueprint" />
+      </div>
+    </dialog>
+
+    <!-- 2-COLUMN BENTO BREAKDOWN: SYSTEM ARCHITECTURE & OPERATIONAL BOTTLENECK -->
+    <section class="s breakdown-sec" id="architecture">
+      <div class="wrap">
+        <div class="rv">
+          <h2>Engine architecture and <em>operational impact</em>.</h2>
+          <p class="lead" style="margin-top:14px">How five synchronized agents handle research, scripting, audio synthesis, and publishing assets.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Col 1: System Functionality -->
+          <article class="bento-col rv" style="--rd:1">
+            <div>
+              <span class="tag glass" style="margin-bottom:12px;display:inline-block">system functionality</span>
+              <h3>What the Engine Does</h3>
+              <p class="bento-lead" style="margin-top:8px">Orchestrates the entire production lifecycle from audience research to final publishing assets through structured schema handoffs.</p>
+            </div>
+
+            <div class="bento-items-list">
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>agent 01</span>
+                  <span class="num">01</span>
+                </div>
+                <h4>Trend &amp; Hook Strategist</h4>
+                <p>Scrapes top community discussions, extracts high-engagement questions, and drafts validated hook angles.</p>
+              </div>
+
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>agent 02</span>
+                  <span class="num">02</span>
+                </div>
+                <h4>Script &amp; Scene Architect</h4>
+                <p>Builds full retention-structured scripts and splits narration into explicit eight-second visual direction prompts.</p>
+              </div>
+
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>agent 03</span>
+                  <span class="num">03</span>
+                </div>
+                <h4>ElevenLabs Voiceover Engine</h4>
+                <p>Cleans pacing markers, calls ElevenLabs dynamic voice API, and receives synchronized audio tracks.</p>
+              </div>
+
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>agent 04</span>
+                  <span class="num">04</span>
+                </div>
+                <h4>Video Assembly Specifier</h4>
+                <p>Calculates scene durations and programmatic cut points for automated renderers such as Shotstack, Remotion, or Creatomate.</p>
+              </div>
+
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>agent 05</span>
+                  <span class="num">05</span>
+                </div>
+                <h4>Packaging &amp; SEO Specialist</h4>
+                <p>Generates high-CTR title variations, search-optimized descriptions, tags, and timestamped chapter markers.</p>
+              </div>
+
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>persistence</span>
+                  <span class="num">06</span>
+                </div>
+                <h4>Ledger Logging &amp; Webhook Delivery</h4>
+                <p>Logs all assets into a Google Sheets pipeline tracker and returns the production package via webhook response.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Col 2: Operational Bottlenecks Solved -->
+          <article class="bento-col rv" style="--rd:2">
+            <div>
+              <span class="tag glass" style="margin-bottom:12px;display:inline-block">bottleneck elimination</span>
+              <h3>What It Solves</h3>
+              <p class="bento-lead" style="margin-top:8px">Eliminates creator burnout and production bottlenecks that prevent consistent publishing schedules.</p>
+            </div>
+
+            <div class="bento-items-list">
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>consistency</span>
+                  <span class="num">A</span>
+                </div>
+                <h4>Uninterrupted Upload Schedules</h4>
+                <p>Maintains scheduled content deliveries without relying on manual day-to-day writing or editing sprints.</p>
+              </div>
+
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>topic validation</span>
+                  <span class="num">B</span>
+                </div>
+                <h4>Validated Audience Demand</h4>
+                <p>Targets verified community questions from Reddit and search discussions rather than unproven topic guesses.</p>
+              </div>
+
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>orchestration</span>
+                  <span class="num">C</span>
+                </div>
+                <h4>Deterministic Visual Workflows</h4>
+                <p>Built directly in n8n. Swap models between OpenAI, Claude, or Gemini without rewriting custom backends.</p>
+              </div>
+
+              <div class="bento-item">
+                <div class="bento-item-header">
+                  <span>direct ownership</span>
+                  <span class="num">D</span>
+                </div>
+                <h4>Direct Infrastructure Ownership</h4>
+                <p>Runs on your own API keys and private cloud server with zero platform lock-in and complete data privacy.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTOPILOT SCHEDULE CARD -->
+    <section class="s schedule-sec" id="schedule">
+      <div class="wrap">
+        <div class="schedule-card rv">
+          <div>
+            <span class="tag glass" style="margin-bottom:12px;display:inline-block">cron trigger</span>
+            <h3>Autopilot publishing cadence.</h3>
+            <p class="lead" style="margin-top:12px">Configured with automated cron triggers to initiate research, scripting, and asset assembly on your designated schedule.</p>
+            <div class="schedule-days">
+              <span class="day-chip active">Monday</span>
+              <span class="day-chip">Tuesday</span>
+              <span class="day-chip active">Wednesday</span>
+              <span class="day-chip">Thursday</span>
+              <span class="day-chip active">Friday</span>
+            </div>
+          </div>
+          <div>
+            <div class="bento-item" style="background:var(--paper)">
+              <div class="bento-item-header">
+                <span>schedule logic</span>
+                <span class="num">UTC 08:00</span>
+              </div>
+              <h4>Automated Batch Trigger</h4>
+              <p>Every execution pulls recent trending topic candidates, invokes each agent sequentially, and uploads completed video assets to the production sheet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING BLOCK -->
+    <section class="end">
+      <div class="radar" aria-hidden="true"><div class="beam"></div></div>
+      <div class="wrap" style="position:relative;z-index:2">
+        <p class="meta rv">autonomous content factory</p>
+        <h2 class="rv" style="--rd:1">Build your automated content factory. <em>Launch in days</em>.</h2>
+        <p class="lead rv" style="--rd:2">Review your channel goals, inspect multi-agent blueprints, and install autonomous production workflows into your private server.</p>
+        <div class="cta rv" style="--rd:3">
+          <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--SHELL:FOOT-->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div>
+          <a href="/" class="brand"><span class="badge">MRK</span><span class="name">MRKHANSERVICES</span></a>
+          <p class="muted" style="margin-top:16px;max-width:30ch">Automation systems that run in the background, built by one person you can reach directly.</p>
+        </div>
+        <div>
+          <h4>Systems</h4>
+          <ul>
+            <li><a href="/voice/">Voice receptionist</a></li>
+            <li><a href="/rag/">Knowledge agent</a></li>
+            <li><a href="/recruitment/">Recruitment pipeline</a></li>
+            <li><a href="/youtube/">Content factory</a></li>
+            <li><a href="/services/">All services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#about-story">My story</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://wa.me/923285792098" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:contact@mrkhanservices.site">contact@mrkhanservices.site</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 MRKHANSERVICES &middot; local time <b data-clock style="font-weight:500;color:var(--ink)">--:--:--</b></span>
+        <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+      </div>
+    </div>
+  </footer>
+  <!--/SHELL:FOOT-->
+  <!--SHELL:MODAL-->
+  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
     <div class="cal-modal-card">
       <div class="cal-modal__header">
         <div class="cal-modal__brand">
           <span class="cal-modal__badge">MRK</span>
           <span class="cal-modal__brand-name">MRKHANSERVICES</span>
         </div>
-        <div class="cal-modal__title">AI Growth Call</div>
-        <button class="cal-modal__close" id="booking-close-btn" aria-label="Close modal">&times;</button>
+        <div class="cal-modal__title" id="booking-title">Workflow audit</div>
+        <button class="cal-modal__close" id="booking-close-btn" type="button" aria-label="Close">&times;</button>
       </div>
-
       <div class="cal-modal__body">
         <div class="cal-modal__left">
           <div class="cal-modal__meta">
-            <span class="meta-item">⏱ 30 min</span>
-            <span class="meta-item">📍 Google Meet</span>
-            <span class="meta-item">⚡ High-Impact Strategy</span>
+            <span class="meta-item">30 min</span>
+            <span class="meta-item">Google Meet</span>
+            <span class="meta-item">no obligation</span>
           </div>
-          <p class="cal-modal__desc">
-            We’ll review your current funnel, pinpoint operational bottlenecks, and identify exactly where AI or autonomous agents will create the clearest revenue lift.
-          </p>
+          <p class="cal-modal__desc">We review how your work flows today, find where time is lost, and list what to automate first.</p>
           <div class="cal-modal__date-picker">
-            <label for="booking-date-select">Select a Date</label>
+            <label for="booking-date-select">Select a date</label>
             <select id="booking-date-select" class="cal-select"></select>
           </div>
         </div>
-
         <div class="cal-modal__right">
-          <!-- Step 1: Time Slots -->
           <div id="booking-slots-column">
-            <div class="column-title">Available Times</div>
+            <div class="column-title">Available times</div>
             <div class="time-slots-grid">
-              <button class="time-slot-btn" data-time="09:00 AM">09:00 AM</button>
-              <button class="time-slot-btn" data-time="10:00 AM">10:00 AM</button>
-              <button class="time-slot-btn" data-time="11:00 AM">11:00 AM</button>
-              <button class="time-slot-btn" data-time="01:00 PM">01:00 PM</button>
-              <button class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
-              <button class="time-slot-btn" data-time="03:00 PM">03:00 PM</button>
-              <button class="time-slot-btn" data-time="04:00 PM">04:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="09:00 AM">09:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="10:00 AM">10:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="11:00 AM">11:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="01:00 PM">01:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="02:00 PM">02:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="03:00 PM">03:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="04:00 PM">04:00 PM</button>
             </div>
           </div>
-
-          <!-- Step 2: Confirmation Form -->
           <div id="booking-form-step" class="cal-booking-form">
-            <button id="booking-back-btn" class="back-btn">← Back to times</button>
-            <div id="booking-selected-summary" class="selected-summary">Upcoming Date at Time</div>
+            <button id="booking-back-btn" class="back-btn" type="button">&larr; Back to times</button>
+            <div id="booking-selected-summary" class="selected-summary">Date and time</div>
             <form id="booking-form-element">
               <div class="form-group">
-                <label for="client-name">Your Name</label>
+                <label for="client-name">Your name</label>
                 <input type="text" id="client-name" required placeholder="e.g. Alex Morgan" />
               </div>
               <div class="form-group">
-                <label for="client-email">Work Email</label>
+                <label for="client-email">Work email</label>
                 <input type="email" id="client-email" required placeholder="alex@company.com" />
               </div>
               <div class="form-group">
-                <label for="client-notes">What are you looking to automate?</label>
-                <textarea id="client-notes" rows="3" placeholder="Lead triage, CRM sync, custom AI assistant..."></textarea>
+                <label for="client-notes">What takes up most of your team's time?</label>
+                <textarea id="client-notes" rows="3" placeholder="Lead replies, onboarding, reporting..."></textarea>
               </div>
-              <button type="submit" class="talk-btn submit-booking-btn">
-                <span class="talk-btn__label"><span class="talk-btn__label-current">Confirm reservation</span></span>
-                <span class="talk-btn__arrow">→</span>
-              </button>
+              <button type="submit" class="btn ink submit-booking-btn">Confirm audit</button>
             </form>
           </div>
         </div>
       </div>
-
-      <!-- Success View -->
       <div id="booking-success-view" class="cal-modal__success">
-        <div class="success-icon">✓</div>
-        <h3 class="cal-modal__title">Strategy Call Confirmed!</h3>
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h3 class="cal-modal__title">Audit booked.</h3>
         <p id="booking-success-details" class="cal-modal__desc"></p>
-        <button class="talk-btn" onclick="window.closeBookingModal()">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Done</span></span>
-        </button>
+        <button class="btn ink" type="button" onclick="window.closeBookingModal()">Done</button>
       </div>
     </div>
   </div>
-
-  <!-- Scripts -->
+  <!--/SHELL:MODAL-->
+  <!--SHELL:SCRIPTS-->
   <script src="/js/booking.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/site.js"></script>
+  <!--/SHELL:SCRIPTS-->
+  <script src="/js/youtube.js"></script>
 </body>
 </html>
