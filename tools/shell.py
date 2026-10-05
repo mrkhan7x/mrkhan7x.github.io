@@ -89,7 +89,7 @@ FOOT = """<footer class="foot">
             <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noopener">GitHub</a></li>
             <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="https://wa.me/923285792098" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="mailto:info@mrkhanservices.com">info@mrkhanservices.com</a></li>
+            <li><a href="mailto:contact@mrkhanservices.site">contact@mrkhanservices.site</a></li>
           </ul>
         </div>
       </div>

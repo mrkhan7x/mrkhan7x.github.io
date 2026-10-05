@@ -57,7 +57,7 @@ Radii: surfaces `--r-surface` 20px, inputs `--r-input` 10px, pills 999px. Nothin
 2. No em dash or en dash anywhere (use commas, colons, "to", or " | " in titles). No emoji. No "STEP 01" labels.
 3. No three-equal-cards rows as the main idea; vary sizes (bento, split, sticky stack, timeline). Max one marquee per page.
 4. Copy: keep the meaning and technical facts of the existing page, rewrite for clarity and a business-owner reader (outcome first, jargon second). Do NOT carry over unproven performance or revenue claims (percent lifts, hours saved, revenue figures, "zero hallucination", "100%/0%" absolutes, latency numbers, award/earnings claims). Instead describe what the system does. Keep a list of every claim you removed and report it.
-5. Domain is `.site`. Email stays info@mrkhanservices.com. Keep every functional integration (webhook URLs, Vapi config, fetch endpoints, form handlers, blueprint download links in /assets/blueprints/) working exactly as before.
+5. Domain is `.site`. Email is contact@mrkhanservices.site. Keep every functional integration (webhook URLs, Vapi config, fetch endpoints, form handlers, blueprint download links in /assets/blueprints/) working exactly as before.
 6. Accessibility: one h1, landmarks, alt text, visible focus (provided), `prefers-reduced-motion` handled for anything you add, tap targets >= 44px, contrast AA (ink on limestone / limestone on ink / ink on orange).
 7. Nothing from the old css (global.css, navbar.css, etc.) or js/main.js is loaded any more. If old main.js behaviour mattered on your page (project popup, marquee drag, lightbox), re-implement the part you keep in your own page JS or drop it deliberately.
 8. Mobile first-class: check 390px width. No horizontal page scroll.
