@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | MRKHANSERVICES</title>
-  <meta name="description" content="Book a free 30-minute AI growth call or contact Muhammad Roman Khan directly via LinkedIn, GitHub, Instagram, WhatsApp, or Email." />
+  <meta name="description" content="Book a 30-minute operational audit with Muhammad Roman Khan or reach out directly across verified engineering channels." />
   <link rel="canonical" href="https://mrkhanservices.site/contact/" />
 
   <!-- Open Graph / Meta -->
@@ -12,325 +12,400 @@
   <meta property="og:site_name" content="MRKHANSERVICES" />
   <meta property="og:url" content="https://mrkhanservices.site/contact/" />
   <meta property="og:title" content="Contact | MRKHANSERVICES" />
-  <meta property="og:description" content="Book a free 30-minute AI growth call or reach out directly to Muhammad Roman Khan." />
+  <meta property="og:description" content="Book a 30-minute operational audit with Muhammad Roman Khan or reach out directly across verified engineering channels." />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicons -->
+  <!--SHELL:HEAD-->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="theme-color" content="#0C0C0C" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/global.css?v=3" />
-  <link rel="stylesheet" href="/css/navbar.css" />
-  <link rel="stylesheet" href="/css/contact.css" />
-  <link rel="stylesheet" href="/css/modal.css" />
-  <link rel="stylesheet" href="/css/footer.css" />
+  <meta name="theme-color" content="#F5F4F2" />
+  <link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.className='js';</script>
+  <link rel="stylesheet" href="/css/site.css" />
+  <!--/SHELL:HEAD-->
+  <link rel="stylesheet" href="/css/pages/contact.css" />
 </head>
 <body>
-  <div class="app-background"></div>
-  <div class="grid-pattern-global"></div>
-
-  <div class="page-wrapper">
-    <!-- Floating Header -->
-    <header class="header-floating-wrapper">
-      <nav class="header-nav-container">
-        <a href="/" class="nav-brand" aria-label="MRKHANSERVICES Home">
-          <span class="brand-icon-badge">MRK</span>
-          <span class="brand-name-text">MRKHANSERVICES</span>
-        </a>
-        <div class="nav-links-center">
-          <a href="/services/" class="nav-link-btn">Services</a>
-          <a href="/about/" class="nav-link-btn">About</a>
-          <a href="/contact/" class="nav-link-btn active">Contact</a>
-        </div>
-        <div class="nav-cta-wrapper">
-          <a href="/contact/" class="talk-btn" data-action="open-booking">
-            <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-            <span class="talk-btn__arrow">→</span>
-          </a>
-        </div>
-      </nav>
-
-      <!-- Mobile Header -->
-      <div class="mobile-navbar-bar">
-        <a href="/" class="nav-brand">
-          <span class="brand-icon-badge">MRK</span>
-          <span class="brand-name-text">MRKHAN</span>
-        </a>
-        <button class="burger-btn" id="mobile-burger-btn" aria-label="Toggle navigation menu">
+  <!--SHELL:TOP-->
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:40px;width:1px"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="paint" x="-5%" y="-30%" width="110%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" />
+    </filter>
+  </svg>
+  <!--/SHELL:TOP-->
+  <!--SHELL:NAV-->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/" class="brand" aria-label="MRKHANSERVICES home">
+        <span class="badge">MRK</span>
+        <span class="name">MRKHANSERVICES</span>
+      </a>
+      <ul>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/" aria-current="page">Contact</a></li>
+      </ul>
+      <div class="right">
+        <a href="/contact/" class="btn ink sm" data-action="open-booking">Book an audit</a>
+        <button class="burger" id="mobile-burger-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
           <span></span><span></span><span></span>
         </button>
       </div>
+    </nav>
+    <div class="menu" id="mobile-dropdown-menu" aria-hidden="true">
+      <a href="/services/" style="--i:0">Services</a>
+      <a href="/about/" style="--i:1">About</a>
+      <a href="/contact/" style="--i:2">Contact</a>
+      <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit</a>
+    </div>
+  </header>
+  <!--/SHELL:NAV-->
 
-      <!-- Mobile Dropdown Menu -->
-      <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
-        <a href="/services/" class="mobile-dropdown-link">Services</a>
-        <a href="/about/" class="mobile-dropdown-link">About</a>
-        <a href="/contact/" class="mobile-dropdown-link active">Contact</a>
-        <a href="/contact/" class="talk-btn" data-action="open-booking" style="margin-top: 10px; width: 100%; justify-content: center;">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-          <span class="talk-btn__arrow">→</span>
-        </a>
-      </div>
-    </header>
-
-    <main class="contact-page">
-      <section class="contact-hero" id="top">
-        <div class="contact-hero__inner">
-          <div class="contact-hero__heading">
-            <p class="contact-hero__eyebrow">Contact</p>
-            <h1 class="contact-hero__title">Let's talk.</h1>
-            <p class="contact-hero__subtitle">Book a free 30-minute AI growth call, or reach out directly.</p>
-          </div>
-
-          <!-- Structured Details Card -->
-          <div class="contact-details-box">
-            <p class="contact-details__intro">
-              The fastest way to begin is with a focused growth call. We'll look at your current funnel and operations, identify the bottlenecks, and show you where AI or automation can create the clearest business impact. No hard pitch, just practical next steps.
-            </p>
-            <dl class="contact-details__list">
-              <div class="contact-details__row">
-                <dt>Book a call</dt>
-                <dd><button class="contact-details__booking-link" data-action="open-booking">Reserve a 30-minute growth call (→)</button></dd>
-              </div>
-              <div class="contact-details__row">
-                <dt>Email</dt>
-                <dd><a href="mailto:info@mrkhanservices.com">info@mrkhanservices.com</a></dd>
-              </div>
-              <div class="contact-details__row">
-                <dt>Website</dt>
-                <dd><a href="https://mrkhanservices.site">mrkhanservices.site</a></dd>
-              </div>
-              <div class="contact-details__row">
-                <dt>Serving</dt>
-                <dd>Businesses worldwide</dd>
-              </div>
-            </dl>
-          </div>
-
-          <!-- Direct Channels Grid -->
-          <div class="contact-page__channels">
-            <h3 class="contact-page__channels-title">Direct Channels &amp; Connections</h3>
-            <div class="contact-page__channels-grid">
-              <a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
-                <div class="contact-channel-card__info">
-                  <span class="contact-channel-card__name">LinkedIn</span>
-                  <strong class="contact-channel-card__handle">Muhammad Roman Khan</strong>
-                  <span class="contact-channel-card__label">Professional Profile &amp; Outreach</span>
-                </div>
-                <span class="contact-channel-card__arrow">→</span>
-              </a>
-              <a href="https://github.com/mrkhan7x" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
-                <div class="contact-channel-card__info">
-                  <span class="contact-channel-card__name">GitHub</span>
-                  <strong class="contact-channel-card__handle">@mrkhan7x</strong>
-                  <span class="contact-channel-card__label">Open Source Code &amp; Repos</span>
-                </div>
-                <span class="contact-channel-card__arrow">→</span>
-              </a>
-              <a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
-                <div class="contact-channel-card__info">
-                  <span class="contact-channel-card__name">Instagram</span>
-                  <strong class="contact-channel-card__handle">@mrkhan7x</strong>
-                  <span class="contact-channel-card__label">Direct Messages &amp; Updates</span>
-                </div>
-                <span class="contact-channel-card__arrow">→</span>
-              </a>
-              <a href="https://wa.me/923285792098" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
-                <div class="contact-channel-card__info">
-                  <span class="contact-channel-card__name">WhatsApp</span>
-                  <strong class="contact-channel-card__handle">+92 328 5792098</strong>
-                  <span class="contact-channel-card__label">Instant Inquiries &amp; Voice</span>
-                </div>
-                <span class="contact-channel-card__arrow">→</span>
-              </a>
-              <a href="mailto:info@mrkhanservices.com" class="contact-channel-card" style="grid-column: span 2;">
-                <div class="contact-channel-card__info">
-                  <span class="contact-channel-card__name">Direct Email</span>
-                  <strong class="contact-channel-card__handle">info@mrkhanservices.com</strong>
-                  <span class="contact-channel-card__label">Detailed Scopes &amp; Inquiries</span>
-                </div>
-                <span class="contact-channel-card__arrow">→</span>
-              </a>
-            </div>
-          </div>
+  <main id="main">
+    <!-- HERO -->
+    <section class="phero">
+      <div class="wrap">
+        <h1 class="rv">Let's find the <em>hours</em> you are losing.</h1>
+        <p class="lead rv" style="--rd:1">Reserve a 30-minute working audit to examine your funnel, map operational bottlenecks, and identify exactly where automation creates the clearest lift.</p>
+        <div class="cta rv" style="--rd:2">
+          <a href="/contact/" class="btn ink" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a href="#channels" class="btn ghost">Direct channels</a>
         </div>
-      </section>
-
-      <!-- CTA Banner -->
-      <section class="cta-banner">
-        <div class="cta-banner__glow"></div>
-        <h2 class="cta-banner__title">Ready to put AI to work?</h2>
-        <p class="cta-banner__text">
-          Book a free 30-minute AI growth call. We'll examine your funnel, pinpoint what's slowing growth, and show you where intelligent automation can create the biggest lift.
-        </p>
-        <a href="/contact/" class="talk-btn cta-banner__btn" data-action="open-booking">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Book a free strategy call</span></span>
-          <span class="talk-btn__arrow">→</span>
-        </a>
-      </section>
-    </main>
-
-        <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-columns">
-          <div class="footer-col footer-col--brand">
-            <span class="footer-col__eyebrow">Work with us</span>
-            <h4 class="footer-col__heading">Start with a free, thirty-minute AI growth call.</h4>
-            <div class="footer-col__cta">
-              <a href="/contact/" class="talk-btn" data-action="open-booking">
-                <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-                <span class="talk-btn__arrow">→</span>
-              </a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">SOLUTIONS</h5>
-            <ul class="footer-col__list">
-              <li><a href="/voice/" >Autonomous Voice Receptionist</a></li>
-              <li><a href="/rag/">Semantic RAG Agent</a></li>
-              <li><a href="/recruitment/">Candidate Qualification Pipeline</a></li>
-              <li><a href="/youtube/">Autonomous YouTube Factory</a></li>
-              <li><a href="/services/">Full Systems Library</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">COMPANY</h5>
-            <ul class="footer-col__list">
-              <li><a href="/about/">About M R KHAN</a></li>
-              <li><a href="/about/#about-story">What is MRKHANSERVICES?</a></li>
-              <li><a href="/services/">Industries</a></li>
-              <li><a href="/contact/" data-action="open-booking">Growth Call</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">RESOURCES</h5>
-            <ul class="footer-col__list">
-              <li><a href="/voice/">Live Voice Agent Sandbox</a></li>
-              <li><a href="/rag/">Live RAG Walkthrough</a></li>
-              <li><a href="/recruitment/">Recruitment Blueprint</a></li>
-              <li><a href="/youtube/">YouTube 5-Agent Blueprint</a></li>
-              <li><a href="/contact/">Schedule Consultation</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">CONNECT</h5>
-            <ul class="footer-col__list">
-              <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noreferrer">LinkedIn</a></li>
-              <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noreferrer">Instagram</a></li>
-              <li><a href="https://wa.me/923285792098" target="_blank" rel="noreferrer">WhatsApp</a></li>
-              <li><a href="mailto:info@mrkhanservices.com">Direct Email</a></li>
-              <li><a href="/contact/" data-action="open-booking">Book a Call</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <span class="footer-bottom__monogram">MRK</span>
-                    <div class="footer-bottom__legal">
-            <a href="/privacy/">Privacy Policy</a>
-            <span style="color: rgba(255,255,255,0.2);">&bull;</span>
-            <a href="/terms/">Terms of Service</a>
-          </div>
-          <span class="footer-bottom__copyright">© 2026 MRKHANSERVICES. All rights reserved.</span>
+        <div class="telemetry rv" style="--rd:3">
+          <span>local time <b data-clock>--:--:--</b></span>
+          <span>capacity <b>2 to 3 clients / mo</b></span>
+          <span>format <b>Google Meet (30m)</b></span>
+          <span>terms <b>fixed quote, no obligation</b></span>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <!-- Global 30-Minute Growth Call Booking Modal -->
-  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog">
+    <!-- WHAT HAPPENS AFTER YOU BOOK (3-BEAT PIPELINE) -->
+    <section class="s pipeline-sec" id="what-happens">
+      <div class="wrap">
+        <div class="pipeline-box rv">
+          <h2>What happens after <em>you book</em>.</h2>
+          <p class="lead" style="margin-top:14px">A focused, three-step evaluation. No slide decks and no sales pressure.</p>
+
+          <svg class="flow" viewBox="0 0 900 180" role="img" aria-label="Process pipeline: slot booked, 30 minute working audit, written automation list delivered">
+            <g fill="none" stroke-linecap="round">
+              <path class="ln" d="M90 80 H810" pathLength="100" />
+              <path class="pk" d="M90 80 H810" pathLength="100" />
+              <path class="pk" d="M90 80 H810" pathLength="100" style="--pd:-1.2s" />
+            </g>
+
+            <!-- 1. Booked -->
+            <g transform="translate(90 80)">
+              <circle class="nd" r="30" />
+              <g fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round">
+                <rect x="-11" y="-9" width="22" height="19" rx="3" />
+                <path d="M-11 -2 H11 M-5 -12 V-6 M5 -12 V-6" />
+                <circle cx="-4" cy="4" r="1.2" fill="#0A0A0A" />
+              </g>
+            </g>
+
+            <!-- 2. Audit (Hot Router) -->
+            <g transform="translate(450 80)">
+              <circle class="nd hot" r="34" />
+              <g fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round">
+                <circle cx="-8" cy="6" r="2.4" fill="#0A0A0A" />
+                <path d="M-4 -2 A 11 11 0 0 1 6 8" />
+                <path d="M-5 -10 A 19 19 0 0 1 14 9" />
+              </g>
+            </g>
+
+            <!-- 3. Written Roadmap (Logged Record) -->
+            <g transform="translate(810 80)">
+              <circle class="nd dark" r="30" />
+              <g fill="none" stroke="#F5F4F2" stroke-width="1.8" stroke-linecap="round">
+                <path d="M-10 -8 H10 M-10 0 H10 M-10 8 H3" />
+                <circle cx="9" cy="8" r="2" fill="#FF6B00" stroke="none" />
+              </g>
+            </g>
+
+            <g class="lbl">
+              <text x="90" y="142" text-anchor="middle">1. Slot Held</text>
+              <text class="dim" x="90" y="160" text-anchor="middle">calendar confirmation</text>
+
+              <text x="450" y="146" text-anchor="middle">2. 30-min Audit</text>
+              <text class="dim" x="450" y="164" text-anchor="middle">live Google Meet inspection</text>
+
+              <text x="810" y="142" text-anchor="middle">3. Written Plan</text>
+              <text class="dim" x="810" y="160" text-anchor="middle">exact bottleneck blueprint</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECT CHANNELS GRID -->
+    <section class="s channels-sec" id="channels">
+      <div class="wrap">
+        <div class="rv">
+          <h2>Direct channels and <em>connections</em>.</h2>
+          <p class="lead" style="margin-top:14px">Speak directly with the systems engineer. Every communication routes directly to Muhammad Roman Khan.</p>
+        </div>
+
+        <div class="channels-grid">
+          <!-- 1. Email (Featured) -->
+          <a href="mailto:contact@mrkhanservices.site" class="channel-card featured rv">
+            <div class="channel-top">
+              <div class="channel-glyph">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="3" />
+                  <path d="M22 7l-10 7L2 7" />
+                </svg>
+              </div>
+              <span class="tag glass">primary</span>
+            </div>
+            <div class="channel-info">
+              <h3>Direct Email</h3>
+              <span class="handle">contact@mrkhanservices.site</span>
+              <p>For detailed scopes, architecture reviews, NDA requirements, and project briefs. Expect a reply within 24 hours.</p>
+            </div>
+            <span class="channel-arrow">&rarr;</span>
+          </a>
+
+          <!-- 2. WhatsApp -->
+          <a href="https://wa.me/923285792098" target="_blank" rel="noopener" class="channel-card rv" style="--rd:1">
+            <div class="channel-top">
+              <div class="channel-glyph">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+              </div>
+              <span class="tag">voice + chat</span>
+            </div>
+            <div class="channel-info">
+              <h3>WhatsApp</h3>
+              <span class="handle">+92 328 5792098</span>
+              <p>Fast operational questions, voice notes, and live triage.</p>
+            </div>
+            <span class="channel-arrow">&rarr;</span>
+          </a>
+
+          <!-- 3. LinkedIn -->
+          <a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noopener" class="channel-card rv" style="--rd:2">
+            <div class="channel-top">
+              <div class="channel-glyph">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </div>
+              <span class="tag">network</span>
+            </div>
+            <div class="channel-info">
+              <h3>LinkedIn</h3>
+              <span class="handle">Muhammad Roman Khan</span>
+              <p>Professional network, case updates, and direct messaging.</p>
+            </div>
+            <span class="channel-arrow">&rarr;</span>
+          </a>
+
+          <!-- 4. GitHub -->
+          <a href="https://github.com/mrkhan7x" target="_blank" rel="noopener" class="channel-card rv" style="--rd:3">
+            <div class="channel-top">
+              <div class="channel-glyph">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                </svg>
+              </div>
+              <span class="tag">code</span>
+            </div>
+            <div class="channel-info">
+              <h3>GitHub</h3>
+              <span class="handle">@mrkhan7x</span>
+              <p>Open-source repositories, schemas, and automation scripts.</p>
+            </div>
+            <span class="channel-arrow">&rarr;</span>
+          </a>
+
+          <!-- 5. Instagram -->
+          <a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noopener" class="channel-card rv" style="--rd:4">
+            <div class="channel-top">
+              <div class="channel-glyph">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </div>
+              <span class="tag">updates</span>
+            </div>
+            <div class="channel-info">
+              <h3>Instagram</h3>
+              <span class="handle">@mrkhan7x</span>
+              <p>Short video teardowns, build logs, and behind-the-scenes systems.</p>
+            </div>
+            <span class="channel-arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section class="s faq-sec" id="faq">
+      <div class="wrap">
+        <h2 class="rv">Audit <em>questions</em>.</h2>
+        <div class="faq-list rv" style="--rd:1">
+          <details class="acc">
+            <summary><span>What preparation is needed before the audit?</span><span class="pm">+</span></summary>
+            <div class="in2"><p>None. You only need an understanding of the repetitive tasks eating your team's hours and the primary tools you use daily (such as your CRM, spreadsheet, email, or ticketing tool).</p></div>
+          </details>
+
+          <details class="acc">
+            <summary><span>Will I be pressured into buying?</span><span class="pm">+</span></summary>
+            <div class="in2"><p>No. The audit is a technical diagnosis call. You leave with a clear roadmap of what to automate first, whether you build it yourself, hire someone else, or work with me.</p></div>
+          </details>
+
+          <details class="acc">
+            <summary><span>Can we sign an NDA prior to speaking?</span><span class="pm">+</span></summary>
+            <div class="in2"><p>Yes. If you work with proprietary data or regulated processes, send your standard mutual NDA to contact@mrkhanservices.site prior to the scheduled call.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING BLOCK -->
+    <section style="padding:0">
+      <div class="end">
+        <svg class="radar" viewBox="-100 -100 200 200" aria-hidden="true">
+          <g fill="none" stroke="#F5F4F2" stroke-opacity=".28" stroke-width=".8"><circle r="95"/><circle r="70"/><circle r="45"/><circle r="20"/><path d="M-100 0H100M0 -100V100"/></g>
+          <g class="sweep"><path d="M0 0 L95 0 A95 95 0 0 0 67 -67 Z" fill="url(#sw)"/><path d="M0 0 H95" stroke="#FF6B00" stroke-width="1.4"/></g>
+          <defs><linearGradient id="sw" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#FF6B00" stop-opacity=".0"/><stop offset="1" stop-color="#FF6B00" stop-opacity=".5"/></linearGradient></defs>
+          <g fill="#FF6B00"><circle class="blip" style="--n:0" cx="48" cy="-34" r="3"/><circle class="blip" style="--n:1" cx="-30" cy="52" r="3"/><circle class="blip" style="--n:2" cx="-62" cy="-20" r="3"/><circle class="blip" style="--n:3" cx="14" cy="-70" r="3"/></g>
+        </svg>
+        <div class="wrap">
+          <h2 class="rv">Find out what your team could <em>stop doing</em>.</h2>
+          <p class="rv" style="--rd:1">A 30 minute audit. You leave with a clear list of what to automate first, whether or not we work together.</p>
+          <a href="/contact/" class="btn orange rv" style="--rd:2" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--SHELL:FOOT-->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div>
+          <a href="/" class="brand"><span class="badge">MRK</span><span class="name">MRKHANSERVICES</span></a>
+          <p class="muted" style="margin-top:16px;max-width:30ch">Automation systems that run in the background, built by one person you can reach directly.</p>
+        </div>
+        <div>
+          <h4>Systems</h4>
+          <ul>
+            <li><a href="/voice/">Voice receptionist</a></li>
+            <li><a href="/rag/">Knowledge agent</a></li>
+            <li><a href="/recruitment/">Recruitment pipeline</a></li>
+            <li><a href="/youtube/">Content factory</a></li>
+            <li><a href="/services/">All services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#about-story">My story</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://wa.me/923285792098" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:contact@mrkhanservices.site">contact@mrkhanservices.site</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 MRKHANSERVICES &middot; local time <b data-clock style="font-weight:500;color:var(--ink)">--:--:--</b></span>
+        <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+      </div>
+    </div>
+  </footer>
+  <!--/SHELL:FOOT-->
+  <!--SHELL:MODAL-->
+  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
     <div class="cal-modal-card">
       <div class="cal-modal__header">
         <div class="cal-modal__brand">
           <span class="cal-modal__badge">MRK</span>
           <span class="cal-modal__brand-name">MRKHANSERVICES</span>
         </div>
-        <div class="cal-modal__title">AI Growth Call</div>
-        <button class="cal-modal__close" id="booking-close-btn" aria-label="Close modal">&times;</button>
+        <div class="cal-modal__title" id="booking-title">Workflow audit</div>
+        <button class="cal-modal__close" id="booking-close-btn" type="button" aria-label="Close">&times;</button>
       </div>
-
       <div class="cal-modal__body">
         <div class="cal-modal__left">
           <div class="cal-modal__meta">
-            <span class="meta-item">⏱ 30 min</span>
-            <span class="meta-item">📍 Google Meet</span>
-            <span class="meta-item">⚡ High-Impact Strategy</span>
+            <span class="meta-item">30 min</span>
+            <span class="meta-item">Google Meet</span>
+            <span class="meta-item">no obligation</span>
           </div>
-          <p class="cal-modal__desc">
-            We’ll review your current funnel, pinpoint operational bottlenecks, and identify exactly where AI or autonomous agents will create the clearest revenue lift.
-          </p>
+          <p class="cal-modal__desc">We review how your work flows today, find where time is lost, and list what to automate first.</p>
           <div class="cal-modal__date-picker">
-            <label for="booking-date-select">Select a Date</label>
+            <label for="booking-date-select">Select a date</label>
             <select id="booking-date-select" class="cal-select"></select>
           </div>
         </div>
-
         <div class="cal-modal__right">
-          <!-- Step 1: Time Slots -->
           <div id="booking-slots-column">
-            <div class="column-title">Available Times</div>
+            <div class="column-title">Available times</div>
             <div class="time-slots-grid">
-              <button class="time-slot-btn" data-time="09:00 AM">09:00 AM</button>
-              <button class="time-slot-btn" data-time="10:00 AM">10:00 AM</button>
-              <button class="time-slot-btn" data-time="11:00 AM">11:00 AM</button>
-              <button class="time-slot-btn" data-time="01:00 PM">01:00 PM</button>
-              <button class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
-              <button class="time-slot-btn" data-time="03:00 PM">03:00 PM</button>
-              <button class="time-slot-btn" data-time="04:00 PM">04:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="09:00 AM">09:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="10:00 AM">10:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="11:00 AM">11:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="01:00 PM">01:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="02:00 PM">02:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="03:00 PM">03:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="04:00 PM">04:00 PM</button>
             </div>
           </div>
-
-          <!-- Step 2: Confirmation Form -->
           <div id="booking-form-step" class="cal-booking-form">
-            <button id="booking-back-btn" class="back-btn">← Back to times</button>
-            <div id="booking-selected-summary" class="selected-summary">Upcoming Date at Time</div>
+            <button id="booking-back-btn" class="back-btn" type="button">&larr; Back to times</button>
+            <div id="booking-selected-summary" class="selected-summary">Date and time</div>
             <form id="booking-form-element">
               <div class="form-group">
-                <label for="client-name">Your Name</label>
+                <label for="client-name">Your name</label>
                 <input type="text" id="client-name" required placeholder="e.g. Alex Morgan" />
               </div>
               <div class="form-group">
-                <label for="client-email">Work Email</label>
+                <label for="client-email">Work email</label>
                 <input type="email" id="client-email" required placeholder="alex@company.com" />
               </div>
               <div class="form-group">
-                <label for="client-notes">What are you looking to automate?</label>
-                <textarea id="client-notes" rows="3" placeholder="Lead triage, CRM sync, custom AI assistant..."></textarea>
+                <label for="client-notes">What takes up most of your team's time?</label>
+                <textarea id="client-notes" rows="3" placeholder="Lead replies, onboarding, reporting..."></textarea>
               </div>
-              <button type="submit" class="talk-btn submit-booking-btn">
-                <span class="talk-btn__label"><span class="talk-btn__label-current">Confirm reservation</span></span>
-                <span class="talk-btn__arrow">→</span>
-              </button>
+              <button type="submit" class="btn ink submit-booking-btn">Confirm audit</button>
             </form>
           </div>
         </div>
       </div>
-
-      <!-- Success View -->
       <div id="booking-success-view" class="cal-modal__success">
-        <div class="success-icon">✓</div>
-        <h3 class="cal-modal__title">Strategy Call Confirmed!</h3>
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h3 class="cal-modal__title">Audit booked.</h3>
         <p id="booking-success-details" class="cal-modal__desc"></p>
-        <button class="talk-btn" onclick="window.closeBookingModal()">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Done</span></span>
-        </button>
+        <button class="btn ink" type="button" onclick="window.closeBookingModal()">Done</button>
       </div>
     </div>
   </div>
-
-  <!-- Scripts -->
+  <!--/SHELL:MODAL-->
+  <!--SHELL:SCRIPTS-->
   <script src="/js/booking.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/site.js"></script>
+  <!--/SHELL:SCRIPTS-->
 </body>
 </html>

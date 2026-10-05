@@ -1,0 +1,217 @@
+/* RAG Knowledge Agent page styles on top of site.css */
+
+/* ---------- hero ---------- */
+.rag-hero {
+  padding-top: clamp(120px, 16vw, 170px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+.rag-hero h1 {
+  font-size: clamp(3.4rem, 7.2vw, 6.8rem);
+  line-height: 1.02;
+  max-width: 15ch;
+}
+.rag-hero .lead {
+  max-width: 48ch;
+  margin-top: 24px;
+}
+.rag-hero .cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 32px;
+}
+.rag-hero .telemetry {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  max-width: 640px;
+}
+
+/* ---------- 3-stage animated pipeline schematic ---------- */
+.pipeline-sec {
+  padding-top: clamp(40px, 6vw, 80px);
+}
+.pipeline-card-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(32px, 5vw, 64px);
+}
+.pipeline-card-box svg.flow {
+  margin-top: 36px;
+  max-width: 1040px;
+  margin-inline: auto;
+}
+.pipeline-card-box text {
+  font-size: 13px;
+}
+
+/* Dot grid animation in Pinecone stage */
+.pipeline-card-box .pdot {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.flow.live .pdot.active {
+  animation: pdotPulse 2.4s infinite;
+  animation-delay: calc(var(--n, 0) * 300ms);
+  animation-timing-function: var(--spring);
+}
+@keyframes pdotPulse {
+  0%, 100% { transform: scale(1); fill: #0A0A0A; }
+  50% { transform: scale(2.4); fill: var(--accent); }
+}
+
+/* ---------- 3-stage detail cards ---------- */
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 28px;
+}
+.stage-step-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 24px;
+  display: grid;
+  gap: 10px;
+}
+.stage-step-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.stage-step-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.stage-step-card ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  margin-top: 4px;
+}
+.stage-step-card li {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.stage-step-card li::before {
+  content: "+ ";
+  color: var(--accent);
+}
+@media (max-width: 860px) {
+  .stages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- use cases unequal bento ---------- */
+.cases-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.cases-bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+  margin-top: 44px;
+}
+.case-cell {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(28px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  transition: border-color 0.3s, transform var(--t) var(--spring);
+}
+.case-cell:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.case-cell.c1 { grid-column: span 7; }
+.case-cell.c2 { grid-column: span 5; }
+.case-cell.c3 { grid-column: span 5; }
+.case-cell.c4 { grid-column: span 7; }
+@media (max-width: 860px) {
+  .case-cell.c1, .case-cell.c2, .case-cell.c3, .case-cell.c4 {
+    grid-column: 1 / -1;
+  }
+}
+.case-cell h3 {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-top: 8px;
+}
+.case-cell p {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+.case-cell .art {
+  display: grid;
+  place-items: center;
+  min-height: 120px;
+}
+.case-cell .art svg {
+  max-height: 140px;
+}
+
+/* ---------- video walkthrough card ---------- */
+.video-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.video-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(24px, 4vw, 44px);
+  display: grid;
+  gap: 20px;
+}
+.video-frame-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: #111;
+}
+.video-frame-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.video-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+.video-meta-bar span {
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+/* ---------- closing radar ---------- */
+.end .radar { position: absolute; right: clamp(16px, 7vw, 110px); top: 50%; width: min(34vw, 420px); transform: translateY(-50%); pointer-events: none; }
+.radar .sweep { transform-origin: 0 0; animation: sweep 4.8s linear infinite; }
+@keyframes sweep { to { transform: rotate(-360deg); } }
+.radar .blip { transform-box: fill-box; transform-origin: center; animation: blip 4.8s infinite; animation-delay: calc(var(--n) * 1.2s); animation-timing-function: var(--spring); }
+@keyframes blip { 0%, 100% { transform: scale(0.5); opacity: 0.25; } 8% { transform: scale(2.2); opacity: 1; } 40% { transform: scale(1); opacity: 0.6; } }
+@media (max-width: 760px) { .end .radar { opacity: 0.35; right: -12%; } }
+@media (prefers-reduced-motion: reduce) {
+  .radar .sweep, .radar .blip { animation: none; }
+}

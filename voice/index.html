@@ -1,42 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomous AI Voice Receptionist &amp; Dual-Grounding RAG Engine | MRKHANSERVICES</title>
-  <meta name="description" content="Production-grade AI voice receptionist engineered with Vapi WebRTC, Pinecone Vector RAG, and n8n deterministic multi-tenant routing. 24/7 client booking, sub-800ms natural turn-taking, and zero hallucinations." />
+  <title>Voice Receptionist | MRKHANSERVICES</title>
+  <meta name="description" content="Production-grade autonomous AI voice receptionist engineered with Vapi WebRTC, Pinecone Vector RAG, and n8n deterministic multi-tenant routing." />
   <link rel="canonical" href="https://mrkhanservices.site/voice/" />
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="MRKHANSERVICES" />
   <meta property="og:url" content="https://mrkhanservices.site/voice/" />
-  <meta property="og:title" content="Autonomous AI Voice Receptionist &amp; Dual-Grounding RAG Engine | MRKHANSERVICES" />
-  <meta property="og:description" content="Capture 100% of after-hours client calls. Sub-800ms conversational turn-taking, Pinecone vector grounding, and live calendar scheduling." />
+  <meta property="og:title" content="Voice Receptionist | MRKHANSERVICES" />
+  <meta property="og:description" content="Production-grade autonomous AI voice receptionist engineered with Vapi WebRTC, Pinecone Vector RAG, and n8n deterministic multi-tenant routing." />
   <meta property="og:image" content="https://mrkhanservices.site/assets/images/vapi-n8n-canvas.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicons -->
+  <!--SHELL:HEAD-->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="theme-color" content="#0C0C0C" />
+  <meta name="theme-color" content="#F5F4F2" />
+  <link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.className='js';</script>
+  <link rel="stylesheet" href="/css/site.css" />
+  <!--/SHELL:HEAD-->
+  <link rel="stylesheet" href="/css/pages/voice.css" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/global.css?v=3" />
-  <link rel="stylesheet" href="/css/navbar.css?v=3" />
-  <link rel="stylesheet" href="/css/marquee.css?v=3" />
-  <link rel="stylesheet" href="/css/voice.css?v=3" />
-  <link rel="stylesheet" href="/css/modal.css?v=3" />
-  <link rel="stylesheet" href="/css/footer.css?v=3" />
-
-  <!-- Vapi Web Voice Widget SDK -->
+  <!-- Vapi Web Voice Widget SDK & Configuration (Preserved Exactly) -->
   <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
   <script>
     window.VAPI_CONFIG = {
@@ -57,603 +50,401 @@
   </script>
 </head>
 <body>
-  <div class="app-background"></div>
-  <div class="grid-pattern-global"></div>
-
-  <div class="page-wrapper">
-    <!-- Floating Header -->
-    <header class="header-floating-wrapper">
-      <nav class="header-nav-container">
-        <a href="/" class="nav-brand" aria-label="MRKHANSERVICES Home">
-          <span class="brand-icon-badge">MRK</span>
-          <span class="brand-name-text">MRKHANSERVICES</span>
-        </a>
-        <div class="nav-links-center">
-          <a href="/services/" class="nav-link-btn">Services</a>
-          <a href="/about/" class="nav-link-btn">About</a>
-          <a href="/contact/" class="nav-link-btn">Contact</a>
-        </div>
-        <div class="nav-cta-wrapper">
-          <a href="/contact/" class="talk-btn" data-action="open-booking">
-            <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-            <span class="talk-btn__arrow">→</span>
-          </a>
-        </div>
-      </nav>
-
-      <!-- Mobile Header -->
-      <div class="mobile-navbar-bar">
-        <a href="/" class="nav-brand">
-          <span class="brand-icon-badge">MRK</span>
-          <span class="brand-name-text">MRKHAN</span>
-        </a>
-        <button class="burger-btn" id="mobile-burger-btn" aria-label="Toggle navigation menu">
+  <!--SHELL:TOP-->
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:40px;width:1px"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="paint" x="-5%" y="-30%" width="110%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" />
+    </filter>
+  </svg>
+  <!--/SHELL:TOP-->
+  <!--SHELL:NAV-->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/" class="brand" aria-label="MRKHANSERVICES home">
+        <span class="badge">MRK</span>
+        <span class="name">MRKHANSERVICES</span>
+      </a>
+      <ul>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <div class="right">
+        <a href="/contact/" class="btn ink sm" data-action="open-booking">Book an audit</a>
+        <button class="burger" id="mobile-burger-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
           <span></span><span></span><span></span>
         </button>
       </div>
-
-      <!-- Mobile Dropdown Menu -->
-      <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
-        <a href="/services/" class="mobile-dropdown-link">Services</a>
-        <a href="/about/" class="mobile-dropdown-link">About</a>
-        <a href="/contact/" class="mobile-dropdown-link">Contact</a>
-        <a href="/contact/" class="talk-btn" data-action="open-booking" style="margin-top: 10px; width: 100%; justify-content: center;">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-          <span class="talk-btn__arrow">→</span>
-        </a>
-      </div>
-    </header>
-
-    <main class="voice-page">
-      <!-- Hero Section -->
-      <section class="voice-hero" id="top">
-        <div class="voice-hero__badge">
-          <span class="voice-hero__badge-dot"></span>
-          Flagship Production Architecture Case Study
-        </div>
-        <h1 class="voice-hero__title">Autonomous AI Voice Receptionist &amp; Dual-Grounding RAG Engine.</h1>
-        <p class="voice-hero__subtitle">
-          High-ticket service businesses lose over 70% of prospective clients who call after business hours or on weekends. This full-stack system pairs WebRTC voice turn-taking with Pinecone vector grounding and an n8n multi-tenant router to book appointments, answer pricing queries with 0% hallucinations, and sync live CRMs in under 3 seconds.
-        </p>
-
-        <!-- Outcome Metrics -->
-        <div class="voice-metrics">
-          <div class="voice-metric-chip">
-            <span>⚡</span>
-            <span>Latency: <strong>&lt;800ms Turn-Taking</strong></span>
-          </div>
-          <div class="voice-metric-chip">
-            <span>🛡️</span>
-            <span>Hallucinations: <strong>0% (Pinecone RAG)</strong></span>
-          </div>
-          <div class="voice-metric-chip">
-            <span>📈</span>
-            <span>Intake: <strong>100% After-Hours Calls</strong></span>
-          </div>
-          <div class="voice-metric-chip">
-            <span>🔄</span>
-            <span>Sync: <strong>&lt;3s CRM &amp; Slack Alerts</strong></span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Interactive Voice Sandbox (The Showpiece) -->
-      <section class="voice-sandbox-container">
-        <div class="voice-sandbox-header">
-          <div class="voice-sandbox-status">
-            <span class="v-status-dot" id="sandbox-status-dot"></span>
-            <span class="v-status-text" id="sandbox-status-text">AI Receptionist Online • Ready for Live Call</span>
-          </div>
-          <span class="v-tag-latency">⚡ sub-800ms WebRTC voice stream</span>
-        </div>
-
-        <!-- Animated Audio Waveform Visualizer -->
-        <div class="voice-waveform-area" id="sandbox-waveform">
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-          <span class="v-wave-bar"></span>
-        </div>
-
-        <!-- Primary Interactive Button -->
-        <button class="voice-call-trigger-btn" id="sandbox-call-btn" type="button">
-          <span class="btn-icon" id="sandbox-btn-icon">🎙️</span>
-          <span id="sandbox-btn-label">Talk to My AI Receptionist (Live Browser Call)</span>
-        </button>
-
-        <!-- Prompt Suggestions -->
-        <div class="voice-prompts-guide">
-          <span class="voice-prompts-title">Test Natural Conversation, Try Saying:</span>
-          <div class="voice-prompts-list">
-            <div class="voice-prompt-item" role="button" tabindex="0" title="Click to test this query live">
-              <span class="voice-prompt-icon">💬</span>
-              <span>&ldquo;Can I book a consultation for Thursday at 2 PM?&rdquo;</span>
-            </div>
-            <div class="voice-prompt-item" role="button" tabindex="0" title="Click to test this query live">
-              <span class="voice-prompt-icon">💬</span>
-              <span>&ldquo;What treatments or packages do you offer, and what is your pricing?&rdquo;</span>
-            </div>
-            <div class="voice-prompt-item" role="button" tabindex="0" title="Click to test this query live">
-              <span class="voice-prompt-icon">💬</span>
-              <span>&ldquo;I need to check or reschedule an existing appointment.&rdquo;</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Architecture Section Header -->
-      <section class="voice-section-header">
-        <div class="voice-section-header__eyebrow">Enterprise System Architecture</div>
-        <h2 class="voice-section-header__title">Deterministic Multi-Tenant Router &amp; Vector Pipeline</h2>
-        <p class="voice-section-header__desc">
-          Unlike brittle chatbots, this production engine enforces strict business hours, executes vector knowledge retrieval in sub-2 seconds, dynamically verifies slot availability, and writes completed bookings straight to Google Sheets and team Slack channels.
-        </p>
-      </section>
-
-      <!-- n8n Router Architecture Canvas Showcase -->
-      <section class="voice-canvas-section">
-        <div class="voice-canvas-wrapper" id="open-canvas-lightbox" title="Click to view full high-resolution architecture canvas">
-          <img 
-            src="/assets/images/vapi-n8n-canvas.png" 
-            alt="Vapi Multi-Tenant AI Voice Receptionist Router n8n Canvas" 
-            class="voice-canvas-img"
-            loading="lazy"
-          />
-          <div class="voice-canvas-overlay">
-            <span>🔍 Click to inspect full n8n canvas blueprint</span>
-          </div>
-        </div>
-
-        <div class="voice-canvas-meta">
-          <span>Engine: <strong>n8n Multi-Tenant Router</strong> • WebRTC Voice • Pinecone Vector DB • Google Sheets API • Slack API</span>
-          <a href="/assets/blueprints/vapi-multi-tenant-voice-router.json" download="vapi-multi-tenant-voice-router.json">
-            <span>📥 Download Workflow JSON Blueprint</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- 4 Architectural Pillars -->
-      <section class="voice-pillars-grid">
-        <div class="voice-pillar-card">
-          <div class="voice-pillar-num">01 / VOICE TURN-TAKING</div>
-          <h3 class="voice-pillar-title">Sub-800ms WebRTC Voice Stream</h3>
-          <p class="voice-pillar-desc">
-            Configured with custom voice-activity detection (VAD), 0.9s speech pauses, and 1.2s digit preservation. Eliminates robotic delays and lets callers speak uninterrupted in natural human cadence.
-          </p>
-        </div>
-
-        <div class="voice-pillar-card">
-          <div class="voice-pillar-num">02 / DUAL-GROUNDED RAG</div>
-          <h3 class="voice-pillar-title">Zero-Hallucination Vector Search</h3>
-          <p class="voice-pillar-desc">
-            Whenever a caller asks about pricing, packages, or clinical policies, the engine executes real-time semantic vector retrieval against Pinecone. The assistant only answers using verified business facts.
-          </p>
-        </div>
-
-        <div class="voice-pillar-card">
-          <div class="voice-pillar-num">03 / MULTI-TENANT ROUTER</div>
-          <h3 class="voice-pillar-title">Deterministic Event Router</h3>
-          <p class="voice-pillar-desc">
-            An n8n switch engine separates system heartbeats, knowledge queries, availability checks, and booking updates. Automatically enforces operational hours (Mon-Fri, 9 AM-6 PM) and flags conflicts.
-          </p>
-        </div>
-
-        <div class="voice-pillar-card">
-          <div class="voice-pillar-num">04 / CRM SYNCHRONIZATION</div>
-          <h3 class="voice-pillar-title">Bi-Directional Database Sync</h3>
-          <p class="voice-pillar-desc">
-            Checks slot capacity dynamically to avoid double-bookings. Supports complete lifecycle actions (Booked ➔ Cancelled ➔ Rescheduled) with instant HTML email confirmations and team Slack alerts.
-          </p>
-        </div>
-      </section>
-
-      <!-- Measurable Business Impact Grid -->
-      <section class="voice-section-header">
-        <div class="voice-section-header__eyebrow">Verified Business Outcomes</div>
-        <h2 class="voice-section-header__title">Numbers That Move Revenue</h2>
-      </section>
-
-      <section class="voice-roi-grid">
-        <div class="voice-roi-tile">
-          <div class="voice-roi-val">100%</div>
-          <div class="voice-roi-label">After-Hours Capture</div>
-          <div class="voice-roi-sub">Never lose another weekend or evening patient inquiry to a missed call.</div>
-        </div>
-
-        <div class="voice-roi-tile">
-          <div class="voice-roi-val">&lt;800ms</div>
-          <div class="voice-roi-label">Turn-Taking Speed</div>
-          <div class="voice-roi-sub">Conversational latency fast enough that callers forget it's an automated agent.</div>
-        </div>
-
-        <div class="voice-roi-tile">
-          <div class="voice-roi-val">0%</div>
-          <div class="voice-roi-label">Hallucination Rate</div>
-          <div class="voice-roi-sub">Every pricing and policy quote is strictly grounded in vector database chunks.</div>
-        </div>
-
-        <div class="voice-roi-tile">
-          <div class="voice-roi-val">&lt;3s</div>
-          <div class="voice-roi-label">CRM &amp; Team Alerts</div>
-          <div class="voice-roi-sub">Instant row population in Google Sheets plus real-time team dispatch in Slack.</div>
-        </div>
-      </section>
-
-      <!-- Bottom CTA Banner -->
-      <section class="cta-banner">
-        <div class="cta-banner__glow"></div>
-        <h2 class="cta-banner__title">Want this voice engine built for your clinic or agency?</h2>
-        <p class="cta-banner__subtitle">
-          We customize and deploy full-stack voice receptionists, calendar sync workflows, and vector knowledge bases within 7 to 14 days.
-        </p>
-        <div class="cta-banner__actions">
-          <a href="/contact/" class="talk-btn" data-action="open-booking">
-            <span class="talk-btn__label"><span class="talk-btn__label-current">Book a Strategy Call</span></span>
-            <span class="talk-btn__arrow">→</span>
-          </a>
-          <a href="mailto:info@mrkhanservices.com?subject=Voice%20Receptionist%20Architecture%20Inquiry" class="btn btn--secondary">
-            <span>Email info@mrkhanservices.com</span>
-          </a>
-        </div>
-      </section>
-    </main>
-
-        <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-columns">
-          <div class="footer-col footer-col--brand">
-            <span class="footer-col__eyebrow">Work with us</span>
-            <h4 class="footer-col__heading">Start with a free, thirty-minute AI growth call.</h4>
-            <div class="footer-col__cta">
-              <a href="/contact/" class="talk-btn" data-action="open-booking">
-                <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-                <span class="talk-btn__arrow">→</span>
-              </a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">SOLUTIONS</h5>
-            <ul class="footer-col__list">
-              <li><a href="/voice/" >Autonomous Voice Receptionist</a></li>
-              <li><a href="/rag/">Semantic RAG Agent</a></li>
-              <li><a href="/recruitment/">Candidate Qualification Pipeline</a></li>
-              <li><a href="/youtube/">Autonomous YouTube Factory</a></li>
-              <li><a href="/services/">Full Systems Library</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">COMPANY</h5>
-            <ul class="footer-col__list">
-              <li><a href="/about/">About M R KHAN</a></li>
-              <li><a href="/about/#about-story">What is MRKHANSERVICES?</a></li>
-              <li><a href="/services/">Industries</a></li>
-              <li><a href="/contact/" data-action="open-booking">Growth Call</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">RESOURCES</h5>
-            <ul class="footer-col__list">
-              <li><a href="/voice/">Live Voice Agent Sandbox</a></li>
-              <li><a href="/rag/">Live RAG Walkthrough</a></li>
-              <li><a href="/recruitment/">Recruitment Blueprint</a></li>
-              <li><a href="/youtube/">YouTube 5-Agent Blueprint</a></li>
-              <li><a href="/contact/">Schedule Consultation</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">CONNECT</h5>
-            <ul class="footer-col__list">
-              <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noreferrer">LinkedIn</a></li>
-              <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noreferrer">Instagram</a></li>
-              <li><a href="https://wa.me/923285792098" target="_blank" rel="noreferrer">WhatsApp</a></li>
-              <li><a href="mailto:info@mrkhanservices.com">Direct Email</a></li>
-              <li><a href="/contact/" data-action="open-booking">Book a Call</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <span class="footer-bottom__monogram">MRK</span>
-                    <div class="footer-bottom__legal">
-            <a href="/privacy/">Privacy Policy</a>
-            <span style="color: rgba(255,255,255,0.2);">&bull;</span>
-            <a href="/terms/">Terms of Service</a>
-          </div>
-          <span class="footer-bottom__copyright">© 2026 MRKHANSERVICES. All rights reserved.</span>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <!-- Lightbox Modal for Workflow Canvas -->
-  <div class="voice-lightbox" id="canvas-lightbox">
-    <div class="voice-lightbox__inner">
-      <button class="voice-lightbox__close" id="close-canvas-lightbox" aria-label="Close Lightbox">✕</button>
-      <img src="/assets/images/vapi-n8n-canvas.png" alt="Vapi Multi-Tenant AI Voice Receptionist Router n8n Canvas" class="voice-lightbox__img" />
+    </nav>
+    <div class="menu" id="mobile-dropdown-menu" aria-hidden="true">
+      <a href="/services/" style="--i:0">Services</a>
+      <a href="/about/" style="--i:1">About</a>
+      <a href="/contact/" style="--i:2">Contact</a>
+      <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit</a>
     </div>
-  </div>
+  </header>
+  <!--/SHELL:NAV-->
 
-  <!-- Booking Modal -->
-  <div id="booking-calendar-modal" class="cal-modal-overlay">
-    <div class="cal-modal">
-      <button class="cal-modal__close" onclick="window.closeBookingModal()" aria-label="Close Modal">✕</button>
+  <main id="main">
+    <!-- HERO -->
+    <section class="voice-hero">
+      <div class="wrap">
+        <h1 class="rv">Answers every call and books the <em>appointment</em>.</h1>
+        <p class="lead rv" style="--rd:1">An autonomous voice receptionist that answers around the clock. Grounded in your own business documentation, it checks real-time calendar availability and syncs client records in seconds.</p>
+        <div class="cta rv" style="--rd:2">
+          <a href="/contact/" class="btn ink" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a href="#sandbox" class="btn ghost">Test live call</a>
+        </div>
+        <div class="telemetry rv" style="--rd:3">
+          <span>voice <b>WebRTC Opus 48kHz</b></span>
+          <span>grounding <b>Pinecone Vector RAG</b></span>
+          <span>router <b>n8n deterministic engine</b></span>
+          <span>dispatch <b>Slack + Sheets</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE DEMO SANDBOX -->
+    <section class="s live-call-sec" id="sandbox">
+      <div class="wrap">
+        <div class="demo-card on-ink rv">
+          <div>
+            <h2>Talk to a <em>live</em> receptionist.</h2>
+            <p class="lead">Test conversational turn-taking directly in your browser. Allow microphone access when prompted and ask about booking, pricing, or rescheduling.</p>
+
+            <div class="sample-prompts">
+              <span class="sample-prompt-chip">"Can I book a consultation for Thursday at 2 PM?"</span>
+              <span class="sample-prompt-chip">"What services do you offer, and how does pricing work?"</span>
+              <span class="sample-prompt-chip">"I need to check or reschedule an existing appointment."</span>
+            </div>
+          </div>
+
+          <div class="call">
+            <div class="wave" id="demo-wave" aria-hidden="true">
+              <i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i style="--n:11"></i>
+            </div>
+            <button class="btn" id="demo-btn" type="button"><span id="demo-label">Start a call</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
+            <p class="status" id="demo-status" role="status" aria-live="polite">idle / ready when you are</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SYSTEM ARCHITECTURE & INSPECTOR -->
+    <section class="s arch-sec" id="architecture">
+      <div class="wrap">
+        <div class="rv">
+          <h2>Deterministic multi-tenant <em>router engine</em>.</h2>
+          <p class="lead" style="margin-top:14px">Hover or select any node in the schematic to inspect inputs, outputs, and protocols.</p>
+        </div>
+
+        <div class="arch-grid">
+          <!-- Flow SVG Diagram Card -->
+          <div class="arch-diagram-card rv" style="--rd:1">
+            <svg class="flow live" viewBox="0 0 680 340" role="img" aria-label="Interactive architecture flow diagram: Caller to Vapi voice engine, routed by n8n switch into Pinecone search, Calendar booking, Slack alert, and Google Sheets log">
+              <g fill="none" stroke-linecap="round">
+                <!-- Caller to Vapi -->
+                <path class="ln" d="M60 170 H160" pathLength="100" />
+                <path class="pk" d="M60 170 H160" pathLength="100" />
+
+                <!-- Vapi to Router -->
+                <path class="ln" d="M220 170 H310" pathLength="100" />
+                <path class="pk" d="M220 170 H310" pathLength="100" style="--pd:-0.5s" />
+
+                <!-- Router branches -->
+                <!-- Branch 1: Pinecone -->
+                <path class="ln" d="M370 170 C430 170, 440 60, 520 60" pathLength="100" />
+                <path class="pk" d="M370 170 C430 170, 440 60, 520 60" pathLength="100" style="--pd:-0.9s" />
+
+                <!-- Branch 2: Calendar -->
+                <path class="ln" d="M370 170 C430 170, 440 130, 520 130" pathLength="100" />
+                <path class="pk" d="M370 170 C430 170, 440 130, 520 130" pathLength="100" style="--pd:-1.4s" />
+
+                <!-- Branch 3: Alerts -->
+                <path class="ln" d="M370 170 C430 170, 440 210, 520 210" pathLength="100" />
+                <path class="pk" d="M370 170 C430 170, 440 210, 520 210" pathLength="100" style="--pd:-1.8s" />
+
+                <!-- Branch 4: Ledger -->
+                <path class="ln" d="M370 170 C430 170, 440 280, 520 280" pathLength="100" />
+                <path class="pk" d="M370 170 C430 170, 440 280, 520 280" pathLength="100" style="--pd:-2.2s" />
+              </g>
+
+              <!-- Node 1: Caller -->
+              <g class="arch-node-group" data-node="caller" tabindex="0" role="button" aria-label="Caller Node">
+                <circle class="nd" cx="60" cy="170" r="26" />
+                <path d="M52 176 A 11 11 0 0 1 66 166" stroke="#0A0A0A" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                <circle cx="50" cy="178" r="2.4" fill="#0A0A0A" />
+                <text x="60" y="214" text-anchor="middle">caller</text>
+              </g>
+
+              <!-- Node 2: Vapi Voice Stream -->
+              <g class="arch-node-group" data-node="vapi" tabindex="0" role="button" aria-label="Vapi Voice Stream Node">
+                <circle class="nd" cx="190" cy="170" r="26" />
+                <rect x="178" y="160" width="24" height="20" rx="3" fill="none" stroke="#0A0A0A" stroke-width="1.8" />
+                <text x="190" y="214" text-anchor="middle">vapi</text>
+                <text class="dim" x="190" y="228" text-anchor="middle">webrtc</text>
+              </g>
+
+              <!-- Node 3: n8n Router (Hot Node) -->
+              <g class="arch-node-group" data-node="router" tabindex="0" role="button" aria-label="Router Engine Node">
+                <circle class="nd hot" cx="340" cy="170" r="30" />
+                <path d="M328 170 H336 M336 170 L346 162 H352 M336 170 L346 178 H352" stroke="#0A0A0A" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                <text x="340" y="218" text-anchor="middle">router</text>
+                <text class="dim" x="340" y="232" text-anchor="middle">n8n switch</text>
+              </g>
+
+              <!-- Node 4: Pinecone Lookup -->
+              <g class="arch-node-group" data-node="pinecone" tabindex="0" role="button" aria-label="Pinecone Vector Search Node">
+                <circle class="nd" cx="550" cy="60" r="22" />
+                <text x="550" y="64" text-anchor="middle">rag</text>
+                <text x="590" y="64" text-anchor="start">pinecone lookup</text>
+              </g>
+
+              <!-- Node 5: Calendar API -->
+              <g class="arch-node-group" data-node="calendar" tabindex="0" role="button" aria-label="Calendar Booking Node">
+                <circle class="nd" cx="550" cy="130" r="22" />
+                <rect x="541" y="122" width="18" height="16" rx="2" fill="none" stroke="#0A0A0A" stroke-width="1.6" />
+                <text x="590" y="134" text-anchor="start">calendar booking</text>
+              </g>
+
+              <!-- Node 6: Team Dispatch -->
+              <g class="arch-node-group" data-node="alerts" tabindex="0" role="button" aria-label="Slack Alert Node">
+                <circle class="nd" cx="550" cy="210" r="22" />
+                <rect x="540" y="203" width="20" height="14" rx="2" fill="none" stroke="#0A0A0A" stroke-width="1.6" />
+                <text x="590" y="214" text-anchor="start">slack / email alert</text>
+              </g>
+
+              <!-- Node 7: Permanent Record (Dark Node) -->
+              <g class="arch-node-group" data-node="ledger" tabindex="0" role="button" aria-label="Ledger Record Node">
+                <circle class="nd dark" cx="550" cy="280" r="24" />
+                <path d="M542 274 H558 M542 280 H558 M542 286 H553" stroke="#F5F4F2" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                <circle cx="557" cy="286" r="1.8" fill="#FF6B00" stroke="none" />
+                <text x="590" y="284" text-anchor="start">sheets / db row</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Inspector Panel -->
+          <div class="inspector-card rv" style="--rd:2">
+            <div>
+              <span class="inspect-tag" id="inspect-tag">webrtc-audio-stream</span>
+              <h3 id="inspect-title" style="margin-top:6px">Inbound Caller</h3>
+            </div>
+            <p id="inspect-desc">Prospect or customer initiates a browser audio call or dials a dedicated inbound VoIP phone number.</p>
+            <div class="inspector-meta">
+              <span>input: <b id="inspect-input">Microphone PCM audio stream</b></span>
+              <span>output: <b id="inspect-output">WebRTC packets to Vapi edge</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- N8N ROUTER CANVAS SCREENSHOT & LIGHTBOX -->
+    <section class="s canvas-sec" id="canvas-blueprint">
+      <div class="wrap">
+        <div class="rv">
+          <h2>Production workflow <em>canvas</em>.</h2>
+          <p class="lead" style="margin-top:14px">Inspect the actual n8n multi-tenant router workflow handling webhook dispatch, vector retrieval, and booking records.</p>
+        </div>
+
+        <div class="canvas-box rv" style="--rd:1;margin-top:36px" id="open-canvas-lightbox" role="button" tabindex="0" aria-label="Click to enlarge n8n router canvas">
+          <img src="/assets/images/vapi-n8n-canvas.png" alt="n8n Multi-Tenant Voice Receptionist Router Canvas" loading="lazy" />
+          <svg class="flow live trace canvas-trace" viewBox="0 0 1000 560" aria-hidden="true">
+            <path class="ln glow" d="M60 480 C 260 480, 340 180, 560 180 S 760 100, 940 100" pathLength="100" />
+            <path class="pk" d="M60 480 C 260 480, 340 180, 560 180 S 760 100, 940 100" pathLength="100" />
+          </svg>
+          <span class="tag glass top-left"><span class="beacon" aria-hidden="true"><i></i></span>POST /webhook/vapi-voice-router</span>
+          <span class="tag glass bottom-right">click to inspect full blueprint</span>
+        </div>
+
+        <div class="canvas-meta-bar rv" style="--rd:2">
+          <span>stack <b>n8n / Vapi / Pinecone / Google Sheets API / Slack</b></span>
+          <a href="/assets/blueprints/vapi-multi-tenant-voice-router.json" download="vapi-multi-tenant-voice-router.json" class="btn ink sm">Download JSON Blueprint <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX DIALOG -->
+    <dialog class="canvas-dialog" id="canvas-dialog" aria-label="Full-resolution n8n canvas blueprint">
+      <div class="dialog-content">
+        <button class="dialog-close" id="close-canvas-dialog" type="button" aria-label="Close dialog">&times;</button>
+        <img src="/assets/images/vapi-n8n-canvas.png" alt="High resolution n8n canvas blueprint" />
+      </div>
+    </dialog>
+
+    <!-- OUTCOMES (CLEAN & HONEST) -->
+    <section class="s outcomes-sec" id="outcomes">
+      <div class="wrap">
+        <div class="rv">
+          <h2>Measured business <em>outcomes</em>.</h2>
+          <p class="lead" style="margin-top:14px">Engineered to eliminate lost inquiries without unpredictable behavior.</p>
+        </div>
+
+        <div class="outcomes-grid">
+          <div class="outcome-card rv">
+            <span class="tag">availability</span>
+            <h3>After-Hours Capture</h3>
+            <p>Every inbound call is answered instantly outside business hours, qualifying prospects before they turn to competitors.</p>
+          </div>
+
+          <div class="outcome-card rv" style="--rd:1">
+            <span class="tag">natural dialogue</span>
+            <h3>Natural Turn-Taking</h3>
+            <p>Engineered voice activity detection and balanced speech pauses let callers speak naturally without robotic interruptions.</p>
+          </div>
+
+          <div class="outcome-card rv" style="--rd:2">
+            <span class="tag">precision</span>
+            <h3>Grounded Vector Retrieval</h3>
+            <p>Answers to pricing, service offerings, and clinic policies are strictly referenced against verified document chunks in Pinecone.</p>
+          </div>
+
+          <div class="outcome-card rv" style="--rd:3">
+            <span class="tag">synchronization</span>
+            <h3>Instant Team Dispatch</h3>
+            <p>Caller details and held appointment slots are pushed to team Slack channels and database sheets within three seconds of call completion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING BLOCK -->
+    <section style="padding:0">
+      <div class="end">
+        <svg class="radar" viewBox="-100 -100 200 200" aria-hidden="true">
+          <g fill="none" stroke="#F5F4F2" stroke-opacity=".28" stroke-width=".8"><circle r="95"/><circle r="70"/><circle r="45"/><circle r="20"/><path d="M-100 0H100M0 -100V100"/></g>
+          <g class="sweep"><path d="M0 0 L95 0 A95 95 0 0 0 67 -67 Z" fill="url(#sw)"/><path d="M0 0 H95" stroke="#FF6B00" stroke-width="1.4"/></g>
+          <defs><linearGradient id="sw" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#FF6B00" stop-opacity=".0"/><stop offset="1" stop-color="#FF6B00" stop-opacity=".5"/></linearGradient></defs>
+          <g fill="#FF6B00"><circle class="blip" style="--n:0" cx="48" cy="-34" r="3"/><circle class="blip" style="--n:1" cx="-30" cy="52" r="3"/><circle class="blip" style="--n:2" cx="-62" cy="-20" r="3"/><circle class="blip" style="--n:3" cx="14" cy="-70" r="3"/></g>
+        </svg>
+        <div class="wrap">
+          <h2 class="rv">Find out what your team could <em>stop doing</em>.</h2>
+          <p class="rv" style="--rd:1">A 30 minute audit. You leave with a clear list of what to automate first, whether or not we work together.</p>
+          <a href="/contact/" class="btn orange rv" style="--rd:2" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--SHELL:FOOT-->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div>
+          <a href="/" class="brand"><span class="badge">MRK</span><span class="name">MRKHANSERVICES</span></a>
+          <p class="muted" style="margin-top:16px;max-width:30ch">Automation systems that run in the background, built by one person you can reach directly.</p>
+        </div>
+        <div>
+          <h4>Systems</h4>
+          <ul>
+            <li><a href="/voice/">Voice receptionist</a></li>
+            <li><a href="/rag/">Knowledge agent</a></li>
+            <li><a href="/recruitment/">Recruitment pipeline</a></li>
+            <li><a href="/youtube/">Content factory</a></li>
+            <li><a href="/services/">All services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#about-story">My story</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://wa.me/923285792098" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:contact@mrkhanservices.site">contact@mrkhanservices.site</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 MRKHANSERVICES &middot; local time <b data-clock style="font-weight:500;color:var(--ink)">--:--:--</b></span>
+        <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+      </div>
+    </div>
+  </footer>
+  <!--/SHELL:FOOT-->
+  <!--SHELL:MODAL-->
+  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+    <div class="cal-modal-card">
       <div class="cal-modal__header">
-        <h3 class="cal-modal__title">Book an Automation Discovery Call</h3>
-        <p class="cal-modal__subtitle">Direct 1-on-1 strategy with M R KHAN. Let's engineer your autonomous operations.</p>
+        <div class="cal-modal__brand">
+          <span class="cal-modal__badge">MRK</span>
+          <span class="cal-modal__brand-name">MRKHANSERVICES</span>
+        </div>
+        <div class="cal-modal__title" id="booking-title">Workflow audit</div>
+        <button class="cal-modal__close" id="booking-close-btn" type="button" aria-label="Close">&times;</button>
       </div>
       <div class="cal-modal__body">
         <div class="cal-modal__left">
           <div class="cal-modal__meta">
-            <span class="meta-item">⏱ 30 min</span>
-            <span class="meta-item">📍 Google Meet</span>
-            <span class="meta-item">⚡ High-Impact Strategy</span>
+            <span class="meta-item">30 min</span>
+            <span class="meta-item">Google Meet</span>
+            <span class="meta-item">no obligation</span>
           </div>
-          <p class="cal-modal__desc">
-            We’ll review your practice intake, pinpoint after-hours bottlenecks, and outline the exact voice and scheduling architecture to capture every lead.
-          </p>
+          <p class="cal-modal__desc">We review how your work flows today, find where time is lost, and list what to automate first.</p>
           <div class="cal-modal__date-picker">
-            <label for="booking-date-select">Select a Date</label>
+            <label for="booking-date-select">Select a date</label>
             <select id="booking-date-select" class="cal-select"></select>
           </div>
         </div>
         <div class="cal-modal__right">
           <div id="booking-slots-column">
-            <div class="column-title">Available Times</div>
+            <div class="column-title">Available times</div>
             <div class="time-slots-grid">
-              <button class="time-slot-btn" data-time="09:00 AM">09:00 AM</button>
-              <button class="time-slot-btn" data-time="10:00 AM">10:00 AM</button>
-              <button class="time-slot-btn" data-time="11:00 AM">11:00 AM</button>
-              <button class="time-slot-btn" data-time="01:00 PM">01:00 PM</button>
-              <button class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
-              <button class="time-slot-btn" data-time="03:00 PM">03:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="09:00 AM">09:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="10:00 AM">10:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="11:00 AM">11:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="01:00 PM">01:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="02:00 PM">02:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="03:00 PM">03:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="04:00 PM">04:00 PM</button>
             </div>
           </div>
           <div id="booking-form-step" class="cal-booking-form">
-            <button id="booking-back-btn" class="back-btn">← Back to times</button>
-            <div id="booking-selected-summary" class="selected-summary">Upcoming Date at Time</div>
+            <button id="booking-back-btn" class="back-btn" type="button">&larr; Back to times</button>
+            <div id="booking-selected-summary" class="selected-summary">Date and time</div>
             <form id="booking-form-element">
               <div class="form-group">
-                <label for="client-name">Your Name</label>
+                <label for="client-name">Your name</label>
                 <input type="text" id="client-name" required placeholder="e.g. Alex Morgan" />
               </div>
               <div class="form-group">
-                <label for="client-email">Work Email</label>
+                <label for="client-email">Work email</label>
                 <input type="email" id="client-email" required placeholder="alex@company.com" />
               </div>
               <div class="form-group">
-                <label for="client-notes">Tell us about your current call volume or practice</label>
-                <textarea id="client-notes" rows="3" placeholder="MedSpa, Dental clinic, high-ticket consultancy..."></textarea>
+                <label for="client-notes">What takes up most of your team's time?</label>
+                <textarea id="client-notes" rows="3" placeholder="Lead replies, onboarding, reporting..."></textarea>
               </div>
-              <button type="submit" class="talk-btn submit-booking-btn">
-                <span class="talk-btn__label"><span class="talk-btn__label-current">Confirm reservation</span></span>
-                <span class="talk-btn__arrow">→</span>
-              </button>
+              <button type="submit" class="btn ink submit-booking-btn">Confirm audit</button>
             </form>
           </div>
         </div>
       </div>
       <div id="booking-success-view" class="cal-modal__success">
-        <div class="success-icon">✓</div>
-        <h3 class="cal-modal__title">Discovery Call Confirmed!</h3>
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h3 class="cal-modal__title">Audit booked.</h3>
         <p id="booking-success-details" class="cal-modal__desc"></p>
-        <button class="talk-btn" onclick="window.closeBookingModal()">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Done</span></span>
-        </button>
+        <button class="btn ink" type="button" onclick="window.closeBookingModal()">Done</button>
       </div>
     </div>
   </div>
-
-  <!-- Scripts -->
+  <!--/SHELL:MODAL-->
+  <!--SHELL:SCRIPTS-->
   <script src="/js/booking.js"></script>
-  <script src="/js/main.js"></script>
-  <script>
-    // Robust Interactive Voice Sandbox Controller
-    (function() {
-      const callBtn = document.getElementById('sandbox-call-btn');
-      const btnLabel = document.getElementById('sandbox-btn-label');
-      const btnIcon = document.getElementById('sandbox-btn-icon');
-      const statusDot = document.getElementById('sandbox-status-dot');
-      const statusText = document.getElementById('sandbox-status-text');
-      const waveform = document.getElementById('sandbox-waveform');
-      const waveBars = waveform ? waveform.querySelectorAll('.v-wave-bar') : [];
-
-      let isCallActive = false;
-      let isConnecting = false;
-      let vapi = null;
-
-      function updateCallUI(state) {
-        if (state === 'active') {
-          isCallActive = true;
-          isConnecting = false;
-          callBtn.classList.remove('connecting');
-          callBtn.classList.add('active');
-          statusDot.classList.remove('connecting');
-          statusDot.classList.add('active');
-          waveform.classList.add('active');
-          statusText.textContent = 'Active Live Call • Speak naturally into your microphone';
-          btnLabel.textContent = 'End Voice Call';
-          btnIcon.textContent = '⏹';
-        } else if (state === 'connecting') {
-          isConnecting = true;
-          isCallActive = false;
-          callBtn.classList.remove('active');
-          callBtn.classList.add('connecting');
-          statusDot.classList.remove('active');
-          statusDot.classList.add('connecting');
-          waveform.classList.remove('active', 'speaking');
-          statusText.textContent = 'Connecting audio stream • Allow microphone if prompted...';
-          btnLabel.textContent = 'Connecting Voice Stream...';
-          btnIcon.textContent = '⏳';
-        } else {
-          isCallActive = false;
-          isConnecting = false;
-          callBtn.classList.remove('active', 'connecting');
-          statusDot.classList.remove('active', 'connecting');
-          waveform.classList.remove('active', 'speaking');
-          statusText.textContent = 'AI Receptionist Online • Ready for Live Call';
-          btnLabel.textContent = 'Talk to My AI Receptionist (Live Browser Call)';
-          btnIcon.textContent = '🎙️';
-          waveBars.forEach(bar => { bar.style.height = ''; });
-        }
-      }
-
-      const centerFactors = [0.3, 0.48, 0.68, 0.88, 1.0, 1.0, 0.88, 0.68, 0.48, 0.38, 0.28, 0.2];
-      function handleVolume(vol) {
-        if (!isCallActive || !waveBars.length) return;
-        const v = Math.min(1, Math.max(0, vol * 3.5));
-        waveBars.forEach((bar, idx) => {
-          const factor = centerFactors[idx] || 0.5;
-          const targetHeight = Math.max(16, Math.min(98, (v * factor * 80) + 16));
-          bar.style.height = targetHeight + '%';
-        });
-      }
-
-      function attachVapiEvents(instance) {
-        if (!instance || instance.__sandbox_hooked) return;
-        instance.__sandbox_hooked = true;
-
-        instance.on('call-start', () => {
-          updateCallUI('active');
-        });
-
-        instance.on('call-end', () => {
-          updateCallUI('idle');
-        });
-
-        instance.on('speech-start', () => {
-          if (isCallActive) {
-            statusText.textContent = 'AI Receptionist is speaking...';
-            waveform.classList.add('speaking');
-          }
-        });
-
-        instance.on('speech-end', () => {
-          if (isCallActive) {
-            statusText.textContent = 'Listening... Speak into your microphone';
-            waveform.classList.remove('speaking');
-          }
-        });
-
-        instance.on('volume-level', (volume) => {
-          handleVolume(volume);
-        });
-
-        instance.on('error', (err) => {
-          console.error('Vapi live call error:', err);
-          updateCallUI('idle');
-          const errStr = String(err?.error || err?.message || err);
-          if (errStr.includes('NotAllowedError') || errStr.includes('Permission') || errStr.includes('microphone')) {
-            statusText.textContent = 'Microphone access blocked. Please allow mic in your browser settings & retry.';
-          } else {
-            statusText.textContent = 'Connection notice: click button to retry live call.';
-          }
-        });
-      }
-
-      function initVapi() {
-        if (window.vapiSDK && typeof window.vapiSDK.run === 'function') {
-          try {
-            vapi = window.vapiSDK.run(window.VAPI_CONFIG);
-            window.vapiInstance = vapi;
-            attachVapiEvents(vapi);
-          } catch (err) {
-            console.error('Error initializing Vapi SDK:', err);
-          }
-        }
-      }
-
-      // Initialize as soon as script is ready
-      if (window.vapiSDK) {
-        initVapi();
-      } else {
-        const checkInterval = setInterval(() => {
-          if (window.vapiSDK) {
-            clearInterval(checkInterval);
-            initVapi();
-          }
-        }, 100);
-        setTimeout(() => clearInterval(checkInterval), 10000);
-      }
-
-      if (callBtn) {
-        callBtn.addEventListener('click', async function() {
-          if (isConnecting) return;
-
-          if (isCallActive) {
-            statusText.textContent = 'Ending call...';
-            try {
-              if (vapi) await vapi.stop();
-            } catch (e) {
-              console.warn('Error stopping call:', e);
-            }
-            setTimeout(() => { if (!isCallActive) updateCallUI('idle'); }, 400);
-          } else {
-            if (!vapi) {
-              if (window.vapiSDK && window.vapiSDK.vapi) {
-                vapi = window.vapiSDK.vapi;
-                attachVapiEvents(vapi);
-              } else {
-                initVapi();
-              }
-            }
-
-            if (!vapi) {
-              statusText.textContent = 'Audio engine loading... Please click again in a moment.';
-              return;
-            }
-
-            updateCallUI('connecting');
-
-            try {
-              await vapi.start(window.VAPI_CONFIG.assistant, window.VAPI_CONFIG.assistantOverrides);
-            } catch (err) {
-              console.error('Failed to start call:', err);
-              updateCallUI('idle');
-              if (err && (err.name === 'NotAllowedError' || String(err).includes('Permission'))) {
-                statusText.textContent = 'Microphone permission blocked. Please allow mic access in your address bar.';
-              } else {
-                statusText.textContent = 'Unable to connect call. Click to retry.';
-              }
-            }
-          }
-        });
-      }
-
-      // Interactive Prompt Suggestions
-      document.querySelectorAll('.voice-prompt-item').forEach(item => {
-        item.addEventListener('click', () => {
-          if (!isCallActive && !isConnecting) {
-            callBtn.click();
-          } else {
-            item.style.borderColor = 'rgba(255, 255, 255, 0.4)';
-            setTimeout(() => { item.style.borderColor = ''; }, 1200);
-          }
-        });
-      });
-
-      // Lightbox Logic for Architecture Canvas
-      const lightboxTrigger = document.getElementById('open-canvas-lightbox');
-      const lightbox = document.getElementById('canvas-lightbox');
-      const closeBtn = document.getElementById('close-canvas-lightbox');
-
-      if (lightboxTrigger && lightbox && closeBtn) {
-        lightboxTrigger.addEventListener('click', () => lightbox.classList.add('open'));
-        closeBtn.addEventListener('click', () => lightbox.classList.remove('open'));
-        lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox) lightbox.classList.remove('open');
-        });
-      }
-    })();
-  </script>
+  <script src="/js/site.js"></script>
+  <!--/SHELL:SCRIPTS-->
+  <script src="/js/voice.js"></script>
 </body>
 </html>

@@ -1,232 +1,349 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live E-Commerce AI Sales & COD Chatbot Demo | M R KHAN</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-mono { font-family: 'JetBrains Mono', monospace; }
-    .chat-bubble-received { border-bottom-left-radius: 4px; }
-    .chat-bubble-sent { border-bottom-right-radius: 4px; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Sales Chatbot Demo | MRKHANSERVICES</title>
+  <meta name="description" content="Interactive sales and Cash on Delivery order verification chatbot demo. Evaluates catalog queries, live courier tracking, and automated CRM order confirmation." />
+  <link rel="canonical" href="https://mrkhanservices.site/demo/" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MRKHANSERVICES" />
+  <meta property="og:url" content="https://mrkhanservices.site/demo/" />
+  <meta property="og:title" content="Live Sales Chatbot Demo | MRKHANSERVICES" />
+  <meta property="og:description" content="Interactive sales and Cash on Delivery order verification chatbot demo. Evaluates catalog queries, live courier tracking, and automated CRM order confirmation." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!--SHELL:HEAD-->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="theme-color" content="#F5F4F2" />
+  <link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.className='js';</script>
+  <link rel="stylesheet" href="/css/site.css" />
+  <!--/SHELL:HEAD-->
+  <link rel="stylesheet" href="/css/pages/demo.css" />
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-between p-4 sm:p-6 antialiased">
-
-  <!-- Top Navigation & Brand Bar -->
-  <header class="max-w-4xl w-full flex items-center justify-between py-4 border-b border-slate-800/80 mb-6">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center font-black text-slate-950 text-base shadow-lg shadow-emerald-500/20">
-        ⚡
+<body>
+  <!--SHELL:TOP-->
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:40px;width:1px"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="paint" x="-5%" y="-30%" width="110%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" />
+    </filter>
+  </svg>
+  <!--/SHELL:TOP-->
+  <!--SHELL:NAV-->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/" class="brand" aria-label="MRKHANSERVICES home">
+        <span class="badge">MRK</span>
+        <span class="name">MRKHANSERVICES</span>
+      </a>
+      <ul>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <div class="right">
+        <a href="/contact/" class="btn ink sm" data-action="open-booking">Book an audit</a>
+        <button class="burger" id="mobile-burger-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div>
-        <h1 class="text-sm font-bold text-white tracking-tight flex items-center gap-2">
-          M R KHAN <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-mono font-medium">Systems</span>
-        </h1>
-        <p class="text-[11px] text-slate-400">Autonomous E-Commerce & Retail Operations</p>
-      </div>
+    </nav>
+    <div class="menu" id="mobile-dropdown-menu" aria-hidden="true">
+      <a href="/services/" style="--i:0">Services</a>
+      <a href="/about/" style="--i:1">About</a>
+      <a href="/contact/" style="--i:2">Contact</a>
+      <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit</a>
     </div>
-
-    <a href="https://portfolio.mrkhan.qzz.io" class="text-xs font-semibold text-slate-300 hover:text-emerald-400 transition flex items-center gap-1.5 bg-slate-900 border border-slate-800 hover:border-emerald-500/40 px-3.5 py-1.5 rounded-xl">
-      ← Back to Portfolio
-    </a>
   </header>
+  <!--/SHELL:NAV-->
 
-  <!-- Interactive Demo Container -->
-  <main class="max-w-md w-full bg-slate-900/90 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col h-[680px] my-auto backdrop-blur-xl">
-    
-    <!-- Chat Header -->
-    <div class="bg-slate-950/80 border-b border-slate-800 px-4 py-3.5 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="relative">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-bold text-base shadow-md">
-            💎
+  <main id="main">
+    <!-- HERO -->
+    <section class="demo-hero">
+      <div class="wrap">
+        <h1 class="rv">Live retail sales and <em>order chatbot demo</em>.</h1>
+        <p class="lead rv" style="--rd:1">Experience the autonomous sales engine in real time. Interact with the chat simulator to query jewelry collections, track pending couriers, or verify Cash on Delivery orders.</p>
+        <div class="cta rv" style="--rd:2">
+          <a href="/contact/" class="btn ink" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a href="#simulator" class="btn ghost">Open simulator</a>
+        </div>
+        <div class="telemetry rv" style="--rd:3">
+          <span>sandbox <b>Zenat Store Retail Engine</b></span>
+          <span>courier <b>Trax Logistics API</b></span>
+          <span>storage <b>Google Sheets CRM</b></span>
+          <span>runtime <b>n8n Autonomous Switch</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPLIT SHOWCASE: PAPER CHAT CARD + EXPLANATORY COLUMN -->
+    <section class="s demo-showcase-sec" id="simulator">
+      <div class="wrap">
+        <div class="demo-grid">
+          
+          <!-- LEFT: PAPER CHAT WINDOW -->
+          <div class="chat-window rv" style="--rd:1">
+            <!-- Header -->
+            <div class="chat-header">
+              <div class="chat-identity">
+                <div class="chat-avatar">
+                  ZS
+                  <span class="status-dot" aria-hidden="true"></span>
+                </div>
+                <div class="chat-title-group">
+                  <h3>Zenat Store Assistant</h3>
+                  <p>24/7 Automated Sales &amp; COD Engine</p>
+                </div>
+              </div>
+              <span class="tag glass" style="padding:4px 10px;font-size:0.7rem">sandbox-live</span>
+            </div>
+
+            <!-- Quick Chips Bar -->
+            <div class="quick-chips-bar" role="toolbar" aria-label="Suggested prompt options">
+              <button class="quick-chip" data-text="Show me gold necklaces under 3000">Necklaces under 3K</button>
+              <button class="quick-chip" data-text="Mera order kahan hai?">Track Order #ZN-8492</button>
+              <button class="quick-chip accent" data-text="1">Confirm COD Order</button>
+              <button class="quick-chip" data-text="Do you have silver rings?">Silver Rings</button>
+            </div>
+
+            <!-- Stream Area -->
+            <div class="chat-stream" id="chatBox">
+              <div class="chat-msg received">
+                <div class="bubble">
+                  <p><strong>Assalam o Alaikum! Welcome to Zenat Store.</strong></p>
+                  <p style="margin-top:6px;font-size:0.9em;color:var(--muted)">I am your automated jewelry assistant. Select a quick action above or ask about gold collections, delivery tracking, and Cash on Delivery orders.</p>
+                </div>
+                <span class="bubble-meta">11:00 AM</span>
+              </div>
+            </div>
+
+            <!-- Composer Form -->
+            <form class="chat-composer" id="composerForm">
+              <input type="text" id="userInput" class="composer-input" placeholder="Ask about jewelry, tracking, or order..." aria-label="Type your message" />
+              <button type="submit" class="composer-btn" aria-label="Send message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
           </div>
-          <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
-        </div>
-        <div>
-          <h2 class="text-sm font-bold text-white flex items-center gap-1.5">
-            Zenat Store AI <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-mono">24/7 Live</span>
-          </h2>
-          <p class="text-[11px] text-emerald-400 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            Automated Sales & COD Engine
-          </p>
+
+          <!-- RIGHT: EXPLANATORY COLUMN WITH SVG PIPELINE -->
+          <div class="demo-explain-col rv" style="--rd:2">
+            <article class="explain-card">
+              <div>
+                <span class="tag glass" style="margin-bottom:12px;display:inline-block">system mechanics</span>
+                <h3>Behind-the-scenes orchestration.</h3>
+                <p style="margin-top:8px">Every customer message travels through a deterministic routing pipeline. Natural queries extract intent, query live inventory or courier APIs, and log transactions.</p>
+              </div>
+
+              <!-- Animated Micro Pipeline SVG -->
+              <div class="flow-container">
+                <svg class="flow live" viewBox="0 0 440 120" role="img" aria-label="Chatbot flow: customer message to webhook router to agent intelligence to confirmed order output">
+                  <g fill="none" stroke-linecap="round">
+                    <path class="ln" d="M60 60 H160" pathLength="100" />
+                    <path class="pk" d="M60 60 H160" pathLength="100" />
+
+                    <path class="ln" d="M200 60 H280" pathLength="100" />
+                    <path class="pk" d="M200 60 H280" pathLength="100" style="--pd:-0.6s" />
+
+                    <path class="ln" d="M320 60 H380" pathLength="100" />
+                    <path class="pk" d="M320 60 H380" pathLength="100" style="--pd:-1.2s" />
+                  </g>
+
+                  <!-- Node 1: Inbound Message -->
+                  <g transform="translate(40 60)">
+                    <circle class="nd hot" r="20" />
+                    <text x="0" y="4" text-anchor="middle" font-family="var(--mono)" font-size="10">MSG</text>
+                    <text x="0" y="34" text-anchor="middle" font-family="var(--mono)" font-size="9">message</text>
+                  </g>
+
+                  <!-- Node 2: Webhook Switch -->
+                  <g transform="translate(180 60)">
+                    <circle class="nd" r="20" />
+                    <path d="M-6 -4 H6 M-6 0 H6 M-6 4 H2" stroke="#0A0A0A" stroke-width="1.4" stroke-linecap="round" />
+                    <text x="0" y="34" text-anchor="middle" font-family="var(--mono)" font-size="9">webhook</text>
+                  </g>
+
+                  <!-- Node 3: Agent Intelligence -->
+                  <g transform="translate(300 60)">
+                    <circle class="nd" r="20" />
+                    <rect x="-8" y="-8" width="16" height="16" rx="3" fill="none" stroke="#0A0A0A" stroke-width="1.4" />
+                    <text x="0" y="34" text-anchor="middle" font-family="var(--mono)" font-size="9">agent</text>
+                  </g>
+
+                  <!-- Node 4: Confirmed Order Output -->
+                  <g transform="translate(400 60)">
+                    <circle class="nd dark" r="20" />
+                    <path d="M-5 0 L-1 4 L6 -4" stroke="#F5F4F2" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                    <text x="0" y="34" text-anchor="middle" font-family="var(--mono)" font-size="9">confirm</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Telemetry Ledger -->
+              <div class="inspector-meta" style="border-top:1px solid var(--line);padding-top:14px;font-family:var(--mono);font-size:0.78rem;display:grid;gap:6px">
+                <div>endpoint: <b style="color:var(--ink)">POST /webhook/retail-sales-router</b></div>
+                <div>intent router: <b style="color:var(--ink)">Catalog Search / Courier Tracking / COD Verification</b></div>
+                <div>latency: <b style="color:var(--ink)">sub-second deterministic response</b></div>
+              </div>
+            </article>
+
+            <!-- Deployment Card -->
+            <article class="explain-card" style="background:var(--paper-warm)">
+              <div>
+                <span class="tag glass" style="margin-bottom:12px;display:inline-block">store deployment</span>
+                <h3 style="font-size:1.4rem">Ready for your store catalog.</h3>
+                <p style="margin-top:6px;font-size:0.9rem">Connect your Shopify store, WooCommerce database, WhatsApp Cloud API, or private spreadsheet to deploy automated sales agents on your brand channels.</p>
+              </div>
+              <a href="/contact/" class="btn ink sm" data-action="open-booking" style="width:max-content">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+            </article>
+          </div>
+
         </div>
       </div>
-      <div class="text-[10px] text-slate-400 font-mono bg-slate-900 border border-slate-800 px-2 py-1 rounded-md">
-        n8n + AI
-      </div>
-    </div>
+    </section>
 
-    <!-- Quick Prompt Pills -->
-    <div class="bg-slate-950/50 border-b border-slate-800/60 p-2 flex gap-1.5 overflow-x-auto text-[11px]">
-      <button onclick="sendQuick('Show me gold necklaces under 3000')" class="bg-slate-800/80 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded-full whitespace-nowrap transition border border-slate-700/50">
-        ✨ Necklaces under 3K
-      </button>
-      <button onclick="sendQuick('Mera order kahan hai?')" class="bg-slate-800/80 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded-full whitespace-nowrap transition border border-slate-700/50">
-        🚚 Track Order
-      </button>
-      <button onclick="sendQuick('1')" class="bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 px-3 py-1 rounded-full whitespace-nowrap transition border border-emerald-500/30 font-medium">
-        ✅ Confirm COD Order
-      </button>
-      <button onclick="sendQuick('Do you have silver rings?')" class="bg-slate-800/80 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded-full whitespace-nowrap transition border border-slate-700/50">
-        💍 Silver Rings
-      </button>
-    </div>
-
-    <!-- Chat Stream Area -->
-    <div id="chatBox" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px]">
-      
-      <!-- Welcome Message -->
-      <div class="flex items-start gap-2">
-        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl chat-bubble-received max-w-[85%] space-y-1.5 shadow-sm">
-          <p class="text-slate-100 font-medium">Assalam o Alaikum! Welcome to <strong>Zenat Store</strong> ✨</p>
-          <p class="text-slate-400 text-[11px] leading-relaxed">
-            I am your automated jewelry assistant. Tap any button above or ask about our gold-plated collection, live delivery tracking, or Cash on Delivery verification.
-          </p>
-          <span class="text-[9px] text-slate-500 block text-right font-mono">11:00 AM</span>
+    <!-- CLOSING BLOCK -->
+    <section class="end">
+      <div class="radar" aria-hidden="true"><div class="beam"></div></div>
+      <div class="wrap" style="position:relative;z-index:2">
+        <p class="meta rv">conversational sales engine</p>
+        <h2 class="rv" style="--rd:1">Convert store visitors into customers. <em>Automate support and COD</em>.</h2>
+        <p class="lead rv" style="--rd:2">Audit your sales flow, connect order tracking APIs, and install autonomous retail agents into your brand channels.</p>
+        <div class="cta rv" style="--rd:3">
+          <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
-
-    </div>
-
-    <!-- Input Bar -->
-    <div class="p-3 bg-slate-950/90 border-t border-slate-800 flex items-center gap-2">
-      <input type="text" id="userInput" placeholder="Ask about jewelry, tracking, or order..." onkeypress="handleKey(event)" class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
-      <button onclick="handleSend()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 p-2.5 rounded-xl font-bold transition flex items-center justify-center shadow-lg shadow-emerald-500/20 active:scale-95">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-      </button>
-    </div>
-
+    </section>
   </main>
 
-  <!-- Footer Info -->
-  <footer class="text-center py-4 text-slate-500 text-xs font-mono">
-    ⚡ Built by M R KHAN • Sub-second AI Execution • <a href="https://portfolio.mrkhan.qzz.io" class="text-emerald-400 hover:underline">portfolio.mrkhan.qzz.io</a>
+  <!--SHELL:FOOT-->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div>
+          <a href="/" class="brand"><span class="badge">MRK</span><span class="name">MRKHANSERVICES</span></a>
+          <p class="muted" style="margin-top:16px;max-width:30ch">Automation systems that run in the background, built by one person you can reach directly.</p>
+        </div>
+        <div>
+          <h4>Systems</h4>
+          <ul>
+            <li><a href="/voice/">Voice receptionist</a></li>
+            <li><a href="/rag/">Knowledge agent</a></li>
+            <li><a href="/recruitment/">Recruitment pipeline</a></li>
+            <li><a href="/youtube/">Content factory</a></li>
+            <li><a href="/services/">All services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#about-story">My story</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://wa.me/923285792098" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:contact@mrkhanservices.site">contact@mrkhanservices.site</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 MRKHANSERVICES &middot; local time <b data-clock style="font-weight:500;color:var(--ink)">--:--:--</b></span>
+        <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+      </div>
+    </div>
   </footer>
-
-  <script>
-    const chatBox = document.getElementById('chatBox');
-    const userInput = document.getElementById('userInput');
-
-    function sendQuick(text) {
-      userInput.value = text;
-      handleSend();
-    }
-
-    function handleKey(e) {
-      if (e.key === 'Enter') handleSend();
-    }
-
-    function handleSend() {
-      const text = userInput.value.trim();
-      if (!text) return;
-
-      appendUserMsg(text);
-      userInput.value = '';
-
-      setTimeout(() => {
-        respondBot(text.toLowerCase());
-      }, 450);
-    }
-
-    function appendUserMsg(text) {
-      const div = document.createElement('div');
-      div.className = "flex justify-end";
-      div.innerHTML = `
-        <div class="bg-emerald-600 text-white p-3 rounded-2xl chat-bubble-sent max-w-[85%] shadow-md">
-          <p>${text}</p>
-          <span class="text-[9px] text-emerald-200 block text-right font-mono mt-1">Just now</span>
+  <!--/SHELL:FOOT-->
+  <!--SHELL:MODAL-->
+  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+    <div class="cal-modal-card">
+      <div class="cal-modal__header">
+        <div class="cal-modal__brand">
+          <span class="cal-modal__badge">MRK</span>
+          <span class="cal-modal__brand-name">MRKHANSERVICES</span>
         </div>
-      `;
-      chatBox.appendChild(div);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function respondBot(query) {
-      let replyHTML = '';
-
-      if (query.includes('necklace') || query.includes('gold') || query.includes('3000')) {
-        replyHTML = `
-          <div class="space-y-2">
-            <p class="font-semibold text-amber-300">✨ Best Seller: Solitaire Pendant Necklace</p>
-            <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex gap-2.5 items-center">
-              <div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center text-xl">📿</div>
-              <div>
-                <div class="font-bold text-white">18K PVD Gold Plated</div>
-                <div class="text-emerald-400 font-mono font-semibold">2,850 PKR <span class="text-[10px] text-slate-500 line-through">3,500 PKR</span></div>
-              </div>
-            </div>
-            <p class="text-slate-300 text-[11px]">🛡️ <strong>Lifetime Anti-Tarnish Warranty</strong> (Waterproof, sweat-proof, won't turn black).</p>
-            <a href="https://zenat.store" target="_blank" class="block text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-1.5 rounded-lg transition text-[11px] shadow-sm">
-              🛒 Buy Now with Cash on Delivery
-            </a>
+        <div class="cal-modal__title" id="booking-title">Workflow audit</div>
+        <button class="cal-modal__close" id="booking-close-btn" type="button" aria-label="Close">&times;</button>
+      </div>
+      <div class="cal-modal__body">
+        <div class="cal-modal__left">
+          <div class="cal-modal__meta">
+            <span class="meta-item">30 min</span>
+            <span class="meta-item">Google Meet</span>
+            <span class="meta-item">no obligation</span>
           </div>
-        `;
-      } else if (query.includes('ring') || query.includes('silver')) {
-        replyHTML = `
-          <div class="space-y-2">
-            <p class="font-semibold text-sky-300">💍 Authentic 925 Sterling Silver Ring</p>
-            <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex gap-2.5 items-center">
-              <div class="w-12 h-12 rounded-lg bg-sky-500/20 flex items-center justify-center text-xl">💎</div>
-              <div>
-                <div class="font-bold text-white">Eternal Sparkle Ring</div>
-                <div class="text-emerald-400 font-mono font-semibold">2,200 PKR</div>
-              </div>
-            </div>
-            <p class="text-slate-300 text-[11px]">Includes luxury jewelry gift box + authenticity certificate.</p>
-            <a href="https://zenat.store" target="_blank" class="block text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-1.5 rounded-lg transition text-[11px] shadow-sm">
-              🛒 Order via Cash on Delivery
-            </a>
+          <p class="cal-modal__desc">We review how your work flows today, find where time is lost, and list what to automate first.</p>
+          <div class="cal-modal__date-picker">
+            <label for="booking-date-select">Select a date</label>
+            <select id="booking-date-select" class="cal-select"></select>
           </div>
-        `;
-      } else if (query.includes('track') || query.includes('kahan') || query.includes('order')) {
-        replyHTML = `
-          <div class="space-y-1.5">
-            <p class="font-bold text-emerald-400 flex items-center gap-1">🚚 Live Courier Status (Trax Logistics)</p>
-            <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 space-y-1 text-[11px]">
-              <div class="text-slate-300">Order ID: <span class="font-mono text-white font-bold">#ZN-8492</span></div>
-              <div class="text-emerald-400 font-semibold">Status: Out for Delivery Today</div>
-              <div class="text-slate-400">Rider: Muhammad Bilal (+92 300-XXXXXXX)</div>
-              <div class="text-slate-400">COD Amount: <span class="text-white font-bold">2,850 PKR</span></div>
-            </div>
-            <p class="text-slate-400 text-[10px]">Please keep the exact cash ready for the rider!</p>
-          </div>
-        `;
-      } else if (query === '1' || query.includes('confirm') || query.includes('yes')) {
-        replyHTML = `
-          <div class="space-y-1.5">
-            <p class="font-bold text-emerald-400">✅ Order #ZN-8492 Confirmed!</p>
-            <p class="text-slate-300 text-[11px]">Your parcel is packed and scheduled for courier pickup today from our Johar Town center.</p>
-            <div class="bg-emerald-950/60 border border-emerald-800/60 p-2 rounded-lg text-[10px] text-emerald-300 font-mono">
-              ✓ Tagged 'COD-Verified' in Store CRM
-            </div>
-          </div>
-        `;
-      } else {
-        replyHTML = `
-          <p class="text-slate-300 leading-relaxed">
-            Ji bilkul! Our jewelry collection is available online with nationwide Cash on Delivery (2-3 working days delivery). 
-            <br><br>
-            You can also visit our Lahore display opposite Emporium Mall, Johar Town or call us at <strong>0310 9992393</strong>.
-          </p>
-        `;
-      }
-
-      const div = document.createElement('div');
-      div.className = "flex items-start gap-2";
-      div.innerHTML = `
-        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl chat-bubble-received max-w-[85%] shadow-sm">
-          ${replyHTML}
-          <span class="text-[9px] text-slate-500 block text-right font-mono mt-1">Just now</span>
         </div>
-      `;
-      chatBox.appendChild(div);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-  </script>
+        <div class="cal-modal__right">
+          <div id="booking-slots-column">
+            <div class="column-title">Available times</div>
+            <div class="time-slots-grid">
+              <button class="time-slot-btn" type="button" data-time="09:00 AM">09:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="10:00 AM">10:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="11:00 AM">11:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="01:00 PM">01:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="02:00 PM">02:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="03:00 PM">03:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="04:00 PM">04:00 PM</button>
+            </div>
+          </div>
+          <div id="booking-form-step" class="cal-booking-form">
+            <button id="booking-back-btn" class="back-btn" type="button">&larr; Back to times</button>
+            <div id="booking-selected-summary" class="selected-summary">Date and time</div>
+            <form id="booking-form-element">
+              <div class="form-group">
+                <label for="client-name">Your name</label>
+                <input type="text" id="client-name" required placeholder="e.g. Alex Morgan" />
+              </div>
+              <div class="form-group">
+                <label for="client-email">Work email</label>
+                <input type="email" id="client-email" required placeholder="alex@company.com" />
+              </div>
+              <div class="form-group">
+                <label for="client-notes">What takes up most of your team's time?</label>
+                <textarea id="client-notes" rows="3" placeholder="Lead replies, onboarding, reporting..."></textarea>
+              </div>
+              <button type="submit" class="btn ink submit-booking-btn">Confirm audit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="booking-success-view" class="cal-modal__success">
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h3 class="cal-modal__title">Audit booked.</h3>
+        <p id="booking-success-details" class="cal-modal__desc"></p>
+        <button class="btn ink" type="button" onclick="window.closeBookingModal()">Done</button>
+      </div>
+    </div>
+  </div>
+  <!--/SHELL:MODAL-->
+  <!--SHELL:SCRIPTS-->
+  <script src="/js/booking.js"></script>
+  <script src="/js/site.js"></script>
+  <!--/SHELL:SCRIPTS-->
+  <script src="/js/demo.js"></script>
 </body>
 </html>

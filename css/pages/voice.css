@@ -1,0 +1,325 @@
+/* Voice page styles on top of site.css */
+
+/* ---------- hero ---------- */
+.voice-hero {
+  padding-top: clamp(120px, 16vw, 170px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+.voice-hero h1 {
+  font-size: clamp(3.4rem, 7.2vw, 6.8rem);
+  line-height: 1.02;
+  max-width: 15ch;
+}
+.voice-hero .lead {
+  max-width: 48ch;
+  margin-top: 24px;
+}
+.voice-hero .cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 32px;
+}
+.voice-hero .telemetry {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  max-width: 640px;
+}
+
+/* ---------- live demo block (sandbox) ---------- */
+.live-call-sec {
+  padding-top: clamp(40px, 6vw, 80px);
+}
+.demo-card.on-ink {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--r-surface);
+  padding: clamp(36px, 6vw, 84px) clamp(24px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+.demo-card h2 {
+  max-width: 12ch;
+  color: var(--bg);
+}
+.demo-card .lead {
+  color: var(--bg);
+  opacity: 0.76;
+  margin-top: 18px;
+}
+.sample-prompts {
+  margin-top: 28px;
+  display: grid;
+  gap: 8px;
+}
+.sample-prompt-chip {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: rgba(245, 244, 242, 0.7);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  width: max-content;
+  max-width: 100%;
+}
+@media (max-width: 860px) {
+  .demo-card.on-ink {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- architecture section with interactive SVG & inspector ---------- */
+.arch-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.arch-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+  margin-top: 40px;
+}
+.arch-diagram-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(28px, 4vw, 48px);
+  overflow-x: auto;
+}
+.arch-diagram-card svg.flow {
+  min-width: 620px;
+}
+.arch-node-group {
+  cursor: pointer;
+  outline: none;
+}
+.arch-node-group:focus circle.nd,
+.arch-node-group:hover circle.nd {
+  stroke-width: 3;
+  stroke: var(--accent);
+}
+.inspector-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(24px, 3.5vw, 40px);
+  position: sticky;
+  top: 110px;
+  display: grid;
+  gap: 14px;
+}
+.inspector-card h3 {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.inspector-card .inspect-tag {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+.inspector-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.inspector-meta {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  display: grid;
+  gap: 6px;
+}
+.inspector-meta b {
+  color: var(--ink);
+}
+@media (max-width: 960px) {
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
+  .inspector-card {
+    position: static;
+  }
+}
+
+/* ---------- n8n canvas screenshot with painted trace & lightbox ---------- */
+.canvas-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.canvas-box {
+  position: relative;
+  isolation: isolate;
+  background: #D8D4CC;
+  border-radius: var(--r-surface);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+.canvas-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  filter: saturate(0.9);
+  transition: transform 0.5s var(--spring);
+}
+.canvas-box:hover img {
+  transform: scale(1.02);
+}
+.canvas-box svg.canvas-trace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+.canvas-trace .ln.glow {
+  stroke: var(--accent);
+  opacity: 0.65;
+  stroke-width: 3.5;
+  filter: drop-shadow(0 0 8px rgba(255, 107, 0, 0.85));
+}
+.canvas-trace .pk {
+  stroke-width: 6;
+}
+.canvas-box .tag {
+  position: absolute;
+  z-index: 3;
+}
+.canvas-box .tag.top-left {
+  left: 20px;
+  top: 20px;
+}
+.canvas-box .tag.bottom-right {
+  right: 20px;
+  bottom: 20px;
+}
+.canvas-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 18px 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+}
+.canvas-meta-bar span {
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+.canvas-meta-bar span b {
+  color: var(--ink);
+}
+
+/* Lightbox dialog */
+dialog.canvas-dialog {
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 94vw;
+  max-height: 94vh;
+  margin: auto;
+  border-radius: var(--r-surface);
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(10, 10, 10, 0.7);
+}
+dialog.canvas-dialog::backdrop {
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.dialog-content {
+  position: relative;
+  background: var(--ink);
+  padding: 16px;
+  border-radius: var(--r-surface);
+}
+.dialog-content img {
+  max-width: 100%;
+  max-height: 85vh;
+  display: block;
+  border-radius: var(--r-card);
+}
+.dialog-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-size: 1.4rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform var(--t) var(--spring);
+}
+.dialog-close:hover {
+  transform: rotate(90deg);
+}
+
+/* ---------- outcomes section (clean, honest) ---------- */
+.outcomes-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+  padding-bottom: clamp(60px, 8vw, 110px);
+}
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+.outcome-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: clamp(24px, 3.2vw, 36px);
+  display: grid;
+  gap: 10px;
+}
+.outcome-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.outcome-card p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+@media (max-width: 900px) {
+  .outcomes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .outcomes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- closing radar ---------- */
+.end .radar { position: absolute; right: clamp(16px, 7vw, 110px); top: 50%; width: min(34vw, 420px); transform: translateY(-50%); pointer-events: none; }
+.radar .sweep { transform-origin: 0 0; animation: sweep 4.8s linear infinite; }
+@keyframes sweep { to { transform: rotate(-360deg); } }
+.radar .blip { transform-box: fill-box; transform-origin: center; animation: blip 4.8s infinite; animation-delay: calc(var(--n) * 1.2s); animation-timing-function: var(--spring); }
+@keyframes blip { 0%, 100% { transform: scale(0.5); opacity: 0.25; } 8% { transform: scale(2.2); opacity: 1; } 40% { transform: scale(1); opacity: 0.6; } }
+@media (max-width: 760px) { .end .radar { opacity: 0.35; right: -12%; } }
+@media (prefers-reduced-motion: reduce) {
+  .radar .sweep, .radar .blip { animation: none; }
+}

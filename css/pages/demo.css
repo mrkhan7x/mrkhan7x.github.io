@@ -1,0 +1,299 @@
+/* Demo page styles on top of site.css */
+
+/* ---------- hero ---------- */
+.demo-hero {
+  padding-top: clamp(120px, 16vw, 170px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+.demo-hero h1 {
+  font-size: clamp(3.2rem, 7vw, 6.4rem);
+  line-height: 1.02;
+  max-width: 16ch;
+}
+.demo-hero .lead {
+  max-width: 48ch;
+  margin-top: 24px;
+}
+.demo-hero .cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 32px;
+}
+.demo-hero .telemetry {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  max-width: 680px;
+}
+
+/* ---------- split showcase layout: chat card + explanatory column ---------- */
+.demo-showcase-sec {
+  padding-top: clamp(40px, 6vw, 80px);
+  padding-bottom: clamp(60px, 8vw, 110px);
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+/* paper chat container */
+.chat-window {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  overflow: hidden;
+  box-shadow: var(--shadow-surface);
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+}
+.chat-header {
+  padding: 16px 20px;
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chat-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.chat-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  position: relative;
+}
+.chat-avatar .status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22C55E;
+  border: 2px solid var(--paper-warm);
+}
+.chat-title-group h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.chat-title-group p {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+/* prompt quick chips */
+.quick-chips-bar {
+  padding: 10px 16px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.quick-chips-bar::-webkit-scrollbar {
+  display: none;
+}
+.quick-chip {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-spring), background 0.2s;
+}
+.quick-chip:hover {
+  background: var(--line);
+  transform: translateY(-1px);
+}
+.quick-chip.accent {
+  background: rgba(255, 107, 0, 0.1);
+  border-color: rgba(255, 107, 0, 0.3);
+  color: var(--accent);
+}
+
+/* stream message area */
+.chat-stream {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--bg);
+}
+.chat-msg {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+  animation: msgSpring 0.35s var(--ease-spring);
+}
+@keyframes msgSpring {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.chat-msg.received {
+  align-self: flex-start;
+}
+.chat-msg.sent {
+  align-self: flex-end;
+}
+.bubble {
+  padding: 14px 16px;
+  border-radius: var(--r-card);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.chat-msg.received .bubble {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+}
+.chat-msg.sent .bubble {
+  background: var(--ink);
+  color: var(--bg);
+  border-bottom-right-radius: 4px;
+}
+.bubble-meta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.chat-msg.sent .bubble-meta {
+  text-align: right;
+  color: var(--muted);
+}
+.product-card-preview {
+  margin-top: 10px;
+  padding: 12px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.product-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+/* composer form */
+.chat-composer {
+  padding: 14px 18px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.composer-input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.composer-input:focus {
+  border-color: var(--accent);
+}
+.composer-btn {
+  padding: 10px 16px;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--r-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s var(--ease-spring), background 0.2s;
+}
+.composer-btn:hover {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+/* explanatory column */
+.demo-explain-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.explain-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(24px, 3.5vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.explain-card h3 {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  line-height: 1.15;
+}
+.explain-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.flow-container {
+  padding: 16px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  overflow-x: auto;
+}
+.flow-container svg.flow {
+  min-width: 440px;
+}
+
+@media (max-width: 960px) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+}

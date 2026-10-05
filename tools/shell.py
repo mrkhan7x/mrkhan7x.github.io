@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Service | MRKHANSERVICES</title>
-  <meta name="description" content="Terms of Service for MRKHANSERVICES. Clear milestone-based sprint agreements, transparent scopes, and complete intellectual property transfer." />
-  <link rel="canonical" href="https://mrkhanservices.site/terms/" />
+#!/usr/bin/env python3
+"""Stamp the shared site shell into every page.
 
-  <!-- Open Graph / Meta -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="MRKHANSERVICES" />
-  <meta property="og:url" content="https://mrkhanservices.site/terms/" />
-  <meta property="og:title" content="Terms of Service | MRKHANSERVICES" />
-  <meta property="og:description" content="Terms of Service for MRKHANSERVICES. Clear milestone-based sprint agreements, transparent scopes, and complete intellectual property transfer." />
-  <meta name="twitter:card" content="summary_large_image" />
+Pages contain empty marker pairs, e.g. <!--SHELL:NAV--><!--/SHELL:NAV-->.
+Run:  python3 tools/shell.py        (from the repo root)
+Edit the shell ONCE here and every page updates.
+"""
+import re, sys, pathlib
 
-  <!--SHELL:HEAD-->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+
+HEAD = """<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
@@ -24,32 +17,32 @@
   <link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <script>document.documentElement.className='js';</script>
-  <link rel="stylesheet" href="/css/site.css" />
-  <!--/SHELL:HEAD-->
-  <link rel="stylesheet" href="/css/pages/legal.css" />
-</head>
-<body>
-  <!--SHELL:TOP-->
-  <a class="skip" href="#main">Skip to content</a>
+  <link rel="stylesheet" href="/css/site.css" />"""
+
+TOP = """<a class="skip" href="#main">Skip to content</a>
   <div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:40px;width:1px"></div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <filter id="paint" x="-5%" y="-30%" width="110%" height="160%">
       <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n" />
       <feDisplacementMap in="SourceGraphic" in2="n" scale="7" />
     </filter>
-  </svg>
-  <!--/SHELL:TOP-->
-  <!--SHELL:NAV-->
-  <header>
+  </svg>"""
+
+NAV_LINKS = [("/services/", "Services"), ("/about/", "About"), ("/contact/", "Contact")]
+
+def nav(page):
+    def cur(href):
+        return ' aria-current="page"' if page.startswith(href) else ""
+    lis = "\n".join(f'        <li><a href="{h}"{cur(h)}>{t}</a></li>' for h, t in NAV_LINKS)
+    mob = "\n".join(f'      <a href="{h}" style="--i:{i}">{t}</a>' for i, (h, t) in enumerate(NAV_LINKS))
+    return f"""<header>
     <nav class="nav" id="nav" aria-label="Main">
       <a href="/" class="brand" aria-label="MRKHANSERVICES home">
         <span class="badge">MRK</span>
         <span class="name">MRKHANSERVICES</span>
       </a>
       <ul>
-        <li><a href="/services/">Services</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/contact/">Contact</a></li>
+{lis}
       </ul>
       <div class="right">
         <a href="/contact/" class="btn ink sm" data-action="open-booking">Book an audit</a>
@@ -59,94 +52,12 @@
       </div>
     </nav>
     <div class="menu" id="mobile-dropdown-menu" aria-hidden="true">
-      <a href="/services/" style="--i:0">Services</a>
-      <a href="/about/" style="--i:1">About</a>
-      <a href="/contact/" style="--i:2">Contact</a>
+{mob}
       <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit</a>
     </div>
-  </header>
-  <!--/SHELL:NAV-->
+  </header>"""
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="legal-hero">
-      <div class="wrap">
-        <h1 class="rv">Terms of <em>service</em>.</h1>
-        <p class="lead rv" style="--rd:1">Milestone sprint agreements, transparent operational scopes, and full intellectual property transfer.</p>
-        <div class="telemetry rv" style="--rd:2">
-          <span>updated <b>September 2026</b></span>
-          <span>model <b>Milestone Sprints</b></span>
-          <span>inquiries <b>contact@mrkhanservices.site</b></span>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTENT WITH STICKY TABLE OF CONTENTS -->
-    <section class="legal-grid-sec">
-      <div class="wrap">
-        <div class="legal-grid">
-          <!-- Sticky TOC -->
-          <aside class="legal-toc-card rv" style="--rd:1" aria-label="Table of contents">
-            <span class="legal-toc-title">Sections</span>
-            <ul class="legal-toc-list" id="toc-list">
-              <li><a href="#engagement" class="legal-toc-link">1. Engagement &amp; Sprints</a></li>
-              <li><a href="#ip" class="legal-toc-link">2. Code Ownership</a></li>
-              <li><a href="#responsibilities" class="legal-toc-link">3. Client Responsibilities</a></li>
-              <li><a href="#qa" class="legal-toc-link">4. QA &amp; Handover</a></li>
-              <li><a href="#inquiries" class="legal-toc-link">5. Inquiries</a></li>
-            </ul>
-          </aside>
-
-          <!-- Prose Article -->
-          <article class="legal-prose rv" style="--rd:2">
-            <section class="legal-section" id="engagement">
-              <h2>1. Engagement &amp; Sprints</h2>
-              <p>MRKHANSERVICES delivers AI systems, workflow automations, and software integration services on clearly defined milestone sprints or monthly advisory retainers. Deliverables, technical boundaries, and timelines are established in advance within a Statement of Work (SOW).</p>
-            </section>
-
-            <section class="legal-section" id="ip">
-              <h2>2. Intellectual Property &amp; Code Ownership</h2>
-              <p>Upon settlement of agreed sprint milestones, full intellectual property rights, workflow configurations, custom Python scripts, database schemas, and documentation are transferred 100% to the client. You own the assets outright.</p>
-              <div class="legal-card-callout">
-                <strong>Zero Vendor Lock-in:</strong> We do not charge recurring software licenses for custom code we build for you. Systems run on your chosen infrastructure.
-              </div>
-            </section>
-
-            <section class="legal-section" id="responsibilities">
-              <h2>3. Client Responsibilities</h2>
-              <p>Clients are responsible for providing necessary third-party API keys (e.g., OpenAI, Supabase, CRM access) and server credentials required for system integration. Third-party infrastructure costs (cloud hosting, API usage) are billed directly by the respective providers.</p>
-            </section>
-
-            <section class="legal-section" id="qa">
-              <h2>4. Quality Assurance &amp; Handover</h2>
-              <p>All production systems undergo staging sandbox validation with simulated edge-case payloads before production cutover. Following launch, we provide full architectural walkthroughs and transition documentation.</p>
-            </section>
-
-            <section class="legal-section" id="inquiries">
-              <h2>5. Inquiries</h2>
-              <p>For legal inquiries or contractual clarifications, reach out directly to <a href="mailto:contact@mrkhanservices.site" style="color:var(--ink);font-weight:600">contact@mrkhanservices.site</a>.</p>
-            </section>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CLOSING BLOCK -->
-    <section class="end">
-      <div class="radar" aria-hidden="true"><div class="beam"></div></div>
-      <div class="wrap" style="position:relative;z-index:2">
-        <p class="meta rv">clear agreements</p>
-        <h2 class="rv" style="--rd:1">Transparent scope. <em>Complete asset ownership</em>.</h2>
-        <p class="lead rv" style="--rd:2">Book an operational audit to map deliverables, sprint timelines, and custom architecture milestones.</p>
-        <div class="cta rv" style="--rd:3">
-          <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!--SHELL:FOOT-->
-  <footer class="foot">
+FOOT = """<footer class="foot">
     <div class="wrap">
       <div class="foot-cols">
         <div>
@@ -187,10 +98,9 @@
         <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
       </div>
     </div>
-  </footer>
-  <!--/SHELL:FOOT-->
-  <!--SHELL:MODAL-->
-  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+  </footer>"""
+
+MODAL = """<div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
     <div class="cal-modal-card">
       <div class="cal-modal__header">
         <div class="cal-modal__brand">
@@ -254,11 +164,27 @@
         <button class="btn ink" type="button" onclick="window.closeBookingModal()">Done</button>
       </div>
     </div>
-  </div>
-  <!--/SHELL:MODAL-->
-  <!--SHELL:SCRIPTS-->
-  <script src="/js/booking.js"></script>
-  <script src="/js/site.js"></script>
-  <!--/SHELL:SCRIPTS-->
-</body>
-</html>
+  </div>"""
+
+SCRIPTS = """<script src="/js/booking.js"></script>
+  <script src="/js/site.js"></script>"""
+
+def stamp(path):
+    text = path.read_text(encoding="utf8")
+    rel = "/" + str(path.relative_to(ROOT)).replace("index.html", "").replace("\\", "/")
+    parts = {"HEAD": HEAD, "TOP": TOP, "NAV": nav(rel), "FOOT": FOOT, "MODAL": MODAL, "SCRIPTS": SCRIPTS}
+    changed = False
+    for k, v in parts.items():
+        pat = re.compile(rf"<!--SHELL:{k}-->.*?<!--/SHELL:{k}-->", re.S)
+        if pat.search(text):
+            text = pat.sub(lambda m: f"<!--SHELL:{k}-->\n  {v}\n  <!--/SHELL:{k}-->", text)
+            changed = True
+    if changed:
+        path.write_text(text, encoding="utf8")
+        print("stamped", path.relative_to(ROOT))
+
+if __name__ == "__main__":
+    for p in sorted(ROOT.rglob("*.html")):
+        if any(s in p.parts for s in ("static", "node_modules", "tools")):
+            continue
+        stamp(p)

@@ -1,0 +1,278 @@
+/* About page styles on top of site.css */
+
+/* ---------- hero / portrait ---------- */
+.about-hero {
+  padding-top: clamp(120px, 16vw, 170px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+.about-hero .split {
+  align-items: center;
+}
+.about-hero h1 {
+  font-size: clamp(3.4rem, 7.2vw, 6.8rem);
+  line-height: 1.02;
+  max-width: 14ch;
+}
+.portrait-box {
+  position: relative;
+  isolation: isolate;
+  max-width: 480px;
+}
+.portrait-card {
+  aspect-ratio: 4 / 4.6;
+  background: #D8D4CC;
+  overflow: hidden;
+  position: relative;
+}
+.portrait-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  filter: saturate(0.92);
+}
+.portrait-box .brush {
+  position: absolute;
+  left: -5%;
+  bottom: 8%;
+  width: 110%;
+  pointer-events: none;
+  z-index: 2;
+}
+.portrait-box .tag {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 3;
+}
+
+/* ---------- story section (#about-story) ---------- */
+.story-sec {
+  padding-top: clamp(50px, 7vw, 90px);
+}
+.story-content {
+  display: grid;
+  gap: 24px;
+  max-width: 68ch;
+}
+.story-content p {
+  font-size: 1.12rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.story-content p strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+.pullquote {
+  margin: 32px 0;
+  padding-left: 28px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+/* ---------- how I work (animated SVG) ---------- */
+.how-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.how-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(32px, 5vw, 64px);
+}
+.how-box svg.flow {
+  margin-top: 36px;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+.how-box text {
+  font-size: 13px;
+}
+
+/* ---------- stack ledger (mono, text only) ---------- */
+.stack-ledger-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.stack-ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 36px;
+}
+.stack-chip {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  transition: border-color 0.3s, transform var(--t) var(--spring);
+}
+.stack-chip:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.stack-chip b {
+  font-weight: 600;
+  color: var(--ink);
+}
+.stack-chip span {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+@media (max-width: 860px) {
+  .stack-ledger-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .stack-ledger-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- principles (alternating split rows) ---------- */
+.principles-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.principles-list {
+  display: grid;
+  gap: clamp(40px, 6vw, 72px);
+  margin-top: 48px;
+}
+.principle-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 5vw, 72px);
+  align-items: center;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--line);
+}
+.principle-row.rev {
+  grid-template-columns: 1fr 1fr;
+}
+.principle-row.rev .principle-statement {
+  order: 2;
+}
+.principle-row.rev .principle-desc {
+  order: 1;
+}
+.principle-statement {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.principle-desc {
+  display: grid;
+  gap: 12px;
+}
+.principle-desc p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+@media (max-width: 760px) {
+  .principle-row, .principle-row.rev {
+    grid-template-columns: 1fr;
+  }
+  .principle-row.rev .principle-statement {
+    order: 1;
+  }
+  .principle-row.rev .principle-desc {
+    order: 2;
+  }
+}
+
+/* ---------- foundation / education facts ---------- */
+.foundation-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.foundation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+.foundation-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: clamp(24px, 3.2vw, 36px);
+  display: grid;
+  gap: 12px;
+}
+.foundation-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.foundation-card p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+@media (max-width: 860px) {
+  .foundation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- links & connection channels ---------- */
+.connect-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+  padding-bottom: clamp(60px, 8vw, 110px);
+}
+.connect-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 36px;
+}
+.connect-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  transition: border-color 0.3s, transform var(--t) var(--spring);
+}
+.connect-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.connect-card h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.connect-card span.handle {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.connect-card span.arr {
+  font-size: 1.3rem;
+  transition: transform var(--t) var(--spring);
+}
+.connect-card:hover span.arr {
+  transform: translateX(4px);
+}
+@media (max-width: 600px) {
+  .connect-grid {
+    grid-template-columns: 1fr;
+  }
+}

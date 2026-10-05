@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" data-theme="light">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MRKHANSERVICES | AI Automation & Growth Systems</title>
   <meta name="description" content="Voice receptionists, lead and candidate intake, and client onboarding systems that run in the background. Book a workflow audit." />
   <link rel="canonical" href="https://mrkhanservices.site/" />
-
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="MRKHANSERVICES" />
   <meta property="og:url" content="https://mrkhanservices.site/" />
@@ -14,28 +13,18 @@
   <meta property="og:description" content="Voice receptionists, lead and candidate intake, and client onboarding systems that run in the background." />
   <meta property="og:image" content="https://mrkhanservices.site/assets/images/vapi-n8n-canvas.png" />
   <meta name="twitter:card" content="summary_large_image" />
-
+  <!--SHELL:HEAD-->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="theme-color" content="#F2F4F7" />
-
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.remove('no-js'); d.classList.add('js');
-      var t = 'light';
-      try { t = localStorage.getItem('mrk-theme') || 'light'; } catch (e) {}
-      d.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
-    })();
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/home.css" />
-
+  <meta name="theme-color" content="#F5F4F2" />
+  <link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.className='js';</script>
+  <link rel="stylesheet" href="/css/site.css" />
+  <!--/SHELL:HEAD-->
+  <link rel="stylesheet" href="/css/pages/home.css" />
   <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
   <script>
     window.VAPI_CONFIG = {
@@ -43,29 +32,25 @@
       assistant: "9de09a23-7f03-473f-bcda-45f8435dd1f3",
       assistantOverrides: {
         serverUrl: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router",
-        server: {
-          url: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router"
-        }
+        server: { url: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router" }
       },
       position: "bottom-right",
-      buttonConfig: {
-        text: "Talk to My AI Receptionist",
-        color: "#141416"
-      }
+      buttonConfig: { text: "Talk to My AI Receptionist", color: "#141416" }
     };
   </script>
 </head>
 <body>
+  <!--SHELL:TOP-->
   <a class="skip" href="#main">Skip to content</a>
   <div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:40px;width:1px"></div>
-
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <filter id="paint" x="-5%" y="-30%" width="110%" height="160%">
       <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n" />
       <feDisplacementMap in="SourceGraphic" in2="n" scale="7" />
     </filter>
   </svg>
-
+  <!--/SHELL:TOP-->
+  <!--SHELL:NAV-->
   <header>
     <nav class="nav" id="nav" aria-label="Main">
       <a href="/" class="brand" aria-label="MRKHANSERVICES home">
@@ -78,8 +63,7 @@
         <li><a href="/contact/">Contact</a></li>
       </ul>
       <div class="right">
-        <button class="tgl" id="theme-toggle" type="button" aria-label="Switch colour theme">Dark</button>
-        <a href="/contact/" class="btn primary" data-action="open-booking">Book an audit</a>
+        <a href="/contact/" class="btn ink sm" data-action="open-booking">Book an audit</a>
         <button class="burger" id="mobile-burger-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
           <span></span><span></span><span></span>
         </button>
@@ -89,18 +73,20 @@
       <a href="/services/" style="--i:0">Services</a>
       <a href="/about/" style="--i:1">About</a>
       <a href="/contact/" style="--i:2">Contact</a>
-      <a href="/contact/" class="btn on-accent" data-action="open-booking">Book an audit</a>
+      <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit</a>
     </div>
   </header>
+  <!--/SHELL:NAV-->
 
   <main id="main">
 
+    <!-- HERO -->
     <section class="hero" id="hero">
-      <div class="wrap">
-        <div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
           <h1>
-            <span class="rv" style="--rd:0;display:block">I build</span>
-            <span class="morph" id="morph" aria-label="receptionists, pipelines, workflows, agents">
+            <span class="rv" style="display:block">I build</span>
+            <span class="morph" data-morph="2400" aria-label="receptionists, pipelines, workflows, agents">
               <span class="w" aria-hidden="true">receptionists</span>
               <span class="w" aria-hidden="true">pipelines</span>
               <span class="w" aria-hidden="true">workflows</span>
@@ -112,44 +98,94 @@
           </h1>
           <p class="lead rv" style="--rd:2">Voice, intake and onboarding systems that run in the background, so your team stops doing busywork.</p>
           <div class="cta rv" style="--rd:3">
-            <a href="/contact/" class="btn primary" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+            <a href="/contact/" class="btn ink" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
             <a href="#demo" class="btn ghost">Hear it work</a>
+          </div>
+          <div class="telemetry rv" style="--rd:4">
+            <span>local time <b data-clock>--:--:--</b></span>
+            <span>systems live <b data-count="4">0</b></span>
+            <span>new clients/mo <b>2 to 3</b></span>
           </div>
         </div>
 
-        <div>
-          <div class="stack rv" style="--rd:1">
-            <div class="shape" aria-hidden="true">
-              <svg viewBox="-100 -100 200 200"><path id="blob" d="M0 -80 L 0 -79 Z" /></svg>
-            </div>
-            <div class="big"><img src="/assets/images/vapi-n8n-canvas.png" alt="n8n canvas of the multi-tenant voice receptionist router" width="1600" height="900" fetchpriority="high" /></div>
-            <div class="small"><img src="/assets/images/youtube-autonomous-content-factory.png" alt="n8n canvas of the YouTube content factory" width="800" height="500" loading="lazy" /></div>
-            <svg class="brush paint" viewBox="0 0 600 60" aria-hidden="true">
-              <path d="M6 34 C 120 10, 220 52, 330 28 S 520 18, 594 30" pathLength="1" stroke-width="14" />
+        <div class="hero-art rv" style="--rd:1">
+          <div class="shape" aria-hidden="true"><svg viewBox="-100 -100 200 200"><path id="blob" d="M0 -80 L 0 -79 Z" /></svg></div>
+          <div class="card tilt hero-card">
+            <img src="/assets/images/vapi-n8n-canvas.png" alt="n8n canvas of the multi-tenant voice receptionist router" width="1600" height="900" fetchpriority="high" />
+            <svg class="flow trace" viewBox="0 0 800 560" preserveAspectRatio="none" aria-hidden="true">
+              <path class="ln glow" d="M30 470 C 190 470, 210 300, 400 300 S 610 150, 770 140" pathLength="100" />
+              <path class="pk" d="M30 470 C 190 470, 210 300, 400 300 S 610 150, 770 140" pathLength="100" />
+              <path class="pk" d="M30 470 C 190 470, 210 300, 400 300 S 610 150, 770 140" pathLength="100" style="--pd:-1.2s" />
+              <circle class="nd hot" cx="400" cy="300" r="9" />
+              <circle class="nd" cx="30" cy="470" r="7" />
+              <circle class="nd" cx="770" cy="140" r="7" />
             </svg>
-            <svg class="ring paint" viewBox="0 0 120 120" aria-hidden="true">
-              <path d="M60 8 C 96 6, 114 40, 108 68 C 100 104, 44 118, 18 86 C -2 60, 14 18, 64 12" pathLength="1" stroke-width="5" />
-            </svg>
+            <span class="tag glass b1"><span class="beacon" aria-hidden="true"><i></i></span>POST /webhook/vapi-voice-router</span>
+            <span class="tag glass b2">intent <b>book</b></span>
+            <span class="tag glass b3">slot held, confirmation sent</span>
           </div>
-          <p class="cap">Live workflow: the voice receptionist router, built in n8n.</p>
+          <div class="card tilt hero-mini">
+            <img src="/assets/images/youtube-autonomous-content-factory.png" alt="n8n canvas of the YouTube content factory" width="800" height="500" loading="lazy" />
+          </div>
+          <svg class="brush paint" viewBox="0 0 600 60" aria-hidden="true"><path d="M6 34 C 120 10, 220 52, 330 28 S 520 18, 594 30" pathLength="1" stroke-width="12" /></svg>
+          <p class="cap mono">real workflow, illustrated path</p>
         </div>
       </div>
     </section>
 
-    <div class="tools" aria-label="Tools I build with">
-      <div class="tools-track" aria-hidden="true">
-        <img class="mono" src="/icons/n8n.svg" alt="" /><img src="/icons/pinecone.svg" alt="" /><img class="mono" src="/icons/openai.svg" alt="" /><img src="/icons/make.svg" alt="" /><img src="/icons/javascript.svg" alt="" /><img src="/icons/chrome.svg" alt="" />
-        <img class="mono" src="/icons/n8n.svg" alt="" /><img src="/icons/pinecone.svg" alt="" /><img class="mono" src="/icons/openai.svg" alt="" /><img src="/icons/make.svg" alt="" /><img src="/icons/javascript.svg" alt="" /><img src="/icons/chrome.svg" alt="" />
-        <img class="mono" src="/icons/n8n.svg" alt="" /><img src="/icons/pinecone.svg" alt="" /><img class="mono" src="/icons/openai.svg" alt="" /><img src="/icons/make.svg" alt="" /><img src="/icons/javascript.svg" alt="" /><img src="/icons/chrome.svg" alt="" />
-        <img class="mono" src="/icons/n8n.svg" alt="" /><img src="/icons/pinecone.svg" alt="" /><img class="mono" src="/icons/openai.svg" alt="" /><img src="/icons/make.svg" alt="" /><img src="/icons/javascript.svg" alt="" /><img src="/icons/chrome.svg" alt="" />
-      </div>
-    </div>
-
-    <section class="pick" id="bottleneck">
+    <!-- PIPELINE RIBBON: bespoke schematic replaces the logo strip -->
+    <section class="ribbon" aria-label="How work moves through a system">
       <div class="wrap">
-        <div class="head rv">
-          <h2>Where is your team losing time?</h2>
-          <p class="lead">Pick the one that hurts most. Each has a system built for it.</p>
+        <svg class="flow ribbon-svg" viewBox="0 0 1200 250" role="img" aria-label="Pipeline from inbound request through qualify and route, to booking and team alerts, ending in a logged record">
+          <g fill="none" stroke-linecap="round">
+            <path class="ln" d="M120 100 H600" pathLength="100" />
+            <path class="ln" d="M600 100 C 700 100, 740 60, 840 60" pathLength="100" />
+            <path class="ln" d="M600 100 C 700 100, 740 140, 840 140" pathLength="100" />
+            <path class="ln" d="M840 60 C 940 60, 980 100, 1080 100" pathLength="100" />
+            <path class="ln" d="M840 140 C 940 140, 980 100, 1080 100" pathLength="100" />
+            <path class="pk" d="M120 100 H600" pathLength="100" />
+            <path class="pk" d="M120 100 H600" pathLength="100" style="--pd:-1.2s" />
+            <path class="pk" d="M600 100 C 700 100, 740 60, 840 60" pathLength="100" style="--pd:-.6s" />
+            <path class="pk" d="M600 100 C 700 100, 740 140, 840 140" pathLength="100" style="--pd:-1.8s" />
+            <path class="pk" d="M840 60 C 940 60, 980 100, 1080 100" pathLength="100" style="--pd:-.3s" />
+            <path class="pk" d="M840 140 C 940 140, 980 100, 1080 100" pathLength="100" style="--pd:-1.5s" />
+          </g>
+          <!-- inbound -->
+          <g transform="translate(120 100)"><circle class="nd" r="32" />
+            <g fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round"><circle cx="-8" cy="6" r="2.4" fill="#0A0A0A" /><path d="M-4 -2 A 11 11 0 0 1 6 8" /><path d="M-5 -10 A 19 19 0 0 1 14 9" /></g></g>
+          <!-- qualify -->
+          <g transform="translate(360 100)"><circle class="nd" r="32" />
+            <path d="M-13 -10 H13 L3 3 V13 L-3 10 V3 Z" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linejoin="round" /></g>
+          <!-- route -->
+          <g transform="translate(600 100)"><circle class="nd hot" r="34" />
+            <path d="M-14 0 H-3 M-3 0 L8 -10 H15 M-3 0 L8 10 H15 M11 -14 L15 -10 L11 -6 M11 6 L15 10 L11 14" fill="none" stroke="#0A0A0A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></g>
+          <!-- book -->
+          <g transform="translate(840 60)"><circle class="nd" r="28" />
+            <g fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round"><rect x="-11" y="-9" width="22" height="19" rx="3" /><path d="M-11 -2 H11 M-5 -12 V-6 M5 -12 V-6" /><circle cx="-4" cy="4" r="1.2" fill="#0A0A0A" /></g></g>
+          <!-- notify -->
+          <g transform="translate(840 140)"><circle class="nd" r="28" />
+            <g fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="-12" y="-8" width="24" height="16" rx="3" /><path d="M-12 -8 L0 2 L12 -8" /></g></g>
+          <!-- log -->
+          <g transform="translate(1080 100)"><circle class="nd dark" r="32" />
+            <g fill="none" stroke="#F5F4F2" stroke-width="1.8" stroke-linecap="round"><path d="M-10 -8 H10 M-10 0 H10 M-10 8 H3" /><circle cx="9" cy="8" r="2" fill="#FF6B00" stroke="none" /></g></g>
+          <g class="lbl">
+            <text x="120" y="164" text-anchor="middle">inbound</text><text class="dim" x="120" y="182" text-anchor="middle">call / form / email</text>
+            <text x="360" y="164" text-anchor="middle">qualify</text><text class="dim" x="360" y="182" text-anchor="middle">intent + fit score</text>
+            <text x="600" y="168" text-anchor="middle">route</text><text class="dim" x="600" y="186" text-anchor="middle">n8n switch</text>
+            <text x="840" y="20" text-anchor="middle">book / calendar</text>
+            <text x="840" y="196" text-anchor="middle">notify</text><text class="dim" x="840" y="214" text-anchor="middle">slack / email</text>
+            <text x="1080" y="164" text-anchor="middle">log</text><text class="dim" x="1080" y="182" text-anchor="middle">sheet row</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- BOTTLENECK PICKER -->
+    <section class="s pick" id="bottleneck">
+      <div class="wrap split">
+        <div class="sticky-h rv">
+          <h2>Where is your team <em>losing time</em>?</h2>
+          <p class="lead" style="margin-top:20px">Pick the one that hurts most. Each has a system built for it.</p>
         </div>
         <div class="rv" style="--rd:1">
           <div class="tabs" role="tablist" aria-label="Pick your bottleneck">
@@ -157,17 +193,17 @@
             <button class="tab" role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2" tabindex="-1" type="button">Clients drift away after the sale</button>
             <button class="tab" role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3" tabindex="-1" type="button">Staff are buried in busywork</button>
           </div>
-          <div class="panel on" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="card panel on" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
             <p><b>The cost</b><span>A caller who reaches voicemail calls the next business on the list.</span></p>
             <p><b>The system</b><span>A voice receptionist that answers, qualifies and books the call into your calendar, around the clock.</span></p>
             <a class="more" href="/voice/">See the voice receptionist</a>
           </div>
-          <div class="panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="card panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
             <p><b>The cost</b><span>Onboarding, reminders and invoices done by hand get late, and late feels careless to a new client.</span></p>
             <p><b>The system</b><span>Zero-touch onboarding and billing: the right message, document or invoice goes out at the right moment without anyone remembering.</span></p>
             <a class="more" href="/services/">See the services</a>
           </div>
-          <div class="panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="card panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
             <p><b>The cost</b><span>Skilled people spend hours answering the same questions and searching for the same documents.</span></p>
             <p><b>The system</b><span>A knowledge agent trained on your own documents, so answers take seconds and cite where they came from.</span></p>
             <a class="more" href="/rag/">See the knowledge agent</a>
@@ -176,11 +212,12 @@
       </div>
     </section>
 
-    <section class="demo" id="demo">
+    <!-- LIVE DEMO -->
+    <section id="demo" class="demo">
       <div class="wrap">
-        <div class="demo-card">
+        <div class="demo-card on-ink">
           <div class="rv">
-            <h2>Talk to a live receptionist.</h2>
+            <h2>Talk to a <em>live</em> receptionist.</h2>
             <p class="lead">This is the same assistant I build for clients. Allow your microphone and ask it anything.</p>
           </div>
           <div class="call rv" style="--rd:1">
@@ -188,154 +225,180 @@
               <i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i style="--n:11"></i>
             </div>
             <button class="btn" id="demo-btn" type="button"><span id="demo-label">Start a call</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
-            <p class="status" id="demo-status" role="status" aria-live="polite">Ready when you are.</p>
+            <p class="status" id="demo-status" role="status" aria-live="polite">idle / ready when you are</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="work" id="systems">
+    <!-- COST CALCULATOR -->
+    <section class="s calc-sec" id="cost">
+      <div class="wrap split rev">
+        <div class="card calc rv">
+          <div class="calc-grid">
+            <div class="field"><label for="calc-people">People doing repetitive work <output id="o-people" class="mono">4</output></label><input type="range" id="calc-people" min="1" max="30" value="4" /></div>
+            <div class="field"><label for="calc-hours">Hours each, per week <output id="o-hours" class="mono">6</output></label><input type="range" id="calc-hours" min="1" max="20" value="6" /></div>
+            <div class="field"><label for="calc-rate">Cost per hour, USD <output id="o-rate" class="mono">25</output></label><input type="range" id="calc-rate" min="5" max="150" step="5" value="25" /></div>
+            <div class="field"><label for="calc-share">Share that can be automated <output id="o-share" class="mono">50%</output></label><input type="range" id="calc-share" min="10" max="90" step="5" value="50" /></div>
+          </div>
+          <div class="calc-out">
+            <div><span class="num" id="calc-hours-out">0</span><span class="mono">hours back per year</span></div>
+            <div><span class="num" id="calc-cost-out">$0</span><span class="mono">in time per year</span></div>
+          </div>
+          <p class="mono calc-note">people x hours x share x 48 working weeks. Your inputs, your math. The audit finds the real number.</p>
+        </div>
+        <div class="sticky-h rv" style="--rd:1">
+          <h2>What is busywork <em>costing</em> you?</h2>
+          <p class="lead" style="margin-top:20px">Move the sliders to match your team. This is the number the audit turns into a plan.</p>
+          <a href="/contact/" class="btn ink" data-action="open-booking" style="margin-top:28px">Find my real number <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYSTEMS -->
+    <section class="s work" id="systems">
       <div class="wrap">
-        <h2 class="rv">Four systems running in production.</h2>
+        <h2 class="rv">Four systems, <em>running in production</em>.</h2>
         <div class="bento">
-          <a class="cell c1 rv" href="/voice/" style="--rd:0">
-            <div class="pic"><img src="/assets/images/vapi-n8n-canvas.png" alt="Voice receptionist workflow canvas" loading="lazy" /></div>
-            <div class="txt"><h3>Voice receptionist</h3><p>Answers every call, checks your knowledge base and books the appointment.</p><span class="go">See how it works &rarr;</span></div>
+          <a class="card tilt cell c1 rv" href="/voice/">
+            <div class="art">
+              <svg class="flow" viewBox="0 0 560 200" aria-hidden="true">
+                <g class="bars" fill="#0A0A0A">
+                  <rect class="bar" style="--n:0" x="30" y="70" width="8" height="60" rx="4" /><rect class="bar" style="--n:1" x="48" y="55" width="8" height="90" rx="4" /><rect class="bar" style="--n:2" x="66" y="40" width="8" height="120" rx="4" /><rect class="bar" style="--n:3" x="84" y="60" width="8" height="80" rx="4" /><rect class="bar" style="--n:4" x="102" y="48" width="8" height="104" rx="4" /><rect class="bar" style="--n:5" x="120" y="72" width="8" height="56" rx="4" /><rect class="bar" style="--n:6" x="138" y="58" width="8" height="84" rx="4" /><rect class="bar" style="--n:7" x="156" y="76" width="8" height="48" rx="4" />
+                </g>
+                <path class="ln" d="M190 100 H300" pathLength="100" /><path class="pk" d="M190 100 H300" pathLength="100" />
+                <path class="ln" d="M330 100 C 400 100, 410 52, 470 52" pathLength="100" /><path class="pk" d="M330 100 C 400 100, 410 52, 470 52" pathLength="100" style="--pd:-.7s" />
+                <path class="ln" d="M330 100 C 400 100, 410 148, 470 148" pathLength="100" /><path class="pk" d="M330 100 C 400 100, 410 148, 470 148" pathLength="100" style="--pd:-1.6s" />
+                <circle class="nd hot" cx="315" cy="100" r="16" /><circle class="nd" cx="486" cy="52" r="14" /><circle class="nd" cx="486" cy="148" r="14" />
+                <text x="315" y="136" text-anchor="middle">router</text><text x="486" y="82" text-anchor="middle">calendar</text><text x="486" y="184" text-anchor="middle">knowledge</text>
+              </svg>
+            </div>
+            <div class="txt"><span class="tag">vapi <b>/</b> n8n <b>/</b> pinecone</span><h3>Voice receptionist</h3><p>Answers every call, checks your knowledge base and books the appointment.</p><span class="go">See how it works &rarr;</span></div>
           </a>
-          <a class="cell c2 rv" href="/rag/" style="--rd:1">
-            <div><h3>Knowledge Agent</h3><p>Answers from your own documents and shows its source.</p></div>
-            <span class="go">See how it works &rarr;</span>
+
+          <a class="card tilt cell c2 orange rv" href="/rag/" style="--rd:1">
+            <div class="art">
+              <svg class="flow" viewBox="0 0 400 200" aria-hidden="true">
+                <g fill="none" stroke="#0A0A0A" stroke-width="1.8"><rect x="22" y="44" width="52" height="66" rx="6" /><rect x="34" y="34" width="52" height="66" rx="6" fill="#FF6B00" /><rect x="46" y="24" width="52" height="66" rx="6" fill="#FF6B00" /><path d="M56 44 H88 M56 56 H88 M56 68 H78" stroke-linecap="round" /></g>
+                <g fill="#0A0A0A"><circle cx="160" cy="60" r="3.5"/><circle cx="184" cy="60" r="3.5"/><circle cx="208" cy="60" r="3.5"/><circle cx="232" cy="60" r="3.5"/><circle cx="160" cy="84" r="3.5"/><circle class="hit" style="--n:0" cx="184" cy="84" r="3.5"/><circle cx="208" cy="84" r="3.5"/><circle cx="232" cy="84" r="3.5"/><circle cx="160" cy="108" r="3.5"/><circle cx="184" cy="108" r="3.5"/><circle class="hit" style="--n:1" cx="208" cy="108" r="3.5"/><circle cx="232" cy="108" r="3.5"/><circle cx="160" cy="132" r="3.5"/><circle class="hit" style="--n:2" cx="184" cy="132" r="3.5"/><circle cx="208" cy="132" r="3.5"/><circle cx="232" cy="132" r="3.5"/></g>
+                <path class="ln" d="M104 70 C 124 70, 130 96, 150 96" pathLength="100" style="stroke:#0A0A0A" /><path class="pk" d="M104 70 C 124 70, 130 96, 150 96" pathLength="100" style="stroke:#0A0A0A;filter:none" />
+                <path class="ln" d="M244 96 H292" pathLength="100" style="stroke:#0A0A0A" /><path class="pk" d="M244 96 H292" pathLength="100" style="stroke:#0A0A0A;filter:none;--pd:-.8s" />
+                <g fill="#F5F4F2" stroke="#0A0A0A" stroke-width="1.8"><rect x="296" y="62" width="82" height="64" rx="12" /></g>
+                <path d="M310 82 H364 M310 96 H364 M310 110 H344" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="txt"><span class="tag">pinecone <b>/</b> grounded answers</span><h3>Knowledge Agent</h3><p>Answers from your own documents and shows its source.</p><span class="go">See how it works &rarr;</span></div>
           </a>
-          <a class="cell c3 rv" href="/recruitment/" style="--rd:2">
-            <div><h3>Candidate Qualification Pipeline</h3><p>Scores applicants against the role before a human reads a CV.</p></div>
-            <span class="go">See how it works &rarr;</span>
+
+          <a class="card tilt cell c3 ink rv" href="/recruitment/" style="--rd:2">
+            <div class="art on-ink">
+              <svg class="flow" viewBox="0 0 300 180" aria-hidden="true">
+                <g class="funnel">
+                  <rect class="fb" style="--n:0" x="10" y="20" width="280" height="38" rx="10" fill="#1d1d1d" stroke="#F5F4F2" stroke-opacity=".5" />
+                  <rect class="fb" style="--n:1" x="10" y="72" width="200" height="38" rx="10" fill="#1d1d1d" stroke="#F5F4F2" stroke-opacity=".5" />
+                  <rect class="fb" style="--n:2" x="10" y="124" width="116" height="38" rx="10" fill="#FF6B00" />
+                </g>
+                <text x="24" y="43" fill="#F5F4F2">cv in</text><text x="24" y="95" fill="#F5F4F2">fit scored</text><text x="24" y="147" fill="#0A0A0A">alert sent</text>
+              </svg>
+            </div>
+            <div class="txt"><span class="tag glass">webhook <b>/</b> langchain <b>/</b> sheets</span><h3>Candidate Qualification Pipeline</h3><p>Scores applicants against the role before a human reads a CV.</p><span class="go">See how it works &rarr;</span></div>
           </a>
-          <a class="cell c4 rv" href="/youtube/" style="--rd:3">
-            <div class="pic"><img src="/assets/images/youtube-autonomous-content-factory.png" alt="YouTube content factory workflow canvas" loading="lazy" /></div>
-            <div class="txt"><h3>YouTube Content Factory</h3><p>Five agents take a topic to a finished video package.</p><span class="go">See how it works &rarr;</span></div>
+
+          <a class="card tilt cell c4 rv" href="/youtube/" style="--rd:3">
+            <div class="art">
+              <svg class="flow" viewBox="0 0 640 150" aria-hidden="true">
+                <path class="ln" d="M60 66 H580" pathLength="100" /><path class="pk" d="M60 66 H580" pathLength="100" /><path class="pk" d="M60 66 H580" pathLength="100" style="--pd:-1.2s" />
+                <circle class="nd" cx="60" cy="66" r="22" /><circle class="nd" cx="190" cy="66" r="22" /><circle class="nd hot" cx="320" cy="66" r="22" /><circle class="nd" cx="450" cy="66" r="22" /><circle class="nd dark" cx="580" cy="66" r="22" />
+                <text x="60" y="70" text-anchor="middle">1</text><text x="190" y="70" text-anchor="middle">2</text><text x="320" y="70" text-anchor="middle">3</text><text x="450" y="70" text-anchor="middle">4</text><text x="580" y="70" text-anchor="middle" fill="#F5F4F2" style="fill:#F5F4F2">5</text>
+                <text x="60" y="114" text-anchor="middle">trend</text><text x="190" y="114" text-anchor="middle">script</text><text x="320" y="114" text-anchor="middle">voice</text><text x="450" y="114" text-anchor="middle">assemble</text><text x="580" y="114" text-anchor="middle">package</text>
+              </svg>
+            </div>
+            <div class="txt"><span class="tag">5 agents <b>/</b> elevenlabs <b>/</b> n8n</span><h3>YouTube Content Factory</h3><p>Five agents take a topic to a finished video package.</p><span class="go">See how it works &rarr;</span></div>
           </a>
         </div>
       </div>
     </section>
 
+    <!-- ZOOM: from the whole map to one workflow -->
     <section class="zoom" id="map" aria-label="Workflow map">
       <div class="zstage">
         <div class="zs a"><img src="/assets/images/n8n-recruitment-canvas.png" alt="" loading="lazy" /></div>
         <div class="zs b"><img src="/assets/images/youtube-autonomous-content-factory.png" alt="" loading="lazy" /></div>
         <div class="zc">
           <img src="/assets/images/vapi-n8n-canvas.png" alt="Detailed n8n canvas of the voice receptionist router" loading="lazy" />
-          <svg class="brush2 paint" viewBox="0 0 600 40" aria-hidden="true">
-            <path d="M6 22 C 130 6, 240 36, 350 18 S 520 10, 594 20" pathLength="1" stroke-width="10" />
-          </svg>
+          <svg class="brush2 paint" viewBox="0 0 600 40" aria-hidden="true"><path d="M6 22 C 130 6, 240 36, 350 18 S 520 10, 594 20" pathLength="1" stroke-width="10" /></svg>
         </div>
-        <p class="zcap">Every system starts as a map you can read.</p>
+        <p class="zcap mono">scroll to zoom into one workflow</p>
         <div class="zscrim" aria-hidden="true"></div>
-        <div class="zhead" aria-hidden="true"><h2>Every system starts as a map you can read.</h2></div>
+        <div class="zhead" aria-hidden="true"><h2>Every system starts as a <em>map you can read</em>.</h2></div>
       </div>
     </section>
 
-    <section class="process" id="process">
+    <!-- PROOF RUN -->
+    <section class="s proof" id="proof">
       <div class="wrap">
-        <h2 class="rv">From first call to launch.</h2>
-        <div class="pstack">
-          <article class="pcard" style="--i:0">
-            <h3>Audit</h3>
-            <p>A focused session to review your current tools, map where time is lost, and decide where automation pays back fastest. No obligation.</p>
-          </article>
-          <article class="pcard k2" style="--i:1">
-            <h3>Scope</h3>
-            <p>You get a written roadmap with a timeline and exact deliverables, so you know what you are buying before work starts.</p>
-          </article>
-          <article class="pcard k3" style="--i:2">
-            <h3>Build</h3>
-            <p>I build, connect and test the system in staging, with updates along the way, then launch it into your live tools.</p>
-          </article>
-          <article class="pcard" style="--i:3">
-            <h3>Support</h3>
-            <p>After launch I monitor the logs, tune accuracy, and extend the system as your volume grows.</p>
-          </article>
+        <h2 class="rv">Try it for a week <em>before you commit</em>.</h2>
+        <div class="g2" style="margin-top:44px">
+          <div class="card pad rv"><span class="num" data-count="7">0</span><p class="lead" style="margin-top:12px">days from kickoff to a working first system.</p></div>
+          <div class="card pad ink rv" style="--rd:1"><span class="num"><span data-count="15">0</span></span><p class="lead" style="margin-top:12px;color:inherit;opacity:.8">hours saved in week one, or you pay nothing.</p></div>
         </div>
-      </div>
-    </section>
-
-    <section class="proof" id="proof">
-      <div class="wrap">
-        <h2 class="rv">Try it for a week before you commit.</h2>
-        <div class="terms">
-          <div class="term rv"><strong>7 days</strong><span>from kickoff to a working first system.</span></div>
-          <div class="term rv" style="--rd:1"><strong>15 hours</strong><span>If week one does not save at least this much, you pay nothing.</span></div>
-        </div>
+        <svg class="flow timeline rv" viewBox="0 0 1000 90" role="img" aria-label="Timeline: kickoff on day zero, first system live on day seven, hours measured on day seven" style="margin-top:34px">
+          <path class="ln" d="M40 40 H960" pathLength="100" /><path class="pk" d="M40 40 H960" pathLength="100" />
+          <g class="tk"><circle class="nd dark" cx="40" cy="40" r="9" /><circle class="nd" cx="270" cy="40" r="6" /><circle class="nd" cx="500" cy="40" r="6" /><circle class="nd" cx="730" cy="40" r="6" /><circle class="nd hot" cx="960" cy="40" r="11" /></g>
+          <text x="40" y="76" text-anchor="start">d0 kickoff</text><text x="500" y="76" text-anchor="middle" class="dim">build + test in staging</text><text x="960" y="76" text-anchor="end">d7 live, hours measured</text>
+        </svg>
         <div class="after rv">
           <p>Hours are measured on the workflow we agree in the audit. I take on 2 to 3 new clients each month so every build gets full attention.</p>
-          <a href="/contact/" class="btn primary" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a href="/contact/" class="btn ink" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </section>
 
-    <section class="who" id="builder">
-      <div class="wrap">
-        <div class="portrait rv">
+    <!-- BUILDER -->
+    <section class="s who" id="builder">
+      <div class="wrap split">
+        <div class="card portrait rv">
           <img src="/assets/images/mrk-profile.jpg" alt="Muhammad Roman Khan" loading="lazy" />
-          <svg class="brush4 paint" viewBox="0 0 600 40" aria-hidden="true">
-            <path d="M6 24 C 140 8, 250 36, 360 18 S 520 12, 594 22" pathLength="1" stroke-width="12" />
-          </svg>
+          <svg class="brush4 paint" viewBox="0 0 600 40" aria-hidden="true"><path d="M6 24 C 140 8, 250 36, 360 18 S 520 12, 594 22" pathLength="1" stroke-width="12" /></svg>
+          <span class="tag glass pt">owner of every workflow <b>/</b> you</span>
         </div>
         <div class="rv" style="--rd:1">
-          <h2>You work with the person who builds it.</h2>
-          <p class="lead">I am Muhammad Roman Khan, a systems builder studying BS Artificial Intelligence. I work across industries, because the problem is almost always the same: work that a system should be doing.</p>
-          <p class="own">You own everything I build. At handover you receive the workflows, schemas and documentation, so nothing depends on me.</p>
-          <a href="/about/" class="btn ghost">About me</a>
+          <h2>You work with the person <em>who builds it</em>.</h2>
+          <p class="lead" style="margin-top:20px">I am Muhammad Roman Khan, a systems builder studying BS Artificial Intelligence. I work across industries, because the problem is almost always the same: work that a system should be doing.</p>
+          <p class="lead" style="margin-top:14px">You own everything I build. At handover you receive the workflows, schemas and documentation, so nothing depends on me.</p>
+          <a href="/about/" class="btn ghost" style="margin-top:28px">About me</a>
         </div>
       </div>
     </section>
 
-    <section class="faq" id="faq">
-      <div class="wrap">
-        <h2 class="rv">Questions owners ask.</h2>
-        <div class="list">
-          <details>
-            <summary>Do I own what you build? <span class="pm" aria-hidden="true">+</span></summary>
-            <div class="in2">Yes. You receive the workflows, database schemas and documentation at handover, and the accounts stay in your name.</div>
-          </details>
-          <details>
-            <summary>How much does it cost? <span class="pm" aria-hidden="true">+</span></summary>
-            <div class="in2">After the audit you receive a fixed quote for the agreed scope. There are no surprise invoices along the way.</div>
-          </details>
-          <details>
-            <summary>Will it work with the tools I already use? <span class="pm" aria-hidden="true">+</span></summary>
-            <div class="in2">Usually. I connect to your CRM, calendar, email and messaging through their APIs. The audit confirms this before you commit to anything.</div>
-          </details>
-          <details>
-            <summary>What happens after launch? <span class="pm" aria-hidden="true">+</span></summary>
-            <div class="in2">I monitor the system, fix issues and tune it as your volume changes. You can also run it yourself from the documentation.</div>
-          </details>
-          <details>
-            <summary>Do you have room for another client? <span class="pm" aria-hidden="true">+</span></summary>
-            <div class="in2">I take on 2 to 3 new clients each month. Book an audit and I will tell you honestly whether I can start soon.</div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="end-wrap" style="padding:0">
+    <!-- CLOSE -->
+    <section style="padding:0">
       <div class="end">
+        <svg class="radar" viewBox="-100 -100 200 200" aria-hidden="true">
+          <g fill="none" stroke="#F5F4F2" stroke-opacity=".28" stroke-width=".8"><circle r="95"/><circle r="70"/><circle r="45"/><circle r="20"/><path d="M-100 0H100M0 -100V100"/></g>
+          <g class="sweep"><path d="M0 0 L95 0 A95 95 0 0 0 67 -67 Z" fill="url(#sw)"/><path d="M0 0 H95" stroke="#FF6B00" stroke-width="1.4"/></g>
+          <defs><linearGradient id="sw" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#FF6B00" stop-opacity=".0"/><stop offset="1" stop-color="#FF6B00" stop-opacity=".5"/></linearGradient></defs>
+          <g fill="#FF6B00"><circle class="blip" style="--n:0" cx="48" cy="-34" r="3"/><circle class="blip" style="--n:1" cx="-30" cy="52" r="3"/><circle class="blip" style="--n:2" cx="-62" cy="-20" r="3"/><circle class="blip" style="--n:3" cx="14" cy="-70" r="3"/></g>
+        </svg>
         <div class="wrap">
-          <h2 class="rv">Find out what your team could stop doing.</h2>
+          <h2 class="rv">Find out what your team could <em>stop doing</em>.</h2>
           <p class="rv" style="--rd:1">A 30 minute audit. You leave with a clear list of what to automate first, whether or not we work together.</p>
-          <a href="/contact/" class="btn on-accent rv" style="--rd:2" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a href="/contact/" class="btn orange rv" style="--rd:2" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </section>
   </main>
 
+  <!--SHELL:FOOT-->
   <footer class="foot">
     <div class="wrap">
       <div class="foot-cols">
         <div>
           <a href="/" class="brand"><span class="badge">MRK</span><span class="name">MRKHANSERVICES</span></a>
+          <p class="muted" style="margin-top:16px;max-width:30ch">Automation systems that run in the background, built by one person you can reach directly.</p>
         </div>
         <div>
-          <h4>Solutions</h4>
+          <h4>Systems</h4>
           <ul>
             <li><a href="/voice/">Voice receptionist</a></li>
             <li><a href="/rag/">Knowledge agent</a></li>
@@ -349,7 +412,7 @@
           <ul>
             <li><a href="/about/">About</a></li>
             <li><a href="/about/#about-story">My story</a></li>
-            <li><a href="/services/">Services</a></li>
+            <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div>
@@ -364,12 +427,13 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span>&copy; 2026 MRKHANSERVICES</span>
+        <span>&copy; 2026 MRKHANSERVICES &middot; local time <b data-clock style="font-weight:500;color:var(--ink)">--:--:--</b></span>
         <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
       </div>
     </div>
   </footer>
-
+  <!--/SHELL:FOOT-->
+  <!--SHELL:MODAL-->
   <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
     <div class="cal-modal-card">
       <div class="cal-modal__header">
@@ -377,16 +441,15 @@
           <span class="cal-modal__badge">MRK</span>
           <span class="cal-modal__brand-name">MRKHANSERVICES</span>
         </div>
-        <div class="cal-modal__title" id="booking-title">Workflow Audit</div>
+        <div class="cal-modal__title" id="booking-title">Workflow audit</div>
         <button class="cal-modal__close" id="booking-close-btn" type="button" aria-label="Close">&times;</button>
       </div>
-
       <div class="cal-modal__body">
         <div class="cal-modal__left">
           <div class="cal-modal__meta">
-            <span class="meta-item">30 minutes</span>
+            <span class="meta-item">30 min</span>
             <span class="meta-item">Google Meet</span>
-            <span class="meta-item">No obligation</span>
+            <span class="meta-item">no obligation</span>
           </div>
           <p class="cal-modal__desc">We review how your work flows today, find where time is lost, and list what to automate first.</p>
           <div class="cal-modal__date-picker">
@@ -394,7 +457,6 @@
             <select id="booking-date-select" class="cal-select"></select>
           </div>
         </div>
-
         <div class="cal-modal__right">
           <div id="booking-slots-column">
             <div class="column-title">Available times</div>
@@ -408,7 +470,6 @@
               <button class="time-slot-btn" type="button" data-time="04:00 PM">04:00 PM</button>
             </div>
           </div>
-
           <div id="booking-form-step" class="cal-booking-form">
             <button id="booking-back-btn" class="back-btn" type="button">&larr; Back to times</button>
             <div id="booking-selected-summary" class="selected-summary">Date and time</div>
@@ -425,22 +486,24 @@
                 <label for="client-notes">What takes up most of your team's time?</label>
                 <textarea id="client-notes" rows="3" placeholder="Lead replies, onboarding, reporting..."></textarea>
               </div>
-              <button type="submit" class="btn primary submit-booking-btn">Confirm audit</button>
+              <button type="submit" class="btn ink submit-booking-btn">Confirm audit</button>
             </form>
           </div>
         </div>
       </div>
-
       <div id="booking-success-view" class="cal-modal__success">
         <div class="success-icon" aria-hidden="true">&#10003;</div>
         <h3 class="cal-modal__title">Audit booked.</h3>
         <p id="booking-success-details" class="cal-modal__desc"></p>
-        <button class="btn primary" type="button" onclick="window.closeBookingModal()">Done</button>
+        <button class="btn ink" type="button" onclick="window.closeBookingModal()">Done</button>
       </div>
     </div>
   </div>
-
+  <!--/SHELL:MODAL-->
+  <!--SHELL:SCRIPTS-->
   <script src="/js/booking.js"></script>
+  <script src="/js/site.js"></script>
+  <!--/SHELL:SCRIPTS-->
   <script src="/js/home.js"></script>
 </body>
 </html>
