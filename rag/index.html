@@ -1,477 +1,455 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomous Enterprise Knowledge Agent &amp; Semantic RAG System | MRKHANSERVICES</title>
-  <meta name="description" content="Turn your website, e-commerce catalog, and company documentation into an autonomous, zero-hallucination AI knowledge agent using n8n and Pinecone vector storage." />
+  <title>Knowledge Agent | MRKHANSERVICES</title>
+  <meta name="description" content="Autonomous enterprise knowledge agent powered by semantic RAG, recursive text chunking, and Pinecone vector storage. Grounded answers with source citations." />
   <link rel="canonical" href="https://mrkhanservices.site/rag/" />
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="MRKHANSERVICES" />
   <meta property="og:url" content="https://mrkhanservices.site/rag/" />
-  <meta property="og:title" content="Autonomous Enterprise Knowledge Agent &amp; Semantic RAG System | MRKHANSERVICES" />
-  <meta property="og:description" content="Turn your website, e-commerce catalog, and company documentation into an autonomous, zero-hallucination AI knowledge agent using n8n and Pinecone vector storage." />
+  <meta property="og:title" content="Knowledge Agent | MRKHANSERVICES" />
+  <meta property="og:description" content="Autonomous enterprise knowledge agent powered by semantic RAG, recursive text chunking, and Pinecone vector storage. Grounded answers with source citations." />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicons -->
+  <!--SHELL:HEAD-->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="theme-color" content="#0C0C0C" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/global.css?v=3" />
-  <link rel="stylesheet" href="/css/navbar.css" />
-  <link rel="stylesheet" href="/css/marquee.css" />
-  <link rel="stylesheet" href="/css/rag.css" />
-  <link rel="stylesheet" href="/css/modal.css" />
-  <link rel="stylesheet" href="/css/footer.css" />
-
-  <!-- Vapi Web Voice Widget SDK -->
-  <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.vapiSDK) {
-        window.vapiSDK.run({
-          apiKey: "7adae33d-4975-462a-bcb0-ef90c937c684",
-          assistant: "9de09a23-7f03-473f-bcda-45f8435dd1f3",
-          assistantOverrides: {
-            serverUrl: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router",
-            server: {
-              url: "https://n8n.mrkhanservices.site/webhook/vapi-voice-router"
-            }
-          },
-          position: "bottom-right",
-          buttonConfig: {
-            text: "Talk to My AI Receptionist",
-            color: "#141416"
-          }
-        });
-      }
-    });
-  </script>
+  <meta name="theme-color" content="#F5F4F2" />
+  <link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.className='js';</script>
+  <link rel="stylesheet" href="/css/site.css" />
+  <!--/SHELL:HEAD-->
+  <link rel="stylesheet" href="/css/pages/rag.css" />
 </head>
 <body>
-  <div class="app-background"></div>
-  <div class="grid-pattern-global"></div>
-
-  <div class="page-wrapper">
-    <!-- Floating Header -->
-    <header class="header-floating-wrapper">
-      <nav class="header-nav-container">
-        <a href="/" class="nav-brand" aria-label="MRKHANSERVICES Home">
-          <span class="brand-icon-badge">MRK</span>
-          <span class="brand-name-text">MRKHANSERVICES</span>
-        </a>
-        <div class="nav-links-center">
-          <a href="/services/" class="nav-link-btn">Services</a>
-          <a href="/about/" class="nav-link-btn">About</a>
-          <a href="/contact/" class="nav-link-btn">Contact</a>
-        </div>
-        <div class="nav-cta-wrapper">
-          <a href="/contact/" class="talk-btn" data-action="open-booking">
-            <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-            <span class="talk-btn__arrow">→</span>
-          </a>
-        </div>
-      </nav>
-
-      <!-- Mobile Header -->
-      <div class="mobile-navbar-bar">
-        <a href="/" class="nav-brand">
-          <span class="brand-icon-badge">MRK</span>
-          <span class="brand-name-text">MRKHAN</span>
-        </a>
-        <button class="burger-btn" id="mobile-burger-btn" aria-label="Toggle navigation menu">
+  <!--SHELL:TOP-->
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:40px;width:1px"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="paint" x="-5%" y="-30%" width="110%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" />
+    </filter>
+  </svg>
+  <!--/SHELL:TOP-->
+  <!--SHELL:NAV-->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/" class="brand" aria-label="MRKHANSERVICES home">
+        <span class="badge">MRK</span>
+        <span class="name">MRKHANSERVICES</span>
+      </a>
+      <ul>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <div class="right">
+        <a href="/contact/" class="btn ink sm" data-action="open-booking">Book an audit</a>
+        <button class="burger" id="mobile-burger-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
           <span></span><span></span><span></span>
         </button>
       </div>
+    </nav>
+    <div class="menu" id="mobile-dropdown-menu" aria-hidden="true">
+      <a href="/services/" style="--i:0">Services</a>
+      <a href="/about/" style="--i:1">About</a>
+      <a href="/contact/" style="--i:2">Contact</a>
+      <a href="/contact/" class="btn orange" data-action="open-booking">Book an audit</a>
+    </div>
+  </header>
+  <!--/SHELL:NAV-->
 
-      <!-- Mobile Dropdown Menu -->
-      <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
-        <a href="/services/" class="mobile-dropdown-link">Services</a>
-        <a href="/about/" class="mobile-dropdown-link">About</a>
-        <a href="/contact/" class="mobile-dropdown-link">Contact</a>
-        <a href="/contact/" class="talk-btn" data-action="open-booking" style="margin-top: 10px; width: 100%; justify-content: center;">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-          <span class="talk-btn__arrow">→</span>
-        </a>
-      </div>
-    </header>
-
-    <main class="rag-page">
-      <!-- Hero Section -->
-      <section class="rag-hero" id="top">
-        <div class="rag-hero__badge">
-          <span class="rag-hero__badge-dot"></span>
-          Production Architecture Case Study
+  <main id="main">
+    <!-- HERO -->
+    <section class="rag-hero">
+      <div class="wrap">
+        <h1 class="rv">Turn company documents into an <em>autonomous knowledge engine</em>.</h1>
+        <p class="lead rv" style="--rd:1">Ingest your product manuals, company wikis, SOPs, and service catalogs into Pinecone vector storage. Deliver grounded answers with source citations to customers and internal teams.</p>
+        <div class="cta rv" style="--rd:2">
+          <a href="/contact/" class="btn ink" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a href="#pipeline" class="btn ghost">Explore pipeline</a>
         </div>
-        <h1 class="rag-hero__title">Turn Your Company Data into an Autonomous Knowledge Engine.</h1>
-        <p class="rag-hero__subtitle">
-          A custom semantic Retrieval-Augmented Generation (RAG) system engineered to ingest your websites, product catalogs, and operational documents into Pinecone vector storage, delivering instant, zero-hallucination answers to customer inquiries and team requests 24/7.
-        </p>
-
-        <!-- High-Impact Outcome Metrics -->
-        <div class="rag-metrics">
-          <div class="rag-metric-chip">
-            <span>⚡</span>
-            <span><strong>&lt; 1.8s</strong> Latency</span>
-          </div>
-          <div class="rag-metric-chip">
-            <span>🎯</span>
-            <span><strong>100% Grounded</strong> in Company Truth</span>
-          </div>
-          <div class="rag-metric-chip">
-            <span>⏱</span>
-            <span><strong>25+ Hours</strong> Saved Weekly</span>
-          </div>
-          <div class="rag-metric-chip">
-            <span>🛡</span>
-            <span><strong>Zero Hallucinations</strong> Guaranteed</span>
-          </div>
-        </div>
-
-        <div class="rag-hero__actions">
-          <a href="/contact/" class="talk-btn" data-action="open-booking">
-            <span class="talk-btn__label"><span class="talk-btn__label-current">Book a Strategy Call on this Workflow</span></span>
-            <span class="talk-btn__arrow">→</span>
-          </a>
-          <a href="#pipeline" class="nav-link-btn" style="border: 1px solid rgba(255, 255, 255, 0.12); padding: 10px 22px; border-radius: 9999px;">
-            Explore Architecture ↓
-          </a>
-        </div>
-      </section>
-
-      <!-- Video Showcase Container -->
-      <section class="rag-video-section">
-        <div class="rag-video-wrapper">
-          <iframe 
-            class="rag-video-iframe"
-            src="https://drive.google.com/file/d/1BEslHLQ0lOXehPZiFNlZ2FxsJ34bjWsZ/preview" 
-            title="RAG Workflow and Autonomous Chatbot Demonstration by Muhammad Roman Khan"
-            allow="autoplay; encrypted-media; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="rag-video-meta">
-          <span>📹 Live n8n &amp; Pinecone Walkthrough by Muhammad Roman Khan (M R KHAN)</span>
-          <a href="https://drive.google.com/drive/folders/1Sz3Z_751QdJmD7vW2OrIMtgAy_rOzUZI?usp=sharing" target="_blank" rel="noopener noreferrer">
-            Access Workflow Source &amp; Blueprint (Google Drive) ↗
-          </a>
-        </div>
-      </section>
-
-      <!-- 3-Stage Engineering Pipeline (Bento Grid) -->
-      <section class="rag-pipeline" id="pipeline">
-        <div class="rag-section-header">
-          <p class="rag-section-header__eyebrow">HOW THE ENGINE OPERATES</p>
-          <h2 class="rag-section-header__title">The 3-Stage Zero-Hallucination Pipeline</h2>
-          <p class="rag-section-header__desc">
-            Standard chatbots guess when they don't know the answer. Our RAG architecture separates ingestion, semantic indexing, and grounded inference to guarantee precision on every query.
-          </p>
-        </div>
-
-        <div class="rag-pipeline__grid">
-          <!-- Stage 1 -->
-          <article class="rag-pipeline-card">
-            <div class="rag-pipeline-card__step">01</div>
-            <h3 class="rag-pipeline-card__title">Automated Ingestion &amp; Cleansing</h3>
-            <p class="rag-pipeline-card__text">
-              The workflow systematically scrapes your public website, product catalogs, service pages, and internal documents. Raw HTML boilerplate, navigation menus, and noise are stripped down to high-signal structured business text.
-            </p>
-            <ul class="rag-pipeline-card__bullets">
-              <li>Multi-page web crawler with HTTP request triggers</li>
-              <li>HTML parsing and semantic DOM extraction</li>
-              <li>Data normalization across disparate sources</li>
-            </ul>
-          </article>
-
-          <!-- Stage 2 -->
-          <article class="rag-pipeline-card">
-            <div class="rag-pipeline-card__step">02</div>
-            <h3 class="rag-pipeline-card__title">Semantic Chunking &amp; Pinecone Indexing</h3>
-            <p class="rag-pipeline-card__text">
-              Content is split into coherent text chunks with overlapping sliding windows to preserve sentence context. Each chunk is vectorized through high-dimensional embedding models and indexed into a dedicated Pinecone vector database.
-            </p>
-            <ul class="rag-pipeline-card__bullets">
-              <li>Context-preserving recursive chunking</li>
-              <li>High-dimensional vector embeddings</li>
-              <li>Scalable Pinecone vector store storage</li>
-            </ul>
-          </article>
-
-          <!-- Stage 3 -->
-          <article class="rag-pipeline-card">
-            <div class="rag-pipeline-card__step">03</div>
-            <h3 class="rag-pipeline-card__title">Grounded Agent &amp; Real-Time Webhook</h3>
-            <p class="rag-pipeline-card__text">
-              When a user submits a query via website chat or webhook, the agent vectorizes the question, pulls the top matching context blocks from Pinecone, and synthesizes an exact answer strictly constrained to your verified data.
-            </p>
-            <ul class="rag-pipeline-card__bullets">
-              <li>Instant top-k semantic similarity retrieval</li>
-              <li>Strict prompt guardrails preventing hallucinations</li>
-              <li>Real-time webhook and multi-channel delivery</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- Multi-Industry Business Applications -->
-      <section class="rag-industries">
-        <div class="rag-section-header">
-          <p class="rag-section-header__eyebrow">COMMERCIAL APPLICATIONS</p>
-          <h2 class="rag-section-header__title">Engineered for Cross-Industry Impact</h2>
-          <p class="rag-section-header__desc">
-            Wherever repetitive questions drain employee hours or delay prospective buyers, this autonomous system delivers immediate ROI.
-          </p>
-        </div>
-
-        <div class="rag-industries__grid">
-          <!-- Industry 1 -->
-          <div class="rag-industry-card">
-            <span class="rag-industry-card__tag">E-Commerce &amp; Retail</span>
-            <h3 class="rag-industry-card__title">24/7 AI Shopping Assistant &amp; Catalog Guide</h3>
-            <p class="rag-industry-card__text">
-              Ingest your entire inventory, product sizing guides, shipping thresholds, and return policies. The agent guides shoppers directly to product links, clarifies specifications, and converts high-intent visitors before they bounce.
-            </p>
-            <div class="rag-industry-card__outcome">
-              <span>📈</span>
-              <span>+34% Checkout Conversion • Zero Support Backlog</span>
-            </div>
-          </div>
-
-          <!-- Industry 2 -->
-          <div class="rag-industry-card">
-            <span class="rag-industry-card__tag">B2B SaaS &amp; Tech Consultancies</span>
-            <h3 class="rag-industry-card__title">Technical Knowledge Base &amp; Onboarding Bot</h3>
-            <p class="rag-industry-card__text">
-              Turn dense API documentation, integration guides, and pricing tiers into an interactive assistant. Prospective buyers and active users receive instant technical guidance without filing manual support tickets.
-            </p>
-            <div class="rag-industry-card__outcome">
-              <span>⏱</span>
-              <span>Sub-2-Second First Response Time • 70% Ticket Deflection</span>
-            </div>
-          </div>
-
-          <!-- Industry 3 -->
-          <div class="rag-industry-card">
-            <span class="rag-industry-card__tag">Professional &amp; Local Services</span>
-            <h3 class="rag-industry-card__title">Pre-Qualification &amp; Appointment Intake Agent</h3>
-            <p class="rag-industry-card__text">
-              For dental clinics, law practices, and real estate brokerages. The agent answers treatment questions, explains pricing ranges, pre-qualifies incoming client requests, and routes booked slots directly into your CRM.
-            </p>
-            <div class="rag-industry-card__outcome">
-              <span>🎯</span>
-              <span>Pre-Screened Leads • 20+ Hours Reclaimed Weekly</span>
-            </div>
-          </div>
-
-          <!-- Industry 4 -->
-          <div class="rag-industry-card">
-            <span class="rag-industry-card__tag">Enterprise &amp; Corporate Teams</span>
-            <h3 class="rag-industry-card__title">Internal SOP &amp; Employee Handbook Engine</h3>
-            <p class="rag-industry-card__text">
-              Eliminate endless Slack interruptions. Ingest internal operating manuals, HR benefits, compliance policies, and training materials. Team members query the agent in natural language and receive verified answers with source citations.
-            </p>
-            <div class="rag-industry-card__outcome">
-              <span>🛡</span>
-              <span>Single Source of Truth • Instant Cross-Team Alignment</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Technical Specifications -->
-      <section class="rag-specs">
-        <p class="rag-specs__label">DEPLOYMENT SPECIFICATIONS &amp; STACK</p>
-        <div class="rag-specs__tags">
-          <span class="rag-spec-pill">n8n Workflow Orchestration</span>
-          <span class="rag-spec-pill">Pinecone Vector Database</span>
-          <span class="rag-spec-pill">Google Gemini Embeddings</span>
-          <span class="rag-spec-pill">Google Gemini Reasoning LLM</span>
-          <span class="rag-spec-pill">LangChain Agent Tools</span>
-          <span class="rag-spec-pill">Recursive Text Chunking</span>
-          <span class="rag-spec-pill">Semantic Similarity Search</span>
-          <span class="rag-spec-pill">REST Webhook Triggers</span>
-          <span class="rag-spec-pill">HTML DOM Parsing</span>
-          <span class="rag-spec-pill">Production Error Handlers</span>
-        </div>
-      </section>
-
-      <!-- CTA Banner -->
-      <section class="cta-banner">
-        <div class="cta-banner__glow"></div>
-        <h2 class="cta-banner__title">Ready to build your custom AI knowledge agent?</h2>
-        <p class="cta-banner__text">
-          Book a free 30-minute AI strategy call. We'll examine your current documentation, data sources, and customer touchpoints, showing you exactly how a custom RAG pipeline can eliminate manual bottlenecks.
-        </p>
-        <a href="/contact/" class="talk-btn cta-banner__btn" data-action="open-booking">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Book a free strategy call</span></span>
-          <span class="talk-btn__arrow">→</span>
-        </a>
-      </section>
-    </main>
-
-        <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-columns">
-          <div class="footer-col footer-col--brand">
-            <span class="footer-col__eyebrow">Work with us</span>
-            <h4 class="footer-col__heading">Start with a free, thirty-minute AI growth call.</h4>
-            <div class="footer-col__cta">
-              <a href="/contact/" class="talk-btn" data-action="open-booking">
-                <span class="talk-btn__label"><span class="talk-btn__label-current">Let's talk</span></span>
-                <span class="talk-btn__arrow">→</span>
-              </a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">SOLUTIONS</h5>
-            <ul class="footer-col__list">
-              <li><a href="/voice/" >Autonomous Voice Receptionist</a></li>
-              <li><a href="/rag/">Semantic RAG Agent</a></li>
-              <li><a href="/recruitment/">Candidate Qualification Pipeline</a></li>
-              <li><a href="/youtube/">Autonomous YouTube Factory</a></li>
-              <li><a href="/services/">Full Systems Library</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">COMPANY</h5>
-            <ul class="footer-col__list">
-              <li><a href="/about/">About M R KHAN</a></li>
-              <li><a href="/about/#about-story">What is MRKHANSERVICES?</a></li>
-              <li><a href="/services/">Industries</a></li>
-              <li><a href="/contact/" data-action="open-booking">Growth Call</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">RESOURCES</h5>
-            <ul class="footer-col__list">
-              <li><a href="/voice/">Live Voice Agent Sandbox</a></li>
-              <li><a href="/rag/">Live RAG Walkthrough</a></li>
-              <li><a href="/recruitment/">Recruitment Blueprint</a></li>
-              <li><a href="/youtube/">YouTube 5-Agent Blueprint</a></li>
-              <li><a href="/contact/">Schedule Consultation</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5 class="footer-col__title">CONNECT</h5>
-            <ul class="footer-col__list">
-              <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noreferrer">LinkedIn</a></li>
-              <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noreferrer">Instagram</a></li>
-              <li><a href="https://wa.me/923285792098" target="_blank" rel="noreferrer">WhatsApp</a></li>
-              <li><a href="mailto:contact@mrkhanservices.site">Direct Email</a></li>
-              <li><a href="/contact/" data-action="open-booking">Book a Call</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <span class="footer-bottom__monogram">MRK</span>
-                    <div class="footer-bottom__legal">
-            <a href="/privacy/">Privacy Policy</a>
-            <span style="color: rgba(255,255,255,0.2);">&bull;</span>
-            <a href="/terms/">Terms of Service</a>
-          </div>
-          <span class="footer-bottom__copyright">© 2026 MRKHANSERVICES. All rights reserved.</span>
+        <div class="telemetry rv" style="--rd:3">
+          <span>grounding <b>Pinecone Vector Index</b></span>
+          <span>orchestration <b>n8n engine</b></span>
+          <span>accuracy <b>verified source citations</b></span>
+          <span>latency <b>sub-2s vector query</b></span>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <!-- Global 30-Minute Growth Call Booking Modal -->
-  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog">
+    <!-- 3-STAGE ANIMATED PIPELINE SCHEMATIC -->
+    <section class="s pipeline-sec" id="pipeline">
+      <div class="wrap">
+        <div class="pipeline-card-box rv">
+          <h2>The 3-stage <em>grounding pipeline</em>.</h2>
+          <p class="lead" style="margin-top:14px">Every answer is strictly constrained to your verified documents and cites where it came from.</p>
+
+          <svg class="flow live" viewBox="0 0 1000 220" role="img" aria-label="3-stage RAG pipeline: documents ingested and cleansed, converted to semantic chunks in Pinecone vector grid, retrieved by grounded agent with source citation">
+            <g fill="none" stroke-linecap="round">
+              <!-- Stage 1 to Stage 2 -->
+              <path class="ln" d="M140 100 H360" pathLength="100" />
+              <path class="pk" d="M140 100 H360" pathLength="100" />
+
+              <!-- Stage 2 to Stage 3 -->
+              <path class="ln" d="M480 100 H720" pathLength="100" />
+              <path class="pk" d="M480 100 H720" pathLength="100" style="--pd:-0.8s" />
+
+              <!-- Stage 3 to Output Bubble -->
+              <path class="ln" d="M780 100 H860" pathLength="100" />
+              <path class="pk" d="M780 100 H860" pathLength="100" style="--pd:-1.6s" />
+            </g>
+
+            <!-- Stage 1: Document Stack & Cleanse -->
+            <g transform="translate(100 100)">
+              <rect x="-34" y="-36" width="46" height="58" rx="5" fill="#EAE6DF" stroke="#0A0A0A" stroke-width="1.8" />
+              <rect x="-24" y="-26" width="46" height="58" rx="5" fill="#F5F4F2" stroke="#0A0A0A" stroke-width="1.8" />
+              <path d="M-14 -12 H10 M-14 -2 H10 M-14 8 H2" stroke="#0A0A0A" stroke-width="1.6" stroke-linecap="round" />
+            </g>
+
+            <!-- Cleanse Funnel Node -->
+            <g transform="translate(250 100)">
+              <circle class="nd" r="24" />
+              <path d="M-10 -7 H10 L2 2 V9 L-2 7 V2 Z" fill="none" stroke="#0A0A0A" stroke-width="1.6" stroke-linejoin="round" />
+              <text x="0" y="38" text-anchor="middle">cleanse</text>
+            </g>
+
+            <!-- Stage 2: Pinecone Vector Dot Grid -->
+            <g transform="translate(420 100)">
+              <rect x="-42" y="-42" width="84" height="84" rx="12" fill="#EFECE7" stroke="#0A0A0A" stroke-width="1.8" />
+              <g fill="#0A0A0A">
+                <circle class="pdot" cx="-24" cy="-24" r="3" />
+                <circle class="pdot active" style="--n:0" cx="0" cy="-24" r="3" />
+                <circle class="pdot" cx="24" cy="-24" r="3" />
+                <circle class="pdot" cx="-24" cy="0" r="3" />
+                <circle class="pdot active" style="--n:1" cx="0" cy="0" r="3" />
+                <circle class="pdot" cx="24" cy="0" r="3" />
+                <circle class="pdot" cx="-24" cy="24" r="3" />
+                <circle class="pdot active" style="--n:2" cx="0" cy="24" r="3" />
+                <circle class="pdot" cx="24" cy="24" r="3" />
+              </g>
+            </g>
+
+            <!-- Stage 3: Grounded Agent (Hot Node) -->
+            <g transform="translate(750 100)">
+              <circle class="nd hot" r="32" />
+              <path d="M-12 0 H-2 M-2 0 L7 -9 H13 M-2 0 L7 9 H13" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" />
+            </g>
+
+            <!-- Stage 4: Answer Bubble with Source Citation -->
+            <g transform="translate(910 100)">
+              <rect x="-40" y="-32" width="80" height="64" rx="10" fill="#F5F4F2" stroke="#0A0A0A" stroke-width="1.8" />
+              <path d="M-28 -14 H16 M-28 -2 H16 M-28 10 H-4" stroke="#0A0A0A" stroke-width="1.6" stroke-linecap="round" />
+              <circle cx="20" cy="10" r="3" fill="#FF6B00" />
+            </g>
+
+            <!-- Labels -->
+            <g class="lbl">
+              <text x="100" y="160" text-anchor="middle">1. Ingestion</text>
+              <text class="dim" x="100" y="178" text-anchor="middle">scrape &amp; clean HTML/PDF</text>
+
+              <text x="420" y="160" text-anchor="middle">2. Vector Index</text>
+              <text class="dim" x="420" y="178" text-anchor="middle">semantic chunks in pinecone</text>
+
+              <text x="750" y="160" text-anchor="middle">3. Grounded Agent</text>
+              <text class="dim" x="750" y="178" text-anchor="middle">top-k similarity search</text>
+
+              <text x="910" y="160" text-anchor="middle">Answer &amp; Source</text>
+              <text class="dim" x="910" y="178" text-anchor="middle">webhook response</text>
+            </g>
+          </svg>
+
+          <!-- 3-Stage Detail Cards -->
+          <div class="stages-grid">
+            <div class="stage-step-card">
+              <span class="tag">stage 01</span>
+              <h3>Ingestion &amp; Cleansing</h3>
+              <p>Crawls specified websites, product catalogs, and document repositories. Strips HTML boilerplate and navigation menus down to structured text.</p>
+              <ul>
+                <li>Recursive web scrapers &amp; PDF parsers</li>
+                <li>DOM extraction &amp; boilerplate stripping</li>
+                <li>Schema normalization across disparate files</li>
+              </ul>
+            </div>
+
+            <div class="stage-step-card">
+              <span class="tag">stage 02</span>
+              <h3>Semantic Chunking &amp; Indexing</h3>
+              <p>Splits content into overlapping context windows to preserve complete sentences. Converts text into high-dimensional vector embeddings stored in Pinecone.</p>
+              <ul>
+                <li>Recursive character text splitters</li>
+                <li>High-dimensional vector embeddings</li>
+                <li>Isolated client vector namespaces</li>
+              </ul>
+            </div>
+
+            <div class="stage-step-card">
+              <span class="tag">stage 03</span>
+              <h3>Grounded Agent &amp; Delivery</h3>
+              <p>Vectorizes inbound user questions, queries Pinecone for matching context blocks, and synthesizes answers constrained strictly to your facts.</p>
+              <ul>
+                <li>Top-k semantic similarity retrieval</li>
+                <li>Strict guardrails forbidding assumptions</li>
+                <li>Real-time webhook and multi-channel sync</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO WALKTHROUGH -->
+    <section class="s video-sec" id="walkthrough">
+      <div class="wrap">
+        <div class="video-box rv">
+          <div>
+            <h2>Live RAG engine <em>walkthrough</em>.</h2>
+            <p class="lead" style="margin-top:10px">Muhammad Roman Khan explains the n8n vector pipeline and Pinecone retrieval mechanics.</p>
+          </div>
+
+          <div class="video-frame-wrapper">
+            <iframe 
+              src="https://drive.google.com/file/d/1BEslHLQ0lOXehPZiFNlZ2FxsJ34bjWsZ/preview" 
+              title="RAG Workflow and Autonomous Chatbot Demonstration by Muhammad Roman Khan"
+              allow="autoplay; encrypted-media; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="video-meta-bar">
+            <span>engine <b>n8n + Pinecone Vector Index + Google Gemini Embeddings</b></span>
+            <a href="https://drive.google.com/drive/folders/1Sz3Z_751QdJmD7vW2OrIMtgAy_rOzUZI?usp=sharing" target="_blank" rel="noopener" class="btn ink sm">Access Google Drive Blueprint <span class="arr" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES (UNEQUAL BENTO) -->
+    <section class="s cases-sec" id="use-cases">
+      <div class="wrap">
+        <div class="rv">
+          <h2>Production <em>use cases</em>.</h2>
+          <p class="lead" style="margin-top:14px">Deployed wherever repetitive information retrieval drains staff hours.</p>
+        </div>
+
+        <div class="cases-bento">
+          <!-- Case 1: Shopping Assistant -->
+          <div class="case-cell c1 rv">
+            <div>
+              <span class="tag">e-commerce</span>
+              <h3>AI Shopping Assistant &amp; Catalog Guide</h3>
+              <p>Indexes complete inventory catalogs, sizing charts, and return rules. Guides shoppers directly to matching product links and clarifies specifications in seconds.</p>
+            </div>
+            <div class="art">
+              <svg class="flow" viewBox="0 0 320 120" aria-hidden="true">
+                <path class="ln" d="M30 60 H290" pathLength="100" />
+                <path class="pk" d="M30 60 H290" pathLength="100" />
+                <circle class="nd" cx="50" cy="60" r="18" />
+                <circle class="nd hot" cx="160" cy="60" r="20" />
+                <circle class="nd dark" cx="270" cy="60" r="18" />
+                <text x="50" y="96" text-anchor="middle">query</text>
+                <text x="160" y="96" text-anchor="middle">catalog match</text>
+                <text x="270" y="96" text-anchor="middle">cart link</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Case 2: Technical KB -->
+          <div class="case-cell c2 rv" style="--rd:1">
+            <div>
+              <span class="tag">b2b saas</span>
+              <h3>Technical Knowledge Base &amp; Onboarding Bot</h3>
+              <p>Transforms technical manuals, API guides, and setup documentation into an interactive onboarding assistant, answering user questions with exact reference links.</p>
+            </div>
+            <div class="art">
+              <svg class="flow" viewBox="0 0 240 120" aria-hidden="true">
+                <rect x="20" y="24" width="200" height="72" rx="8" fill="none" stroke="#0A0A0A" stroke-width="1.8" />
+                <circle cx="44" cy="48" r="4" fill="#FF6B00" />
+                <line x1="60" y1="48" x2="190" y2="48" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
+                <line x1="44" y1="72" x2="160" y2="72" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Case 3: Pre-Qualification -->
+          <div class="case-cell c3 rv" style="--rd:2">
+            <div>
+              <span class="tag">professional services</span>
+              <h3>Pre-Qualification &amp; Intake Agent</h3>
+              <p>Answers service and pricing queries, confirms baseline requirements, and guides qualified prospects straight into calendar booking slots.</p>
+            </div>
+            <div class="art">
+              <svg class="flow" viewBox="0 0 240 120" aria-hidden="true">
+                <path d="M30 30 H210 L140 70 V100 L100 90 V70 Z" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linejoin="round" />
+                <circle cx="120" cy="50" r="4" fill="#FF6B00" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Case 4: Internal SOP Engine -->
+          <div class="case-cell c4 rv" style="--rd:3">
+            <div>
+              <span class="tag">internal operations</span>
+              <h3>Internal SOP &amp; Employee Handbook Engine</h3>
+              <p>Eliminates repetitive Slack questions. Ingests operating procedures, compliance guides, and HR policies so team members receive verified answers with page citations.</p>
+            </div>
+            <div class="art">
+              <svg class="flow" viewBox="0 0 320 120" aria-hidden="true">
+                <path class="ln" d="M40 60 H280" pathLength="100" />
+                <path class="pk" d="M40 60 H280" pathLength="100" />
+                <circle class="nd" cx="60" cy="60" r="18" />
+                <circle class="nd hot" cx="160" cy="60" r="20" />
+                <circle class="nd dark" cx="260" cy="60" r="18" />
+                <text x="60" y="96" text-anchor="middle">slack query</text>
+                <text x="160" y="96" text-anchor="middle">SOP index</text>
+                <text x="260" y="96" text-anchor="middle">verified cited answer</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING BLOCK -->
+    <section style="padding:0">
+      <div class="end">
+        <svg class="radar" viewBox="-100 -100 200 200" aria-hidden="true">
+          <g fill="none" stroke="#F5F4F2" stroke-opacity=".28" stroke-width=".8"><circle r="95"/><circle r="70"/><circle r="45"/><circle r="20"/><path d="M-100 0H100M0 -100V100"/></g>
+          <g class="sweep"><path d="M0 0 L95 0 A95 95 0 0 0 67 -67 Z" fill="url(#sw)"/><path d="M0 0 H95" stroke="#FF6B00" stroke-width="1.4"/></g>
+          <defs><linearGradient id="sw" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#FF6B00" stop-opacity=".0"/><stop offset="1" stop-color="#FF6B00" stop-opacity=".5"/></linearGradient></defs>
+          <g fill="#FF6B00"><circle class="blip" style="--n:0" cx="48" cy="-34" r="3"/><circle class="blip" style="--n:1" cx="-30" cy="52" r="3"/><circle class="blip" style="--n:2" cx="-62" cy="-20" r="3"/><circle class="blip" style="--n:3" cx="14" cy="-70" r="3"/></g>
+        </svg>
+        <div class="wrap">
+          <h2 class="rv">Find out what your team could <em>stop doing</em>.</h2>
+          <p class="rv" style="--rd:1">A 30 minute audit. You leave with a clear list of what to automate first, whether or not we work together.</p>
+          <a href="/contact/" class="btn orange rv" style="--rd:2" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--SHELL:FOOT-->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div>
+          <a href="/" class="brand"><span class="badge">MRK</span><span class="name">MRKHANSERVICES</span></a>
+          <p class="muted" style="margin-top:16px;max-width:30ch">Automation systems that run in the background, built by one person you can reach directly.</p>
+        </div>
+        <div>
+          <h4>Systems</h4>
+          <ul>
+            <li><a href="/voice/">Voice receptionist</a></li>
+            <li><a href="/rag/">Knowledge agent</a></li>
+            <li><a href="/recruitment/">Recruitment pipeline</a></li>
+            <li><a href="/youtube/">Content factory</a></li>
+            <li><a href="/services/">All services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#about-story">My story</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/muhammad-roman-khan-8245a0328" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/mrkhan7x" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.instagram.com/mrkhan7x" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://wa.me/923285792098" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:contact@mrkhanservices.site">contact@mrkhanservices.site</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 MRKHANSERVICES &middot; local time <b data-clock style="font-weight:500;color:var(--ink)">--:--:--</b></span>
+        <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+      </div>
+    </div>
+  </footer>
+  <!--/SHELL:FOOT-->
+  <!--SHELL:MODAL-->
+  <div class="cal-modal-backdrop" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
     <div class="cal-modal-card">
       <div class="cal-modal__header">
         <div class="cal-modal__brand">
           <span class="cal-modal__badge">MRK</span>
           <span class="cal-modal__brand-name">MRKHANSERVICES</span>
         </div>
-        <div class="cal-modal__title">AI Growth Call</div>
-        <button class="cal-modal__close" id="booking-close-btn" aria-label="Close modal">&times;</button>
+        <div class="cal-modal__title" id="booking-title">Workflow audit</div>
+        <button class="cal-modal__close" id="booking-close-btn" type="button" aria-label="Close">&times;</button>
       </div>
-
       <div class="cal-modal__body">
         <div class="cal-modal__left">
           <div class="cal-modal__meta">
-            <span class="meta-item">⏱ 30 min</span>
-            <span class="meta-item">📍 Google Meet</span>
-            <span class="meta-item">⚡ High-Impact Strategy</span>
+            <span class="meta-item">30 min</span>
+            <span class="meta-item">Google Meet</span>
+            <span class="meta-item">no obligation</span>
           </div>
-          <p class="cal-modal__desc">
-            We’ll review your current funnel, pinpoint operational bottlenecks, and identify exactly where AI or autonomous agents will create the clearest revenue lift.
-          </p>
+          <p class="cal-modal__desc">We review how your work flows today, find where time is lost, and list what to automate first.</p>
           <div class="cal-modal__date-picker">
-            <label for="booking-date-select">Select a Date</label>
+            <label for="booking-date-select">Select a date</label>
             <select id="booking-date-select" class="cal-select"></select>
           </div>
         </div>
-
         <div class="cal-modal__right">
-          <!-- Step 1: Time Slots -->
           <div id="booking-slots-column">
-            <div class="column-title">Available Times</div>
+            <div class="column-title">Available times</div>
             <div class="time-slots-grid">
-              <button class="time-slot-btn" data-time="09:00 AM">09:00 AM</button>
-              <button class="time-slot-btn" data-time="10:00 AM">10:00 AM</button>
-              <button class="time-slot-btn" data-time="11:00 AM">11:00 AM</button>
-              <button class="time-slot-btn" data-time="01:00 PM">01:00 PM</button>
-              <button class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
-              <button class="time-slot-btn" data-time="03:00 PM">03:00 PM</button>
-              <button class="time-slot-btn" data-time="04:00 PM">04:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="09:00 AM">09:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="10:00 AM">10:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="11:00 AM">11:00 AM</button>
+              <button class="time-slot-btn" type="button" data-time="01:00 PM">01:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="02:00 PM">02:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="03:00 PM">03:00 PM</button>
+              <button class="time-slot-btn" type="button" data-time="04:00 PM">04:00 PM</button>
             </div>
           </div>
-
-          <!-- Step 2: Confirmation Form -->
           <div id="booking-form-step" class="cal-booking-form">
-            <button id="booking-back-btn" class="back-btn">← Back to times</button>
-            <div id="booking-selected-summary" class="selected-summary">Upcoming Date at Time</div>
+            <button id="booking-back-btn" class="back-btn" type="button">&larr; Back to times</button>
+            <div id="booking-selected-summary" class="selected-summary">Date and time</div>
             <form id="booking-form-element">
               <div class="form-group">
-                <label for="client-name">Your Name</label>
+                <label for="client-name">Your name</label>
                 <input type="text" id="client-name" required placeholder="e.g. Alex Morgan" />
               </div>
               <div class="form-group">
-                <label for="client-email">Work Email</label>
+                <label for="client-email">Work email</label>
                 <input type="email" id="client-email" required placeholder="alex@company.com" />
               </div>
               <div class="form-group">
-                <label for="client-notes">What are you looking to automate?</label>
-                <textarea id="client-notes" rows="3" placeholder="Lead triage, CRM sync, custom AI assistant..."></textarea>
+                <label for="client-notes">What takes up most of your team's time?</label>
+                <textarea id="client-notes" rows="3" placeholder="Lead replies, onboarding, reporting..."></textarea>
               </div>
-              <button type="submit" class="talk-btn submit-booking-btn">
-                <span class="talk-btn__label"><span class="talk-btn__label-current">Confirm reservation</span></span>
-                <span class="talk-btn__arrow">→</span>
-              </button>
+              <button type="submit" class="btn ink submit-booking-btn">Confirm audit</button>
             </form>
           </div>
         </div>
       </div>
-
-      <!-- Success View -->
       <div id="booking-success-view" class="cal-modal__success">
-        <div class="success-icon">✓</div>
-        <h3 class="cal-modal__title">Strategy Call Confirmed!</h3>
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h3 class="cal-modal__title">Audit booked.</h3>
         <p id="booking-success-details" class="cal-modal__desc"></p>
-        <button class="talk-btn" onclick="window.closeBookingModal()">
-          <span class="talk-btn__label"><span class="talk-btn__label-current">Done</span></span>
-        </button>
+        <button class="btn ink" type="button" onclick="window.closeBookingModal()">Done</button>
       </div>
     </div>
   </div>
-
-  <!-- Scripts -->
+  <!--/SHELL:MODAL-->
+  <!--SHELL:SCRIPTS-->
   <script src="/js/booking.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/site.js"></script>
+  <!--/SHELL:SCRIPTS-->
 </body>
 </html>
