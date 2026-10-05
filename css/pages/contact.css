@@ -1,0 +1,177 @@
+/* Contact page styles on top of site.css */
+
+/* ---------- hero ---------- */
+.phero {
+  padding-top: clamp(120px, 16vw, 170px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+.phero h1 {
+  font-size: clamp(3.4rem, 7.2vw, 6.8rem);
+  line-height: 1.02;
+  max-width: 15ch;
+}
+.phero .lead {
+  max-width: 48ch;
+  margin-top: 24px;
+}
+.phero .cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 32px;
+}
+.phero .telemetry {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  max-width: 640px;
+}
+
+/* ---------- 3-beat pipeline section ---------- */
+.pipeline-sec {
+  padding-top: clamp(40px, 6vw, 80px);
+}
+.pipeline-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(32px, 5vw, 64px);
+}
+.pipeline-sec svg.flow {
+  margin-top: 32px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+.pipeline-sec text {
+  font-size: 13px;
+}
+
+/* ---------- direct channels grid ---------- */
+.channels-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+}
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+.channel-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: clamp(24px, 3.2vw, 36px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  min-height: 220px;
+  transition: border-color 0.3s, transform var(--t) var(--spring);
+}
+.channel-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+}
+.channel-card.featured {
+  grid-column: span 2;
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.channel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.channel-glyph {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  flex: none;
+}
+.channel-card.featured .channel-glyph {
+  border-color: rgba(245, 244, 242, 0.2);
+  background: #181818;
+}
+.channel-info h3 {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.channel-info .handle {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  margin-top: 6px;
+  color: var(--ink);
+}
+.channel-card.featured .channel-info .handle {
+  color: var(--accent);
+}
+.channel-info p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 8px;
+  line-height: 1.45;
+}
+.channel-card.featured .channel-info p {
+  color: var(--bg);
+  opacity: 0.75;
+}
+.channel-arrow {
+  align-self: flex-end;
+  font-size: 1.3rem;
+  color: var(--ink);
+  transition: transform var(--t) var(--spring);
+}
+.channel-card.featured .channel-arrow {
+  color: var(--bg);
+}
+.channel-card:hover .channel-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .channels-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .channel-card.featured {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 600px) {
+  .channels-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- FAQ accordion ---------- */
+.faq-sec {
+  padding-top: clamp(60px, 8vw, 110px);
+  padding-bottom: clamp(60px, 8vw, 110px);
+}
+.faq-sec h2 {
+  max-width: 14ch;
+}
+.faq-list {
+  margin-top: 36px;
+}
+
+/* ---------- closing radar ---------- */
+.end .radar { position: absolute; right: clamp(16px, 7vw, 110px); top: 50%; width: min(34vw, 420px); transform: translateY(-50%); pointer-events: none; }
+.radar .sweep { transform-origin: 0 0; animation: sweep 4.8s linear infinite; }
+@keyframes sweep { to { transform: rotate(-360deg); } }
+.radar .blip { transform-box: fill-box; transform-origin: center; animation: blip 4.8s infinite; animation-delay: calc(var(--n) * 1.2s); animation-timing-function: var(--spring); }
+@keyframes blip { 0%, 100% { transform: scale(0.5); opacity: 0.25; } 8% { transform: scale(2.2); opacity: 1; } 40% { transform: scale(1); opacity: 0.6; } }
+@media (max-width: 760px) { .end .radar { opacity: 0.35; right: -12%; } }
+@media (prefers-reduced-motion: reduce) {
+  .radar .sweep, .radar .blip { animation: none; }
+}
