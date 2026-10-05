@@ -278,7 +278,7 @@ Do not redesign. Allowed: (a) the hero mini card (bottom-left) needs a slightly 
 3. Look at desktop (1366 wide) and mobile (390 wide). Scroll the whole page. Check: no overlapping text, no clipped words, no empty voids, no horizontal scroll, headline hierarchy obvious, every SVG animates, nav and footer identical to home.
 4. Browser console: 0 errors. (External CDN failures in a sandbox are not errors on the real site.)
 5. Interactions: booking modal opens from every "Book an audit", picks a date and slot, form posts; mobile menu opens; tabs/accordions/inspectors work with the keyboard; Vapi call starts on /voice/ and home (microphone permission).
-6. Banned-character scan (must print nothing): `grep -rnP "[\x{2013}\x{2014}]" --include=*.html . ; grep -rn "mrkhanservices\.com" --include=*.html --include=*.xml --include=*.txt . ; grep -rn "info@mrkhanservices" .`
+6. Banned-character scan (must print nothing): `python3 -c "import glob;[print(f) for f in glob.glob('**/*.html',recursive=True) if any(c in open(f,encoding='utf8').read() for c in '\u2013\u2014')]" ; grep -rn "mrkhanservices\.com" --include=*.html --include=*.xml --include=*.txt . ; grep -rn "info@mrkhanservices" .`
 7. Emoji scan: search the page for emoji; there must be none.
 8. Link check: every `href`/`src` that starts with `/` exists on disk.
 9. Reduced motion: enable "prefers-reduced-motion" in devtools; page must be calm and fully readable.
