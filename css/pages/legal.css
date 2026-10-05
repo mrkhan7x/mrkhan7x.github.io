@@ -1,0 +1,129 @@
+/* Legal pages shared styles on top of site.css */
+
+.legal-hero {
+  padding-top: clamp(120px, 16vw, 170px);
+  padding-bottom: clamp(30px, 5vw, 60px);
+}
+.legal-hero h1 {
+  font-size: clamp(3rem, 6.5vw, 5.8rem);
+  line-height: 1.05;
+}
+.legal-hero .lead {
+  max-width: 48ch;
+  margin-top: 18px;
+}
+.legal-hero .telemetry {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  max-width: 540px;
+}
+
+/* 2-column layout: sticky TOC + prose */
+.legal-grid-sec {
+  padding-top: clamp(20px, 4vw, 40px);
+  padding-bottom: clamp(60px, 8vw, 110px);
+}
+.legal-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+/* sticky table of contents */
+.legal-toc-card {
+  position: sticky;
+  top: 110px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+}
+.legal-toc-title {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.legal-toc-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+.legal-toc-link {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+  display: block;
+}
+.legal-toc-link:hover,
+.legal-toc-link.active {
+  color: var(--ink);
+  font-weight: 600;
+  transform: translateX(4px);
+}
+
+/* prose article */
+.legal-prose {
+  display: grid;
+  gap: 40px;
+}
+.legal-section {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-surface);
+  padding: clamp(28px, 4vw, 44px);
+  display: grid;
+  gap: 16px;
+  scroll-margin-top: 110px;
+}
+.legal-section h2 {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.legal-section p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.legal-section ul {
+  display: grid;
+  gap: 10px;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.legal-section ul strong {
+  color: var(--ink);
+}
+.legal-card-callout {
+  margin-top: 8px;
+  padding: 16px 20px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+.legal-card-callout strong {
+  color: var(--ink);
+}
+
+@media (max-width: 860px) {
+  .legal-grid {
+    grid-template-columns: 1fr;
+  }
+  .legal-toc-card {
+    position: static;
+  }
+}
