@@ -103,7 +103,7 @@
           </div>
           <div class="telemetry rv" style="--rd:4">
             <span>local time <b data-clock>--:--:--</b></span>
-            <span>systems live <b data-count="4">0</b></span>
+            <span>systems live <b data-count="4">4</b></span>
             <span>new clients/mo <b>2 to 3</b></span>
           </div>
         </div>
@@ -242,8 +242,8 @@
             <div class="field"><label for="calc-share">Share that can be automated <output id="o-share" class="mono">50%</output></label><input type="range" id="calc-share" min="10" max="90" step="5" value="50" /></div>
           </div>
           <div class="calc-out">
-            <div><span class="num" id="calc-hours-out">0</span><span class="mono">hours back per year</span></div>
-            <div><span class="num" id="calc-cost-out">$0</span><span class="mono">in time per year</span></div>
+            <div><span class="num" id="calc-hours-out">576</span><span class="mono">hours back per year</span></div>
+            <div><span class="num" id="calc-cost-out">$14,400</span><span class="mono">in time per year</span></div>
           </div>
           <p class="mono calc-note">people x hours x share x 48 working weeks. Your inputs, your math. The audit finds the real number.</p>
         </div>
@@ -339,16 +339,23 @@
       <div class="wrap">
         <h2 class="rv">Try it for a week <em>before you commit</em>.</h2>
         <div class="g2" style="margin-top:44px">
-          <div class="card pad rv"><span class="num" data-count="7">0</span><p class="lead" style="margin-top:12px">days from kickoff to a working first system.</p></div>
-          <div class="card pad ink rv" style="--rd:1"><span class="num"><span data-count="15">0</span></span><p class="lead" style="margin-top:12px;color:inherit;opacity:.8">hours saved in week one, or you pay nothing.</p></div>
+          <div class="card pad rv"><span class="num" data-count="7">7</span><p class="lead" style="margin-top:12px">days from kickoff to a working first system.</p></div>
+          <div class="card pad ink rv" style="--rd:1"><span class="num"><span data-count="15">15</span></span><p class="lead" style="margin-top:12px;color:inherit;opacity:.8">hours saved in week one, or you pay nothing.</p></div>
         </div>
         <svg class="flow timeline rv" viewBox="0 0 1000 90" role="img" aria-label="Timeline: kickoff on day zero, first system live on day seven, hours measured on day seven" style="margin-top:34px">
           <path class="ln" d="M40 40 H960" pathLength="100" /><path class="pk" d="M40 40 H960" pathLength="100" />
           <g class="tk"><circle class="nd dark" cx="40" cy="40" r="9" /><circle class="nd" cx="270" cy="40" r="6" /><circle class="nd" cx="500" cy="40" r="6" /><circle class="nd" cx="730" cy="40" r="6" /><circle class="nd hot" cx="960" cy="40" r="11" /></g>
           <text x="40" y="76" text-anchor="start">d0 kickoff</text><text x="500" y="76" text-anchor="middle" class="dim">build + test in staging</text><text x="960" y="76" text-anchor="end">d7 live, hours measured</text>
         </svg>
+        <div class="card pad rv" style="margin-top:34px;">
+          <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px;">
+            <span class="mono" style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);">Production Case Study &bull; Measured Outcome</span>
+            <span class="mono" style="font-size:11px;color:var(--muted);">Boutique Tech Staffing Firm</span>
+          </div>
+          <p class="lead" style="font-size:1.15rem;line-height:1.55;color:var(--ink);">For a boutique recruiting firm, I replaced manual CV intake and screening with an automated qualification pipeline—cutting recruiter screening time from <strong>18 hours/week down to 45 minutes</strong>, with zero missed candidate submissions over 30 days.</p>
+        </div>
         <div class="after rv">
-          <p>Hours are measured on the workflow we agree in the audit. I take on 2 to 3 new clients each month so every build gets full attention.</p>
+          <p><strong>The Week-One Guarantee:</strong> Baseline workload is measured and agreed during our 30-minute audit. If the deployed system does not eliminate at least 15 staff hours in the first 7 days of live production, you pay $0. I take on 2 to 3 new clients each month so every build gets full attention.</p>
           <a href="/contact/" class="btn ink" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
@@ -382,8 +389,8 @@
         </svg>
         <div class="wrap">
           <h2 class="rv">Find out what your team could <em>stop doing</em>.</h2>
-          <p class="rv" style="--rd:1">A 30 minute audit. You leave with a clear list of what to automate first, whether or not we work together.</p>
-          <a href="/contact/" class="btn orange rv" style="--rd:2" data-action="open-booking">Book an audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <p class="rv" style="--rd:1">In 30 minutes, we map one manual workflow, calculate the exact hours lost, and design the automation plan. You keep the roadmap whether or not you hire me.</p>
+          <a href="/contact/" class="btn orange rv" style="--rd:2" data-action="open-booking">Book a 30-minute audit <span class="arr" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </section>
@@ -449,9 +456,9 @@
           <div class="cal-modal__meta">
             <span class="meta-item">30 min</span>
             <span class="meta-item">Google Meet</span>
-            <span class="meta-item">no obligation</span>
+            <span class="meta-item">Working session</span>
           </div>
-          <p class="cal-modal__desc">We review how your work flows today, find where time is lost, and list what to automate first.</p>
+          <p class="cal-modal__desc">In 30 minutes, we map one manual bottleneck, calculate the exact hours lost, and design the automation plan. You keep the roadmap whether or not you hire me.</p>
           <div class="cal-modal__date-picker">
             <label for="booking-date-select">Select a date</label>
             <select id="booking-date-select" class="cal-select"></select>

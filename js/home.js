@@ -50,7 +50,11 @@
   var el = {}; ids.forEach(function (k) { el[k] = $('#calc-' + k); });
   var outH = $('#calc-hours-out'), outC = $('#calc-cost-out');
   if (el.people && outH && outC) {
-    var shown = { h: 0, c: 0 }, raf = 0;
+    var initT = (function () {
+      var h = el.people.value * el.hours.value * (el.share.value / 100) * 48;
+      return { h: h, c: h * el.rate.value };
+    })();
+    var shown = { h: initT.h, c: initT.c }, raf = 0;
     var fmt = function (n) { return Math.round(n).toLocaleString('en-US'); };
     function paintLabels() {
       $('#o-people').textContent = el.people.value;
